@@ -57,13 +57,25 @@ public class PropertyService {
         Property property = getPropertyByName(name);
         for (Reservation reservation1 :property.getReservationList()) {
             if (reservation1.equals(reservation)) {
-                System.out.println("dublura!!");
                 throw new IllegalArgumentException("Reservation already exists: "
                         + reservation);
             }
         }
         property.addReservation(reservation);
     }
+
+    public void addCategory(String name, Category category){
+        Property property = getPropertyByName(name);
+        for (Category category1: property.getCategories()) {
+            if (category1.equals(category)) {
+                throw new IllegalArgumentException("Category already exists: "
+                        + category);
+            }
+        }
+        property.addCategory(category);
+    }
+
+
 
 
 

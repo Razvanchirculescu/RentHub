@@ -1,5 +1,6 @@
 package com.codecool.elproyectegrande.controller;
 
+import com.codecool.elproyectegrande.model.Category;
 import com.codecool.elproyectegrande.model.Property;
 import com.codecool.elproyectegrande.model.Reservation;
 import com.codecool.elproyectegrande.model.Review;
@@ -51,6 +52,11 @@ public class PropertyController {
         propertyService.addReservation(name, reservation);
     }
 
+    @ResponseBody
+    @PostMapping("/property/{name}/category/add")
+    public void addCategory(@PathVariable String name, @RequestBody Category category){
+        propertyService.addCategory(name, category);
+    }
 
 
 
