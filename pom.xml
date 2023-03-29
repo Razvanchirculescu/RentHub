@@ -11,10 +11,17 @@
 	<groupId>com.codecool</groupId>
 	<artifactId>elproyectegrande</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+<<<<<<< HEAD
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
+=======
+	<name>El Proyecte Grande</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>19</java.version>
+>>>>>>> origin/Angelica
 	</properties>
 	<dependencies>
 		<dependency>
