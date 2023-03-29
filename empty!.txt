@@ -1,0 +1,5 @@
+-proprietati
+-categorii
+-descriere propritate
+-sortare pe categorie
+-
