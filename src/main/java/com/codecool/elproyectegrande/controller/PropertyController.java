@@ -1,5 +1,6 @@
 package com.codecool.elproyectegrande.controller;
 
+import com.codecool.elproyectegrande.model.CategoryEx;
 import com.codecool.elproyectegrande.model.Property;
 import com.codecool.elproyectegrande.model.Review;
 import com.codecool.elproyectegrande.service.PropertyService;
@@ -18,27 +19,33 @@ public class PropertyController {
         this.propertyService = propertyService;
     }
 
-    @ResponseBody
     @GetMapping("/properties")
+    @ResponseBody
     public List<Property> getAllProperties() {
         return propertyService.getAllProperties();
     }
 
-    @ResponseBody
     @GetMapping("/property/{name}")
+    @ResponseBody
     public Property getPropertyDetails(@PathVariable String name) {
         return propertyService.getPropertyByName(name);
     }
 
-    @ResponseBody
     @PostMapping("/property/add")
+    @ResponseBody
     public void addProperty(@RequestBody Property property) {
         propertyService.addProperty(property);
     }
 
-    @ResponseBody
     @PostMapping("/property/{name}/reviews/add")
+    @ResponseBody
     public void addPropertyReview(@PathVariable String name, @RequestBody Review review) {
         propertyService.addReviewForProperty(name, review);
+    }
+
+    @GetMapping("/properties/category")
+    @ResponseBody
+    public List<Property> getPropertiesByCategory(@RequestParam String cat) {
+        return propertyService.getPropertiesByCategory(CategoryEx.valueOf(cat));
     }
 }

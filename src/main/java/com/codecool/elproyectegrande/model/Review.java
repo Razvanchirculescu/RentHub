@@ -11,4 +11,8 @@ public class Review {
         this.description = description;
         this.satisfaction = satisfaction;
     }
+
+    public int getSatisfaction() {
+        return satisfaction;
+    }
 }

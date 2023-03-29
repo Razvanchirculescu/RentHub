@@ -12,7 +12,7 @@ public class Property {
     private final Map<String, String> location = new HashMap<>();
     private BigDecimal pricePerNight;
     private double rating;
-    private List<Category> categories;
+    private List<CategoryEx> categories;
     private List<Review> reviews;
 
 
@@ -25,8 +25,8 @@ public class Property {
         reviews = new ArrayList<>();
     }
 
-    public void addCategory(Category job) {
-        categories.add(job);
+    public void addCategory(CategoryEx categoryEx) {
+        categories.add(categoryEx);
     }
 
     public String getName() {
@@ -45,7 +45,7 @@ public class Property {
         return pricePerNight;
     }
 
-    public List<Category> getCategories() {
+    public List<CategoryEx> getCategories() {
         return categories;
     }
 
@@ -61,12 +61,17 @@ public class Property {
         return rating;
     }
 
-    public void setRating(double rating) {
-        this.rating = rating;
+    public void setRating() {
+        double sum = 0;
+        for(Review review: reviews) {
+            sum += review.getSatisfaction();
+        }
+        this.rating =  Math.round((sum/reviews.size()) * 100.0) / 100.0;
     }
 
     public void addReview(Review review) {
         reviews.add(review);
+        this.setRating();
     }
 
     public List<Review> getReviews() {
