@@ -2,6 +2,7 @@ package com.codecool.elproyectegrande.service;
 
 import com.codecool.elproyectegrande.model.Category;
 import com.codecool.elproyectegrande.model.Property;
+import com.codecool.elproyectegrande.model.Review;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +36,17 @@ public class PropertyService {
             }
         }
         return propertiesList;
+    }
+
+    public Property getPropertyByName(String name) {
+        return properties.stream()
+                .filter(property -> name.equals(property.getName()))
+                .findAny()
+                .orElse(null);
+    }
+
+    public void addReviewForProperty(String name, Review review) {
+        Property property = getPropertyByName(name);
+        property.addReview(review);
     }
 }

@@ -13,14 +13,13 @@ public class Property {
     private BigDecimal pricePerNight;
     private double rating;
     private List<Category> categories;
-    private List<String> reviews;
+    private List<Review> reviews;
 
 
     public Property(String name, String description, String town, String country, BigDecimal pricePerNight) {
         this.name = name;
-
         this.description = description;
-        this.location.put(town, country);
+        this.location.put(country, town);
         this.pricePerNight = pricePerNight;
         categories = new ArrayList<>();
         reviews = new ArrayList<>();
@@ -64,5 +63,13 @@ public class Property {
 
     public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public void addReview(Review review) {
+        reviews.add(review);
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
     }
 }
