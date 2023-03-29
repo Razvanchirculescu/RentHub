@@ -4,11 +4,13 @@ import com.codecool.elproyectegrande.model.Property;
 import com.codecool.elproyectegrande.model.Review;
 import com.codecool.elproyectegrande.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@org.springframework.stereotype.Controller
+//@org.springframework.stereotype.Controller
+@Controller
 public class PropertyController {
 
     private PropertyService propertyService;
