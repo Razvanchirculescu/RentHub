@@ -2,10 +2,12 @@ package com.codecool.elproyectegrande.service;
 
 import com.codecool.elproyectegrande.model.Category;
 import com.codecool.elproyectegrande.model.Property;
+import com.codecool.elproyectegrande.model.Reservation;
 import com.codecool.elproyectegrande.model.Review;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +44,7 @@ public class PropertyService {
         return properties.stream()
                 .filter(property -> name.equals(property.getName()))
                 .findAny()
+//                .findFirst()
                 .orElse(null);
     }
 
@@ -49,4 +52,19 @@ public class PropertyService {
         Property property = getPropertyByName(name);
         property.addReview(review);
     }
+
+    public void addReservation(String name, Reservation reservation){
+        Property property = getPropertyByName(name);
+        for (Reservation reservation1 :property.getReservationList()) {
+            if (reservation1.equals(reservation)) {
+                System.out.println("dublura!!");
+                throw new IllegalArgumentException("Reservation already exists: "
+                        + reservation);
+            }
+        }
+        property.addReservation(reservation);
+    }
+
+
+
 }

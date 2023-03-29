@@ -1,6 +1,7 @@
 package com.codecool.elproyectegrande.controller;
 
 import com.codecool.elproyectegrande.model.Property;
+import com.codecool.elproyectegrande.model.Reservation;
 import com.codecool.elproyectegrande.model.Review;
 import com.codecool.elproyectegrande.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,4 +44,14 @@ public class PropertyController {
     public void addPropertyReview(@PathVariable String name, @RequestBody Review review) {
         propertyService.addReviewForProperty(name, review);
     }
+
+    @ResponseBody
+    @PostMapping("/property/{name}/reservation/add")
+    public void addReservation(@PathVariable String name, @RequestBody Reservation reservation) {
+        propertyService.addReservation(name, reservation);
+    }
+
+
+
+
 }
