@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-//@Component
 public class PropertyService {
     private List<Property> properties;
 
@@ -46,7 +45,6 @@ public class PropertyService {
         return properties.stream()
                 .filter(property -> name.equals(property.getName()))
                 .findAny()
-//                .findFirst()
                 .orElse(null);
     }
 
@@ -75,7 +73,6 @@ public class PropertyService {
 
     public void addCategory(int propertyId, Category category) {
         Property property = getPropertyById(propertyId);
-//        Property property = getPropertyByName(name);
         for (Category category1 : property.getCategories()) {
             if (category1.equals(category)) {
                 throw new IllegalArgumentException("Category already exists: "
@@ -86,7 +83,6 @@ public class PropertyService {
     }
 
     public boolean checkInValidationForRentalUnit(int propertyId, Reservation reservation){
-//        Property property = getPropertyById(propertyId);
         RentalUnit rentalUnit = getRentalUnitById(propertyId, reservation.getRentalUnitID());
 
         boolean available = true;
@@ -134,8 +130,8 @@ public class PropertyService {
                 .orElse(null);
     }
 
-    public void addRentalUnit(int propertyId, RentalUnit rentalUnit){
-        Property property = getPropertyById(propertyId);
+    public void addRentalUnit(RentalUnit rentalUnit){
+        Property property = getPropertyById(rentalUnit.getPropertyId());
         if (!property.getRentalUnitList().contains(rentalUnit)) {
             property.getRentalUnitList().add(rentalUnit);
         }
