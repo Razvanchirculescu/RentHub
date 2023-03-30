@@ -88,25 +88,31 @@ public class PropertyService {
     public boolean checkInValidationForRentalUnit(int propertyId, Reservation reservation){
 //        Property property = getPropertyById(propertyId);
         RentalUnit rentalUnit = getRentalUnitById(propertyId, reservation.getRentalUnitID());
-        List<Reservation> reservationsForRentalUnitID = rentalUnit.getReservations();
+
         boolean available = true;
-        for (Reservation reservation1: reservationsForRentalUnitID){
-            if ((reservation.getCheckIn().isAfter(reservation1.getCheckIn())
-                    && reservation.getCheckIn().isBefore(reservation1.getCheckOut()))
-                    || (reservation.getCheckOut().isAfter(reservation1.getCheckIn())
-                    && reservation.getCheckOut().isBefore(reservation1.getCheckOut()))) {
-                available = false;
-                break;
+
+        if (rentalUnit!=null) {
+            List<Reservation> reservationsForRentalUnitID = rentalUnit.getReservations();
+            for (Reservation reservation1: reservationsForRentalUnitID){
+                if ((reservation.getCheckIn().isAfter(reservation1.getCheckIn())
+                        && reservation.getCheckIn().isBefore(reservation1.getCheckOut()))
+                        || (reservation.getCheckOut().isAfter(reservation1.getCheckIn())
+                        && reservation.getCheckOut().isBefore(reservation1.getCheckOut()))) {
+                    available = false;
+                    break;
+                    }
+                if ((reservation1.getCheckIn().isAfter(reservation.getCheckIn())
+                        && reservation1.getCheckIn().isBefore(reservation.getCheckOut()))
+                        ||(reservation1.getCheckOut().isAfter(reservation.getCheckIn())
+                        && reservation1.getCheckOut().isBefore(reservation.getCheckOut()))) {
+                    available=false;
+                    break;
                 }
-            if ((reservation1.getCheckIn().isAfter(reservation.getCheckIn())
-                    && reservation1.getCheckIn().isBefore(reservation.getCheckOut()))
-                    ||(reservation1.getCheckOut().isAfter(reservation.getCheckIn())
-                    && reservation1.getCheckOut().isBefore(reservation.getCheckOut()))) {
-                available=false;
-                break;
             }
-        }
-        if (!available) {
+            if (!available) {
+                throw new IllegalArgumentException("Check reservation dates! ");
+            }
+        } else {
             throw new IllegalArgumentException("Check reservation dates! ");
         }
         return available;

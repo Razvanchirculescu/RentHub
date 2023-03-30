@@ -77,7 +77,8 @@ public class Reservation {
         return this.id==other.id
                 && this.clientId==other.clientId
                 && this.checkIn.equals(other.checkIn)
-                && this.checkOut.equals(other.checkOut);
+                && this.checkOut.equals(other.checkOut)
+                && this.rentalUnitID==other.rentalUnitID;
     }
 
 }
