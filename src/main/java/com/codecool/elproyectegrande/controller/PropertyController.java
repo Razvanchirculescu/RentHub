@@ -52,8 +52,8 @@ public class PropertyController {
     }
 
     @PostMapping("/properties/{name}/reservation")
-    public void addReservation(@PathVariable String name, @RequestBody Reservation reservation) {
-        propertyService.addReservation(name, reservation);
+    public void addReservation(@PathVariable int propertyId, @RequestBody Reservation reservation) {
+        propertyService.addReservation(propertyId, reservation);
     }
 
     @PatchMapping("/properties/{name}/category")

@@ -58,15 +58,17 @@ public class PropertyService {
         property.addReview(review);
     }
 
-    public void addReservation(String name, Reservation reservation) {
-        Property property = getPropertyByName(name);
+    public void addReservation(int propertyId, Reservation reservation) {
+        Property property = getPropertyById(propertyId);
         for (Reservation reservation1 : property.getReservationList()) {
             if (reservation1.equals(reservation)) {
                 throw new IllegalArgumentException("Reservation already exists: "
                         + reservation);
             }
         }
-        property.addReservation(reservation);
+        if(checkInValidationForRentalUnit(propertyId,reservation)){
+            property.addReservation(reservation);
+        }
     }
 
     public void addCategory(String name, Category category) {
@@ -80,9 +82,9 @@ public class PropertyService {
         property.addCategory(category);
     }
 
-    public boolean checkInValidationForRentalUnit(int propertyId, int rentalUnitId, Reservation reservation){
+    public boolean checkInValidationForRentalUnit(int propertyId, Reservation reservation){
         Property property = getPropertyById(propertyId);
-        RentalUnit rentalUnit = getRentalUnitById(property, rentalUnitId);
+        RentalUnit rentalUnit = getRentalUnitById(property, reservation.getRentalUnitID());
         List<Reservation> reservationsForRentalUnitID = rentalUnit.getReservations();
         boolean available = true;
         for (Reservation reservation1: reservationsForRentalUnitID){
@@ -100,6 +102,9 @@ public class PropertyService {
                 available=false;
                 break;
             }
+        }
+        if (!available) {
+            throw new IllegalArgumentException("Check reservation dates! ");
         }
         return available;
     }
