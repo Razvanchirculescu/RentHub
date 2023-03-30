@@ -2,6 +2,7 @@ package com.codecool.elproyectegrande.service;
 
 import com.codecool.elproyectegrande.model.Category;
 import com.codecool.elproyectegrande.model.Property;
+import com.codecool.elproyectegrande.model.RentalUnit;
 import com.codecool.elproyectegrande.model.Reservation;
 import com.codecool.elproyectegrande.model.Review;
 import com.codecool.elproyectegrande.utils.AddData;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Component
+//@Component
 public class PropertyService {
     private List<Property> properties;
 
@@ -78,5 +79,46 @@ public class PropertyService {
         }
         property.addCategory(category);
     }
+
+    public boolean checkInValidationForRentalUnit(int propertyId, int rentalUnitId, Reservation reservation){
+        Property property = getPropertyById(propertyId);
+        RentalUnit rentalUnit = getRentalUnitById(property, rentalUnitId);
+        List<Reservation> reservationsForRentalUnitID = rentalUnit.getReservations();
+        boolean available = true;
+        for (Reservation reservation1: reservationsForRentalUnitID){
+            if ((reservation.getCheckIn().isAfter(reservation1.getCheckIn())
+                    && reservation.getCheckIn().isBefore(reservation1.getCheckOut()))
+                    || (reservation.getCheckOut().isAfter(reservation1.getCheckIn())
+                    && reservation.getCheckOut().isBefore(reservation1.getCheckOut()))) {
+                available = false;
+                break;
+                }
+            if ((reservation1.getCheckIn().isAfter(reservation.getCheckIn())
+                    && reservation1.getCheckIn().isBefore(reservation.getCheckOut()))
+                    ||(reservation1.getCheckOut().isAfter(reservation.getCheckIn())
+                    && reservation1.getCheckOut().isBefore(reservation.getCheckOut()))) {
+                available=false;
+                break;
+            }
+        }
+        return available;
+    }
+
+    public Property getPropertyById(int propertyId) {
+        return properties.stream()
+                .filter(property -> propertyId==property.getId())
+                .findAny()
+                .orElse(null);
+    }
+
+
+    public RentalUnit getRentalUnitById(Property property, int rentalUnitId){
+        return property.getRentalUnitList().stream()
+                .filter(rentalUnit -> rentalUnitId==rentalUnit.getId())
+                .findAny()
+                .orElse(null);
+    }
+
+
 
 }

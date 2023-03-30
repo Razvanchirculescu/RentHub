@@ -41,7 +41,7 @@ public class PropertyController {
         propertyService.addProperty(property);
     }
 
-    @PostMapping("/properties/{name}/reviews")
+    @PostMapping("/properties/{name}/review")
     public void addPropertyReview(@PathVariable String name, @RequestBody Review review) {
         propertyService.addReviewForProperty(name, review);
     }
@@ -51,12 +51,12 @@ public class PropertyController {
         return propertyService.getPropertiesByCategory(category);
     }
 
-    @PostMapping("/property/{name}/reservation")
+    @PostMapping("/properties/{name}/reservation")
     public void addReservation(@PathVariable String name, @RequestBody Reservation reservation) {
         propertyService.addReservation(name, reservation);
     }
 
-    @PostMapping("/property/{name}/category")
+    @PatchMapping("/properties/{name}/category")
     public void addCategory(@PathVariable String name, @RequestBody Category category){
         propertyService.addCategory(name, category);
     }

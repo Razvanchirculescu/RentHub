@@ -8,6 +8,8 @@ import java.util.List;
 
 @Resource
 public class Property {
+
+    private int id;
     private final String name;
     private String description;
     private Location location;
@@ -16,9 +18,11 @@ public class Property {
     private List<Category> categories;
     private List<Review> reviews;
     private List<Reservation> reservationList;
+    private List<RentalUnit> rentalUnitList;
 
 
-    public Property(String name, String description, Location location, BigDecimal pricePerNight) {
+    public Property(int id, String name, String description, Location location, BigDecimal pricePerNight) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.location = location;
@@ -26,6 +30,7 @@ public class Property {
         categories = new ArrayList<>();
         reviews = new ArrayList<>();
         reservationList = new ArrayList<>();
+        rentalUnitList = new ArrayList<>();
     }
 
     public void addCategory(Category category) {
@@ -64,6 +69,14 @@ public class Property {
         return rating;
     }
 
+    public List<RentalUnit> getRentalUnitList() {
+        return rentalUnitList;
+    }
+
+    public int getId() {
+        return id;
+    }
+
     public void setRating() {
         double sum = 0;
         for (Review review : reviews) {
@@ -88,4 +101,9 @@ public class Property {
     public List<Reservation> getReservationList() {
         return reservationList;
     }
+
+    public void addRentalUnit(RentalUnit rentalUnit){
+        this.rentalUnitList.add(rentalUnit);
+    }
+
 }
