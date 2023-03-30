@@ -60,7 +60,7 @@ public class PropertyService {
 
     public void addReservation(int propertyId, Reservation reservation) {
         Property property = getPropertyById(propertyId);
-        RentalUnit rentalUnit = getRentalUnitById(property, reservation.getRentalUnitID());
+        RentalUnit rentalUnit = getRentalUnitById(propertyId, reservation.getRentalUnitID());
         for (Reservation reservation1 : property.getReservationList()) {
             if (reservation1.equals(reservation)) {
                 throw new IllegalArgumentException("Reservation already exists: "
@@ -73,8 +73,9 @@ public class PropertyService {
         }
     }
 
-    public void addCategory(String name, Category category) {
-        Property property = getPropertyByName(name);
+    public void addCategory(int propertyId, Category category) {
+        Property property = getPropertyById(propertyId);
+//        Property property = getPropertyByName(name);
         for (Category category1 : property.getCategories()) {
             if (category1.equals(category)) {
                 throw new IllegalArgumentException("Category already exists: "
@@ -85,7 +86,7 @@ public class PropertyService {
     }
 
     public boolean checkInValidationForRentalUnit(int propertyId, Reservation reservation){
-        Property property = getPropertyById(propertyId);
+//        Property property = getPropertyById(propertyId);
         RentalUnit rentalUnit = getRentalUnitById(propertyId, reservation.getRentalUnitID());
         List<Reservation> reservationsForRentalUnitID = rentalUnit.getReservations();
         boolean available = true;
