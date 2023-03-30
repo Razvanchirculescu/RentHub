@@ -1,13 +1,16 @@
 package com.codecool.elproyectegrande.model;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class RentalUnit {
     private int id;
     private int propertyId;
-    private List<Reservation> reservations;
     private RentalUnitType rentalUnitType;
+    private List<Reservation> reservations;
 
 
     public RentalUnit(int id, int propertyId, RentalUnitType rentalUnitType) {

@@ -60,6 +60,7 @@ public class PropertyService {
 
     public void addReservation(int propertyId, Reservation reservation) {
         Property property = getPropertyById(propertyId);
+        RentalUnit rentalUnit = getRentalUnitById(property, reservation.getRentalUnitID());
         for (Reservation reservation1 : property.getReservationList()) {
             if (reservation1.equals(reservation)) {
                 throw new IllegalArgumentException("Reservation already exists: "
@@ -68,6 +69,7 @@ public class PropertyService {
         }
         if(checkInValidationForRentalUnit(propertyId,reservation)){
             property.addReservation(reservation);
+            rentalUnit.getReservations().add(reservation);
         }
     }
 
@@ -84,7 +86,7 @@ public class PropertyService {
 
     public boolean checkInValidationForRentalUnit(int propertyId, Reservation reservation){
         Property property = getPropertyById(propertyId);
-        RentalUnit rentalUnit = getRentalUnitById(property, reservation.getRentalUnitID());
+        RentalUnit rentalUnit = getRentalUnitById(propertyId, reservation.getRentalUnitID());
         List<Reservation> reservationsForRentalUnitID = rentalUnit.getReservations();
         boolean available = true;
         for (Reservation reservation1: reservationsForRentalUnitID){
@@ -117,11 +119,19 @@ public class PropertyService {
     }
 
 
-    public RentalUnit getRentalUnitById(Property property, int rentalUnitId){
+    public RentalUnit getRentalUnitById(int propertyId, int rentalUnitId){
+        Property property = getPropertyById(propertyId);
         return property.getRentalUnitList().stream()
                 .filter(rentalUnit -> rentalUnitId==rentalUnit.getId())
                 .findAny()
                 .orElse(null);
+    }
+
+    public void addRentalUnit(int propertyId, RentalUnit rentalUnit){
+        Property property = getPropertyById(propertyId);
+        if (!property.getRentalUnitList().contains(rentalUnit)) {
+            property.getRentalUnitList().add(rentalUnit);
+        }
     }
 
 

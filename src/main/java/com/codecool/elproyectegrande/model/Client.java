@@ -1,5 +1,9 @@
 package com.codecool.elproyectegrande.model;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
+
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Client {
     private int id;
     private String name;
