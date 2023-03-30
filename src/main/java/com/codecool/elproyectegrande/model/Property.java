@@ -1,14 +1,10 @@
 package com.codecool.elproyectegrande.model;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import jakarta.annotation.Resource;
-import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Resource
 public class Property {
@@ -44,6 +40,10 @@ public class Property {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Location getLocation() {
         return location;
     }
@@ -52,16 +52,12 @@ public class Property {
         return pricePerNight;
     }
 
-    public List<Category> getCategories() {
-        return categories;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public void setPricePerNight(BigDecimal pricePerNight) {
         this.pricePerNight = pricePerNight;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
     }
 
     public double getRating() {
@@ -70,10 +66,10 @@ public class Property {
 
     public void setRating() {
         double sum = 0;
-        for(Review review: reviews) {
+        for (Review review : reviews) {
             sum += review.getSatisfaction();
         }
-        this.rating =  Math.round((sum/reviews.size()) * 100.0) / 100.0;
+        this.rating = Math.round((sum / reviews.size()) * 100.0) / 100.0;
     }
 
     public void addReview(Review review) {
@@ -85,11 +81,11 @@ public class Property {
         return reviews;
     }
 
-    public void addReservation(Reservation reservation){
+    public void addReservation(Reservation reservation) {
         this.reservationList.add(reservation);
     }
 
-    public List<Reservation> getReservationList(){
-        return  reservationList;
+    public List<Reservation> getReservationList() {
+        return reservationList;
     }
 }

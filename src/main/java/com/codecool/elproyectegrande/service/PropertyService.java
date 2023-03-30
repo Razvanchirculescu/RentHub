@@ -16,7 +16,7 @@ import java.util.List;
 public class PropertyService {
     private List<Property> properties;
 
-    public PropertyService(){
+    public PropertyService() {
         this.properties = new ArrayList<>();
         AddData.addData(properties);
     }
@@ -31,8 +31,8 @@ public class PropertyService {
 
     public List<Property> getPropertiesByCategory(Category category) {
         List<Property> propertiesList = new ArrayList<>();
-        for (Property property: properties) {
-            for (Category category1: property.getCategories()) {
+        for (Property property : properties) {
+            for (Category category1 : property.getCategories()) {
                 if (category.equals(category1)) {
                     propertiesList.add(property);
                 }
@@ -49,14 +49,17 @@ public class PropertyService {
                 .orElse(null);
     }
 
-    public void addReviewForProperty(String name, Review review) {
+    public void addReviewForProperty(String name, Review review) throws IllegalArgumentException {
         Property property = getPropertyByName(name);
+        if (review.getSatisfaction() < 1 || review.getSatisfaction() > 5) {
+            throw new IllegalArgumentException("Rating must be between 1 and 5");
+        }
         property.addReview(review);
     }
 
-    public void addReservation(String name, Reservation reservation){
+    public void addReservation(String name, Reservation reservation) {
         Property property = getPropertyByName(name);
-        for (Reservation reservation1 :property.getReservationList()) {
+        for (Reservation reservation1 : property.getReservationList()) {
             if (reservation1.equals(reservation)) {
                 throw new IllegalArgumentException("Reservation already exists: "
                         + reservation);
@@ -65,9 +68,9 @@ public class PropertyService {
         property.addReservation(reservation);
     }
 
-    public void addCategory(String name, Category category){
+    public void addCategory(String name, Category category) {
         Property property = getPropertyByName(name);
-        for (Category category1: property.getCategories()) {
+        for (Category category1 : property.getCategories()) {
             if (category1.equals(category)) {
                 throw new IllegalArgumentException("Category already exists: "
                         + category);
