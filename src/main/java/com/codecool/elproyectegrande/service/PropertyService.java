@@ -9,6 +9,7 @@ import com.codecool.elproyectegrande.utils.AddData;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,6 +88,15 @@ public class PropertyService {
 
         boolean available = true;
 
+        LocalDate today = LocalDate.now();
+        //start from tomorrow and out must be after in!
+        if (reservation.getCheckIn().isBefore(today)
+                || reservation.getCheckIn().isEqual(today)
+                || reservation.getCheckOut().isBefore(reservation.getCheckIn())
+                || reservation.getCheckOut().isEqual(reservation.getCheckIn())) {
+            throw new IllegalArgumentException("Check reservation dates! (1)  ");
+        }
+
         if (rentalUnit!=null) {
             List<Reservation> reservationsForRentalUnitID = rentalUnit.getReservations();
             for (Reservation reservation1: reservationsForRentalUnitID){
@@ -106,10 +116,12 @@ public class PropertyService {
                 }
             }
             if (!available) {
-                throw new IllegalArgumentException("Check reservation dates! ");
+                //data provided are in conflict with previous reservations
+                throw new IllegalArgumentException("Check reservation dates! (2)");
             }
         } else {
-            throw new IllegalArgumentException("Check reservation dates! ");
+            //the indicated rental unit does not exist
+            throw new IllegalArgumentException("Check reservation dates! (3)");
         }
         return available;
     }
