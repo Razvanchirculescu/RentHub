@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,17 +21,17 @@ public class ClientController {
         this.clientService = clientService;
     }
 
-    @PostMapping("/clients")
-    public void addClient(Client client){
-        clientService.addClient(client);
-    }
-
     @GetMapping("/clients")
     public List<Client> getAllClients(){
         return clientService.getAllClients();
     }
 
-    @PatchMapping("/clients/{id}")
+    @PatchMapping("/clients")
+    public void addClient(@RequestBody Client client){
+        clientService.addClient(client);
+    }
+
+    @GetMapping("/clients/{id}")
     public Client getClientById(@PathVariable int id){
         return clientService.getClientById(id);
     }
@@ -40,7 +41,7 @@ public class ClientController {
         return clientService.getClientByName(name, surname);
     }
 
-    @PatchMapping("clients/{pnoneNo}")
+    @PatchMapping("/clients/{phoneNo}")
     public Client getClientByPhone(@PathVariable String phoneNo){
         return clientService.getClientByPhone(phoneNo);
     }
