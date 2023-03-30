@@ -1,33 +1,39 @@
 package com.codecool.elproyectegrande.model;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import jakarta.annotation.Resource;
+import org.springframework.stereotype.Service;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Resource
 public class Property {
     private final String name;
     private String description;
-    private final Map<String, String> location = new HashMap<>();
+    private Location location;
     private BigDecimal pricePerNight;
     private double rating;
     private List<Category> categories;
-    private List<String> reviews;
+    private List<Review> reviews;
+    private List<Reservation> reservationList;
 
 
-    public Property(String name, String description, String town, String country, BigDecimal pricePerNight) {
+    public Property(String name, String description, Location location, BigDecimal pricePerNight) {
         this.name = name;
-
         this.description = description;
-        this.location.put(town, country);
+        this.location = location;
         this.pricePerNight = pricePerNight;
         categories = new ArrayList<>();
         reviews = new ArrayList<>();
+        reservationList = new ArrayList<>();
     }
 
-    public void addCategory(Category job) {
-        categories.add(job);
+    public void addCategory(Category category) {
+        categories.add(category);
     }
 
     public String getName() {
@@ -38,7 +44,7 @@ public class Property {
         return description;
     }
 
-    public Map<String, String> getLocation() {
+    public Location getLocation() {
         return location;
     }
 
@@ -62,7 +68,28 @@ public class Property {
         return rating;
     }
 
-    public void setRating(double rating) {
-        this.rating = rating;
+    public void setRating() {
+        double sum = 0;
+        for(Review review: reviews) {
+            sum += review.getSatisfaction();
+        }
+        this.rating =  Math.round((sum/reviews.size()) * 100.0) / 100.0;
+    }
+
+    public void addReview(Review review) {
+        reviews.add(review);
+        this.setRating();
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void addReservation(Reservation reservation){
+        this.reservationList.add(reservation);
+    }
+
+    public List<Reservation> getReservationList(){
+        return  reservationList;
     }
 }
