@@ -1,6 +1,6 @@
 package com.codecool.elproyectegrande.service;
 
-import com.codecool.elproyectegrande.model.CategoryEx;
+import com.codecool.elproyectegrande.model.Category;
 import com.codecool.elproyectegrande.model.Property;
 import com.codecool.elproyectegrande.model.Reservation;
 import com.codecool.elproyectegrande.model.Review;
@@ -8,7 +8,6 @@ import com.codecool.elproyectegrande.utils.AddData;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,10 +29,10 @@ public class PropertyService {
         return properties;
     }
 
-    public List<Property> getPropertiesByCategory(CategoryEx category) {
+    public List<Property> getPropertiesByCategory(Category category) {
         List<Property> propertiesList = new ArrayList<>();
         for (Property property: properties) {
-            for (CategoryEx category1: property.getCategories()) {
+            for (Category category1: property.getCategories()) {
                 if (category.equals(category1)) {
                     propertiesList.add(property);
                 }
@@ -76,9 +75,5 @@ public class PropertyService {
         }
         property.addCategory(category);
     }
-
-
-
-
 
 }

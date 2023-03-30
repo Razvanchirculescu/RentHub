@@ -14,26 +14,26 @@ import java.util.Map;
 public class Property {
     private final String name;
     private String description;
-    private final Map<String, String> location = new HashMap<>();
+    private Location location;
     private BigDecimal pricePerNight;
     private double rating;
-    private List<CategoryEx> categories;
+    private List<Category> categories;
     private List<Review> reviews;
     private List<Reservation> reservationList;
 
 
-    public Property(String name, String description, String town, String country, BigDecimal pricePerNight) {
+    public Property(String name, String description, Location location, BigDecimal pricePerNight) {
         this.name = name;
         this.description = description;
-        this.location.put(country, town);
+        this.location = location;
         this.pricePerNight = pricePerNight;
         categories = new ArrayList<>();
         reviews = new ArrayList<>();
         reservationList = new ArrayList<>();
     }
 
-    public void addCategory(CategoryEx categoryEx) {
-        categories.add(categoryEx);
+    public void addCategory(Category category) {
+        categories.add(category);
     }
 
     public String getName() {
@@ -44,7 +44,7 @@ public class Property {
         return description;
     }
 
-    public Map<String, String> getLocation() {
+    public Location getLocation() {
         return location;
     }
 
@@ -52,7 +52,7 @@ public class Property {
         return pricePerNight;
     }
 
-    public List<CategoryEx> getCategories() {
+    public List<Category> getCategories() {
         return categories;
     }
 
