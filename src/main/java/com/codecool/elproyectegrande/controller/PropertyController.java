@@ -31,9 +31,9 @@ public class PropertyController {
         return propertyService.getAllProperties();
     }
 
-    @PatchMapping("/properties/{name}")
-    public Property getPropertyDetails(@PathVariable String name) {
-        return propertyService.getPropertyByName(name);
+    @PatchMapping("/properties/{id}")
+    public Property getPropertyDetails(@PathVariable int id) {
+        return propertyService.getPropertyById(id);
     }
 
     @PostMapping("/properties")
@@ -41,9 +41,9 @@ public class PropertyController {
         propertyService.addProperty(property);
     }
 
-    @PostMapping("/properties/{name}/reviews")
-    public void addPropertyReview(@PathVariable String name, @RequestBody Review review) {
-        propertyService.addReviewForProperty(name, review);
+    @PostMapping("/properties/{id}/reviews")
+    public void addPropertyReview(@PathVariable int id, @RequestBody Review review) {
+        propertyService.addReviewForProperty(id, review);
     }
 
     @PatchMapping ("/properties")
@@ -51,13 +51,13 @@ public class PropertyController {
         return propertyService.getPropertiesByCategory(category);
     }
 
-    @PostMapping("/property/{name}/reservation")
-    public void addReservation(@PathVariable String name, @RequestBody Reservation reservation) {
-        propertyService.addReservation(name, reservation);
+    @PostMapping("/property/{id}/reservation")
+    public void addReservation(@PathVariable int id, @RequestBody Reservation reservation) {
+        propertyService.addReservation(id, reservation);
     }
 
-    @PostMapping("/property/{name}/category")
-    public void addCategory(@PathVariable String name, @RequestBody Category category){
-        propertyService.addCategory(name, category);
+    @PostMapping("/property/{id}/category")
+    public void addCategory(@PathVariable int id, @RequestBody Category category){
+        propertyService.addCategory(id, category);
     }
 }

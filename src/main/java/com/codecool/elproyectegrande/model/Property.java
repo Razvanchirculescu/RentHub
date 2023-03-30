@@ -1,17 +1,14 @@
 package com.codecool.elproyectegrande.model;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import jakarta.annotation.Resource;
-import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Resource
 public class Property {
+    private int id;
     private final String name;
     private String description;
     private Location location;
@@ -22,7 +19,8 @@ public class Property {
     private List<Reservation> reservationList;
 
 
-    public Property(String name, String description, Location location, BigDecimal pricePerNight) {
+    public Property(int id, String name, String description, Location location, BigDecimal pricePerNight) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.location = location;
@@ -30,6 +28,10 @@ public class Property {
         categories = new ArrayList<>();
         reviews = new ArrayList<>();
         reservationList = new ArrayList<>();
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void addCategory(Category category) {

@@ -41,21 +41,21 @@ public class PropertyService {
         return propertiesList;
     }
 
-    public Property getPropertyByName(String name) {
+    public Property getPropertyById(int id) {
         return properties.stream()
-                .filter(property -> name.equals(property.getName()))
+                .filter(property -> id == property.getId())
                 .findAny()
 //                .findFirst()
                 .orElse(null);
     }
 
-    public void addReviewForProperty(String name, Review review) {
-        Property property = getPropertyByName(name);
+    public void addReviewForProperty(int id, Review review) {
+        Property property = getPropertyById(id);
         property.addReview(review);
     }
 
-    public void addReservation(String name, Reservation reservation){
-        Property property = getPropertyByName(name);
+    public void addReservation(int id, Reservation reservation){
+        Property property = getPropertyById(id);
         for (Reservation reservation1 :property.getReservationList()) {
             if (reservation1.equals(reservation)) {
                 throw new IllegalArgumentException("Reservation already exists: "
@@ -65,8 +65,8 @@ public class PropertyService {
         property.addReservation(reservation);
     }
 
-    public void addCategory(String name, Category category){
-        Property property = getPropertyByName(name);
+    public void addCategory(int id, Category category){
+        Property property = getPropertyById(id);
         for (Category category1: property.getCategories()) {
             if (category1.equals(category)) {
                 throw new IllegalArgumentException("Category already exists: "
