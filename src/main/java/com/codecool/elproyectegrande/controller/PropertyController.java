@@ -2,6 +2,7 @@ package com.codecool.elproyectegrande.controller;
 
 import com.codecool.elproyectegrande.model.Category;
 import com.codecool.elproyectegrande.model.Property;
+import com.codecool.elproyectegrande.model.RentalUnit;
 import com.codecool.elproyectegrande.model.Reservation;
 import com.codecool.elproyectegrande.model.Review;
 import com.codecool.elproyectegrande.service.PropertyService;
@@ -56,8 +57,12 @@ public class PropertyController {
         propertyService.addReservation(id, reservation);
     }
 
-    @PostMapping("/property/{id}/category")
-    public void addCategory(@PathVariable int id, @RequestBody Category category){
-        propertyService.addCategory(id, category);
+    @PatchMapping("/properties/{propertyId}/category")
+    public void addCategory(@PathVariable int propertyId, @RequestBody Category category){
+        propertyService.addCategory(propertyId, category);
+    }
+    @PatchMapping("/properties/rentalUnit")
+    public void addRentalUnit(@RequestBody RentalUnit rentalUnit){
+        propertyService.addRentalUnit(rentalUnit);
     }
 }

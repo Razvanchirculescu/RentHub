@@ -17,6 +17,7 @@ public class Property {
     private List<Category> categories;
     private List<Review> reviews;
     private List<Reservation> reservationList;
+    private List<RentalUnit> rentalUnitList;
 
 
     public Property(int id, String name, String description, Location location, BigDecimal pricePerNight) {
@@ -28,6 +29,7 @@ public class Property {
         categories = new ArrayList<>();
         reviews = new ArrayList<>();
         reservationList = new ArrayList<>();
+        rentalUnitList = new ArrayList<>();
     }
 
     public int getId() {
@@ -46,6 +48,10 @@ public class Property {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Location getLocation() {
         return location;
     }
@@ -54,28 +60,28 @@ public class Property {
         return pricePerNight;
     }
 
-    public List<Category> getCategories() {
-        return categories;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public void setPricePerNight(BigDecimal pricePerNight) {
         this.pricePerNight = pricePerNight;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
     }
 
     public double getRating() {
         return rating;
     }
 
+    public List<RentalUnit> getRentalUnitList() {
+        return rentalUnitList;
+    }
+
     public void setRating() {
         double sum = 0;
-        for(Review review: reviews) {
+        for (Review review : reviews) {
             sum += review.getSatisfaction();
         }
-        this.rating =  Math.round((sum/reviews.size()) * 100.0) / 100.0;
+        this.rating = Math.round((sum / reviews.size()) * 100.0) / 100.0;
     }
 
     public void addReview(Review review) {
@@ -87,11 +93,16 @@ public class Property {
         return reviews;
     }
 
-    public void addReservation(Reservation reservation){
+    public void addReservation(Reservation reservation) {
         this.reservationList.add(reservation);
     }
 
-    public List<Reservation> getReservationList(){
-        return  reservationList;
+    public List<Reservation> getReservationList() {
+        return reservationList;
     }
+
+    public void addRentalUnit(RentalUnit rentalUnit){
+        this.rentalUnitList.add(rentalUnit);
+    }
+
 }

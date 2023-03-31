@@ -17,7 +17,7 @@ public class AddData {
                 "Wi-fi gratuit, parcare privata, zona BBQ, Ciubar/Jacuzzi (extra cost), cinema in aer liber si igloo. Cele doua " +
                 "unități de cazare au bucatarie complet utilata, baie privata cu duș, terasa si curte prin care trece râul.",
                 new Location("Semilunei", 6, "Bucuresti", "Romania"), new BigDecimal("560"));
-        palo.addCategory(new Category("CABANA"));
+        palo.addCategory(new Category(1,"CABANA"));
         palo.addReview(new Review("Mini vacanta petrecuta la MoodySun Studio a fost extrem de relaxanta. Cabana este " +
                 "echipata complet ,am fost impreuna cu bebelusul de 9 luni si nu ne-a lipsit nimic.", 5));
         palo.addReview(new Review("Am petrecut două zile minunate în această casă. Seara a fost perfectă, locuința " +
@@ -30,7 +30,7 @@ public class AddData {
                 "Vă puteți bucura de vederi panoramice în timp ce savurați o ceașcă de ceai sau un pahar de vin pe canapea." +
                 "Chicineta are tot ce aveți nevoie, inclusiv un frigider, plită cu inducție de blat, chiuvetă, tacâmuri, vase " +
                 "și articole din sticlă.", new Location("Semilunei", 2, "Bucuresti", "Romania"), new BigDecimal("280"));
-        MoodySun.addCategory(new Category("STUDIO"));
+        MoodySun.addCategory(new Category(2,"STUDIO"));
         properties.add(MoodySun);
     }
 }
