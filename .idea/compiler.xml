@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="elproyectegrande" />
+        <module name="el-proyecte-grande-sprint-1-java-AngelicaPopescu" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="el-proyecte-grande-sprint-1-java-AngelicaPopescu" options="-parameters" />
       <module name="elproyectegrande" options="-parameters" />
     </option>
   </component>

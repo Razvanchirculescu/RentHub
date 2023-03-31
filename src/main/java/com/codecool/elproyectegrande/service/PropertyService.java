@@ -124,14 +124,7 @@ public class PropertyService {
             //the indicated rental unit does not exist
             throw new IllegalArgumentException("Check reservation dates! (3)");
         }
-        return available;
-    }
-
-    public Property getPropertyById(int propertyId) {
-        return properties.stream()
-                .filter(property -> propertyId==property.getId())
-                .findAny()
-                .orElse(null);
+        return true;
     }
 
 

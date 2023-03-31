@@ -19,7 +19,6 @@ public class Property {
     private List<Reservation> reservationList;
     private List<RentalUnit> rentalUnitList;
 
-
     public Property(int id, String name, String description, Location location, BigDecimal pricePerNight) {
         this.id = id;
         this.name = name;
@@ -104,5 +103,4 @@ public class Property {
     public void addRentalUnit(RentalUnit rentalUnit){
         this.rentalUnitList.add(rentalUnit);
     }
-
 }
