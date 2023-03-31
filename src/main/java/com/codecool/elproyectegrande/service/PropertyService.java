@@ -14,10 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Component
 public class PropertyService {
     private List<Property> properties;
 
-    public PropertyService() {
+    public PropertyService(){
         this.properties = new ArrayList<>();
         AddData.addData(properties);
     }
@@ -49,8 +50,8 @@ public class PropertyService {
                 .orElse(null);
     }
 
-    public void addReviewForProperty(String name, Review review){
-        Property property = getPropertyByName(name);
+    public void addReviewForProperty(int id, Review review) {
+        Property property = getPropertyById(id);
         if (review.getSatisfaction() < 1 || review.getSatisfaction() > 5) {
             throw new IllegalArgumentException("Rating must be between 1 and 5");
         }

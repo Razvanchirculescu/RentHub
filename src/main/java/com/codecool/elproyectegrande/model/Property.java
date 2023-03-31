@@ -11,7 +11,6 @@ import java.util.List;
 
 @Resource
 public class Property {
-
     private int id;
     private final String name;
     private String description;
@@ -23,7 +22,6 @@ public class Property {
     private List<Reservation> reservationList;
     private List<RentalUnit> rentalUnitList;//SINGLE, DOUBLE, APARTMENT, ...
 
-
     public Property(int id, String name, String description, Location location, BigDecimal pricePerNight) {
         this.id = id;
         this.name = name;
@@ -34,6 +32,10 @@ public class Property {
         reviews = new ArrayList<>();
         reservationList = new ArrayList<>();
         rentalUnitList = new ArrayList<>();
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void addCategory(Category category) {
@@ -76,10 +78,6 @@ public class Property {
         return rentalUnitList;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public void setRating() {
         double sum = 0;
         for (Review review : reviews) {
@@ -108,5 +106,4 @@ public class Property {
     public void addRentalUnit(RentalUnit rentalUnit){
         this.rentalUnitList.add(rentalUnit);
     }
-
 }

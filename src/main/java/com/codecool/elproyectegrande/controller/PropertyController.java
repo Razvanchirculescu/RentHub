@@ -34,9 +34,9 @@ public class PropertyController {
         return propertyService.getAllProperties();
     }
 
-    @PatchMapping("/{name}")
-    public Property getPropertyDetails(@PathVariable String name) {
-        return propertyService.getPropertyByName(name);
+    @PatchMapping("/{id}")
+    public Property getPropertyDetails(@PathVariable int id) {
+        return propertyService.getPropertyById(id);
     }
 
     @PostMapping
@@ -44,9 +44,9 @@ public class PropertyController {
         propertyService.addProperty(property);
     }
 
-    @PostMapping("/{name}/review")
-    public void addPropertyReview(@PathVariable String name, @RequestBody Review review) {
-        propertyService.addReviewForProperty(name, review);
+    @PostMapping("/{id}/reviews")
+    public void addPropertyReview(@PathVariable int id, @RequestBody Review review) {
+        propertyService.addReviewForProperty(id, review);
     }
 
     @PatchMapping
@@ -67,5 +67,4 @@ public class PropertyController {
     public void addRentalUnit(@RequestBody RentalUnit rentalUnit){
         propertyService.addRentalUnit(rentalUnit);
     }
-
 }
