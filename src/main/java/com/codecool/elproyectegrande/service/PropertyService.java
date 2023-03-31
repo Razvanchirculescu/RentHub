@@ -49,7 +49,7 @@ public class PropertyService {
                 .orElse(null);
     }
 
-    public void addReviewForProperty(String name, Review review) throws IllegalArgumentException {
+    public void addReviewForProperty(String name, Review review){
         Property property = getPropertyByName(name);
         if (review.getSatisfaction() < 1 || review.getSatisfaction() > 5) {
             throw new IllegalArgumentException("Rating must be between 1 and 5");

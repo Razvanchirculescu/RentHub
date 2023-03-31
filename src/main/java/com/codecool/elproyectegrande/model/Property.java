@@ -6,6 +6,9 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+//ToDO - @ElementCollection
+//Todo Pattern builder - pt obiecte , librarie lombok
+
 @Resource
 public class Property {
 
@@ -15,10 +18,10 @@ public class Property {
     private Location location;
     private BigDecimal pricePerNight;
     private double rating;
-    private List<Category> categories;
+    private List<Category> categories;//HOTEL, VILLA, CABANA, ...
     private List<Review> reviews;
     private List<Reservation> reservationList;
-    private List<RentalUnit> rentalUnitList;
+    private List<RentalUnit> rentalUnitList;//SINGLE, DOUBLE, APARTMENT, ...
 
 
     public Property(int id, String name, String description, Location location, BigDecimal pricePerNight) {

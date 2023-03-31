@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("properties")
 public class PropertyController {
 
     private PropertyService propertyService;
@@ -27,41 +29,41 @@ public class PropertyController {
         this.propertyService = propertyService;
     }
 
-    @GetMapping("/properties")
+    @GetMapping
     public List<Property> getAllProperties() {
         return propertyService.getAllProperties();
     }
 
-    @PatchMapping("/properties/{name}")
+    @PatchMapping("/{name}")
     public Property getPropertyDetails(@PathVariable String name) {
         return propertyService.getPropertyByName(name);
     }
 
-    @PostMapping("/properties")
+    @PostMapping
     public void addProperty(@RequestBody Property property) {
         propertyService.addProperty(property);
     }
 
-    @PostMapping("/properties/{name}/review")
+    @PostMapping("/{name}/review")
     public void addPropertyReview(@PathVariable String name, @RequestBody Review review) {
         propertyService.addReviewForProperty(name, review);
     }
 
-    @PatchMapping ("/properties")
+    @PatchMapping
     public List<Property> getPropertiesByCategory(@RequestParam Category category) {
         return propertyService.getPropertiesByCategory(category);
     }
 
-    @PatchMapping("/properties/{propertyId}/reservation")
+    @PatchMapping("/{propertyId}/reservation")
     public void addReservation(@PathVariable int propertyId, @RequestBody Reservation reservation) {
         propertyService.addReservation(propertyId, reservation);
     }
 
-    @PatchMapping("/properties/{propertyId}/category")
+    @PatchMapping("/{propertyId}/category")
     public void addCategory(@PathVariable int propertyId, @RequestBody Category category){
         propertyService.addCategory(propertyId, category);
     }
-    @PatchMapping("/properties/rentalUnit")
+    @PatchMapping("/rentalUnit")
     public void addRentalUnit(@RequestBody RentalUnit rentalUnit){
         propertyService.addRentalUnit(rentalUnit);
     }
