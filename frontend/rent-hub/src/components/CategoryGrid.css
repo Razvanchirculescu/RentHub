@@ -1,0 +1,30 @@
+/*body {*/
+/*    margin: 2vh;*/
+/*    font-family: 'Roboto Slab', serif;*/
+/*    font-size: 2vh;*/
+/*    line-height: 5.5vh;*/
+/*}*/
+img {
+    height: 40%;
+}
+#grid {
+    margin: auto -5% auto auto;
+    height: fit-content;
+    width: fit-content;
+    writing-mode: horizontal-tb;
+    display: grid;
+    grid-gap: 4vh;
+    grid-template-columns: repeat(15, 10vh);
+}
+
+#grid > div {
+
+}
+
+.span{
+    height: fit-content;
+    background-color: white;
+    grid-row-end: span 5;
+    margin-bottom: -10px;
+    margin-right: 5px;
+}

@@ -1,5 +1,4 @@
 import React from "react";
-import useState from "react";
 import logoText from "../images/logos/logoText.png"
 import logoImage from "../images/logos/logoImage.png"
 import TextField from "@mui/material/TextField";
@@ -11,8 +10,8 @@ export default function Navbar() {
             <div className="flex flex-no-shrink items-center mr-6 py-3 text-grey-darkest">
 
 
-                <img height={40} width={100} src={logoImage} />
-                <img height={50} width={150} src={logoText} />
+                <img height={40} width={100} src={logoImage} alt={"logo"} />
+                <img height={50} width={150} src={logoText} alt={"logo"} />
 
             </div>
 
