@@ -44,7 +44,7 @@ function GetPropertyList() {
     // console.log(propertyData.toString())
 
     return (
-        <div>
+        <div className={"card-body"}>
             {propertyData.map((property, index) => {
                 return (
                     <div className="card" key={property.id}>
