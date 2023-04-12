@@ -46,7 +46,7 @@ export default function Navbar() {
 
                     <a href="#"
                        className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker">
-                        <i className="material-icons"><ReactLanguages/></i>
+                        {/*<i className="material-icons"><ReactLanguages/></i>*/}
                     </a>
                 </li>
 

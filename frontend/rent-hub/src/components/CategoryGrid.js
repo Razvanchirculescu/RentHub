@@ -14,6 +14,7 @@ import tropical from "../images/categoryGrid/tropical.png"
 
 import './CategoryGrid.css';
 
+import React from 'react';
 
 function handleClick(event) {
     console.log(`Button with id "${event.target.id}" was clicked!`);
