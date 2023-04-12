@@ -1,22 +1,19 @@
-import logo from './logo.svg';
+import { BrowserRouter , Route, Routes } from "react-router-dom";
 import './App.css';
+import PropertyPage from "./pages/PropertyPage";
+import NoPageFound from "./components/NoPageFound";
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/properties/:id" element={ <PropertyPage /> } />
+              <Route path="*" element={<NoPageFound />} />
+            </Routes>
+          </BrowserRouter>
       </header>
     </div>
   );
