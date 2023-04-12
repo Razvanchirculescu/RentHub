@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 // import { useHistory } from "use-history";
 
-import logo_main from '../images/logo_main.png';
+import logoText from '../images/logos/logoText.png';
 import './GetClients.css';
 
 function GetClients() {
@@ -41,8 +41,8 @@ function GetClients() {
 
     return (
         <div>
-            <div className={logo_main}>
-                <img src={logo_main} alt="Main Logo"/>
+            <div className={logoText}>
+                <img src={logoText} alt="Main Logo"/>
             </div>
             <table className="center">
                 <thead>

@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import logo_main from '../images/logo_main.png';
+import logoText from '../images/logos/logoText.png';
 import { useParams } from 'react-router-dom';
 import Navbar from "../components/Navbar";
 import './GetClient.css';
@@ -57,8 +57,8 @@ function GetClient() {
 
     return (
         <div>
-            <div className={logo_main}>
-                <img src={logo_main} alt="Main Logo"/>
+            <div className={logoText}>
+                <img src={logoText} alt="Main Logo"/>
                 <button className="go_to_clients"
                         onClick={() => handleButtonClick()}>Back to clients</button>
             </div>
