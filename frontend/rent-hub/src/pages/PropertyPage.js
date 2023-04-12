@@ -12,7 +12,7 @@ function PropertyPage() {
     const [propertyData, setPropertyData] = useState(null);
 
     useEffect(() => {
-        const url = `http://localhost:8080/properties/1`;
+        const url = `http://localhost:8080/properties/${id}`;
         fetch(url)
             .then(response => {
                 if (response.ok) {
