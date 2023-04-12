@@ -1,23 +1,25 @@
 
 import React, { useEffect, useState } from 'react';
-// import './GetClient.css';
 import logo_main from '../images/logo_main.png';
 import { useParams } from 'react-router-dom';
+import Navbar from "../components/Navbar";
+import './GetClient.css';
 
 function GetClient() {
-    console.log("getClient!!!1")
 
     const { id } = useParams();
     console.log(id);
 
     const [clientData, setClientData] = useState(null);
 
+    async function handleButtonClick() {
+        window.location.href = `/api/clients`;
+    }
+
 
     useEffect(() => {
 
         const url = `http://localhost:8080/api/clients/${id}`;
-        // const url = `/api/clients/${id}`;
-        // const url = `/api/clients/2`;
         // const url = `http://localhost:8080/api/clients/1`;
 
         fetch(url)
@@ -36,17 +38,18 @@ function GetClient() {
             });
     }, [id]);
 
-    //     const fetchClientData = async () => {
-    //         console.log(id);
-    //         const response = await fetch(
-    //             `http://localhost:8080/api/clients/${id}`);
-    //             // `http://localhost:8080/api/clients/2`);
-    //         const data = await response.json();
-    //         console.log(data)
-    //         setClientData(data);
-    //     };
-    //     fetchClientData();
-    // }, [id]);
+        // const fetchClientData = async () => {
+        //     console.log(id);
+        //     const response = await fetch(
+        //         `http://localhost:8080/api/clients/${id}`);
+        //         // `http://localhost:8080/api/clients/2`);
+        //     const data = await response.json();
+        //     console.log(data)
+        //     setClientData(data);
+        // };
+        // fetchClientData();
+        // }, [id]);
+
 
     if (!clientData) {
         return <div>Loading...</div>;
@@ -56,6 +59,8 @@ function GetClient() {
         <div>
             <div className={logo_main}>
                 <img src={logo_main} alt="Main Logo"/>
+                <button className="go_to_clients"
+                        onClick={() => handleButtonClick()}>Back to clients</button>
             </div>
             <table className="center">
                 <thead>
@@ -68,7 +73,6 @@ function GetClient() {
                 </tr>
                 </thead>
                 <tbody>
-                {/*{clientData.map(client => (*/}
                     <tr key={clientData.id}>
                         <td>{clientData.id}</td>
                         <td>{clientData.name}</td>
@@ -76,7 +80,6 @@ function GetClient() {
                         <td>{clientData.emailAddress}</td>
                         <td>{clientData.phoneNumber}</td>
                     </tr>
-                {/*))}*/}
                 </tbody>
             </table>
         </div>
