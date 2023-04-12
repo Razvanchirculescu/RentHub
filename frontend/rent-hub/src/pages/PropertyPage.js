@@ -35,7 +35,7 @@ function PropertyPage() {
     }
     return (
         <section>
-            <p>Done! </p>
+            <p>{propertyData.description}</p>
         </section>
     );
 }

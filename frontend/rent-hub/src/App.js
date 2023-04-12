@@ -2,6 +2,7 @@ import { BrowserRouter , Route, Routes } from "react-router-dom";
 import './App.css';
 import PropertyPage from "./pages/PropertyPage";
 import NoPageFound from "./components/NoPageFound";
+import LandingPage from "./pages/LandingPage";
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <header className="App-header">
           <BrowserRouter>
             <Routes>
+              <Route path="/properties" element={ <LandingPage /> } />
               <Route path="/properties/:id" element={ <PropertyPage /> } />
               <Route path="*" element={<NoPageFound />} />
             </Routes>
