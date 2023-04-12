@@ -39,10 +39,6 @@ public class PropertyController {
         return propertyService.getAllProperties();
     }
 
-//    @PatchMapping("/{id}")
-//    public Property getPropertyDetails(@PathVariable int id) {
-//        return propertyService.getPropertyById(id);
-//    }
     @GetMapping("/{id}")
     public Property getPropertyDetails(@PathVariable int id) {
         return propertyService.getPropertyById(id);
