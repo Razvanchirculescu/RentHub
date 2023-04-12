@@ -15,6 +15,11 @@ function Home() {
 }
 
 // import { GetClient } from "./api/clients";
+import React from "react";
+import Navbar from "./components/Navbar";
+import CategoryGrid from "./components/CategoryGrid";
+import GetPropertyList from "./components/GetPropertyList";
+
 
 function App() {
   return (
