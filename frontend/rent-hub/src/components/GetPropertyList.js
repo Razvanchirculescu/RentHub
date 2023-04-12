@@ -4,14 +4,15 @@ import image3 from "../images/testImagesForcards/52cbd3a8-5384-4fa3-8373-e855ad7
 import image4 from "../images/testImagesForcards/dfc94d55-d670-42db-bdb8-ffda4fb2996b.png"
 import image5 from "../images/testImagesForcards/f6d4bd5b-3cab-418d-b705-d11b8fc6d57c.png"
 import image6 from "../images/testImagesForcards/9b2acbdd_original.png"
-import logo from "../images/logos/logoImage.png"
+import image7 from "../images/testImagesForcards/2d62f0fb_original.png"
+import image8 from "../images/testImagesForcards/4fb0f6c7-6c0f-403c-9441-a569d33362db.png"
 
 import React, {useEffect, useState} from 'react';
 import './GetPropertyList.css';
 
 function GetPropertyList() {
 
-    const images = [ image1, image2, image3, image4, image5, image6]
+    const images = [ image1, image2, image3, image4, image5, image6, image7, image8]
 
 
     const [propertyData, setPropertyData] = useState([]);

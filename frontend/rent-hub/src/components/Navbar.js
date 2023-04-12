@@ -9,9 +9,12 @@ export default function Navbar() {
         <nav className="nav flex flex-wrap items-center justify-between px-4">
             <div className="flex flex-no-shrink items-center mr-6 py-3 text-grey-darkest">
 
-
-                <img height={40} width={100} src={logoImage} alt={"logo"} />
-                <img height={50} width={150} src={logoText} alt={"logo"} />
+                <a href={"#"}>
+                    <img height={40} width={100} src={logoImage} alt={"logo"}/>
+                </a>
+                <a href={"#"}>
+                    <img height={50} width={150} src={logoText} alt={"logo"}/>
+                </a>
 
             </div>
 
@@ -27,30 +30,32 @@ export default function Navbar() {
             </div>
 
             <input className="menu-btn hidden" type="checkbox" id="menu-btn"/>
-                <label className="menu-icon block cursor-pointer md:hidden px-2 py-4 relative select-none"
-                       htmlFor="menu-btn">
-                    <span className="navicon bg-grey-darkest flex items-center relative"></span>
-                </label>
+            <label className="menu-icon block cursor-pointer md:hidden px-2 py-4 relative select-none"
+                   htmlFor="menu-btn">
+                <span className="navicon bg-grey-darkest flex items-center relative"></span>
+            </label>
 
-                <ul className="menu border-b md:border-none flex justify-end list-reset m-0 w-full md:w-auto">
-                    <li className="border-t md:border-none">
-                        <a href="#"
-                           className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker font-bold">Advertise your property</a>
-                    </li>
+            <ul className="menu border-b md:border-none flex justify-end list-reset m-0 w-full md:w-auto">
+                <li className="border-t md:border-none">
+                    <a href="#"
+                       className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker font-bold">Advertise
+                        your property</a>
+                </li>
 
-                    <li className="border-t md:border-none">
-                        <a href="#"
-                           className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker">
-                            <i className="material-icons">language</i></a>
-                    </li>
+                <li className="border-t md:border-none">
+                    <a href="#"
+                       className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker">
+                        <i className="material-icons">language</i></a>
+                </li>
 
-                    <li className="border-t md:border-none">
-                        <a href="#"
-                           className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker"><i className="material-icons">login</i></a>
+                <li className="border-t md:border-none">
+                    <a href="#"
+                       className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker"><i
+                        className="material-icons">login</i></a>
 
-                    </li>
+                </li>
 
-                </ul>
+            </ul>
         </nav>
 
     );
