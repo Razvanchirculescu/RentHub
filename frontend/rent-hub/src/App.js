@@ -1,29 +1,38 @@
 import React from "react";
 import './App.css';
 import GetClients from "./components/GetClients";
+import GetClient from "./components/GetClient";
 import Test from "./components/Test"
 import Test2 from "./components/Test2"
+import {
+    BrowserRouter as Router,
+    Route,
+    Routes,
+} from "react-router-dom";
+
+function Home() {
+    return null;
+}
+
+// import { GetClient } from "./api/clients";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <GetClients />
+          <Router>
+              <Routes>
+                  {/*<Route path="http://localhost:8080/api/clients/1" element={<GetClient />} />*/}
+                  <Route path="/api/clients/:id" element={<GetClient />} />
+                  {/*<Route path="/api/clients/2" element={<GetClient />} />*/}
+                  {/*<Route path="/api/clients/:id" component={GetClient} />*/}
+                  {/*<Route path="/api/clients/2" component={GetClient} />*/}
+                  {/*<Route path="http://localhost:8080/api/clients/:id" component={GetClient} />*/}
+              </Routes>
+          </Router>
+        {/*<GetClient />*/}
         {/*<Test />*/}
-      {/*<Test2 />*/}
-
-        {/*<img src={logo} className="App-logo" alt="logo" />*/}
-        {/*<p>*/}
-        {/*  Edit <code>src/App.js</code> and save to reload.*/}
-        {/*</p>*/}
-        {/*<a*/}
-        {/*  className="App-link"*/}
-        {/*  href="https://reactjs.org"*/}
-        {/*  target="_blank"*/}
-        {/*  rel="noopener noreferrer"*/}
-        {/*>*/}
-        {/*  Learn React*/}
-        {/*</a>*/}
+        {/*<Test2 />*/}
       </header>
     </div>
   );

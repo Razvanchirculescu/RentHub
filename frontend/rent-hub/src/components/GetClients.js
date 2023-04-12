@@ -14,14 +14,11 @@ function GetClients() {
             const response = await fetch(
                 'http://localhost:8080/api/clients');
             const data = await response.json();
-            console.log("data: ", data);
             setClientsData(data);
         };
         fetchClientsData().then(r => console.log(clientsData.toString()));
     }, []);
 
-
-    console.log(clientsData.toString())
 
     return (
         <div>
@@ -53,45 +50,9 @@ function GetClients() {
         </div>
     );
 }
-    export default GetClients
+    export default GetClients;
 
 
-
-    // {apodData.map((data) => (
-//                     <img
-//                         key={data.date}
-//                         src={data.url}
-//                         alt={data.title}
-//                         onClick={() => handleImageClick(data)}
-//                     />
-//                 ))}
-
-
-    // export default MyComponent;
-
-
-
-
-
-
-
-    //
-    // const clients = [
-    //     {
-    //         id: 1,
-    //         name: "Matei",
-    //         surname: "Adrian",
-    //         emailAddress: "abc@abc.ro",
-    //         phoneNumber: "0726.293.293"
-    //     },
-    //     {
-    //         id: 2,
-    //         name: "Radu",
-    //         surname: "Bogdan",
-    //         emailAddress: "bcd@bcd.ro",
-    //         phoneNumber: "0773.209.251"
-    //     }
-    // ]
 
     //
     // return (

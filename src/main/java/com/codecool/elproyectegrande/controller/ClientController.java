@@ -10,12 +10,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/clients")
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000"
+        , methods = {RequestMethod.PUT, RequestMethod.GET, RequestMethod.DELETE
+        , RequestMethod.POST, RequestMethod.PATCH})
+
 public class ClientController {
     private ClientService clientService;
 
@@ -25,7 +30,6 @@ public class ClientController {
     }
 
     @GetMapping
-//    @CrossOrigin(origins = "http://localhost:3000")
     public List<Client> getAllClients(){
         return clientService.getAllClients();
     }
