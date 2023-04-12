@@ -16,7 +16,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/clients")
-//@CrossOrigin(origins = "http://localhost:3000")
 @CrossOrigin(origins = "http://localhost:3000"
         , methods = {RequestMethod.PUT, RequestMethod.GET, RequestMethod.DELETE
         , RequestMethod.POST, RequestMethod.PATCH})

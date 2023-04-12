@@ -1,5 +1,8 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
+import Navbar from "../components/Navbar";
+import CategoryGrid from "../components/CategoryGrid";
+import GetPropertyList from "../components/GetPropertyList";
 
 function PropertyPage() {
     console.log("am ajuns in functie")
@@ -34,9 +37,15 @@ function PropertyPage() {
         );
     }
     return (
-        <section>
-            <p>{propertyData.description}</p>
-        </section>
+
+        <div className="Landing">
+            <Navbar/>
+            <CategoryGrid/>
+            <section>
+                <GetPropertyList/>
+            </section>
+        </div>
     );
 }
+
 export default PropertyPage;
