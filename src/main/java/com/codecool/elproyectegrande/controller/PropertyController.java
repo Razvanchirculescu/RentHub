@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import java.util.List;
 
 @RestController
-@RequestMapping("/properties")
-@CrossOrigin(origins = "http://localhost:3000/", methods = {RequestMethod.PUT, RequestMethod.GET, RequestMethod.DELETE, RequestMethod.POST})
+@RequestMapping("properties")
+@CrossOrigin(origins = "http://localhost:3000/", methods = {RequestMethod.PUT, RequestMethod.GET, RequestMethod.DELETE,
+        RequestMethod.POST, RequestMethod.PATCH})
 public class PropertyController {
 
     private PropertyService propertyService;
