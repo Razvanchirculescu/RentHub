@@ -22,8 +22,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("properties")
-@CrossOrigin(origins = "http://localhost:3000/", methods = {RequestMethod.PUT, RequestMethod.GET, RequestMethod.DELETE,
-        RequestMethod.POST, RequestMethod.PATCH})
+@CrossOrigin(origins = "http://localhost:3000"
+        , methods = {RequestMethod.PUT, RequestMethod.GET, RequestMethod.DELETE
+        , RequestMethod.POST, RequestMethod.PATCH})
 public class PropertyController {
 
     private PropertyService propertyService;
