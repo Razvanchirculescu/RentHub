@@ -31,14 +31,15 @@
 }
 
 .card-img-top{
-    height: auto;
-    width: auto;
+    width: 30vh;
+    height: 20vh;
+
     alignment: center;
 }
 
 .card-text-location{
     text-align: center;
-    font-size: small;
+    font-size: medium;
 }
 
 .cardBtnPrimary{
@@ -73,6 +74,6 @@
 .card-rating{
     text-align: left;
     padding-right: 15px;
-    font-size: 12px;
+    font-size: medium;
 }
 

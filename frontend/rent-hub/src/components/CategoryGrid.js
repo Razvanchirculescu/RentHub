@@ -14,8 +14,18 @@ import tropical from "../images/categoryGrid/tropical.png"
 
 import './CategoryGrid.css';
 
-export default function CategoryGrid() {
 
+function handleClick(event) {
+    console.log(`Button with id "${event.target.id}" was clicked!`);
+}
+
+const buttons = document.querySelectorAll("#grid button");
+buttons.forEach(button => {
+    button.addEventListener("click", handleClick);
+});
+
+
+export default function CategoryGrid() {
 
 
 
