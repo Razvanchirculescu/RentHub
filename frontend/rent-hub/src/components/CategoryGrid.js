@@ -15,47 +15,51 @@ import tropical from "../images/categoryGrid/tropical.png"
 import './CategoryGrid.css';
 
 export default function CategoryGrid() {
+
+
+
+
     return (
         <div id="grid">
-            <div className="span"><a href="#">
-                <img src={arctic}/></a>
-            </div>
-            <div className="span"><a href="#"><img
-                src={beach}/></a>
-            </div>
-            <div className="span"><a href="#">
-                <img src={beachFront}/></a>
-            </div>
-            <div className="span"><a href="#">
-                <img src={cabins}/></a>
-            </div>
-            <div className="span"><a href="#">
-                <img src={castles}/></a>
-            </div>
-            <div className="span"><a href="#">
-                <img src={countrySide}/></a>
-            </div>
-            <div className="span"><a href="#">
-                <img src={domes}/></a>
-            </div>
-            <div className="span"><a href="#">
-                <img src={farms}/></a>
-            </div>
-            <div className="span"><a href="#">
-                <img src={lakes}/></a>
-            </div>
-            <div className="span"><a href="#">
-                <img src={nationalParks}/></a>
-            </div>
-            <div className="span"><a href="#">
-                <img src={surfing}/></a>
-            </div>
-            <div className="span"><a href="#">
-                <img src={trending}/></a>
-            </div>
-            <div className="span"><a href="#">
-                <img src={tropical}/></a>
-            </div>
+            <button className="span" id={"arctic"} >
+                <img src={arctic}/>
+            </button>
+            <button className="span" id={"beach"}>
+                <img src={beach}/>
+            </button>
+            <button className="span" id={"beachFront"}>
+                <img src={beachFront}/>
+            </button>
+            <button className="span" id={"cabins"}>
+                <img src={cabins}/>
+            </button>
+            <button className="span" id={"castles"}>
+                <img src={castles}/>
+            </button>
+            <button className="span" id={"countrySide"}>
+                <img src={countrySide}/>
+            </button>
+            <button className="span" id={"domes"}>
+                <img src={domes}/>
+            </button>
+            <button className="span" id={"farms"}>
+                <img src={farms}/>
+            </button>
+            <button className="span" id={"lakes"}>
+                <img src={lakes}/>
+            </button>
+            <button className="span" id={"nationalParks"}>
+                <img src={nationalParks}/>
+            </button>
+            <button className="span" id={"surfing"}>
+                <img src={surfing}/>
+            </button>
+            <button className="span" id={"trending"}>
+                <img src={trending}/>
+            </button>
+            <button className="span" id={"tropical"}>
+                <img src={tropical}/>
+            </button>
         </div>
     );
 }
