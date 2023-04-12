@@ -3,6 +3,8 @@ import logoText from "../images/logos/logoText.png"
 import logoImage from "../images/logos/logoImage.png"
 import TextField from "@mui/material/TextField";
 import './Navbar.css';
+import ReactLanguageSelect from "react-languages-select";
+import ReactLanguages from "./ReactLanguages";
 
 export default function Navbar() {
     return (
@@ -43,9 +45,11 @@ export default function Navbar() {
                 </li>
 
                 <li className="border-t md:border-none">
+
                     <a href="#"
                        className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker">
-                        <i className="material-icons">language</i></a>
+                        <i className="material-icons"><ReactLanguages/></i>
+                    </a>
                 </li>
 
                 <li className="border-t md:border-none">
