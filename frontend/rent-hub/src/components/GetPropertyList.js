@@ -12,7 +12,7 @@ import './GetPropertyList.css';
 
 function GetPropertyList() {
 
-    const images = [ image1, image2, image3, image4, image5, image6, image7, image8]
+    const images = [image1, image2, image3, image4, image5, image6, image7, image8]
 
 
     const [propertyData, setPropertyData] = useState([]);
@@ -29,29 +29,20 @@ function GetPropertyList() {
     },);
 
 
-    // const getRandomImages = () => {
-    //     const randomImageIndices = Array.from(
-    //         { length: propertyData.length },
-    //         () => Math.floor(Math.random() * images.length)
-    //     );
-    //     return randomImageIndices.map((index) => images[index].image);
-    // };
-    //
-    // const randomImages = getRandomImages();
-    // console.log(propertyData.toString())
 
     return (
         <div className={"card-body"}>
             {propertyData.map((property, index) => {
                 return (
-                    <div className="card" key={property.id}>
+                    <div className="card" key={property.id} id={property.id}>
                         <div className="card-body">
                             <h6 className="card-title">{property.name}</h6>
-                            <img className="card-img-top" src={images[index]} alt="Card image" />
+                            <img className="card-img-top" src={images[index]} alt="Card image"/>
                             <p className="card-rating"> &#x22C6; {property.rating}</p>
                             <p className="card-rating"> &#8364; {property.pricePerNight}</p>
-                            <br />
-                            <p className="card-text-location"><i className='icon'></i>{property.location.city},{property.location.country}</p>
+                            <br/>
+                            <p className="card-text-location"><i
+                                className='icon'></i>{property.location.city},{property.location.country}</p>
                         </div>
                     </div>
                 );

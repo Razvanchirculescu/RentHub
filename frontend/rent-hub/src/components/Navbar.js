@@ -3,7 +3,6 @@ import logoText from "../images/logos/logoText.png"
 import logoImage from "../images/logos/logoImage.png"
 import TextField from "@mui/material/TextField";
 import './Navbar.css';
-import ReactLanguageSelect from "react-languages-select";
 import ReactLanguages from "./ReactLanguages";
 
 export default function Navbar() {
@@ -17,7 +16,6 @@ export default function Navbar() {
                 <a href={"#"}>
                     <img height={50} width={150} src={logoText} alt={"logo"}/>
                 </a>
-
             </div>
 
             <div className="navbarSearch">
