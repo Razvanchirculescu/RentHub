@@ -2,10 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import logoText from '../images/logos/logoText.png';
 import { useParams } from 'react-router-dom';
-import Navbar from "../components/Navbar";
-import './GetClient.css';
+import './ClientInfo.css';
 
-function GetClient() {
+function ClientInfo() {
 
     const { id } = useParams();
     console.log(id);
@@ -58,7 +57,6 @@ function GetClient() {
     return (
         <div>
             <div className={logoText}>
-                <img src={logoText} alt="Main Logo"/>
                 <button className="go_to_clients"
                         onClick={() => handleButtonClick()}>Back to clients</button>
             </div>
@@ -85,4 +83,4 @@ function GetClient() {
         </div>
     );
 }
-export default GetClient;
+export default ClientInfo;

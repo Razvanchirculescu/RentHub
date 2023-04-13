@@ -4,9 +4,9 @@ import React, { useEffect, useState } from 'react';
 // import { useHistory } from "use-history";
 
 import logoText from '../images/logos/logoText.png';
-import './GetClients.css';
+import './ClientsList.css';
 
-function GetClients() {
+function ClientsList() {
 
     const [clientsData, setClientsData] = useState([]);
     const [clientId, setClientId] = useState('');
@@ -42,7 +42,6 @@ function GetClients() {
     return (
         <div>
             <div className={logoText}>
-                <img src={logoText} alt="Main Logo"/>
             </div>
             <table className="center">
                 <thead>
@@ -71,7 +70,7 @@ function GetClients() {
         </div>
     );
 }
-    export default GetClients;
+    export default ClientsList;
 
 
 
