@@ -562,6 +562,40 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.container {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
 .relative {
   position: relative;
 }
@@ -570,8 +604,12 @@ video {
   margin: 0px;
 }
 
-.mr-2 {
-  margin-right: 0.5rem;
+.mb-0 {
+  margin-bottom: 0px;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
 }
 
 .mr-6 {
@@ -586,16 +624,16 @@ video {
   display: flex;
 }
 
+.table {
+  display: table;
+}
+
+.grid {
+  display: grid;
+}
+
 .hidden {
   display: none;
-}
-
-.h-8 {
-  height: 2rem;
-}
-
-.w-8 {
-  width: 2rem;
 }
 
 .w-full {
@@ -627,16 +665,16 @@ video {
   justify-content: space-between;
 }
 
+.border-0 {
+  border-width: 0px;
+}
+
 .border-b {
   border-bottom-width: 1px;
 }
 
 .border-t {
   border-top-width: 1px;
-}
-
-.fill-current {
-  fill: currentColor;
 }
 
 .px-2 {
@@ -659,26 +697,16 @@ video {
   padding-bottom: 1rem;
 }
 
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+.pl-4 {
+  padding-left: 1rem;
 }
 
 .font-bold {
   font-weight: 700;
 }
 
-.font-semibold {
-  font-weight: 600;
-}
-
-.tracking-tight {
-  letter-spacing: -0.025em;
-}
-
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+.font-medium {
+  font-weight: 500;
 }
 
 .no-underline {
@@ -735,6 +763,31 @@ video {
   .menu-btn:checked ~ .menu-icon .navicon::before,
     .menu-btn:checked ~ .menu-icon .navicon::after {
     top: 0;
+  }
+
+  .navbarSearch {
+    padding-top: 10px;
+    display: flex;
+    height: 60vh;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+  h1 {
+    margin: 10px;
+    font-size: 40px;
+    color: rgb(1, 1, 59);
+  }
+
+  .search {
+    height: 10px;
+    width: 30%;
+  }
+
+  ul li {
+    font-size: 20px;
   }
 }
 

@@ -8,12 +8,11 @@ import image7 from "../images/testImagesForcards/2d62f0fb_original.png"
 import image8 from "../images/testImagesForcards/4fb0f6c7-6c0f-403c-9441-a569d33362db.png"
 
 import React, {useEffect, useState} from 'react';
-import './GetPropertyList.css';
+import './PropertyList.css';
 
 function GetPropertyList() {
 
     const images = [image1, image2, image3, image4, image5, image6, image7, image8]
-
 
     const [propertyData, setPropertyData] = useState([]);
 
@@ -22,13 +21,10 @@ function GetPropertyList() {
             const response = await fetch(
                 'http://localhost:8080/properties');
             const data = await response.json();
-            // console.log("data: ", data);
             setPropertyData(data);
         };
         fetchPropertyData().then(r => console.log(propertyData.toString()));
     },);
-
-
 
     return (
         <div className={"card-body"}>

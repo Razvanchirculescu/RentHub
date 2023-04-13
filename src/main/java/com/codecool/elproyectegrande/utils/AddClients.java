@@ -15,6 +15,13 @@ public class AddClients {
                 , "bcd@bcd.ro", "0773.209.251");
         clientsList.add(client2);
 
+        Client client3 = new Client(3, "Andrei","Gogu"
+                , "cde@cde.ro", "0766.201.243");
+        clientsList.add(client3);
+
+        Client client4 = new Client(4, "Alexandra","Matei"
+                , "dee@dee.ro", "0733.201.333");
+        clientsList.add(client4);
 
     }
 }
