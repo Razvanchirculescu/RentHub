@@ -1,8 +1,9 @@
 import React from "react";
+import { useEffect, useState, useParams } from "react";
 
 
 export default function PropertyDetail() {
-    
+
     const {id} = useParams();
     console.log(id);
 
