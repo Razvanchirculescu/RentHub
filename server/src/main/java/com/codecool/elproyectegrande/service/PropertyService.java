@@ -4,7 +4,9 @@ import com.codecool.elproyectegrande.model.Category;
 import com.codecool.elproyectegrande.model.Property;
 import com.codecool.elproyectegrande.model.RentalUnit;
 import com.codecool.elproyectegrande.model.Review;
+import com.codecool.elproyectegrande.repository.CategoryRepository;
 import com.codecool.elproyectegrande.repository.PropertyRepository;
+import com.codecool.elproyectegrande.repository.ReviewRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -17,9 +19,10 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class PropertyService {
-    private List<Property> properties;
 
     private final PropertyRepository propertyRepository;
+    private final ReviewRepository reviewRepository;
+    private final CategoryRepository categoryRepository;
 
     public void addProperty(Property property) {
         propertyRepository.save(property);
@@ -41,18 +44,12 @@ public class PropertyService {
         return propertiesList;
     }
 
-    public Property getPropertyByName(String name) {
-        return getAllProperties().stream()
-                .filter(property -> name.equals(property.getName()))
-                .findAny()
-                .orElse(null);
-    }
-
     public void addReviewForProperty(Long id, Review review) {
         Property property = getPropertyById(id);
         if (review.getSatisfaction() < 1 || review.getSatisfaction() > 5) {
             throw new IllegalArgumentException("Rating must be between 1 and 5");
         }
+        reviewRepository.save(review);
         property.addReview(review);
     }
 
