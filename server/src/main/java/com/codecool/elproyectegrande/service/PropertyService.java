@@ -5,6 +5,7 @@ import com.codecool.elproyectegrande.model.Property;
 import com.codecool.elproyectegrande.model.RentalUnit;
 import com.codecool.elproyectegrande.model.Review;
 import com.codecool.elproyectegrande.repository.PropertyRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -47,7 +48,7 @@ public class PropertyService {
                 .orElse(null);
     }
 
-    public void addReviewForProperty(int id, Review review) {
+    public void addReviewForProperty(Long id, Review review) {
         Property property = getPropertyById(id);
         if (review.getSatisfaction() < 1 || review.getSatisfaction() > 5) {
             throw new IllegalArgumentException("Rating must be between 1 and 5");
@@ -70,7 +71,7 @@ public class PropertyService {
 //        }
 //    }
 
-    public void addCategory(int propertyId, Category category) {
+    public void addCategory(Long propertyId, Category category) {
         Property property = getPropertyById(propertyId);
         for (Category category1 : property.getCategories()) {
             if (category1.equals(category)) {
@@ -124,15 +125,12 @@ public class PropertyService {
 //        return available;
 //    }
 
-    public Property getPropertyById(int propertyId) {
-        return getAllProperties().stream()
-                .filter(property -> propertyId==property.getId())
-                .findAny()
-                .orElse(null);
+    public Property getPropertyById(Long propertyId) {
+        return propertyRepository.findById(propertyId).orElseThrow(() -> new EntityNotFoundException("Property doesn't exist!"));
     }
 
 
-    public RentalUnit getRentalUnitById(int propertyId, int rentalUnitId){
+    public RentalUnit getRentalUnitById(Long propertyId, int rentalUnitId){
         Property property = getPropertyById(propertyId);
         return property.getRentalUnitList().stream()
                 .filter(rentalUnit -> rentalUnitId==rentalUnit.getId())
@@ -141,7 +139,7 @@ public class PropertyService {
     }
 
     public void addRentalUnit(RentalUnit rentalUnit){
-        Property property = getPropertyById(rentalUnit.getProperty().getId());
+        Property property = getPropertyById((long) rentalUnit.getProperty().getId());
         if (!property.getRentalUnitList().contains(rentalUnit)) {
             property.getRentalUnitList().add(rentalUnit);
         }
