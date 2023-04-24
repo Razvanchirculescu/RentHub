@@ -1,7 +1,7 @@
 package com.codecool.elproyectegrande.service;
 
 import com.codecool.elproyectegrande.model.Client;
-import com.codecool.elproyectegrande.utils.AddClients;
+//import com.codecool.elproyectegrande.utils.AddClients;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class ClientService {
 
     public ClientService() {
         this.clients = new ArrayList<>();
-        AddClients.addClients(clients);
+//        AddClients.addClients(clients);
     }
 
     public void addClient(Client client){

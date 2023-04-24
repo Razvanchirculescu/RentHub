@@ -3,10 +3,9 @@ package com.codecool.elproyectegrande.service;
 import com.codecool.elproyectegrande.model.Category;
 import com.codecool.elproyectegrande.model.Property;
 import com.codecool.elproyectegrande.model.RentalUnit;
-//import com.codecool.elproyectegrande.model.Reservation;
+import com.codecool.elproyectegrande.model.Reservation;
 import com.codecool.elproyectegrande.model.Review;
-import com.codecool.elproyectegrande.repository.PropertyRepository;
-import lombok.RequiredArgsConstructor;
+import com.codecool.elproyectegrande.utils.AddData;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +17,7 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class PropertyService {
+    private List<Property> properties;
 
     private final PropertyRepository propertyRepository;
 
@@ -147,5 +147,7 @@ public class PropertyService {
             property.getRentalUnitList().add(rentalUnit);
         }
     }
+
+
 
 }
