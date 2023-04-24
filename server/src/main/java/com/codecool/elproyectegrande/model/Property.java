@@ -52,13 +52,13 @@ public class Property {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "property", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Review> reviews;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "property", fetch = FetchType.LAZY)
-    private List<Reservation> reservationList;
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<Reservation> reservationList;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "property", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<RentalUnit> rentalUnitList;//SINGLE, DOUBLE, APARTMENT, ...
 
 
@@ -79,9 +79,9 @@ public class Property {
         this.setRating();
     }
 
-    public void addReservation(Reservation reservation) {
-        this.reservationList.add(reservation);
-    }
+//    public void addReservation(Reservation reservation) {
+//        this.reservationList.add(reservation);
+//    }
 
     public void addRentalUnit(RentalUnit rentalUnit){
         this.rentalUnitList.add(rentalUnit);

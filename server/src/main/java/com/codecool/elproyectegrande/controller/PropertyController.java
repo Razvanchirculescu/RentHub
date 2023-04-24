@@ -3,7 +3,7 @@ package com.codecool.elproyectegrande.controller;
 import com.codecool.elproyectegrande.model.Category;
 import com.codecool.elproyectegrande.model.Property;
 import com.codecool.elproyectegrande.model.RentalUnit;
-import com.codecool.elproyectegrande.model.Reservation;
+//import com.codecool.elproyectegrande.model.Reservation;
 import com.codecool.elproyectegrande.model.Review;
 import com.codecool.elproyectegrande.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,10 +59,10 @@ public class PropertyController {
         return propertyService.getPropertiesByCategory(category);
     }
 
-    @PatchMapping("/{propertyId}/reservation")
-    public void addReservation(@PathVariable int propertyId, @RequestBody Reservation reservation) {
-        propertyService.addReservation(propertyId, reservation);
-    }
+//    @PatchMapping("/{propertyId}/reservation")
+//    public void addReservation(@PathVariable int propertyId, @RequestBody Reservation reservation) {
+//        propertyService.addReservation(propertyId, reservation);
+//    }
 
     @PatchMapping("/{propertyId}/category")
     public void addCategory(@PathVariable int propertyId, @RequestBody Category category){
