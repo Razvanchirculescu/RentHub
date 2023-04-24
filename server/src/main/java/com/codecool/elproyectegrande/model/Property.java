@@ -1,81 +1,69 @@
 package com.codecool.elproyectegrande.model;
 
-import jakarta.annotation.Resource;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 //ToDO - @ElementCollection
 //Todo Pattern builder - pt obiecte , librarie lombok
 
-@Resource
+@Entity
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Property {
+    @Id
     private int id;
-    private final String name;
+
+    private String name;
+
     private String description;
+
+    @OneToOne
     private Location location;
+
     private BigDecimal pricePerNight;
     private double rating;
-    private List<Category> categories;//HOTEL, VILLA, CABANA, ...
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.JOIN)
+    @JoinTable(
+            name = "property_category",
+            joinColumns = @JoinColumn(name = "property_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private List<Category> categories;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "property", fetch = FetchType.LAZY)
     private List<Review> reviews;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "property", fetch = FetchType.LAZY)
     private List<Reservation> reservationList;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "property", fetch = FetchType.LAZY)
     private List<RentalUnit> rentalUnitList;//SINGLE, DOUBLE, APARTMENT, ...
 
-    public Property(int id, String name, String description, Location location, BigDecimal pricePerNight) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.location = location;
-        this.pricePerNight = pricePerNight;
-        categories = new ArrayList<>();
-        reviews = new ArrayList<>();
-        reservationList = new ArrayList<>();
-        rentalUnitList = new ArrayList<>();
-    }
-
-    public int getId() {
-        return id;
-    }
 
     public void addCategory(Category category) {
         categories.add(category);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public BigDecimal getPricePerNight() {
-        return pricePerNight;
-    }
-
-    public void setPricePerNight(BigDecimal pricePerNight) {
-        this.pricePerNight = pricePerNight;
-    }
-
-    public List<Category> getCategories() {
-        return categories;
-    }
-
-    public double getRating() {
-        return rating;
-    }
-
-    public List<RentalUnit> getRentalUnitList() {
-        return rentalUnitList;
     }
 
     public void setRating() {
@@ -91,19 +79,12 @@ public class Property {
         this.setRating();
     }
 
-    public List<Review> getReviews() {
-        return reviews;
-    }
-
     public void addReservation(Reservation reservation) {
         this.reservationList.add(reservation);
-    }
-
-    public List<Reservation> getReservationList() {
-        return reservationList;
     }
 
     public void addRentalUnit(RentalUnit rentalUnit){
         this.rentalUnitList.add(rentalUnit);
     }
+
 }

@@ -1,21 +1,26 @@
 package com.codecool.elproyectegrande.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Entity
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Category {
 
+    @Id
     private int id;
     private String name;
-
-    public Category(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
 
     @Override
     public boolean equals(Object obj) {
