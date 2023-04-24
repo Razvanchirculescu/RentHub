@@ -30,6 +30,7 @@ public class ClientController {
 
     @GetMapping
     public List<Client> getAllClients(){
+
         return clientService.getAllClients();
     }
 
@@ -47,6 +48,7 @@ public class ClientController {
     public Client getClientByName(@PathVariable String name, @PathVariable String surname){
         return clientService.getClientByName(name, surname);
     }
+
 
     @PatchMapping("/{phoneNo}")
     public Client getClientByPhone(@PathVariable String phoneNo){
