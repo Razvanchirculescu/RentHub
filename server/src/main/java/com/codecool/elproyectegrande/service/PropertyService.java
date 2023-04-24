@@ -3,13 +3,12 @@ package com.codecool.elproyectegrande.service;
 import com.codecool.elproyectegrande.model.Category;
 import com.codecool.elproyectegrande.model.Property;
 import com.codecool.elproyectegrande.model.RentalUnit;
-import com.codecool.elproyectegrande.model.Reservation;
 import com.codecool.elproyectegrande.model.Review;
-import com.codecool.elproyectegrande.utils.AddData;
+import com.codecool.elproyectegrande.repository.PropertyRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -142,12 +141,9 @@ public class PropertyService {
     }
 
     public void addRentalUnit(RentalUnit rentalUnit){
-        Property property = getPropertyById(rentalUnit.getPropertyId());
+        Property property = getPropertyById(rentalUnit.getProperty().getId());
         if (!property.getRentalUnitList().contains(rentalUnit)) {
             property.getRentalUnitList().add(rentalUnit);
         }
     }
-
-
-
 }
