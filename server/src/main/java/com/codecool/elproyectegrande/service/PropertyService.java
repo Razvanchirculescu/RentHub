@@ -5,7 +5,7 @@ import com.codecool.elproyectegrande.model.Property;
 import com.codecool.elproyectegrande.model.RentalUnit;
 import com.codecool.elproyectegrande.model.Reservation;
 import com.codecool.elproyectegrande.model.Review;
-import com.codecool.elproyectegrande.utils.AddData;
+//import com.codecool.elproyectegrande.utils.AddData;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ public class PropertyService {
 
     public PropertyService(){
         this.properties = new ArrayList<>();
-        AddData.addData(properties);
+//        AddData.addData(properties);
     }
 
     public void addProperty(Property property) {
