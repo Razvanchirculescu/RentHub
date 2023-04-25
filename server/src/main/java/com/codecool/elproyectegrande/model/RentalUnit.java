@@ -40,7 +40,7 @@ public class RentalUnit {
     @JsonIgnore
     private Property property;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private RentalUnitType rentalUnitType;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "rentalUnit")

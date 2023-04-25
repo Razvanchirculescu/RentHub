@@ -1,7 +1,6 @@
 package com.codecool.elproyectegrande.service;
 
 import com.codecool.elproyectegrande.model.Client;
-//import com.codecool.elproyectegrande.utils.AddClients;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,7 +9,7 @@ import java.util.List;
 @Service
 public class ClientService {
 
-    private List<Client> clients;
+    private final List<Client> clients;
 
     public ClientService() {
         this.clients = new ArrayList<>();

@@ -39,15 +39,15 @@ insert into review (description, satisfaction, property_id) VALUES ('Am petrecut
 insert into review (description, satisfaction, property_id) VALUES ('Seara a fost perfectă, locuința are tot ce ai nevoie.', 5, 3);
 
 
-insert into rental_unit (property_id, rental_unit_type) VALUES (1, 0);
-insert into rental_unit (property_id, rental_unit_type) VALUES (1, 0);
-insert into rental_unit (property_id, rental_unit_type) VALUES (1, 0);
-insert into rental_unit (property_id, rental_unit_type) VALUES (2, 1);
-insert into rental_unit (property_id, rental_unit_type) VALUES (2, 2);
-insert into rental_unit (property_id, rental_unit_type) VALUES (2, 2);
-insert into rental_unit (property_id, rental_unit_type) VALUES (2, 2);
-insert into rental_unit (property_id, rental_unit_type) VALUES (2, 2);
-insert into rental_unit (property_id, rental_unit_type) VALUES (1, 0);
+insert into rental_unit (property_id, rental_unit_type) VALUES (1, 'SINGLE');
+insert into rental_unit (property_id, rental_unit_type) VALUES (1, 'SINGLE');
+insert into rental_unit (property_id, rental_unit_type) VALUES (1, 'SINGLE');
+insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'DOUBLE');
+insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'DOUBLE');
+insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'DOUBLE');
+insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'APARTMENT');
+insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'DOUBLE');
+insert into rental_unit (property_id, rental_unit_type) VALUES (1, 'SINGLE');
 
 
 

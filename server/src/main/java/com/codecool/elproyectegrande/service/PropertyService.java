@@ -22,6 +22,7 @@ public class PropertyService {
 
     private final PropertyRepository propertyRepository;
     private final ReviewRepository reviewRepository;
+    private final CategoryRepository categoryRepository;
 
     public void addProperty(Property property) {
         propertyRepository.save(property);
@@ -31,11 +32,12 @@ public class PropertyService {
         return propertyRepository.findAll();
     }
 
-    public List<Property> getPropertiesByCategory(Category category) {
+    public List<Property> getPropertiesByCategory(String category) {
+        Category category1 = categoryRepository.findByName(category);
         List<Property> propertiesList = new ArrayList<>();
         for (Property property : getAllProperties()) {
-            for (Category category1 : property.getCategories()) {
-                if (category.equals(category1)) {
+            for (Category category2 : property.getCategories()) {
+                if (category2.equals(category1)) {
                     propertiesList.add(property);
                 }
             }
@@ -125,7 +127,6 @@ public class PropertyService {
     public Property getPropertyById(Long propertyId) {
         return propertyRepository.findById(propertyId).orElseThrow(() -> new EntityNotFoundException("Property doesn't exist!"));
     }
-
 
     public RentalUnit getRentalUnitById(Long propertyId, int rentalUnitId){
         Property property = getPropertyById(propertyId);
