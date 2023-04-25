@@ -22,7 +22,6 @@ public class PropertyService {
 
     private final PropertyRepository propertyRepository;
     private final ReviewRepository reviewRepository;
-    private final CategoryRepository categoryRepository;
 
     public void addProperty(Property property) {
         propertyRepository.save(property);
@@ -49,8 +48,9 @@ public class PropertyService {
         if (review.getSatisfaction() < 1 || review.getSatisfaction() > 5) {
             throw new IllegalArgumentException("Rating must be between 1 and 5");
         }
+        review.setProperty(property);
+        property.setRating();
         reviewRepository.save(review);
-        property.addReview(review);
     }
 
 //    public void addReservation(int propertyId, Reservation reservation) {
