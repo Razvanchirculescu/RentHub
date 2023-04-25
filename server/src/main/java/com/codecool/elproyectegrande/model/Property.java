@@ -26,7 +26,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 //ToDO - @ElementCollection
-//Todo Pattern builder - pt obiecte , librarie lombok
 
 @Entity
 @Getter
