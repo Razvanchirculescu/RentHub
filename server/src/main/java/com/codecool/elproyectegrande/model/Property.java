@@ -58,15 +58,14 @@ public class Property {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "property", fetch = FetchType.EAGER)
     private List<Review> reviews;
 
 //    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    private List<Reservation> reservationList;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<RentalUnit> rentalUnitList;//SINGLE, DOUBLE, APARTMENT, ...
-
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "property", fetch = FetchType.EAGER)
+    private List<RentalUnit> rentalUnitList;
 
     public void addCategory(Category category) {
         categories.add(category);
