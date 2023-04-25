@@ -2,31 +2,38 @@ package com.codecool.elproyectegrande.service;
 
 import com.codecool.elproyectegrande.model.Client;
 //import com.codecool.elproyectegrande.utils.AddClients;
+import com.codecool.elproyectegrande.repository.ClientRepository;
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
+//@Component
+//@RequiredArgsConstructor
 @Service
+@Transactional
 public class ClientService {
 
-    private List<Client> clients;
+    private final ClientRepository clientRepository;
 
-    public ClientService() {
-        this.clients = new ArrayList<>();
-//        AddClients.addClients(clients);
+    public ClientService(ClientRepository clientRepository) {
+        this.clientRepository = clientRepository;
+    }
+
+
+    public List<Client> getAllClients(){
+        return clientRepository.findAll();
     }
 
     public void addClient(Client client){
-        this.clients.add(client);
-    }
-
-    public List<Client> getAllClients(){
-        return clients;
+        clientRepository.save(client);
     }
 
     public Client getClientByName(String name, String surname){
-        return clients.stream()
+        return clientRepository.findAll().stream()
                 .filter(client -> (client.getName().equals(name)
                         && client.getSurname().equals(surname)))
                 .findAny()
@@ -34,14 +41,14 @@ public class ClientService {
     }
 
     public Client getClientById(int ID){
-        return clients.stream()
+        return clientRepository.findAll().stream()
                 .filter(client -> client.getId()==ID)
                 .findAny()
                 .orElse(null);
     }
 
     public Client getClientByPhone(String phoneNo){
-        return clients.stream()
+        return clientRepository.findAll().stream()
                 .filter(client -> client.getPhoneNumber().equals(phoneNo))
                 .findAny()
                 .orElse(null);

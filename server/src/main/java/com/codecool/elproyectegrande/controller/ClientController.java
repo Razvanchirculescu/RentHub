@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,9 +20,8 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000"
         , methods = {RequestMethod.PUT, RequestMethod.GET, RequestMethod.DELETE
         , RequestMethod.POST, RequestMethod.PATCH})
-
 public class ClientController {
-    private ClientService clientService;
+    ClientService clientService;
 
     @Autowired
     public ClientController(ClientService clientService) {
@@ -30,7 +30,6 @@ public class ClientController {
 
     @GetMapping
     public List<Client> getAllClients(){
-
         return clientService.getAllClients();
     }
 
@@ -48,7 +47,6 @@ public class ClientController {
     public Client getClientByName(@PathVariable String name, @PathVariable String surname){
         return clientService.getClientByName(name, surname);
     }
-
 
     @PatchMapping("/{phoneNo}")
     public Client getClientByPhone(@PathVariable String phoneNo){
