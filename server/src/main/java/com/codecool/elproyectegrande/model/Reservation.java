@@ -1,7 +1,9 @@
 package com.codecool.elproyectegrande.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,8 +38,9 @@ public class Reservation {
     private LocalDate checkIn;
     private LocalDate checkOut;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rental_unit_id")
+    @JsonIgnore
     private RentalUnit rentalUnit;
 
 
