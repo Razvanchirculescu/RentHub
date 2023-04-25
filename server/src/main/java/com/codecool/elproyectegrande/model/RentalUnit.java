@@ -43,7 +43,7 @@ public class RentalUnit {
     @Enumerated(EnumType.ORDINAL)
     private RentalUnitType rentalUnitType;
 
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<Reservation> reservations;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "rentalUnit")
+    private List<Reservation> reservations;
 
 }
