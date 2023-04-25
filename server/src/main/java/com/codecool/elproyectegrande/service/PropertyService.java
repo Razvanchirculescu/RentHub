@@ -3,14 +3,15 @@ package com.codecool.elproyectegrande.service;
 import com.codecool.elproyectegrande.model.Category;
 import com.codecool.elproyectegrande.model.Property;
 import com.codecool.elproyectegrande.model.RentalUnit;
-import com.codecool.elproyectegrande.model.Reservation;
 import com.codecool.elproyectegrande.model.Review;
+import com.codecool.elproyectegrande.repository.CategoryRepository;
 import com.codecool.elproyectegrande.repository.PropertyRepository;
+import com.codecool.elproyectegrande.repository.ReviewRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,8 @@ import java.util.List;
 public class PropertyService {
 
     private final PropertyRepository propertyRepository;
+    private final ReviewRepository reviewRepository;
+    private final CategoryRepository categoryRepository;
 
     public void addProperty(Property property) {
         propertyRepository.save(property);
@@ -41,18 +44,12 @@ public class PropertyService {
         return propertiesList;
     }
 
-    public Property getPropertyByName(String name) {
-        return getAllProperties().stream()
-                .filter(property -> name.equals(property.getName()))
-                .findAny()
-                .orElse(null);
-    }
-
-    public void addReviewForProperty(int id, Review review) {
+    public void addReviewForProperty(Long id, Review review) {
         Property property = getPropertyById(id);
         if (review.getSatisfaction() < 1 || review.getSatisfaction() > 5) {
             throw new IllegalArgumentException("Rating must be between 1 and 5");
         }
+        reviewRepository.save(review);
         property.addReview(review);
     }
 
@@ -71,7 +68,7 @@ public class PropertyService {
 //        }
 //    }
 
-    public void addCategory(int propertyId, Category category) {
+    public void addCategory(Long propertyId, Category category) {
         Property property = getPropertyById(propertyId);
         for (Category category1 : property.getCategories()) {
             if (category1.equals(category)) {
@@ -125,15 +122,12 @@ public class PropertyService {
 //        return available;
 //    }
 
-    public Property getPropertyById(int propertyId) {
-        return getAllProperties().stream()
-                .filter(property -> propertyId==property.getId())
-                .findAny()
-                .orElse(null);
+    public Property getPropertyById(Long propertyId) {
+        return propertyRepository.findById(propertyId).orElseThrow(() -> new EntityNotFoundException("Property doesn't exist!"));
     }
 
 
-    public RentalUnit getRentalUnitById(int propertyId, int rentalUnitId){
+    public RentalUnit getRentalUnitById(Long propertyId, int rentalUnitId){
         Property property = getPropertyById(propertyId);
         return property.getRentalUnitList().stream()
                 .filter(rentalUnit -> rentalUnitId==rentalUnit.getId())
@@ -142,10 +136,9 @@ public class PropertyService {
     }
 
     public void addRentalUnit(RentalUnit rentalUnit){
-        Property property = getPropertyById(rentalUnit.getPropertyId());
+        Property property = getPropertyById((long) rentalUnit.getProperty().getId());
         if (!property.getRentalUnitList().contains(rentalUnit)) {
             property.getRentalUnitList().add(rentalUnit);
         }
     }
-
 }

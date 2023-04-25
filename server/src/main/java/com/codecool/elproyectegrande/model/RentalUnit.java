@@ -6,7 +6,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,13 +30,16 @@ import java.util.List;
 public class RentalUnit {
 
     @Id
-    private int id;
-    private int propertyId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    private Property property;
 
     @Enumerated(EnumType.ORDINAL)
     private RentalUnitType rentalUnitType;
 
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rental_unit", fetch = FetchType.LAZY)
-//    private List<Reservation> reservations;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Reservation> reservations;
 
 }

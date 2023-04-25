@@ -40,7 +40,7 @@ public class PropertyController {
     }
 
     @GetMapping("/{id}")
-    public Property getPropertyDetails(@PathVariable int id) {
+    public Property getPropertyDetails(@PathVariable Long id) {
         return propertyService.getPropertyById(id);
     }
 
@@ -50,7 +50,7 @@ public class PropertyController {
     }
 
     @PostMapping("/{id}/reviews")
-    public void addPropertyReview(@PathVariable int id, @RequestBody Review review) {
+    public void addPropertyReview(@PathVariable Long id, @RequestBody Review review) {
         propertyService.addReviewForProperty(id, review);
     }
 
@@ -65,9 +65,10 @@ public class PropertyController {
 //    }
 
     @PatchMapping("/{propertyId}/category")
-    public void addCategory(@PathVariable int propertyId, @RequestBody Category category){
+    public void addCategory(@PathVariable Long propertyId, @RequestBody Category category){
         propertyService.addCategory(propertyId, category);
     }
+
     @PatchMapping("/rentalUnit")
     public void addRentalUnit(@RequestBody RentalUnit rentalUnit){
         propertyService.addRentalUnit(rentalUnit);
