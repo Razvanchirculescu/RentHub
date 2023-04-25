@@ -129,7 +129,7 @@ public class PropertyService {
 
     public RentalUnit getRentalUnitById(Long propertyId, int rentalUnitId){
         Property property = getPropertyById(propertyId);
-        return property.getRentalUnitList().stream()
+        return property.getRentalUnits().stream()
                 .filter(rentalUnit -> rentalUnitId==rentalUnit.getId())
                 .findAny()
                 .orElse(null);
@@ -137,8 +137,8 @@ public class PropertyService {
 
     public void addRentalUnit(RentalUnit rentalUnit){
         Property property = getPropertyById((long) rentalUnit.getProperty().getId());
-        if (!property.getRentalUnitList().contains(rentalUnit)) {
-            property.getRentalUnitList().add(rentalUnit);
+        if (!property.getRentalUnits().contains(rentalUnit)) {
+            property.getRentalUnits().add(rentalUnit);
         }
     }
 }

@@ -36,7 +36,8 @@ insert into rental_unit (property_id, rental_unit_type) VALUES (1, 0);
 insert into rental_unit (property_id, rental_unit_type) VALUES (1, 0);
 insert into rental_unit (property_id, rental_unit_type) VALUES (2, 1);
 insert into rental_unit (property_id, rental_unit_type) VALUES (2, 2);
-insert into rental_unit (property_id, rental_unit_type) VALUES (2, 3);
+insert into rental_unit (property_id, rental_unit_type) VALUES (2, 2);
+insert into rental_unit (property_id, rental_unit_type) VALUES (2, 2);
 insert into rental_unit (property_id, rental_unit_type) VALUES (1, 0);
 
 
