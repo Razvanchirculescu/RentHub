@@ -68,6 +68,7 @@ public class PropertyController {
     public void addCategory(@PathVariable Long propertyId, @RequestBody Category category){
         propertyService.addCategory(propertyId, category);
     }
+
     @PatchMapping("/rentalUnit")
     public void addRentalUnit(@RequestBody RentalUnit rentalUnit){
         propertyService.addRentalUnit(rentalUnit);
