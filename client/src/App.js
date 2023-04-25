@@ -10,8 +10,7 @@ import ClientPage from "./pages/ClientPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="Container">
           <BrowserRouter>
             <Routes>
               <Route path="/properties" element={ <LandingPage /> } />
@@ -21,7 +20,6 @@ function App() {
               <Route path="*" element={<NoPageFound />} />
             </Routes>
           </BrowserRouter>
-      </header>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 insert into location (street, street_nr, city, country) VALUES ('Semilunei', 2, 'Bucuresti', 'Romania');
 insert into location (street, street_nr, city, country) VALUES ('Semilunei', 6, 'Bucuresti', 'Romania');
+insert into location (street, street_nr, city, country) VALUES ('Rahova', 8, 'Bucuresti', 'Romania');
 
 insert into property (name, description, price_per_night, rating, location_id) VALUES ('Palo',
                'The Palo Cabins, ofera cazare in doua casute tip A-Frame, cu o capacitate de 2-4 persoane fiecare, ' ||
