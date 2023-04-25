@@ -64,7 +64,7 @@ public class Property {
 //    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    private List<Reservation> reservationList;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "property", fetch = FetchType.EAGER)
     private List<RentalUnit> rentalUnitList;
 
     public void addCategory(Category category) {
