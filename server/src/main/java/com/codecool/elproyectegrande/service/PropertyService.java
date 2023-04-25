@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Component
@@ -34,15 +35,8 @@ public class PropertyService {
 
     public List<Property> getPropertiesByCategory(String category) {
         Category category1 = categoryRepository.findByName(category);
-        List<Property> propertiesList = new ArrayList<>();
-        for (Property property : getAllProperties()) {
-            for (Category category2 : property.getCategories()) {
-                if (category2.equals(category1)) {
-                    propertiesList.add(property);
-                }
-            }
-        }
-        return propertiesList;
+        return getAllProperties().stream().filter(property ->
+                property.getCategories().contains(category1)).collect(Collectors.toList());
     }
 
     public void addReviewForProperty(Long id, Review review) {
