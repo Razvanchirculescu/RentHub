@@ -51,8 +51,10 @@ public class PropertyService {
             throw new IllegalArgumentException("Rating must be between 1 and 5");
         }
         review.setProperty(property);
+        property.addReview(review);
         property.setRating();
         reviewRepository.save(review);
+        propertyRepository.save(property);
     }
 
 //    public void addReservation(int propertyId, Reservation reservation) {
