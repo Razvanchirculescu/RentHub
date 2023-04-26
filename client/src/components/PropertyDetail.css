@@ -1,12 +1,15 @@
 
 .m-2_propertyDetailDescription{
     padding-top: 5vh;
-    padding-left: 56vh;
+    padding-left: 20vh;
 }
 
+.checkAvailability{
+    padding-left: 2vh;
+}
 .m-2_rating{
     padding-top: 2vh;
-    padding-left: 56vh;
+    padding-left: 20vh;
 }
 
 #carouselExampleIndicators{

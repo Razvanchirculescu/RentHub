@@ -1,12 +1,19 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import DatePanel from "react-multi-date-picker/plugins/date_panel"
 
-
-import './PropertyDetail.css'
 import DatePicker from "react-multi-date-picker";
+import './PropertyDetail.css'
+
+
 
 export default function PropertyDetail() {
+
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
+
+
+
+
     const {id} = useParams();
     console.log(id);
 
@@ -92,12 +99,36 @@ export default function PropertyDetail() {
 
                 {/*DatePicker*/}
                 <div className="col-md-4">
+
+                    &#128197;  &nbsp;
+
                     <DatePicker
-                        range
-                        plugins={[
-                            <DatePanel />
-                        ]}
+                        selected={startDate}
+                        onChange={(date) => setStartDate(date)}
+                        selectsStart
+                        minDate={new Date()}
+                        startDate={startDate}
+                        endDate={endDate}
+                        placeholder={"Start date"}
                     />
+                    &nbsp;
+                     To
+                    &nbsp;
+
+                    <DatePicker
+                        selected={endDate}
+                        onChange={(date) => setEndDate(date)}
+                        selectsEnd
+                        startDate={startDate}
+                        endDate={endDate}
+                        minDate={startDate}
+                        placeholder={"End date"}
+
+
+                    />
+
+
+
                 </div>
             </div>
 
