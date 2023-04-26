@@ -49,7 +49,9 @@ insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'APARTMENT');
 insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'DOUBLE');
 insert into rental_unit (property_id, rental_unit_type) VALUES (1, 'SINGLE');
 
-
-
-
-
+insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1Uebxsb1syuN-DxnIOBEE4dO4GV3S1Eao', 1);
+insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1pEynjKYNmGGB_g9vFX_autjL5yfpb3cP', 1);
+insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=163Tand_0XtKlqX8qmJEzjFl2e-JA9SZI', 2);
+insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1ITyPs0e-lwCzg5dYOJ6hepzU0UoXqKG4', 2);
+insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1aR4AsN8luDbc-joOdr6AhGT87HPiQERo', 3);
+insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1GGQx0xPUhLxvecBEUaOyp2luruDCuEwX', 3);
