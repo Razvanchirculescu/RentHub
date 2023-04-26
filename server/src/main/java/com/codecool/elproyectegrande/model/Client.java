@@ -30,5 +30,6 @@ public class Client {
     private String surname;
     private String emailAddress;
     private String phoneNumber;
+    private String password;
 
 }
