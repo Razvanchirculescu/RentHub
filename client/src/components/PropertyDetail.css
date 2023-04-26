@@ -1,0 +1,20 @@
+
+.m-2_propertyDetailDescription{
+    padding-top: 5vh;
+    padding-left: 56vh;
+}
+
+.m-2_rating{
+    padding-top: 2vh;
+    padding-left: 56vh;
+}
+
+#carouselExampleIndicators{
+
+    width: 900px;
+    height: 900px;
+    margin: 0 auto;
+}
+.carousel-control-next, .carousel-control-prev{
+    margin-bottom: 30vh;
+}
