@@ -54,8 +54,9 @@ public class PropertyController {
         propertyService.addReviewForProperty(id, review);
     }
 
-    @PatchMapping
-    public List<Property> getPropertiesByCategory(@RequestParam String category) {
+
+    @GetMapping(params = "category")
+    public List<Property> getPropertiesByCategory(@RequestParam("category") String category) {
         return propertyService.getPropertiesByCategory(category);
     }
 

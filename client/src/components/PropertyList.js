@@ -1,20 +1,27 @@
 import React, {useEffect, useState} from 'react';
 import './PropertyList.css';
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
+
 
 function GetPropertyList() {
 
     const [propertyData, setPropertyData] = useState([]);
+    const searchParams = new URLSearchParams(useLocation().search);
+    const category = searchParams.get("category");
+    console.log(category)
+
 
     useEffect(() => {
         const fetchPropertyData = async () => {
-            const response = await fetch(
-                'http://localhost:8080/properties');
+            const url = `http://localhost:8080/properties${category ? `?category=${category}` : ''}`;
+            console.log("fetching data from:", url);
+            const response = await fetch(url);
             const data = await response.json();
             setPropertyData(data);
         };
-        fetchPropertyData().then(r => console.log(propertyData.toString()));
-    },);
+        fetchPropertyData();
+    }, [category]);
+
 
     return (
         <div className={"card-body"}>
