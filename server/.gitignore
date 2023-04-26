@@ -35,4 +35,6 @@ build/
 *.properties
 
 /server/.idea
+/client/.idea
+
 
