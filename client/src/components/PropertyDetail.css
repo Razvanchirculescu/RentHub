@@ -18,3 +18,26 @@
 .carousel-control-next, .carousel-control-prev{
     margin-bottom: 30vh;
 }
+
+
+input {
+    padding:10px;
+    font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    border-radius: 0 !important;
+}
+
+.form-control {
+    border-radius: 0 !important;
+    font-size: 12px;
+}
+
+.clickable { cursor: pointer; }
+
+
+.form-group_checkin{
+    position: relative;
+    width: 100px;
+}
