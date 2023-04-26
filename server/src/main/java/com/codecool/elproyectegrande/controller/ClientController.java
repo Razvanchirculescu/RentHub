@@ -1,6 +1,7 @@
 package com.codecool.elproyectegrande.controller;
 
 import com.codecool.elproyectegrande.model.Client;
+import com.codecool.elproyectegrande.security.ClientSession;
 import com.codecool.elproyectegrande.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,9 +24,13 @@ import java.util.List;
 public class ClientController {
     ClientService clientService;
 
+    ClientSession clientSession;
+
+
     @Autowired
-    public ClientController(ClientService clientService) {
+    public ClientController(ClientService clientService, ClientSession clientSesion) {
         this.clientService = clientService;
+        this.clientSession = clientSesion;
     }
 
     @GetMapping
