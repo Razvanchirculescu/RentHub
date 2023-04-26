@@ -33,23 +33,36 @@ export default function CategoryGrid() {
 
     return (
         <div id="grid">
-            <Link to={"/properties?category=Cabana"}>
+            <Link to={"/properties?category=Arctic"}>
                 <button className="span" id={"arctic"} >
                     <img src={arctic}/>
                 </button>
             </Link>
-            <button className="span" id={"beach"}>
-                <img src={beach}/>
-            </button>
-            <button className="span" id={"beachFront"}>
-                <img src={beachFront}/>
-            </button>
-            <button className="span" id={"cabins"}>
-                <img src={cabins}/>
-            </button>
-            <button className="span" id={"castles"}>
-                <img src={castles}/>
-            </button>
+            <Link to={"/properties?category=Beach"}>
+                <button className="span" id={"beach"}>
+                    <img src={beach}/>
+                </button>
+            </Link>
+            <Link to={"/properties?category=Cabana"}>
+                <button className="span" id={"cabins"}>
+                    <img src={cabins}/>
+                </button>
+            </Link>
+            <Link to={"/properties?category=Castle"}>
+                <button className="span" id={"castles"}>
+                    <img src={castles}/>
+                </button>
+            </Link>
+            <Link to={"/properties?category=Trading"}>
+                <button className="span" id={"trending"}>
+                    <img src={trending}/>
+                </button>
+            </Link>
+            <Link to={"/properties?category=Villa"}>
+                <button className="span" id={"beachFront"}> 
+                    <img src={beachFront}/>
+                </button>
+            </Link>
             <button className="span" id={"countrySide"}>
                 <img src={countrySide}/>
             </button>
@@ -68,9 +81,7 @@ export default function CategoryGrid() {
             <button className="span" id={"surfing"}>
                 <img src={surfing}/>
             </button>
-            <button className="span" id={"trending"}>
-                <img src={trending}/>
-            </button>
+          
             <button className="span" id={"tropical"}>
                 <img src={tropical}/>
             </button>

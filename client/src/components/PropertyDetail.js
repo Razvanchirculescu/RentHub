@@ -1,15 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 
-import image1 from "../images/testImagesForcards/5ac2e5bc-6569-46b4-a2cf-f9f7350f73e6.png"
-import image2 from "../images/testImagesForcards/c346cf0d-b9f9-4d18-835a-32177f326ca8.png"
-import image3 from "../images/testImagesForcards/52cbd3a8-5384-4fa3-8373-e855ad7ad184.png"
-import image4 from "../images/testImagesForcards/dfc94d55-d670-42db-bdb8-ffda4fb2996b.png"
-import image5 from "../images/testImagesForcards/f6d4bd5b-3cab-418d-b705-d11b8fc6d57c.png"
-import image6 from "../images/testImagesForcards/9b2acbdd_original.png"
-import image7 from "../images/testImagesForcards/2d62f0fb_original.png"
-import image8 from "../images/testImagesForcards/4fb0f6c7-6c0f-403c-9441-a569d33362db.png"
-
 import 'flowbite'
 
 import './PropertyDetail.css'
@@ -76,13 +67,13 @@ export default function PropertyDetail() {
                 </ol>
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                        <img className="d-block w-100" src={image8} alt="First slide"/>
+                        <img className="d-block w-100" src={propertyData.images[0].path} alt="First slide"/>
                     </div>
                     <div className="carousel-item">
-                        <img className="d-block w-100" src={image5} alt="Second slide"/>
+                        <img className="d-block w-100" src={propertyData.images[1].path} alt="Second slide"/>
                     </div>
                     <div className="carousel-item">
-                        <img className="d-block w-100" src={image1} alt="Third slide"/>
+                        <img className="d-block w-100" src={propertyData.images[1].path} alt="Third slide"/>
                     </div>
                 </div>
                 <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

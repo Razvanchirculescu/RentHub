@@ -27,7 +27,7 @@ import java.util.List;
         , RequestMethod.POST, RequestMethod.PATCH})
 public class PropertyController {
 
-    private PropertyService propertyService;
+    private final PropertyService propertyService;
 
     @Autowired
     public PropertyController(PropertyService propertyService) {
