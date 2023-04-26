@@ -13,7 +13,7 @@ function App() {
     <div className="Container">
           <BrowserRouter>
             <Routes>
-              <Route path="/properties" element={ <LandingPage /> } />
+            <Route path="/properties" element={<LandingPage />} />
               <Route path="/properties/:id" element={ <PropertyPage /> } />
                 <Route path="/api/clients/:id" element={<ClientPage />} />
                 <Route path="/api/clients" element={< ClientsPage />} />

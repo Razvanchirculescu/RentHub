@@ -11,6 +11,7 @@ import nationalParks from "../images/categoryGrid/nationalParks.png"
 import surfing from "../images/categoryGrid/surfing.png"
 import trending from "../images/categoryGrid/trending.png"
 import tropical from "../images/categoryGrid/tropical.png"
+import { Link } from "react-router-dom"
 
 import './CategoryGrid.css';
 
@@ -32,9 +33,11 @@ export default function CategoryGrid() {
 
     return (
         <div id="grid">
-            <button className="span" id={"arctic"} >
-                <img src={arctic}/>
-            </button>
+            <Link to={"/properties?category=Cabana"}>
+                <button className="span" id={"arctic"} >
+                    <img src={arctic}/>
+                </button>
+            </Link>
             <button className="span" id={"beach"}>
                 <img src={beach}/>
             </button>
