@@ -55,7 +55,7 @@ public class PropertyController {
     }
 
     @PatchMapping
-    public List<Property> getPropertiesByCategory(@RequestParam Category category) {
+    public List<Property> getPropertiesByCategory(@RequestParam String category) {
         return propertyService.getPropertiesByCategory(category);
     }
 

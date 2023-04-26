@@ -26,7 +26,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 //ToDO - @ElementCollection
-//Todo Pattern builder - pt obiecte , librarie lombok
 
 @Entity
 @Getter
@@ -65,7 +64,7 @@ public class Property {
 //    private List<Reservation> reservationList;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "property", fetch = FetchType.EAGER)
-    private List<RentalUnit> rentalUnitList;
+    private List<RentalUnit> rentalUnits;
 
     public void addCategory(Category category) {
         categories.add(category);
@@ -89,7 +88,7 @@ public class Property {
 //    }
 
     public void addRentalUnit(RentalUnit rentalUnit){
-        this.rentalUnitList.add(rentalUnit);
+        this.rentalUnits.add(rentalUnit);
     }
 
 }

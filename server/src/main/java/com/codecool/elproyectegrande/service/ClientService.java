@@ -3,18 +3,12 @@ package com.codecool.elproyectegrande.service;
 import com.codecool.elproyectegrande.model.Client;
 //import com.codecool.elproyectegrande.utils.AddClients;
 import com.codecool.elproyectegrande.repository.ClientRepository;
-import jakarta.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-//@Component
-//@RequiredArgsConstructor
 @Service
-@Transactional
 public class ClientService {
 
     private final ClientRepository clientRepository;

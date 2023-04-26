@@ -9,6 +9,7 @@ import image8 from "../images/testImagesForcards/4fb0f6c7-6c0f-403c-9441-a569d33
 
 import React, {useEffect, useState} from 'react';
 import './PropertyList.css';
+import { Link } from "react-router-dom"
 
 function GetPropertyList() {
 
@@ -30,17 +31,19 @@ function GetPropertyList() {
         <div className={"card-body"}>
             {propertyData.map((property, index) => {
                 return (
-                    <div className="card" key={property.id} id={property.id}>
-                        <div className="card-body">
-                            <h6 className="card-title">{property.name}</h6>
-                            <img className="card-img-top" src={images[index]} alt="Card image"/>
-                            <p className="card-rating"> &#x22C6; {property.rating}</p>
-                            <p className="card-rating"> &#8364; {property.pricePerNight}</p>
-                            <br/>
-                            <p className="card-text-location"><i
-                                className='icon'></i>{property.location.city},{property.location.country}</p>
+                    <Link to={`/properties/${property.id}`}>
+                        <div className="card" key={property.id} id={property.id}>
+                            <div className="card-body">
+                                <h6 className="card-title">{property.name}</h6>
+                                <img className="card-img-top" src={images[index]} alt="Card image"/>
+                                <p className="card-rating"> &#x22C6; {property.rating}</p>
+                                <p className="card-rating"> &#8364; {property.pricePerNight}</p>
+                                <br/>
+                                <p className="card-text-location"><i
+                                    className='icon'></i>{property.location.city},{property.location.country}</p>
+                            </div>
                         </div>
-                    </div>
+                    </Link>
                 );
             })}
         </div>

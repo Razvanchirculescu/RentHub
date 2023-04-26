@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Component
@@ -32,16 +33,10 @@ public class PropertyService {
         return propertyRepository.findAll();
     }
 
-    public List<Property> getPropertiesByCategory(Category category) {
-        List<Property> propertiesList = new ArrayList<>();
-        for (Property property : getAllProperties()) {
-            for (Category category1 : property.getCategories()) {
-                if (category.equals(category1)) {
-                    propertiesList.add(property);
-                }
-            }
-        }
-        return propertiesList;
+    public List<Property> getPropertiesByCategory(String category) {
+        Category category1 = categoryRepository.findByName(category);
+        return getAllProperties().stream().filter(property ->
+                property.getCategories().contains(category1)).collect(Collectors.toList());
     }
 
     public void addReviewForProperty(Long id, Review review) {
@@ -49,8 +44,11 @@ public class PropertyService {
         if (review.getSatisfaction() < 1 || review.getSatisfaction() > 5) {
             throw new IllegalArgumentException("Rating must be between 1 and 5");
         }
-        reviewRepository.save(review);
+        review.setProperty(property);
         property.addReview(review);
+        property.setRating();
+        reviewRepository.save(review);
+        propertyRepository.save(property);
     }
 
 //    public void addReservation(int propertyId, Reservation reservation) {
@@ -126,10 +124,9 @@ public class PropertyService {
         return propertyRepository.findById(propertyId).orElseThrow(() -> new EntityNotFoundException("Property doesn't exist!"));
     }
 
-
     public RentalUnit getRentalUnitById(Long propertyId, int rentalUnitId){
         Property property = getPropertyById(propertyId);
-        return property.getRentalUnitList().stream()
+        return property.getRentalUnits().stream()
                 .filter(rentalUnit -> rentalUnitId==rentalUnit.getId())
                 .findAny()
                 .orElse(null);
@@ -137,8 +134,8 @@ public class PropertyService {
 
     public void addRentalUnit(RentalUnit rentalUnit){
         Property property = getPropertyById((long) rentalUnit.getProperty().getId());
-        if (!property.getRentalUnitList().contains(rentalUnit)) {
-            property.getRentalUnitList().add(rentalUnit);
+        if (!property.getRentalUnits().contains(rentalUnit)) {
+            property.getRentalUnits().add(rentalUnit);
         }
     }
 }
