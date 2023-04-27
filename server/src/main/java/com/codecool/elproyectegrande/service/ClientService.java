@@ -2,6 +2,7 @@ package com.codecool.elproyectegrande.service;
 
 import com.codecool.elproyectegrande.model.Client;
 //import com.codecool.elproyectegrande.utils.AddClients;
+import com.codecool.elproyectegrande.model.ClientRole;
 import com.codecool.elproyectegrande.repository.ClientRepository;
 
 import org.springframework.stereotype.Service;
@@ -62,6 +63,7 @@ public class ClientService {
         newClient.setPhoneNumber(phone);
 //        newClient.setPassword(passwordEncoder.encode(password1));
         newClient.setPassword(password);
+        newClient.setClientRole(ClientRole.USER);
 
         // Save the new client to the database
         return clientRepository.save(newClient);

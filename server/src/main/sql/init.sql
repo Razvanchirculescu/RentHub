@@ -49,9 +49,9 @@ insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'APARTMENT');
 insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'DOUBLE');
 insert into rental_unit (property_id, rental_unit_type) VALUES (1, 'SINGLE');
 
-insert into client(email_address, name, phone_number, surname) VALUES ('adi@adi.com', 'Adi', '1111111', 'BBBB')
-insert into client(email_address, name, phone_number, surname) VALUES ('radu@radu.com', 'Radu', '22222', 'AAAA')
-insert into client(email_address, name, phone_number, surname) VALUES ('mmm@mmm.com', 'Mar', '3333333', 'CCCCC')
+insert into client(client_role, email_address, name, password, phone_number, surname) VALUES( 'ADMIN', 'adi@adi.com', 'Adi', '1234','1111111', 'BBBB')
+insert into client(client_role, email_address, name, password, phone_number, surname) VALUES ( 'USER','radu@radu.com', 'Radu', '2345','22222', 'AAAA')
+insert into client(client_role, email_address, name, password, phone_number, surname) VALUES ( 'USER','mmm@mmm.com', 'Mar', '3456','3333333', 'CCCCC')
 
 
 

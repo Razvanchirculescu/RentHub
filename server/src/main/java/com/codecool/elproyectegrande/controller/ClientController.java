@@ -35,7 +35,6 @@ public class ClientController {
 
     ClientSession clientSession;
 
-
     @Autowired
     public ClientController(ClientService clientService, ClientSession clientSession) {
         this.clientService = clientService;
@@ -68,24 +67,18 @@ public class ClientController {
     }
 
 
-    @GetMapping("/register-form")
-    public String showRegistrationForm(Model model) {
-        model.addAttribute("client", new Client());
-        return "register-form";
-    }
-
-
     @PostMapping("/register")
-    public String registerClient(@ModelAttribute("client") Client client, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "register-form";
-        }
-
+    public String registerClient(@RequestBody  Client client) {
         try {
-            clientService.registerClient(client.getName(), client.getSurname(), client.getEmailAddress(), client.getPhoneNumber(), client.getPassword());
+            clientService.registerClient(
+                      client.getName()
+                    , client.getSurname()
+                    , client.getEmailAddress()
+                    , client.getPhoneNumber()
+                    , client.getPassword());
             return "redirect:/login-form";
         } catch (ClientException e) {
-            model.addAttribute("message", e.getMessage());
+            System.out.println("message"+ e.getMessage());
             return "register-form";
         }
     }

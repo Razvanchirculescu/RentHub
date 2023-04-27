@@ -6,6 +6,8 @@ import NoPageFound from "./pages/NoPageFound";
 import LandingPage from "./pages/LandingPage";
 import ClientsPage from "./pages/ClientsPage";
 import ClientPage from "./pages/ClientPage";
+// import ClientRegisterPage from "./pages/RegisterFormPage";
+import RegisterPage from "./pages/RegisterPage";
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
               <Route path="/properties/:id" element={ <PropertyPage /> } />
                 <Route path="/api/clients/:id" element={<ClientPage />} />
                 <Route path="/api/clients" element={< ClientsPage />} />
+                <Route path="/api/clients/register-form" element={< RegisterPage />} />
+                {/*<Route path="/api/clients/register" element={< RegisterFormPage />} />*/}
               <Route path="*" element={<NoPageFound />} />
             </Routes>
           </BrowserRouter>
