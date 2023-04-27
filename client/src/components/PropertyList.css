@@ -1,11 +1,19 @@
 
-.card-body{
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 4px;
+#properties-content {
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.property-column {
+    padding-bottom: 2vh;
+}
+
+.property-image {
+    align-items: center;
 }
 
 
+/* 
 .card{
     border-radius: 40px;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
@@ -31,12 +39,6 @@
     padding: 8px;
 }
 
-.card-img-top{
-    width: 30vh;
-    height: 20vh;
-
-    alignment: center;
-}
 
 .card-text-location{
     text-align: center;
@@ -77,4 +79,4 @@
     padding-right: 15px;
     font-size: medium;
 }
-
+ */

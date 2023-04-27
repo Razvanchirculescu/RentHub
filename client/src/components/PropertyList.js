@@ -6,7 +6,6 @@ import {
     MDBCardImage,
     MDBCardBody,
     MDBCardTitle,
-    MDBCardText,
     MDBCardFooter,
     MDBRow,
     MDBCol
@@ -62,14 +61,14 @@ function PropertyList() {
             <MDBCard className='h-100'>
                 <MDBCardImage className = 'property-image'
                 src={property.images[0].path}
-                alt='...'
+                alt={property.name}
                 position='top'
                 />
                 <MDBCardBody>
                 <MDBCardTitle>{property.name}</MDBCardTitle>
                 </MDBCardBody>
                 <MDBCardFooter>
-                <small className='text-muted'>Last updated 3 mins ago</small>
+                <small>Last updated 3 mins ago</small>
                 </MDBCardFooter>
             </MDBCard>
             </MDBCol>
