@@ -124,7 +124,17 @@ export default function PropertyDetail() {
                         minDate={startDate}
                         placeholder={"End date"}
                     />
-
+                    <div>
+                        <MDBListGroup style={{ minWidth: '22rem' }} light small>
+                            {propertyData.reviews.map((review, index) => {
+                                return (
+                                    <MDBListGroupItem key={`review-${index}`}>
+                                        {review.satisfaction}
+                                    </MDBListGroupItem>
+                                );
+                            })}
+                        </MDBListGroup>
+                    </div>
 
                 </div>
 
