@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 
 import DatePicker from "react-multi-date-picker";
+// import { faStar } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './PropertyDetail.css'
 
 
@@ -28,6 +30,7 @@ export default function PropertyDetail() {
             })
             .then(data => {
                 setPropertyData(data)
+                console.log("reviews: " + data.reviews)
             })
             .catch(error => {
                 console.error(error);
@@ -43,44 +46,34 @@ export default function PropertyDetail() {
     }
 
     return (
-
-
-        <div className={"property-detail-page"}>
-
-
-            <div className="m-2_propertyDetailDescription">
-                <h3 className="component text-2xl">{propertyData.name}</h3>
+        <div className={"property"}>
+            <div className="property__description">
+                <h3 className="property__name">{propertyData.name}</h3>
             </div>
-
-
-            <div className="m-2_rating">
-
+            <div className="property__rating">
                 <div className="component font-bold">
-                    <button id={"property_page_rating_button"}> &#9733; {propertyData.rating}</button>
+                    <button id={"property__rating-button"}> &#9733; {propertyData.rating} {propertyData.reviews.length} Reviews</button>
                     &nbsp; &nbsp;
+                    {propertyData.reviews && propertyData.reviews.length > 0 && (
+                    <p>{propertyData.reviews.length} Reviews</p>
+                    )}
                     {propertyData.location.city},&nbsp;{propertyData.location.country}
                 </div>
             </div>
-
-            {/* Gallery carousel*/}
             <div className="row">
                 <div className="col-md-8">
                     <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
                         <ol className="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            {propertyData.images.map((image, index) => (
+                                <li data-target="#carouselExampleIndicators" data-slide-to={index} className={index === 0 ? "active" : ""} key={index}></li>
+                            ))}
                         </ol>
                         <div className="carousel-inner">
-                            <div className="carousel-item active">
-                                <img className="d-block w-100" src={propertyData.images[0].path} alt="First slide"/>
-                            </div>
-                            <div className="carousel-item">
-                                <img className="d-block w-100" src={propertyData.images[1].path} alt="Second slide"/>
-                            </div>
-                            <div className="carousel-item">
-                                <img className="d-block w-100" src={propertyData.images[1].path} alt="Third slide"/>
-                            </div>
+                            {propertyData.images.map((image, index) => (
+                                <div className={`carousel-item ${index === 0 ? "active" : ""}`} key={index}>
+                                <img className="d-block w-100" src={image.path} alt={`Slide ${index}`} />
+                                </div>
+                            ))}
                         </div>
                         <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button"
                            data-slide="prev">
@@ -95,7 +88,6 @@ export default function PropertyDetail() {
                     </div>
                 </div>
 
-                {/*DatePicker*/}
                 <div className="col-md-4" id={"datePickerDiv"}>
                 <p> Check availability</p>
 
@@ -124,24 +116,17 @@ export default function PropertyDetail() {
                         minDate={startDate}
                         placeholder={"End date"}
                     />
-                    <div>
-                        <MDBListGroup style={{ minWidth: '22rem' }} light small>
-                            {propertyData.reviews.map((review, index) => {
-                                return (
-                                    <MDBListGroupItem key={`review-${index}`}>
-                                        {review.satisfaction}
-                                    </MDBListGroupItem>
-                                );
-                            })}
-                        </MDBListGroup>
-                    </div>
-
                 </div>
-
+                <div className="property__reviews">
+                {propertyData.reviews && propertyData.reviews.map(review => (
+                <div key={review.id}>
+                    <p>Satisfaction: {review.satisfaction}</p>
+                    {/* <FontAwesomeIcon key={review.id} icon={faStar} color="yellow" /> */}
+                    <p>{review.description}</p>
+                </div>
+                ))}
+                </div>
             </div>
-
         </div>
-
-
     );
 }

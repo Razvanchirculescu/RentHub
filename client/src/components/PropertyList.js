@@ -1,35 +1,48 @@
 import React, {useEffect, useState} from 'react';
 import './PropertyList.css';
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
-function GetPropertyList() {
+
+
+function PropertyList() {
 
     const [propertyData, setPropertyData] = useState([]);
+    const searchParams = new URLSearchParams(useLocation().search);
+    const category = searchParams.get("category");
+    console.log(category)
+
 
     useEffect(() => {
         const fetchPropertyData = async () => {
-            const response = await fetch(
-                'http://localhost:8080/properties');
+            const url = `http://localhost:8080/properties${category ? `?category=${category}` : ''}`;
+            console.log("fetching data from:", url);
+            const response = await fetch(url);
             const data = await response.json();
             setPropertyData(data);
         };
-        fetchPropertyData().then(r => console.log(propertyData.toString()));
-    },);
+        fetchPropertyData();
+    }, [category]);
+
 
     return (
-        <div className={"card-body"}>
-            {propertyData.map((property, index) => {
+        <div className={"card-wrapper"}>
+            {propertyData.map((property) => {
                 return (
                     <Link to={`/properties/${property.id}`}>
-                        <div className="card" key={property.id} id={property.id}>
-                            <div className="card-body">
-                                <h6 className="card-title">{property.name}</h6>
-                                <img className="card-img-top" src= {property.images[0].path} alt="Card image"/>
-                                <p className="card-rating"> &#x22C6; {property.rating}</p>
-                                <p className="card-rating"> &#8364; {property.pricePerNight}</p>
-                                <br/>
-                                <p className="card-text-location"><i
-                                    className='icon'></i>{property.location.city},{property.location.country}</p>
+                        <div className="card">
+                            <div className="card__image">
+                                <img src={property.images[0].path} alt={property.name} />
+                            </div>
+                            <div className="card__details">
+                                <p className="card__location">{property.location.city}, {property.location.country}</p>
+                                <p className="card__subtitle"></p>
+                                <div className='card__footer'>
+                                <div className="card__rating">
+                                    <i className="fa fa-star" />
+                                    <span>{property.rating}</span>
+                                    </div>
+                                    <div className="card__price">${property.pricePerNight} per night</div>
+                                </div>
                             </div>
                         </div>
                     </Link>
@@ -39,4 +52,4 @@ function GetPropertyList() {
     );
 }
 
-export default GetPropertyList;
+export default PropertyList;
