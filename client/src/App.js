@@ -8,6 +8,7 @@ import ClientsPage from "./pages/ClientsPage";
 import ClientPage from "./pages/ClientPage";
 // import ClientRegisterPage from "./pages/RegisterFormPage";
 import RegisterPage from "./pages/RegisterPage";
+import InputForm from "./components/InputForm";
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
                 <Route path="/api/clients/:id" element={<ClientPage />} />
                 <Route path="/api/clients" element={< ClientsPage />} />
                 <Route path="/api/clients/register-form" element={< RegisterPage />} />
-                {/*<Route path="/api/clients/register" element={< RegisterFormPage />} />*/}
+                <Route path="/api/clients/register" element={< InputForm />} />
               <Route path="*" element={<NoPageFound />} />
             </Routes>
           </BrowserRouter>

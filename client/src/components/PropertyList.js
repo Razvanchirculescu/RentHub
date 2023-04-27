@@ -24,7 +24,8 @@ function GetPropertyList() {
             const data = await response.json();
             setPropertyData(data);
         };
-        fetchPropertyData().then(r => console.log(propertyData.toString()));
+        // fetchPropertyData().then(r => console.log(propertyData.toString()));
+        // fetchPropertyData().then(r => console.log("OK"));
     },);
 
     return (

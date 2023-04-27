@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class ClientService {
@@ -54,45 +55,51 @@ public class ClientService {
         // Check if a client with the same email already exists
         if (clientRepository.findByEmailAddress(email) != null) {
             throw new ClientException("A client with this email already exists");
+        } else if (
+                   Objects.equals(email, "")
+                || Objects.equals(name, "")
+                || Objects.equals(surname, "")
+                || Objects.equals(password, "")) {
+            throw new ClientException(": missing name, surname, email address or password");
+        } else {
+            List<Client> clientList = new ArrayList<>(getAllClients());
+            if (clientList.size() != 0) {
+                for (Client client : clientList
+                ) {
+                    if (client.getEmailAddress().equals(email)
+                            || client.getPhoneNumber().equals(phone)
+                            || client.getPassword().equals(password)) {
+                        throw new ClientException(": email address, phone number or the password  already exists in the database");
+                    } else {
+                        // Create a new client entity
+                        Client newClient = getNewClient(name, surname, email, phone, password);
+
+                        // Save the new client to the database
+                        return clientRepository.save(newClient);
+                    }
+                }
+            } else {
+                Client newClient = getNewClient(name, surname, email, phone, password);
+
+                // Save the new client to the database
+                return clientRepository.save(newClient);
+            }
         }
+        return null;
+    }
+
+    private static Client getNewClient(String name, String surname, String email, String phone, String password) {
         // Create a new client entity
         Client newClient = new Client();
         newClient.setName(name);
         newClient.setSurname(surname);
         newClient.setEmailAddress(email);
         newClient.setPhoneNumber(phone);
-//        newClient.setPassword(passwordEncoder.encode(password1));
         newClient.setPassword(password);
         newClient.setClientRole(ClientRole.USER);
-
-        // Save the new client to the database
-        return clientRepository.save(newClient);
-
+        return newClient;
     }
 
-//    public void registerClient(String name, String surname, String email, String phone, String password1, String password2) throws ClientException {
-//        if (!password1.equals(password2)) {
-//            throw new ClientException("parolele nu sunt identice");
-//        } else {
-//            List<Client> clientList = new ArrayList<>(getAllClients());
-//            for (Client client : clientList
-//            ) {
-//                if (client.getEmailAddress().equals(email)
-//                        || client.getPhoneNumber().equals(phone)) {
-//                    throw new ClientException("adresa e email sau numarul de telefon  exista deja in baza de date");
-//                } else {
-//                    Client newClient = new Client();
-//                    newClient.setName(name);
-//                    newClient.setSurname(surname);
-//                    newClient.setEmailAddress(email);
-//                    newClient.setPhoneNumber(phone);
-////                    newClient.setPassword(passwordEncoder.encode(password1));
-//                    newClient.setPassword(password1);
-//                    clientRepository.save(newClient);
-//                }
-//            }
-//        }
-//    }
 
     public Client login(String email, String password) throws ClientException {
         // Find the client with the specified email
@@ -101,7 +108,7 @@ public class ClientService {
         // Check if the client was found and the password is correct
 //        if (client == null || !passwordEncoder.matches(password, client.getPassword())) {
         if (client == null || !client.getPassword().equals(password)) {
-            throw new ClientException("Invalid email or password");
+            throw new ClientException(": Invalid email or password");
         }
 
         // Return the authenticated client
