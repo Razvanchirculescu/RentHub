@@ -43,26 +43,20 @@ export default function PropertyDetail() {
     }
 
     return (
-
-
-        <div className={"property-detail-page"}>
-
-
-            <div className="m-2_propertyDetailDescription">
-                <h3 className="component text-2xl">{propertyData.name}</h3>
+        <div className={"property"}>
+            <div className="property__description">
+                <h3 className="property__name">{propertyData.name}</h3>
             </div>
-
-
-            <div className="m-2_rating">
-
+            <div className="property__rating">
                 <div className="component font-bold">
-                    <button id={"property_page_rating_button"}> &#9733; {propertyData.rating}</button>
+                    <button id={"property__rating-button"}> &#9733; {propertyData.rating}</button>
                     &nbsp; &nbsp;
+                    {propertyData.review && propertyData.review.length > 0 && (
+                    <p>{propertyData.review.length} Reviews</p>
+                    )}
                     {propertyData.location.city},&nbsp;{propertyData.location.country}
                 </div>
             </div>
-
-            {/* Gallery carousel*/}
             <div className="row">
                 <div className="col-md-8">
                     <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
@@ -91,7 +85,6 @@ export default function PropertyDetail() {
                     </div>
                 </div>
 
-                {/*DatePicker*/}
                 <div className="col-md-4" id={"datePickerDiv"}>
                 <p> Check availability</p>
 
@@ -120,14 +113,8 @@ export default function PropertyDetail() {
                         minDate={startDate}
                         placeholder={"End date"}
                     />
-
-
                 </div>
-
             </div>
-
         </div>
-
-
     );
 }

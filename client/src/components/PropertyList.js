@@ -1,15 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './PropertyList.css';
 import { Link, useLocation } from "react-router-dom"
-import {
-    MDBCard,
-    MDBCardImage,
-    MDBCardBody,
-    MDBCardTitle,
-    MDBCardFooter,
-    MDBRow,
-    MDBCol
-  } from 'mdb-react-ui-kit';
 
 
 
