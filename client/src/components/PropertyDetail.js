@@ -2,9 +2,8 @@ import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 
 import DatePicker from "react-multi-date-picker";
-// import { faStar } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './PropertyDetail.css'
+import {MDBBadge, MDBListGroup, MDBListGroupItem} from "mdb-react-ui-kit";
 
 
 export default function PropertyDetail() {
@@ -52,7 +51,7 @@ export default function PropertyDetail() {
             </div>
             <div className="property__rating">
                 <div className="component font-bold">
-                    <button id={"property__rating-button"}> &#9733; {propertyData.rating} {propertyData.reviews.length} Reviews</button>
+                    <button id={"property__rating-button"}> &#9733; {propertyData.rating} </button>
                     &nbsp; &nbsp;
                     {propertyData.reviews && propertyData.reviews.length > 0 && (
                     <p>{propertyData.reviews.length} Reviews</p>
@@ -62,13 +61,13 @@ export default function PropertyDetail() {
             </div>
             <div className="row">
                 <div className="col-md-8">
-                    <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+                    <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel" style={{height: "fit-content"}}>
                         <ol className="carousel-indicators">
                             {propertyData.images.map((image, index) => (
                                 <li data-target="#carouselExampleIndicators" data-slide-to={index} className={index === 0 ? "active" : ""} key={index}></li>
                             ))}
                         </ol>
-                        <div className="carousel-inner">
+                        <div className="carousel-inner" style={{height: "fit-content"}}>
                             {propertyData.images.map((image, index) => (
                                 <div className={`carousel-item ${index === 0 ? "active" : ""}`} key={index}>
                                 <img className="d-block w-100" src={image.path} alt={`Slide ${index}`} />
@@ -117,14 +116,22 @@ export default function PropertyDetail() {
                         placeholder={"End date"}
                     />
                 </div>
-                <div className="property__reviews">
-                {propertyData.reviews && propertyData.reviews.map(review => (
-                <div key={review.id}>
-                    <p>Satisfaction: {review.satisfaction}</p>
-                    {/* <FontAwesomeIcon key={review.id} icon={faStar} color="yellow" /> */}
-                    <p>{review.description}</p>
-                </div>
-                ))}
+
+                    <div className="propertyPageReviewSection">
+
+                    <MDBListGroup style={{ maxWidth: '25rem' }} light>
+                            {propertyData.reviews.map((review, index) => {
+                                return (
+                                    <MDBListGroupItem key={`review-${index}`}
+                                                      className='d-flex justify-content-between align-items-center'>
+                                        <p>{review.description}</p>
+                                        <MDBBadge pill light>
+                                            <span>{review.satisfaction} &#9733;</span>
+                                        </MDBBadge>
+                                    </MDBListGroupItem>
+                                );
+                            })}
+                    </MDBListGroup>
                 </div>
             </div>
         </div>

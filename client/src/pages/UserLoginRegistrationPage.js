@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import UserLoginRegisterForm from "../components/UserLoginRegisterForm";
+import Footer from "../components/Footer";
 
 export default function UserLoginRegistrationPage() {
 
@@ -8,6 +9,7 @@ export default function UserLoginRegistrationPage() {
         <div className="client">
             < Navbar />
             < UserLoginRegisterForm />
+            <Footer/>
         </div>
     )
 }
