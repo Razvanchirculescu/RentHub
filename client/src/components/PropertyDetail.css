@@ -25,6 +25,10 @@
     padding-bottom: 2vh;
 }
 
+.property__reviews {
+    padding-left: 4vh;
+}
+
 #carouselExampleIndicators{
 
     width: 900px;

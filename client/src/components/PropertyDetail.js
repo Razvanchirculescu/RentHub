@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 
 import DatePicker from "react-multi-date-picker";
+// import { faStar } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './PropertyDetail.css'
 
 
@@ -28,6 +30,7 @@ export default function PropertyDetail() {
             })
             .then(data => {
                 setPropertyData(data)
+                console.log("reviews: " + data.reviews)
             })
             .catch(error => {
                 console.error(error);
@@ -49,10 +52,10 @@ export default function PropertyDetail() {
             </div>
             <div className="property__rating">
                 <div className="component font-bold">
-                    <button id={"property__rating-button"}> &#9733; {propertyData.rating}</button>
+                    <button id={"property__rating-button"}> &#9733; {propertyData.rating} {propertyData.reviews.length} Reviews</button>
                     &nbsp; &nbsp;
-                    {propertyData.review && propertyData.review.length > 0 && (
-                    <p>{propertyData.review.length} Reviews</p>
+                    {propertyData.reviews && propertyData.reviews.length > 0 && (
+                    <p>{propertyData.reviews.length} Reviews</p>
                     )}
                     {propertyData.location.city},&nbsp;{propertyData.location.country}
                 </div>
@@ -113,6 +116,15 @@ export default function PropertyDetail() {
                         minDate={startDate}
                         placeholder={"End date"}
                     />
+                </div>
+                <div className="property__reviews">
+                {propertyData.reviews && propertyData.reviews.map(review => (
+                <div key={review.id}>
+                    <p>Satisfaction: {review.satisfaction}</p>
+                    {/* <FontAwesomeIcon key={review.id} icon={faStar} color="yellow" /> */}
+                    <p>{review.description}</p>
+                </div>
+                ))}
                 </div>
             </div>
         </div>
