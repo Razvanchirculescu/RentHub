@@ -34,47 +34,30 @@ function PropertyList() {
 
 
     return (
-        // <div className={"card-body"}>
-        //     {propertyData.map((property) => {
-        //         return (
-        //             <Link to={`/properties/${property.id}`}>
-        //                 <div className="card" key={property.id} id={property.id}>
-        //                     <div className="card-body" key={property.id}>
-        //                         <h6 className="card-title">{property.name}</h6>
-        //                         <img className="card-img-top" src= {property.images[0].path} alt="Card image"/>
-        //                         <p className="card-rating"> &#x22C6; {property.rating}</p>
-        //                         <p className="card-rating"> &#8364; {property.pricePerNight}</p>
-        //                         <br/>
-        //                         <p className="card-text-location"><i
-        //                             className='icon'></i>{property.location.city},{property.location.country}</p>
-        //                     </div>
-        //                 </div>
-        //             </Link>
-        //         );
-        //     })}
-        // </div>
-
-        <MDBRow className='row-cols-4 row-cols-lg-3 g-2' id='properties-content'>
-             {propertyData.map((property) => {
-            return (
-            <MDBCol className='col-sm-3 property-column'>
-            <MDBCard className='h-100'>
-                <MDBCardImage className = 'property-image'
-                src={property.images[0].path}
-                alt={property.name}
-                position='top'
-                />
-                <MDBCardBody>
-                <MDBCardTitle>{property.name}</MDBCardTitle>
-                </MDBCardBody>
-                <MDBCardFooter>
-                <small>Last updated 3 mins ago</small>
-                </MDBCardFooter>
-            </MDBCard>
-            </MDBCol>
-                   );
-              })}
-        </MDBRow>
+        <div className={"card-wrapper"}>
+            {propertyData.map((property) => {
+                return (
+                    <Link to={`/properties/${property.id}`}>
+                        <div className="card">
+                            <div className="card__image">
+                                <img src={property.images[0].path} alt={property.name} />
+                            </div>
+                            <div className="card__details">
+                                <p className="card__location">{property.location.city}, {property.location.country}</p>
+                                <p className="card__subtitle"></p>
+                                <div className='card__footer'>
+                                <div className="card__rating">
+                                    <i className="fa fa-star" />
+                                    <span>{property.rating}</span>
+                                    </div>
+                                    <div className="card__price">${property.pricePerNight} per night</div>
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+                );
+            })}
+        </div>
     );
 }
 

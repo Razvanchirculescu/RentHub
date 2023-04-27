@@ -1,25 +1,27 @@
-insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1Uebxsb1syuN-DxnIOBEE4dO4GV3S1Eao', 1);
-insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1pEynjKYNmGGB_g9vFX_autjL5yfpb3cP', 1);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img922/3803/bHsZo4.png', 1);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img924/7117/1u9Ckl.png', 1);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img924/5949/JfrexL.png', 1);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img922/1716/k5Bo6n.png', 1);
 
-insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=163Tand_0XtKlqX8qmJEzjFl2e-JA9SZI', 2);
-insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1ITyPs0e-lwCzg5dYOJ6hepzU0UoXqKG4', 2);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img924/6933/pP7vCL.png', 2);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img922/4899/y5eTdy.png', 2);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img924/5182/zerv3I.png', 2);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img923/8238/Xf4oJC.png', 2);
 
-insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1aR4AsN8luDbc-joOdr6AhGT87HPiQERo', 3);
-insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1GGQx0xPUhLxvecBEUaOyp2luruDCuEwX', 3);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img924/662/XCgLnt.png', 3);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img922/6774/CO405y.png', 3);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img923/5963/COaeTE.png', 3);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img922/1695/xsZd0k.png', 3);
 
-insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=11K7xewhHxgOMd_5amOxerTLL-11roISn', 4);
-insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1HAB4zIvdv7Q7ITMDWjHpJPVv2uNdHh0G', 4);
-insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1sDYsTkblnDRY37Wj87DKCJWjI_rb4k5e', 4);
-insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1t9uBwi-GziLDoTYgjaVX4iDSTttojTNU', 4);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img923/2259/Hhny2z.png', 4);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img924/4183/lqrJKn.png', 4);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img922/659/gei9J3.png', 4);
 
-insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1l-LBMksaQ7uSs1Kjfq0GaPcJ_5VNb-M6', 5);
-insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1ZiZ8BnjtGixknyeH3EeNOGYCNkVleJ1n', 5);
-insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1sX_YhxkGVgiOONepnFh-chxoesmjhLvk', 5);
-insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=12LBCJJqRniGTD2pFZ16IMl49eB4a2sK2', 5);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img923/6391/wQA3vD.png', 5);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img922/1112/Rd3Z6G.png', 5);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img923/5994/bqodJh.png', 5);
 
-insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=161D-AICIXOMtX0wvAbNixmzWT6kR6D0Y', 6);
-insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1G-NCX7-e09hbqxG-aaGkV8HqtN2GZzza', 6);
-insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1rp7FXAH6jhCDoV0X1GvejESgfr_MsyKY', 6);
-insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1gqJOG59lojOYOdjVR2Vz95DzFCIOrsx0', 6);
-insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1InPdCG-M1ZVdNBU8MD6YuAGfj-iUbeph', 6);
-insert into image (path, property_id) VALUES ('https://drive.google.com/uc?id=1Q3wUZmIPJ-Y7DOwlwOYpPa-LCwj1P329', 6);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img923/5226/1lDMlo.png', 6);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img923/5638/WSTVz3.png', 6);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img924/9528/FCqZfM.png', 6);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img922/6780/PFQqUI.png', 6);
