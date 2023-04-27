@@ -10,10 +10,10 @@ export default function Navbar() {
         <nav className="nav flex flex-wrap items-center justify-between px-4">
             <div className="flex flex-no-shrink items-center mr-6 py-3 text-grey-darkest">
 
-                <a href={"#"}>
+                <a href={"/properties"}>
                     <img height={40} width={100} src={logoImage} alt={"logo"}/>
                 </a>
-                <a href={"#"}>
+                <a href={"/properties"}>
                     <img height={50} width={150} src={logoText} alt={"logo"}/>
                 </a>
             </div>

@@ -5,17 +5,14 @@ import DatePicker from "react-multi-date-picker";
 import './PropertyDetail.css'
 
 
-
 export default function PropertyDetail() {
 
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
 
 
-
-
     const {id} = useParams();
-    console.log(id);
+    // console.log(id);
 
     const [propertyData, setPropertyData] = useState(null);
 
@@ -56,10 +53,9 @@ export default function PropertyDetail() {
             </div>
 
 
-
             <div className="m-2_rating">
 
-                <div className="component font-bold" >
+                <div className="component font-bold">
                     <button id={"property_page_rating_button"}> &#9733; {propertyData.rating}</button>
                     &nbsp; &nbsp;
                     {propertyData.location.city},&nbsp;{propertyData.location.country}
@@ -86,11 +82,13 @@ export default function PropertyDetail() {
                                 <img className="d-block w-100" src={propertyData.images[1].path} alt="Third slide"/>
                             </div>
                         </div>
-                        <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                           data-slide="prev">
                             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span className="sr-only">Previous</span>
                         </a>
-                        <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <a className="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                           data-slide="next">
                             <span className="carousel-control-next-icon" aria-hidden="true"></span>
                             <span className="sr-only">Next</span>
                         </a>
@@ -98,7 +96,8 @@ export default function PropertyDetail() {
                 </div>
 
                 {/*DatePicker*/}
-                <div className="col-md-4">
+                <div className="col-md-4" id={"datePickerDiv"}>
+                <p> Check availability</p>
 
                     &#128197;  &nbsp;
 
@@ -111,8 +110,9 @@ export default function PropertyDetail() {
                         endDate={endDate}
                         placeholder={"Start date"}
                     />
+
                     &nbsp;
-                     To
+                    To
                     &nbsp;
 
                     <DatePicker
@@ -123,20 +123,14 @@ export default function PropertyDetail() {
                         endDate={endDate}
                         minDate={startDate}
                         placeholder={"End date"}
-
-
                     />
 
 
-
                 </div>
+
             </div>
 
         </div>
-
-
-
-
 
 
     );
