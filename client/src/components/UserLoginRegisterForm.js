@@ -27,7 +27,9 @@ export default function UserLoginRegisterForm() {
     };
 
     return (
+
         <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
+
 
             <MDBTabs pills justify className='mb-3 d-flex flex-row justify-content-between'>
                 <MDBTabsItem>
@@ -57,7 +59,7 @@ export default function UserLoginRegisterForm() {
                     </div>
 
                     <MDBBtn className="mb-4 w-100">Sign in</MDBBtn>
-                    <p className="text-center">Not a member? <a href="#!">Register</a></p>
+                    <p className="text-center">Not a member? <a href="src/components/UserLoginRegisterForm#!">Register</a></p>
 
                 </MDBTabsPane>
 

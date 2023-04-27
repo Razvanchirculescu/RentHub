@@ -6,7 +6,7 @@ import NoPageFound from "./pages/NoPageFound";
 import LandingPage from "./pages/LandingPage";
 import ClientsPage from "./pages/ClientsPage";
 import ClientPage from "./pages/ClientPage";
-import UserLoginRegisterForm from "./components/UserLoginRegisterForm";
+import UserLoginRegistrationPage from "./pages/UserLoginRegistrationPage";
 
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
               <Route path="/properties/:id" element={ <PropertyPage /> } />
               <Route path="/api/clients/:id" element={<ClientPage />} />
               <Route path="/api/clients" element={< ClientsPage />} />
-              <Route path="/properties/login" element={<UserLoginRegisterForm />} />
+              <Route path="/properties/login" element={<UserLoginRegistrationPage />} />
               <Route path="*" element={<NoPageFound />} />
             </Routes>
           </BrowserRouter>
