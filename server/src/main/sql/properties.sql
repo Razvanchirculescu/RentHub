@@ -12,19 +12,19 @@ insert into property (name, description, price_per_night, rating, location_id) V
 
 insert into property (name, description, price_per_night, rating, location_id) VALUES ('Cabana Șapte Brazi Colibita', 'Situated 5 min walk from the lake in a secluded area with astonishing lake views,this cabin offers you the perfect getaway with family/friends.
 Spațiul
-The cabin has on the ground floor a big living room with open kitchen,fully equipped and a bathroom with shower and a separate toilet.First floor has 4 bedrooms with double beds & 1 double-decker bed and also bathroom with shower& separate toilet.The garden has an bbq area+open kitchen and private parking+playground/trampoline&toboggan', 401.00, 4, 3);
-insert into property (name, description, price_per_night, rating, location_id) VALUES ('Amazing 2bed`s / stunning views to Empire State', 'Amazing apartment with stunning skyline views to Manhattan and the Empire State. don''t look further if you need a quick access  to to Hudson Yards, Time Square, Hell''s Kitchen, Javits Center, the Summit Vanderbilt , Bryant Park, The Vessel and many more', 377.00, 4.5, 4);
+The cabin has on the ground floor a big living room with open kitchen,fully equipped and a bathroom with shower and a separate toilet.First floor has 4 bedrooms with double beds & 1 double-decker bed and also bathroom with shower& separate toilet.The garden has an bbq area+open kitchen and private parking+playground/trampoline&toboggan', 401.00, 4, 4);
+insert into property (name, description, price_per_night, rating, location_id) VALUES ('Amazing 2bed`s / stunning views to Empire State', 'Amazing apartment with stunning skyline views to Manhattan and the Empire State. don''t look further if you need a quick access  to to Hudson Yards, Time Square, Hell''s Kitchen, Javits Center, the Summit Vanderbilt , Bryant Park, The Vessel and many more', 377.00, 4.5, 5);
 
-insert into property (name, description, price_per_night, rating, location_id) VALUES ('Golden Square Penthouse', 'Created by the renowned global design team MAWD, the penthouse at Golden Square is the pinnacle of sophistication in the heart of the Soho neighborhood in London. Within easy walking distance, near Covent Gardens and Berkeley Theatre, you’ll find world-class retail, restaurants, and nightlife. From your penthouse perch, you’ll have an exceptional city view to help get a lay of the land. ', 3321.00, 5, 5);
+insert into property (name, description, price_per_night, rating, location_id) VALUES ('Golden Square Penthouse', 'Created by the renowned global design team MAWD, the penthouse at Golden Square is the pinnacle of sophistication in the heart of the Soho neighborhood in London. Within easy walking distance, near Covent Gardens and Berkeley Theatre, you’ll find world-class retail, restaurants, and nightlife. From your penthouse perch, you’ll have an exceptional city view to help get a lay of the land. ', 3321.00, 5, 6);
 
-insert into property_category (property_id, category_id) VALUES (1, 3);
-insert into property_category (property_id, category_id) VALUES (2, 1);
-insert into property_category (property_id, category_id) VALUES (3, 2);
-insert into property_category (property_id, category_id) VALUES (4, 5);
+insert into property_category (property_id, category_id) VALUES (1, 2);
+insert into property_category (property_id, category_id) VALUES (2, 3);
+insert into property_category (property_id, category_id) VALUES (2, 6);
+insert into property_category (property_id, category_id) VALUES (3, 7);
+insert into property_category (property_id, category_id) VALUES (3, 5);
 insert into property_category (property_id, category_id) VALUES (4, 1);
-insert into property_category (property_id, category_id) VALUES (5, 5);
-insert into property_category (property_id, category_id) VALUES (5, 1);
-insert into property_category (property_id, category_id) VALUES (6, 6);
+insert into property_category (property_id, category_id) VALUES (5, 3);
+insert into property_category (property_id, category_id) VALUES (5, 4);
 insert into property_category (property_id, category_id) VALUES (6, 3);
 
 

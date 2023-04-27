@@ -4,3 +4,4 @@ insert into category (name) VALUES ('Villa');
 insert into category (name) VALUES ('Trading');
 insert into category (name) VALUES ('Arctic');
 insert into category (name) VALUES ('Beach');
+insert into category (name) VALUES ('Dom');
