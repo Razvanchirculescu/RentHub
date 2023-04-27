@@ -67,20 +67,16 @@ export default function PropertyDetail() {
                 <div className="col-md-8">
                     <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
                         <ol className="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            {propertyData.images.map((image, index) => (
+                                <li data-target="#carouselExampleIndicators" data-slide-to={index} className={index === 0 ? "active" : ""} key={index}></li>
+                            ))}
                         </ol>
                         <div className="carousel-inner">
-                            <div className="carousel-item active">
-                                <img className="d-block w-100" src={propertyData.images[0].path} alt="First slide"/>
-                            </div>
-                            <div className="carousel-item">
-                                <img className="d-block w-100" src={propertyData.images[1].path} alt="Second slide"/>
-                            </div>
-                            <div className="carousel-item">
-                                <img className="d-block w-100" src={propertyData.images[1].path} alt="Third slide"/>
-                            </div>
+                            {propertyData.images.map((image, index) => (
+                                <div className={`carousel-item ${index === 0 ? "active" : ""}`} key={index}>
+                                <img className="d-block w-100" src={image.path} alt={`Slide ${index}`} />
+                                </div>
+                            ))}
                         </div>
                         <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button"
                            data-slide="prev">

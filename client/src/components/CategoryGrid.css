@@ -1,9 +1,3 @@
-/*body {*/
-/*    margin: 2vh;*/
-/*    font-family: 'Roboto Slab', serif;*/
-/*    font-size: 2vh;*/
-/*    line-height: 5.5vh;*/
-/*}*/
 img {
     height: 50%;
 }
@@ -11,7 +5,7 @@ img {
     margin: auto;
     padding-block-start: 20px;
     height: fit-content;
-    width: 80%;
+    width: 85%;
     writing-mode: horizontal-tb;
     display: grid;
     grid-gap: 4vh;

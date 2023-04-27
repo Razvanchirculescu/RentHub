@@ -75,6 +75,7 @@ insert into property_category (property_id, category_id) VALUES (7, 4);
 insert into property_category (property_id, category_id) VALUES (8, 3);
 insert into property_category (property_id, category_id) VALUES (8, 6);
 insert into property_category (property_id, category_id) VALUES (9, 1);
+insert into property_category (property_id, category_id) VALUES (9, 14);
 insert into property_category (property_id, category_id) VALUES (10, 3);
 
 
