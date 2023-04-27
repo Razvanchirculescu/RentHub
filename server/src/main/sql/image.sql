@@ -25,3 +25,22 @@ insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/i
 insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img923/5638/WSTVz3.png', 6);
 insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img924/9528/FCqZfM.png', 6);
 insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img922/6780/PFQqUI.png', 6);
+
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img924/1299/3a3sfN.png', 7);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img924/8177/nINDGG.png', 7);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img924/8080/mPjkHU.png', 7);
+
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img923/7280/25znRg.png', 8);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img922/6020/QF7D48.png', 8);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img922/2117/efOmjS.png', 8);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img922/5537/NPsXnZ.png', 8);
+
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img922/8258/32hNbr.png', 9);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img924/1871/EQO0lE.png', 9);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img923/3874/lvXt41.png', 9);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img923/7051/dzkF6O.png', 9);
+
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img922/5549/CSJIuy.png', 10);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img924/5980/OFzIgG.png', 10);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img923/9633/C4x8uQ.png', 10);
+insert into image (path, property_id) VALUES ('https://imagizer.imageshack.com/img922/1862/8o9UmJ.png', 10);

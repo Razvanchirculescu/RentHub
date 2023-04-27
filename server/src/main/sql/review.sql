@@ -19,3 +19,15 @@ insert into review (description, satisfaction, property_id) VALUES ('We had a lo
 insert into review (description, satisfaction, property_id) VALUES ('Excellent from start to finish, communication was perfect and the villa was amazing. Close enough to Ipsos with amazing views. Couldn’t fault it at all.', 5, 6);
 insert into review (description, satisfaction, property_id) VALUES ('If you look at the pictures and think the view is stunning - you bet it is; in reality its even better.Great Villa; the admin is really kind and helpful in all matters. ' ||
                                                                     'If you want a really relaxing and great vacation - this is the place to stay.', 5, 6);
+
+insert into review (description, satisfaction, property_id) VALUES ('The room is tiny but very cosy, and the bed is really comfortable, I had really good sleeps while I was there! It''s a really nice neighbourhood, with some shops and the Kew ' ||
+                                                                    'Gardens really close. Amelia is a very friendly and kind host and the whole house has good vibes. I really enjoyed my time there!', 4, 7);
+insert into review (description, satisfaction, property_id) VALUES ('Ideal location for me.', 5, 7);
+
+insert into review (description, satisfaction, property_id) VALUES ('Séjour au top en famille, c’était parfait! Merci', 5, 8);
+insert into review (description, satisfaction, property_id) VALUES ('Séjour parfait!', 5, 8);
+
+insert into review (description, satisfaction, property_id) VALUES ('We had a wonderful time at Veluvana!', 4, 9);
+insert into review (description, satisfaction, property_id) VALUES ('It was an amazing experience, I will never forget the words before entering ARE YOU READY and we saw this wonderful place.', 4, 9);
+
+insert into review (description, satisfaction, property_id) VALUES ('Art Villas was one of those places where I wish I never had to leave. If you get a chance to stay here, take it ... you''ll love it.', 5, 10);
