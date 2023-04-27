@@ -1,12 +1,15 @@
 
 .m-2_propertyDetailDescription{
     padding-top: 5vh;
-    padding-left: 56vh;
+    padding-left: 20vh;
 }
 
+.checkAvailability{
+    padding-left: 2vh;
+}
 .m-2_rating{
     padding-top: 2vh;
-    padding-left: 56vh;
+    padding-left: 20vh;
 }
 
 #carouselExampleIndicators{
@@ -17,4 +20,27 @@
 }
 .carousel-control-next, .carousel-control-prev{
     margin-bottom: 30vh;
+}
+
+
+input {
+    padding:10px;
+    font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    border-radius: 0 !important;
+}
+
+.form-control {
+    border-radius: 0 !important;
+    font-size: 12px;
+}
+
+.clickable { cursor: pointer; }
+
+
+.form-group_checkin{
+    position: relative;
+    width: 100px;
 }
