@@ -1,22 +1,20 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
+    MDBBtn,
+    MDBCheckbox,
     MDBContainer,
+    MDBInput,
     MDBTabs,
+    MDBTabsContent,
     MDBTabsItem,
     MDBTabsLink,
-    MDBTabsContent,
-    MDBTabsPane,
-    MDBBtn,
-    MDBIcon,
-    MDBInput,
-    MDBCheckbox
-}
-    from 'mdb-react-ui-kit';
-import Navbar from "./Navbar";
+    MDBTabsPane
+} from 'mdb-react-ui-kit';
 
 export default function UserLoginRegisterForm() {
 
-    const [justifyActive, setJustifyActive] = useState('tab1');;
+    const [justifyActive, setJustifyActive] = useState('tab1');
+    ;
 
     const handleJustifyClick = (value) => {
         if (value === justifyActive) {
@@ -49,17 +47,17 @@ export default function UserLoginRegisterForm() {
                 <MDBTabsPane show={justifyActive === 'tab1'}>
 
 
-
                     <MDBInput wrapperClass='mb-4' label='Email address' id='form1' type='email'/>
                     <MDBInput wrapperClass='mb-4' label='Password' id='form2' type='password'/>
 
                     <div className="d-flex justify-content-between mx-4 mb-4">
-                        <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />
+                        <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me'/>
                         <a href="!#">Forgot password?</a>
                     </div>
 
                     <MDBBtn className="mb-4 w-100">Sign in</MDBBtn>
-                    <p className="text-center">Not a member? <a href="src/components/UserLoginRegisterForm#!">Register</a></p>
+                    <p className="text-center">Not a member? <a
+                        href="src/components/UserLoginRegisterForm#!">Register</a></p>
 
                 </MDBTabsPane>
 
@@ -72,7 +70,7 @@ export default function UserLoginRegisterForm() {
                     <MDBInput wrapperClass='mb-4' label='Password' id='form1' type='password'/>
 
                     <div className='d-flex justify-content-center mb-4'>
-                        <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I have read and agree to the terms' />
+                        <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I have read and agree to the terms'/>
                     </div>
 
                     <MDBBtn className="mb-4 w-100">Sign up</MDBBtn>

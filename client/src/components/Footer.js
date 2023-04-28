@@ -8,8 +8,10 @@ import {
 
 export default function Footer() {
     return (
-        <MDBFooter className='bg-light text-center text-white'>
-            <MDBContainer className='p-4 pb-0'>
+        <div style={{ width:"100%", bottom:"0", height: '100%', display: 'flex', flexDirection: 'column' }}>
+
+        <MDBFooter className='bg-light text-center text-white' style={{ marginTop: 'auto' }}>
+            <MDBContainer className='p-4 pb-0' >
                 <section className='mb-4'>
                     <MDBBtn
                         floating
@@ -79,5 +81,6 @@ export default function Footer() {
                 </a>
             </div>
         </MDBFooter>
+        </div>
     );
 }

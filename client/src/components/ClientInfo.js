@@ -1,12 +1,11 @@
-
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import logoText from '../images/logos/logoText.png';
-import { useParams } from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import './ClientInfo.css';
 
-function ClientInfo() {
+export default function ClientInfo() {
 
-    const { id } = useParams();
+    const {id} = useParams();
     console.log(id);
 
     const [clientData, setClientData] = useState(null);
@@ -16,8 +15,7 @@ function ClientInfo() {
     }
 
 
-    useEffect(() => {
-
+    function getClient() {
         const url = `http://localhost:8080/api/clients/${id}`;
         // const url = `http://localhost:8080/api/clients/1`;
 
@@ -35,19 +33,24 @@ function ClientInfo() {
             .catch(error => {
                 console.error(error);
             });
+    }
+
+    useEffect(() => {
+
+        getClient();
     }, [id]);
 
-        // const fetchClientData = async () => {
-        //     console.log(id);
-        //     const response = await fetch(
-        //         `http://localhost:8080/api/clients/${id}`);
-        //         // `http://localhost:8080/api/clients/2`);
-        //     const data = await response.json();
-        //     console.log(data)
-        //     setClientData(data);
-        // };
-        // fetchClientData();
-        // }, [id]);
+    // const fetchClientData = async () => {
+    //     console.log(id);
+    //     const response = await fetch(
+    //         `http://localhost:8080/api/clients/${id}`);
+    //         // `http://localhost:8080/api/clients/2`);
+    //     const data = await response.json();
+    //     console.log(data)
+    //     setClientData(data);
+    // };
+    // fetchClientData();
+    // }, [id]);
 
 
     if (!clientData) {
@@ -58,7 +61,8 @@ function ClientInfo() {
         <div>
             <div className={logoText}>
                 <button className="go_to_clients"
-                        onClick={() => handleButtonClick()}>Back to clients</button>
+                        onClick={() => handleButtonClick()}>Back to clients
+                </button>
             </div>
             <table className="center">
                 <thead>
@@ -71,16 +75,15 @@ function ClientInfo() {
                 </tr>
                 </thead>
                 <tbody>
-                    <tr key={clientData.id}>
-                        <td>{clientData.id}</td>
-                        <td>{clientData.name}</td>
-                        <td>{clientData.surname}</td>
-                        <td>{clientData.emailAddress}</td>
-                        <td>{clientData.phoneNumber}</td>
-                    </tr>
+                <tr key={clientData.id}>
+                    <td>{clientData.id}</td>
+                    <td>{clientData.name}</td>
+                    <td>{clientData.surname}</td>
+                    <td>{clientData.emailAddress}</td>
+                    <td>{clientData.phoneNumber}</td>
+                </tr>
                 </tbody>
             </table>
         </div>
     );
 }
-export default ClientInfo;

@@ -1,5 +1,6 @@
 package com.codecool.elproyectegrande.service;
 
+import com.codecool.elproyectegrande.exception.ClientException;
 import com.codecool.elproyectegrande.model.Client;
 //import com.codecool.elproyectegrande.utils.AddClients;
 import com.codecool.elproyectegrande.model.ClientRole;
@@ -51,7 +52,7 @@ public class ClientService {
                 .orElse(null);
     }
 
-    public Client registerClient(String name, String surname, String email, String phone, String password) throws ClientException{
+    public Client registerClient(String name, String surname, String email, String phone, String password) throws ClientException {
         // Check if a client with the same email already exists
         if (clientRepository.findByEmailAddress(email) != null) {
             throw new ClientException("A client with this email already exists");
