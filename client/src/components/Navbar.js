@@ -56,7 +56,7 @@ export default function Navbar() {
                 {/*        className="material-icons">login</i></a>*/}
                 {/*</li>*/}
                 <li className="border-t md:border-none">
-                    <a href="api/clients/register-form"
+                    <a href="http://localhost:3000/api/clients/register-form"
                        className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker"><i
                         className="material-icons">login</i></a>
                 </li>

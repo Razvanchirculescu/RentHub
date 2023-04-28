@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import {useHistory} from "react-router-dom";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Footer from "./Footer";
 
 
 export default function RegistrationForm() {
@@ -100,11 +101,21 @@ export default function RegistrationForm() {
                 <br/>
                 {/*<button type="submit">Register</button>*/}
                 <Button type="submit" variant="contained">Register</Button>
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                <Button type="submit" variant="contained" href="http://localhost:3000/api/clients/">Clients</Button>
                 {/*<button onClick={() => {*/}
                 {/*    console.log(name, surname, emailAddress, phoneNumber, password)*/}
                 {/*}*/}
                 {/*}>Show Data</button>*/}
             </form>
+            <Footer/>
         </div>
     );
 }
