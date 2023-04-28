@@ -50,8 +50,13 @@ export default function Navbar() {
                     </a>
                 </li>
 
+                {/*<li className="border-t md:border-none">*/}
+                {/*    <a href="/properties/login"*/}
+                {/*       className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker"><i*/}
+                {/*        className="material-icons">login</i></a>*/}
+                {/*</li>*/}
                 <li className="border-t md:border-none">
-                    <a href="/properties/login"
+                    <a href="api/clients/register-form"
                        className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker"><i
                         className="material-icons">login</i></a>
                 </li>

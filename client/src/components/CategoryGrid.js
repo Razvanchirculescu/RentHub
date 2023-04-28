@@ -29,8 +29,6 @@ buttons.forEach(button => {
 
 export default function CategoryGrid() {
 
-
-
     return (
         <div id="grid">
             <Link to={"/properties?category=Arctic"}>
