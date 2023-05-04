@@ -17,6 +17,15 @@ The current version of RentHub includes the following features:
 - Property listing page: Displays a list of available properties with information about their location, availability and pricing.
 - Property detail page: Work in progress.
 - Register and login: Work in progress.
+- User page: Work in progress.
+
+To be added by the end of May `23:
+
+- Property page: a map which shows the location of the property<br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               functionality to the date range booking selector
+- User page(while logged in) : User info(personal and contact details, past bookings, current bookings).
 
 ## Getting Started
 
