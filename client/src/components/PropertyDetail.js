@@ -59,7 +59,7 @@ export default function PropertyDetail() {
                     {propertyData.location.city},&nbsp;{propertyData.location.country}
                 </div>
             </div>
-            <div className="row">
+            <div className="row mb-5">
                 <div className="col-md-8">
                     <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel" style={{height: "fit-content"}}>
                         <ol className="carousel-indicators">

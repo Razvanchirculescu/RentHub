@@ -8,11 +8,11 @@ import {
 
 export default function Footer() {
     return (
-        <div style={{ width:"100%", bottom:"0", height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ width:'100%', bottom:'0', height: 'auto', display: 'flex', flexDirection: 'column' , position:'fixed  '}}>
 
-        <MDBFooter className='bg-light text-center text-white' style={{ marginTop: 'auto' }}>
+        <MDBFooter className='bg-light text-center text-white' id='footer' style={{ marginTop: 'auto' }}>
             <MDBContainer className='p-4 pb-0' >
-                <section className='mb-4'>
+                <section >
                     <MDBBtn
                         floating
                         className='m-1'
@@ -76,7 +76,7 @@ export default function Footer() {
 
             <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
                 © 2023 Copyright:
-                <a className='text-white' href='https://mdbootstrap.com/'>
+                <a className='text-white' href='http://www.codecool.com'>
                     CodeCool.com
                 </a>
             </div>
