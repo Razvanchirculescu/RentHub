@@ -22,7 +22,7 @@ The current version of RentHub includes the following features:
 
 To get started with the application, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/renthub.git`
+1. Clone the repository: `git clone https://github.com/Razvanchirculescu/renthub.git`
 2. Install the dependencies: `npm install`
 3. Start the application: `npm start`
 
