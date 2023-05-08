@@ -88,3 +88,5 @@ insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'DOUBLE');
 insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'APARTMENT');
 insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'DOUBLE');
 insert into rental_unit (property_id, rental_unit_type) VALUES (1, 'SINGLE');
+
+insert into reservation (check_in, check_out, property_id, rental_unit_id) VALUES (DATE '2022-08-07', DATE '2022-08-09', 1, 1);

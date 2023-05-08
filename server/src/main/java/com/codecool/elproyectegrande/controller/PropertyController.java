@@ -3,6 +3,7 @@ package com.codecool.elproyectegrande.controller;
 import com.codecool.elproyectegrande.model.Category;
 import com.codecool.elproyectegrande.model.Property;
 import com.codecool.elproyectegrande.model.RentalUnit;
+import com.codecool.elproyectegrande.model.ReservationRequest;
 import com.codecool.elproyectegrande.model.Review;
 import com.codecool.elproyectegrande.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,6 @@ public class PropertyController {
         propertyService.addReviewForProperty(id, review);
     }
 
-
     @GetMapping(params = "category")
     public List<Property> getPropertiesByCategory(@RequestParam("category") String category) {
         return propertyService.getPropertiesByCategory(category);
@@ -68,4 +68,10 @@ public class PropertyController {
     public void addRentalUnit(@RequestBody RentalUnit rentalUnit) {
         propertyService.addRentalUnit(rentalUnit);
     }
+
+    @PostMapping("/{propertyId}/reservations")
+    public void addReservation(@PathVariable Long propertyId, @RequestBody ReservationRequest reservationRequest) {
+        propertyService.addReservation(propertyId , reservationRequest);
+    }
+
 }
