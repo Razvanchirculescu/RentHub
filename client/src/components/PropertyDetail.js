@@ -123,7 +123,7 @@ export default function PropertyDetail() {
                             {propertyData.reviews.map((review, index) => {
                                 return (
                                     <MDBListGroupItem key={`review-${index}`}
-                                                      className='d-flex justify-content-between align-items-center'>
+                                                      className='d-flex justify-content-between align-items-center' style={{bottom:"1vh"}}>
                                         <p>{review.description}</p>
                                         <MDBBadge pill light>
                                             <span>{review.satisfaction} &#9733;</span>
