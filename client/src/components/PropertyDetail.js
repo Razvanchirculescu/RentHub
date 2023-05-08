@@ -3,6 +3,7 @@ import {useParams} from "react-router-dom";
 
 import DatePicker from "react-multi-date-picker";
 import './PropertyDetail.css'
+import Maps from "./Maps"
 import {MDBBadge, MDBListGroup, MDBListGroupItem} from "mdb-react-ui-kit";
 
 
@@ -30,6 +31,7 @@ export default function PropertyDetail() {
             .then(data => {
                 setPropertyData(data)
                 console.log("reviews: " + data.reviews)
+                console.log(propertyData)
             })
             .catch(error => {
                 console.error(error);
@@ -88,6 +90,9 @@ export default function PropertyDetail() {
                 </div>
 
                 <div className="col-md-4" id={"datePickerDiv"}>
+                    <div>
+                        <Maps/>
+                    </div>
                     <p> Check availability</p>
 
                     &#128197;  &nbsp;
@@ -115,7 +120,9 @@ export default function PropertyDetail() {
                         minDate={startDate}
                         placeholder={"End date"}
                     />
+
                 </div>
+
 
                 <div className="propertyPageReviewSection">
 
