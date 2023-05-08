@@ -1,30 +1,33 @@
-import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 import { useMemo } from "react";
 import "./Maps.css";
 
-export default function Maps(){
+export default function Maps({ location }) {
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: 'AIzaSyB3I0_AonpTHy5LAvcaBIRkJ6pz3eyabzo',
     });
-    const center = useMemo(() => ({ lat: 44.439663, lng: 26.096306 }), []);
+
+    const center = useMemo(() => location, [location]);
+
+    const onLoad = (marker) => {
+        console.log("marker: ", marker);
+    };
 
     return (
         <div className="maps">
             {!isLoaded ? (
                 <h1>Loading...</h1>
             ) : (
-                <GoogleMap
-                    mapContainerClassName="map-container"
-                    center={center}
-                    zoom={10}
-                >
-                    <Marker
-                        position={{ lat: 44.439663, lng: 26.096306 }}
-                        icon={"http://maps.google.com/mapfiles/ms/icons/green-dot.png"}
-                    />
+                <GoogleMap mapContainerClassName="map-container" center={center} zoom={12}>
+                    <MarkerF onLoad={onLoad} position={center} />
                 </GoogleMap>
-
             )}
         </div>
     );
-};
+}
+
+
+
+
+
+

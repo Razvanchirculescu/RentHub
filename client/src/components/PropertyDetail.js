@@ -12,9 +12,11 @@ export default function PropertyDetail() {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
 
+    const [location, setLocation] = useState({ lat: 44.439663, lng: 26.096306 });
+
+
 
     const {id} = useParams();
-    // console.log(id);
 
     const [propertyData, setPropertyData] = useState(null);
 
@@ -29,9 +31,23 @@ export default function PropertyDetail() {
                 }
             })
             .then(data => {
-                setPropertyData(data)
-                console.log("reviews: " + data.reviews)
-                console.log(propertyData)
+                setPropertyData(data);
+                const { street, streetNr, city, country } = data.location;
+                const apiKey = 'AIzaSyB3I0_AonpTHy5LAvcaBIRkJ6pz3eyabzo';
+                fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${street}+${streetNr}+${city}+${country}&key=${apiKey}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        const location = data.results[0].geometry.location;
+                        setLocation(location);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
             })
             .catch(error => {
                 console.error(error);
@@ -63,16 +79,18 @@ export default function PropertyDetail() {
             </div>
             <div className="row mb-5">
                 <div className="col-md-8">
-                    <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel" style={{height: "fit-content"}}>
+                    <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel"
+                         style={{height: "fit-content"}}>
                         <ol className="carousel-indicators">
                             {propertyData.images.map((image, index) => (
-                                <li data-target="#carouselExampleIndicators" data-slide-to={index} className={index === 0 ? "active" : ""} key={index}></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to={index}
+                                    className={index === 0 ? "active" : ""} key={index}></li>
                             ))}
                         </ol>
                         <div className="carousel-inner" style={{height: "fit-content"}}>
                             {propertyData.images.map((image, index) => (
                                 <div className={`carousel-item ${index === 0 ? "active" : ""}`} key={index}>
-                                    <img className="d-block w-100" src={image.path} alt={`Slide ${index}`} />
+                                    <img className="d-block w-100" src={image.path} alt={`Slide ${index}`}/>
                                 </div>
                             ))}
                         </div>
@@ -91,24 +109,28 @@ export default function PropertyDetail() {
 
                 <div className="col-md-4" id={"datePickerDiv"}>
                     <div>
-                        <Maps/>
+                        <Maps location={location}/>
                     </div>
+                    <br></br>
+                    <br></br>
                     <p> Check availability</p>
 
                     &#128197;  &nbsp;
 
-                    <DatePicker
-                        selected={startDate}
-                        onChange={(date) => setStartDate(date)}
-                        selectsStart
-                        minDate={new Date()}
-                        startDate={startDate}
-                        endDate={endDate}
-                        placeholder={"Start date"}
+                    <DatePicker style={{top: '10vh'}}
+                                selected={startDate}
+                                onChange={(date) => setStartDate(date)}
+                                selectsStart
+                                minDate={new Date()}
+                                startDate={startDate}
+                                endDate={endDate}
+                                placeholder={"Start date"}
                     />
 
                     &nbsp;
+                    &nbsp;
                     To
+                    &nbsp;
                     &nbsp;
 
                     <DatePicker
@@ -126,7 +148,7 @@ export default function PropertyDetail() {
 
                 <div className="propertyPageReviewSection">
 
-                    <MDBListGroup style={{ maxWidth: '25rem' }} light>
+                    <MDBListGroup style={{maxWidth: '25rem'}} light>
                         {propertyData.reviews.map((review, index) => {
                             return (
                                 <MDBListGroupItem key={`review-${index}`}

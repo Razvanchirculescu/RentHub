@@ -1,15 +1,9 @@
 .maps {
     height: 30vh;
-    width: 20vh;
-    display: flex;
-    align-items: center; /* aligns contents vertically */
-    justify-content: center; /* aligns contents horizontally */
+    width: 40vh;
 }
 
 .map-container {
     height: 100%;
     width: 100%;
-    display: flex;
-    align-items: center; /* aligns map vertically */
-    justify-content: center; /* aligns map horizontally */
 }
