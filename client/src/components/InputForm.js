@@ -1,3 +1,4 @@
+import React from 'react';
 
 import {
     MDBContainer,
@@ -12,6 +13,9 @@ import {
     MDBCheckbox
 }
     from 'mdb-react-ui-kit';
+
+
+// import { MDBIcon } from 'mdbreact';
 
 import {useState} from "react";
 
@@ -68,21 +72,18 @@ export default function InputForm() {
                     <div className="text-center mb-3">
                         <p>Sign un with:</p>
 
-                        <div className='d-flex justify-content-between mx-auto' style={{width: '40%'}}>
+                        <div className='d-flex justify-content-between mx-auto' style={{width: '20%'}}>
+                            <link rel="stylesheet"
+                                  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+                                  integrity="sha512-Bgmf7VLeHvOYw7VplLK/DgZGLx/gZiClHOGaUsktOWg9X1aLdkyLzeLGQY7lD+pqocQsffxSMZvGq3qTZM3XQA=="
+                                  crossOrigin="anonymous" referrerpolicy="no-referrer"/>
+
                             <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-                                <MDBIcon fab icon='facebook-f' size="sm"/>
+                                <MDBIcon icon='google' size="sm"/>
                             </MDBBtn>
 
                             <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-                                <MDBIcon fab icon='twitter' size="sm"/>
-                            </MDBBtn>
-
-                            <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-                                <MDBIcon fab icon='google' size="sm"/>
-                            </MDBBtn>
-
-                            <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-                                <MDBIcon fab icon='github' size="sm"/>
+                                <MDBIcon icon='github' size="sm"/>
                             </MDBBtn>
                         </div>
 
