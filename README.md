@@ -48,3 +48,5 @@ If you would like to contribute to the development of RentHub, follow these step
 
 
 ![1](https://drive.google.com/uc?id=1iF5WHNFftlbwjFnkCGBlzQaZ08CJrpQR)
+![2](https://drive.google.com/uc?id=1gvYrk-MExF3WxC4NSz1T80P9eiDCoSHi)
+
