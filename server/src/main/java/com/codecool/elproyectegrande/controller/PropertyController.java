@@ -3,7 +3,7 @@ package com.codecool.elproyectegrande.controller;
 import com.codecool.elproyectegrande.model.Category;
 import com.codecool.elproyectegrande.model.Property;
 import com.codecool.elproyectegrande.model.RentalUnit;
-import com.codecool.elproyectegrande.model.ReservationRequest;
+import com.codecool.elproyectegrande.DTO.ReservationRequest;
 import com.codecool.elproyectegrande.model.Review;
 import com.codecool.elproyectegrande.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +69,7 @@ public class PropertyController {
         propertyService.addRentalUnit(rentalUnit);
     }
 
+    //TODO Data Transfer Object
     @PostMapping("/{propertyId}/reservations")
     public void addReservation(@PathVariable Long propertyId, @RequestBody ReservationRequest reservationRequest) {
         propertyService.addReservation(propertyId , reservationRequest);

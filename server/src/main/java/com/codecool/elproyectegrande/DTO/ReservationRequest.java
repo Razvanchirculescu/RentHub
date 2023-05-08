@@ -1,4 +1,6 @@
-package com.codecool.elproyectegrande.model;
+package com.codecool.elproyectegrande.DTO;
+
+import com.codecool.elproyectegrande.model.Reservation;
 
 public class ReservationRequest {
 
