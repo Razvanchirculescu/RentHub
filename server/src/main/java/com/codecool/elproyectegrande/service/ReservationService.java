@@ -4,7 +4,6 @@ import com.codecool.elproyectegrande.exception.ReservationConflictException;
 import com.codecool.elproyectegrande.model.Reservation;
 import com.codecool.elproyectegrande.repository.ReservationRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -44,4 +43,5 @@ public class ReservationService {
     public List<Reservation> getReservationsForRentalUnit(Long rentalUnitId) {
         return reservationRepository.findByRentalUnitId(rentalUnitId);
     }
+
 }

@@ -1,25 +1,31 @@
 import React, { useState } from 'react';
+import {useParams} from "react-router-dom";
 import axios from 'axios';
 
 const ReservationForm = ({ propertyId }) => {
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [numGuests, setNumGuests] = useState('');
+  const [checkIn, setStartDate] = useState('');
+  const [checkOut, setEndDate] = useState('');
+  const [rentalUnitId, setRentalUnitId] = useState('');
+
+  const { id } = useParams();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/reservations', {
+      const response = await axios.post(`http://localhost:8080/properties/${propertyId}/reservations`, {
         propertyId,
-        startDate,
-        endDate,
-        numGuests
+        rentalUnitId,
+        reservation: {
+          checkIn,
+          checkOut
+        }
       });
+      console.log(propertyId);
+      console.log(rentalUnitId);
+      console.log(checkIn);
       console.log(response.data);
-      // Display confirmation message to the user
     } catch (error) {
       console.error(error);
-      // Display error message to the user
     }
   };
 
@@ -29,7 +35,7 @@ const ReservationForm = ({ propertyId }) => {
         Start date:
         <input
           type="date"
-          value={startDate}
+          value={checkIn}
           onChange={(e) => setStartDate(e.target.value)}
         />
       </label>
@@ -37,16 +43,16 @@ const ReservationForm = ({ propertyId }) => {
         End date:
         <input
           type="date"
-          value={endDate}
+          value={checkOut}
           onChange={(e) => setEndDate(e.target.value)}
         />
       </label>
       <label>
-        Number of guests:
+        Room:
         <input
           type="number"
-          value={numGuests}
-          onChange={(e) => setNumGuests(e.target.value)}
+          value={rentalUnitId}
+          onChange={(e) => setRentalUnitId(e.target.value)}
         />
       </label>
       <button type="submit">Make reservation</button>

@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom";
 import DatePicker from "react-multi-date-picker";
 import './PropertyDetail.css'
 import {MDBBadge, MDBListGroup, MDBListGroupItem} from "mdb-react-ui-kit";
+import ReservationForm from "./ReservationForm";
 
 
 export default function PropertyDetail() {
@@ -89,32 +90,7 @@ export default function PropertyDetail() {
 
                 <div className="col-md-4" id={"datePickerDiv"}>
                 <p> Check availability</p>
-
-                    &#128197;  &nbsp;
-
-                    <DatePicker
-                        selected={startDate}
-                        onChange={(date) => setStartDate(date)}
-                        selectsStart
-                        minDate={new Date()}
-                        startDate={startDate}
-                        endDate={endDate}
-                        placeholder={"Start date"}
-                    />
-
-                    &nbsp;
-                    To
-                    &nbsp;
-
-                    <DatePicker
-                        selected={endDate}
-                        onChange={(date) => setEndDate(date)}
-                        selectsEnd
-                        startDate={startDate}
-                        endDate={endDate}
-                        minDate={startDate}
-                        placeholder={"End date"}
-                    />
+                <ReservationForm propertyId={id} />
                 </div>
 
                     <div className="propertyPageReviewSection">
