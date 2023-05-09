@@ -72,9 +72,6 @@ public class PropertyController {
     //TODO Data Transfer Object
     @PostMapping("/{propertyId}/reservations")
     public void addReservation(@PathVariable Long propertyId, @RequestBody ReservationRequest reservationRequest) {
-        System.out.println(reservationRequest.getRentalUnitId());
-        System.out.println(reservationRequest.getReservation().getCheckOut());
-        System.out.println(reservationRequest.getReservation().getCheckIn());
         propertyService.addReservation(propertyId , reservationRequest);
     }
 

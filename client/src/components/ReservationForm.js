@@ -20,9 +20,6 @@ const ReservationForm = ({ propertyId }) => {
           checkOut
         }
       });
-      console.log(propertyId);
-      console.log(rentalUnitId);
-      console.log(checkIn);
       console.log(response.data);
     } catch (error) {
       console.error(error);
@@ -31,22 +28,22 @@ const ReservationForm = ({ propertyId }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        Start date:
-        <input
-          type="date"
-          value={checkIn}
-          onChange={(e) => setStartDate(e.target.value)}
-        />
-      </label>
-      <label>
-        End date:
-        <input
-          type="date"
-          value={checkOut}
-          onChange={(e) => setEndDate(e.target.value)}
-        />
-      </label>
+      <div className='reservation-dates'>
+        <label>
+          <input
+            type="date"
+            value={checkIn}
+            onChange={(e) => setStartDate(e.target.value)}
+          />
+        </label>
+        <label>
+          <input
+            type="date"
+            value={checkOut}
+            onChange={(e) => setEndDate(e.target.value)}
+          />
+        </label>
+      </div>
       <label>
         Room:
         <input

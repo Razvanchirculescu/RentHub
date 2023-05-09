@@ -116,35 +116,6 @@ export default function PropertyDetail() {
                     <br></br>
                     <p> Check availability</p>
 
-                    &#128197;  &nbsp;
-
-                    <DatePicker style={{top: '10vh'}}
-                                selected={startDate}
-                                onChange={(date) => setStartDate(date)}
-                                selectsStart
-                                minDate={new Date()}
-                                startDate={startDate}
-                                endDate={endDate}
-                                placeholder={"Start date"}
-                    />
-
-                    &nbsp;
-                    &nbsp;
-                    To
-                    &nbsp;
-                    &nbsp;
-
-                    <DatePicker
-                        selected={endDate}
-                        onChange={(date) => setEndDate(date)}
-                        selectsEnd
-                        startDate={startDate}
-                        endDate={endDate}
-                        minDate={startDate}
-                        placeholder={"End date"}
-                    />
-
-                <p> Check availability</p>
                 <ReservationForm propertyId={id} />
                 </div>
 
