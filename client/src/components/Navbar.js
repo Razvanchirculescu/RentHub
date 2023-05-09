@@ -18,16 +18,16 @@ export default function Navbar() {
                 </a>
             </div>
 
-            <div className="navbarSearch">
-                <div className="search">
-                    <TextField
-                        id="outlined-basic"
-                        variant="outlined"
-                        fullWidth
-                        label="Search"
-                    />
-                </div>
-            </div>
+            {/*<div className="navbarSearch">*/}
+            {/*    <div className="search">*/}
+            {/*        <TextField*/}
+            {/*            id="outlined-basic"*/}
+            {/*            variant="outlined"*/}
+            {/*            fullWidth*/}
+            {/*            label="Search"*/}
+            {/*        />*/}
+            {/*    </div>*/}
+            {/*</div>*/}
 
             <input className="menu-btn hidden" type="checkbox" id="menu-btn"/>
             <label className="menu-icon block cursor-pointer md:hidden px-2 py-4 relative select-none"
