@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 
-import DatePicker from "react-multi-date-picker";
 import './PropertyDetail.css'
 import Maps from "./Maps"
 import {MDBBadge, MDBListGroup, MDBListGroupItem} from "mdb-react-ui-kit";
 import ReservationForm from "./ReservationForm";
+import RentalUnitList from './RentalUnitList';
 
 
 export default function PropertyDetail() {
@@ -117,7 +117,9 @@ export default function PropertyDetail() {
                     <p> Check availability</p>
 
                 <ReservationForm propertyId={id} />
+                <RentalUnitList propertyData={propertyData} />
                 </div>
+                
 
 
                 <div className="propertyPageReviewSection">

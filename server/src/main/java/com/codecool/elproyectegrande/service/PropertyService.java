@@ -47,14 +47,12 @@ public class PropertyService {
     }
 
     public void addReviewForProperty(Long id, Review review) {
-        Property property = getPropertyById(id);
-        if (review.getSatisfaction() < 1 || review.getSatisfaction() > 5) {
-            throw new IllegalArgumentException("Rating must be between 1 and 5");
-        }
+        Property property = propertyRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Property not found with id: " + id));
         review.setProperty(property);
-        property.addReview(review);
-        property.setRating();
         reviewRepository.save(review);
+
+        property.setRating();
         propertyRepository.save(property);
     }
 

@@ -19,15 +19,8 @@ public class ReservationRequest {
         return rentalUnitId;
     }
 
-    public void setRentalUnitId(Long rentalUnitId) {
-        this.rentalUnitId = rentalUnitId;
-    }
-
     public Reservation getReservation() {
         return reservation;
     }
 
-    public void setReservation(Reservation reservation) {
-        this.reservation = reservation;
-    }
 }

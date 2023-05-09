@@ -69,7 +69,6 @@ public class PropertyController {
         propertyService.addRentalUnit(rentalUnit);
     }
 
-    //TODO Data Transfer Object
     @PostMapping("/{propertyId}/reservations")
     public void addReservation(@PathVariable Long propertyId, @RequestBody ReservationRequest reservationRequest) {
         propertyService.addReservation(propertyId , reservationRequest);
