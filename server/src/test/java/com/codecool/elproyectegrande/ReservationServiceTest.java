@@ -24,10 +24,8 @@ public class ReservationServiceTest {
 
     @Mock
     private ReservationRepository reservationRepository;
-
     @InjectMocks
     private ReservationService reservationService;
-
     private Property property;
     private RentalUnit rentalUnit;
 
@@ -51,7 +49,7 @@ public class ReservationServiceTest {
                 .build();
 
         // Configure the mock repository to return an empty list of overlapping reservations
-        when(reservationRepository.findByPropertyIdAndRentalUnitIdAndCheckInBeforeAndCheckOutAfter(
+        when(reservationRepository.findByPropertyIdAndRentalUnitIdAndCheckOutAfterAndCheckInBefore(
                 property.getId(), rentalUnit.getId(), checkIn, checkOut))
                 .thenReturn(Collections.emptyList());
 
@@ -60,16 +58,16 @@ public class ReservationServiceTest {
             reservationService.createReservation(reservation1);
         });
 
-        // Set up a test reservation that overlaps with an existing reservation
+        // Set up a test reservation that overlaps with an existing
+        //                .property(property)g reservation
         Reservation reservation2 = Reservation.builder()
-                .property(property)
                 .rentalUnit(rentalUnit)
                 .checkIn(checkIn.minusDays(1))
                 .checkOut(checkOut.plusDays(1))
                 .build();
 
         // Configure the mock repository to return a list containing the overlapping reservation
-        when(reservationRepository.findByPropertyIdAndRentalUnitIdAndCheckInBeforeAndCheckOutAfter(
+        when(reservationRepository.findByPropertyIdAndRentalUnitIdAndCheckOutAfterAndCheckInBefore(
                 property.getId(), rentalUnit.getId(), checkIn.minusDays(1), checkOut.plusDays(1)))
                 .thenReturn(Arrays.asList(reservation1));
 

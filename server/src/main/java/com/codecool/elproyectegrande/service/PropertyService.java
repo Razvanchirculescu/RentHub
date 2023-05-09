@@ -90,7 +90,6 @@ public class PropertyService {
                     .checkOut(reservationRequest.getReservation().getCheckOut()).build();
             Reservation savedReservation = reservationService.createReservation(newReservation);
             ResponseEntity.ok(savedReservation);
-
         } catch (ReservationConflictException e) {
             ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e) {

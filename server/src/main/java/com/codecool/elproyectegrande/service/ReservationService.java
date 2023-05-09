@@ -7,10 +7,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
-@Component
 @RequiredArgsConstructor
 public class ReservationService {
 
@@ -18,20 +18,30 @@ public class ReservationService {
 
     public Reservation createReservation(Reservation reservation) throws ReservationConflictException {
         List<Reservation> overlappingReservations = reservationRepository
-                .findByPropertyIdAndRentalUnitIdAndCheckInBeforeAndCheckOutAfter(
-                        reservation.getProperty().getId(), reservation.getRentalUnit().getId(),
-                        reservation.getCheckIn(), reservation.getCheckOut());
-        System.out.println("after findByRentalUnit");
-        if (!overlappingReservations.isEmpty()) {
-            throw new ReservationConflictException("The selected rental unit is already reserved for the selected date range");
-        }
-        System.out.println("save reservation");
+                .findByPropertyIdAndRentalUnitIdAndCheckOutAfterAndCheckInBefore(
+                        reservation.getProperty().getId(),
+                        reservation.getRentalUnit().getId(),
+                        reservation.getCheckIn(),
+                        reservation.getCheckOut());
 
-         reservationRepository.save(reservation);
+        for (Reservation overlappingReservation : overlappingReservations) {
+            LocalDate overlappingCheckIn = overlappingReservation.getCheckIn();
+            LocalDate overlappingCheckOut = overlappingReservation.getCheckOut();
+
+            LocalDate checkIn = reservation.getCheckIn();
+            LocalDate checkOut = reservation.getCheckOut();
+
+            if (checkIn.isEqual(overlappingCheckIn)
+                    || checkOut.isEqual(overlappingCheckOut)
+                    || (checkIn.isBefore(overlappingCheckOut) && checkOut.isAfter(overlappingCheckIn))) {
+                throw new ReservationConflictException("The selected rental unit is already reserved for the selected date range");
+            }
+        }
+        reservationRepository.save(reservation);
         return reservation;
     }
 
-//    public List<Reservation> getReservationsForRentalUnit(Long rentalUnitId) {
-//        return reservationRepository.findByRentalUnitId(rentalUnitId);
-//    }
+    public List<Reservation> getReservationsForRentalUnit(Long rentalUnitId) {
+        return reservationRepository.findByRentalUnitId(rentalUnitId);
+    }
 }
