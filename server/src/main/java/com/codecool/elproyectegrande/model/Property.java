@@ -59,9 +59,6 @@ public class Property {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "property", fetch = FetchType.EAGER)
     private List<Review> reviews;
 
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<Reservation> reservationList;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "property", fetch = FetchType.EAGER)
     private List<RentalUnit> rentalUnits;
 
@@ -78,19 +75,6 @@ public class Property {
             sum += review.getSatisfaction();
         }
         this.rating = Math.round((sum / reviews.size()) * 100.0) / 100.0;
-    }
-
-    public void addReview(Review review) {
-        reviews.add(review);
-        this.setRating();
-    }
-
-//    public void addReservation(Reservation reservation) {
-//        this.reservationList.add(reservation);
-//    }
-
-    public void addRentalUnit(RentalUnit rentalUnit){
-        this.rentalUnits.add(rentalUnit);
     }
 
 }

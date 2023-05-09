@@ -11,6 +11,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Objects;
+
 @Entity
 @Getter
 @Setter
@@ -33,6 +35,6 @@ public class Category {
         if (!(obj instanceof Category other)) {
             return false;
         }
-        return this.name.equals(other.name) && this.id==other.id;
+        return this.name.equals(other.name) && Objects.equals(this.id, other.id);
     }
 }

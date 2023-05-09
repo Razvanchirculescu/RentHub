@@ -40,8 +40,4 @@ public class ReservationService {
         return reservation;
     }
 
-    public List<Reservation> getReservationsForRentalUnit(Long rentalUnitId) {
-        return reservationRepository.findByRentalUnitId(rentalUnitId);
-    }
-
 }

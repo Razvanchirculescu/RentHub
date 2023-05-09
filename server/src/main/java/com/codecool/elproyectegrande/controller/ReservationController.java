@@ -21,20 +21,4 @@ public class ReservationController {
         this.reservationService = reservationService;
     }
 
-//    @GetMapping("/{rentalUnitId}")
-//    public List<Reservation> getReservationsForProperty(@PathVariable Long rentalUnitId) {
-//        return reservationService.getReservationsForProperty(rentalUnitId);
-//    }
-
-//    @PostMapping
-//    public ResponseEntity<?> createReservation(@RequestBody Reservation reservation) {
-//        try {
-//            Reservation savedReservation = reservationService.addReservation(reservation);
-//            return ResponseEntity.ok(savedReservation);
-//        } catch (ReservationConflictException e) {
-//            return ResponseEntity.badRequest().body(e.getMessage());
-//        } catch (Exception e) {
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-//        }
-//    }
 }

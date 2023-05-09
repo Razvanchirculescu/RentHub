@@ -7,9 +7,6 @@ public class ReservationRequest {
     private Long rentalUnitId;
     private Reservation reservation;
 
-    public ReservationRequest() {
-    }
-
     public ReservationRequest(Long rentalUnitId, Reservation reservation) {
         this.rentalUnitId = rentalUnitId;
         this.reservation = reservation;

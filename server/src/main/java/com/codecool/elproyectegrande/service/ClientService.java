@@ -2,10 +2,8 @@ package com.codecool.elproyectegrande.service;
 
 import com.codecool.elproyectegrande.exception.ClientException;
 import com.codecool.elproyectegrande.model.Client;
-//import com.codecool.elproyectegrande.utils.AddClients;
 import com.codecool.elproyectegrande.model.ClientRole;
 import com.codecool.elproyectegrande.repository.ClientRepository;
-
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
