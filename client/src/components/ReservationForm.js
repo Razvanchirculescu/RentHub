@@ -5,7 +5,6 @@ import axios from 'axios';
 const ReservationForm = ({ propertyId }) => {
   const [checkIn, setStartDate] = useState('');
   const [checkOut, setEndDate] = useState('');
-  const [rentalUnitId, setRentalUnitId] = useState('');
 
   const { id } = useParams();
 
@@ -14,11 +13,9 @@ const ReservationForm = ({ propertyId }) => {
     try {
       const response = await axios.post(`http://localhost:8080/properties/${propertyId}/reservations`, {
         propertyId,
-        rentalUnitId,
-        reservation: {
-          checkIn,
-          checkOut
-        }
+        checkIn,
+        checkOut
+ 
       });
 
       console.log(response.data);
@@ -45,14 +42,6 @@ const ReservationForm = ({ propertyId }) => {
           />
         </label>
       </div>
-      <label>
-        Room:
-        <input
-          type="number"
-          value={rentalUnitId}
-          onChange={(e) => setRentalUnitId(e.target.value)}
-        />
-      </label>
       <button type="submit">Make reservation</button>
     </form>
   );

@@ -78,15 +78,4 @@ insert into property_category (property_id, category_id) VALUES (9, 1);
 insert into property_category (property_id, category_id) VALUES (9, 14);
 insert into property_category (property_id, category_id) VALUES (10, 3);
 
-
-insert into rental_unit (property_id, rental_unit_type) VALUES (1, 'SINGLE');
-insert into rental_unit (property_id, rental_unit_type) VALUES (1, 'SINGLE');
-insert into rental_unit (property_id, rental_unit_type) VALUES (1, 'SINGLE');
-insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'DOUBLE');
-insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'DOUBLE');
-insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'DOUBLE');
-insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'APARTMENT');
-insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'DOUBLE');
-insert into rental_unit (property_id, rental_unit_type) VALUES (1, 'SINGLE');
-
-insert into reservation (check_in, check_out, property_id, rental_unit_id) VALUES (DATE '2022-08-07', DATE '2022-08-09', 1, 1);
+insert into reservation (check_in, check_out, property_id) VALUES (DATE '2022-08-07', DATE '2022-08-09', 1);
