@@ -3,6 +3,9 @@ import logoText from "../images/logos/logoText.png"
 import logoImage from "../images/logos/logoImage.png"
 import TextField from "@mui/material/TextField";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import PeopleIcon from '@mui/icons-material/People';
+import Button from '@mui/material/Button';
+
 import './Navbar.css';
 
 export default function Navbar() {
@@ -49,11 +52,14 @@ export default function Navbar() {
                     </a>
                 </li>
 
-                {/*<li className="border-t md:border-none">*/}
-                {/*    <a href="/properties/login"*/}
-                {/*       className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker"><i*/}
-                {/*        className="material-icons">login</i></a>*/}
-                {/*</li>*/}
+                <li className="border-t md:border-none">
+                    <a href="http://localhost:3000/api/clients/"
+                       className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker"><i
+                        className="material-icons"><PeopleIcon/></i></a>
+
+
+
+                </li>
                 <li className="border-t md:border-none">
                     <a href="http://localhost:3000/api/clients/register"
                        className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker"><i
