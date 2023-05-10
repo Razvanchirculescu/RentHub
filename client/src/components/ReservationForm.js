@@ -15,7 +15,6 @@ const ReservationForm = ({ propertyId }) => {
         propertyId,
         checkIn,
         checkOut
- 
       });
 
       console.log(response.data);

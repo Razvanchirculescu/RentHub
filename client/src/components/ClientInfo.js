@@ -16,7 +16,7 @@ export default function ClientInfo() {
 
     function getClient() {
         const url = `http://localhost:8080/api/clients/${id}`;
-        // const url = `http://localhost:8080/api/clients/1`;
+
 
         fetch(url)
             .then(response => {
