@@ -11,7 +11,6 @@ public class ReservationRequest {
         this.rentalUnitId = rentalUnitId;
         this.reservation = reservation;
     }
-
     public Long getRentalUnitId() {
         return rentalUnitId;
     }
