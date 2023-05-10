@@ -65,6 +65,10 @@ public class Property {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "property", fetch = FetchType.EAGER)
     private List<Image> images;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.JOIN)
+    private List<Facility> facilities;
+
     public void addCategory(Category category) {
         categories.add(category);
     }

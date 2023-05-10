@@ -9,16 +9,10 @@ import ReservationForm from "./ReservationForm";
 
 export default function PropertyDetail() {
 
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
-
     const [location, setLocation] = useState({ lat: 44.439663, lng: 26.096306 });
-
-
+    const [propertyData, setPropertyData] = useState(null);
 
     const {id} = useParams();
-
-    const [propertyData, setPropertyData] = useState(null);
 
     useEffect(() => {
         const url = `http://localhost:8080/properties/${id}`;
@@ -114,14 +108,9 @@ export default function PropertyDetail() {
                     <br></br>
                     <br></br>
                     <p> Check availability</p>
-
-                <ReservationForm propertyId={id} />
+                    <ReservationForm propertyId={id} />
                 </div>
-                
-
-
                 <div className="propertyPageReviewSection">
-
                     <MDBListGroup style={{maxWidth: '25rem'}} light>
                         {propertyData.reviews.map((review, index) => {
                             return (
