@@ -70,3 +70,10 @@ input {
     padding-top: 10vh;
 
 }
+
+.property_facilities {
+
+    display: inline;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}

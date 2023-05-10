@@ -73,6 +73,10 @@ public class Property {
         categories.add(category);
     }
 
+    public void addFacility(Facility facility) {
+        facilities.add(facility);
+    }
+
     public void setRating() {
         double sum = 0;
         for (Review review : reviews) {

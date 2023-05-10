@@ -9,7 +9,7 @@ import ReservationForm from "./ReservationForm";
 
 export default function PropertyDetail() {
 
-    const [location, setLocation] = useState({ lat: 44.439663, lng: 26.096306 });
+    const [location, setLocation] = useState({lat: 44.439663, lng: 26.096306});
     const [propertyData, setPropertyData] = useState(null);
 
     const {id} = useParams();
@@ -26,7 +26,7 @@ export default function PropertyDetail() {
             })
             .then(data => {
                 setPropertyData(data);
-                const { street, streetNr, city, country } = data.location;
+                const {street, streetNr, city, country} = data.location;
                 const apiKey = 'AIzaSyB3I0_AonpTHy5LAvcaBIRkJ6pz3eyabzo';
                 fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${street}+${streetNr}+${city}+${country}&key=${apiKey}`)
                     .then(response => {
@@ -99,17 +99,35 @@ export default function PropertyDetail() {
                             <span className="sr-only">Next</span>
                         </a>
                     </div>
+
                 </div>
 
                 <div className="col-md-4" id={"datePickerDiv"}>
                     <div>
+                        <div className="col-md-8">
+                            <ol className="property_facilities">
+                                <b>Facilities:</b>
+                                <br></br>
+                                {propertyData.facilities.map((facility, index) => (
+                                    <li key={facility.id}> &nbsp; &nbsp; {facility.name}</li>
+                                ))}
+                            </ol>
+                        </div>
+
+                        <br></br>
+                        <br></br>
+                        <br></br>
+
                         <Maps location={location}/>
                     </div>
                     <br></br>
                     <br></br>
                     <p> Check availability</p>
-                    <ReservationForm propertyId={id} />
+                    <ReservationForm propertyId={id}/>
+
                 </div>
+
+
                 <div className="propertyPageReviewSection">
                     <MDBListGroup style={{maxWidth: '25rem'}} light>
                         {propertyData.reviews.map((review, index) => {
@@ -123,7 +141,9 @@ export default function PropertyDetail() {
                                 </MDBListGroupItem>
                             );
                         })}
+
                     </MDBListGroup>
+
                 </div>
             </div>
         </div>
