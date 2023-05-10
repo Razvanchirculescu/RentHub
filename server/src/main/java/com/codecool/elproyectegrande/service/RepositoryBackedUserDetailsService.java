@@ -1,6 +1,7 @@
 package com.codecool.elproyectegrande.service;
 
 import com.codecool.elproyectegrande.model.Client;
+import com.codecool.elproyectegrande.model.ClientRole;
 import com.codecool.elproyectegrande.repository.ClientRepository;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -33,17 +34,22 @@ public class RepositoryBackedUserDetailsService
                 .orElseThrow(() ->new UsernameNotFoundException(emailAddress));
 
         List<SimpleGrantedAuthority> roles = new ArrayList<>();
+
         if (client!=null) {
-            if (emailAddress.equals("Admin")) {
+            if (client.getClientRole().equals(ClientRole.ADMIN)) {
                 roles.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
             }
-            if(emailAddress.equals("DEV")){
+            else if(client.getClientRole().equals(ClientRole.DEVELOPER)){
                 roles.add(new SimpleGrantedAuthority("ROLE_DEVELOPER"));
             }
-        } else {
-            roles.add(new SimpleGrantedAuthority("ROLE_USER"));
+            else if (client.getClientRole().equals(ClientRole.USER)) {
+                roles.add(new SimpleGrantedAuthority("ROLE_USER"));
+            }
+            else {throw new UsernameNotFoundException("not a valid user role");
+            }
         }
         assert client != null;
+        System.out.println("User auth: "+client.getName()+"  "+client.getPassword()+"   "+roles);
         return new User(client.getName(), client.getPassword(), roles);
     }
 }

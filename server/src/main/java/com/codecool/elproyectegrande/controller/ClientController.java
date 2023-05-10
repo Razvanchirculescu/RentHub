@@ -6,6 +6,7 @@ import com.codecool.elproyectegrande.exception.ClientException;
 import com.codecool.elproyectegrande.service.ClientService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -41,6 +42,7 @@ public class ClientController {
     }
 
     @GetMapping
+    @Secured({"ROLE_USER"})
     public List<Client> getAllClients() {
         return clientService.getAllClients();
     }
@@ -51,6 +53,7 @@ public class ClientController {
     }
 
     @GetMapping("/{id}")
+    @Secured({"ROLE_USER"})
     public Client getClientById(@PathVariable int id) {
         return clientService.getClientById(id);
     }

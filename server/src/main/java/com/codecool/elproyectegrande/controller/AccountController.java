@@ -1,6 +1,7 @@
 package com.codecool.elproyectegrande.controller;
 
 
+import com.codecool.elproyectegrande.model.Client;
 import com.codecool.elproyectegrande.registration.LogInRequest;
 import com.codecool.elproyectegrande.registration.SignUpRequest;
 import com.codecool.elproyectegrande.repository.ClientRepository;
@@ -34,24 +35,15 @@ public class AccountController {
     ClientRepository clientRepository;
 
     @PostMapping("/register")
-        public String signUp(@RequestBody SignUpRequest request){
-        return registrationService.register(request);
+        public void /*String*/ signUp(@RequestBody SignUpRequest request){
+        /*return*/ registrationService.register(request);
     }
 
     @PostMapping("/login")
-    public List<Serializable> logIn(@RequestBody LogInRequest request) {
-
-//        ObjectMapper mapper = new ObjectMapper();
-//        String json = mapper.writeValueAsString(clientRepository.findAll().stream()
-//                .filter(client -> client.getEmailAddress().equals(request.email())));
-//        return List.of(registrationService.logIn(request), json);
-
-        System.out.println("login: "+List.of(registrationService.logIn(request), clientRepository.findByEmailAddress(request.email()).get()));
-
-        return List.of(registrationService.logIn(request), clientRepository.findByEmailAddress(request.email()).get());
-
-//        return List.of(registrationService.logIn(request), clientRepository.findAll().stream()
-//                .filter(client -> client.getEmailAddress().equals(request.email())));
+    public List<Serializable> /*Long*/ logIn(@RequestBody LogInRequest request) {
+        Client client = clientRepository.findByEmailAddress(request.emailAddress()).orElse(null);
+        if (client!=null) {
+            return List.of(registrationService.logIn(request), client.getId());
+        } else return null;
     }
-
 }

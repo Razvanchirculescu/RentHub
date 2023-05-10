@@ -43,8 +43,11 @@ public class ClientService implements UserDetailsService {
                 ));
     }
 
-    public String signUpClient(Client client){
-        boolean userExists = clientRepository.findByEmailAddress(client.getEmailAddress()).isPresent();
+    public /*String*/ void signUpClient(Client client){
+
+        boolean userExists = clientRepository
+                .findByEmailAddress(client.getEmailAddress())
+                .isPresent();
 
         if (userExists){
             throw new IllegalStateException("email already taken");
@@ -52,21 +55,24 @@ public class ClientService implements UserDetailsService {
 
         String encodedPassword = bCryptPasswordEncoder
                 .encode(client.getPassword());
+
         client.setPassword(encodedPassword);
+
         clientRepository.save(client);
 
-        String token = UUID.randomUUID().toString();
-        ConfirmationToken confirmationToken = new ConfirmationToken(
-                token,
-                LocalDateTime.now(),
-                LocalDateTime.now().plusMinutes(15),
-                client
-        );
-        confirmationTokenService.saveConfirmationToken(
-                confirmationToken
-        );
+//        String token = UUID.randomUUID().toString();
+//        ConfirmationToken confirmationToken = new ConfirmationToken(
+//                token,
+//                LocalDateTime.now(),
+//                LocalDateTime.now().plusMinutes(15),
+//                client
+//        );
 
-        return token;
+//        confirmationTokenService.saveConfirmationToken(
+//                confirmationToken
+//        );
+
+//        return token;
     }
 
     public String logInUser(String email, String password) {
@@ -79,7 +85,7 @@ public class ClientService implements UserDetailsService {
         ConfirmationToken confirmationToken = new ConfirmationToken(
                 token,
                 LocalDateTime.now(),
-                LocalDateTime.now().plusMinutes(60),
+                LocalDateTime.now().plusMinutes(30),
                 user.get()
         );
         confirmationTokenService.saveConfirmationToken(

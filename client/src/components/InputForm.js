@@ -21,7 +21,6 @@ import {useState} from "react";
 
 
 
-
 export default function InputForm() {
 
     const [name, setName] = useState('');
@@ -32,13 +31,30 @@ export default function InputForm() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
+    const [justifyActive, setJustifyActive] = useState('tab1');
+
+    console.log("0- justify active: "+ justifyActive);
+
+    const [data, setData] = useState([]);
+
+
+    const handleJustifyClick = (value) => {
+        if (value === justifyActive) {
+            return;
+        }
+        setJustifyActive(value);
+
+    };
+
     const handleSubmit = async (event) => {
+    console.log("justify active: "+ justifyActive);
 
         event.preventDefault();
 
-        if (justifyActive ==="tab1") {
+        if (justifyActive ==='tab1') {
+            console.log("1-justify active: "+ justifyActive);
             try {
-                if (password === "" || emailAddress ==="") {
+                if (password === '' || emailAddress ==='') {
                     console.error('Login failed , missing data');
                     throw new Error("Login failed , missing data")
                 }
@@ -50,7 +66,16 @@ export default function InputForm() {
                         emailAddress: emailAddress,
                         password: password
                     }),
-                }).catch(error => setErrorMessage(error.message))
+                })
+                    .then(r => r.json())
+                    .then(d => setData(d))
+                    .catch(error => setErrorMessage(error.message));
+
+                // console.log(JSON.stringify({email: username, password: password}))
+                if (data.length > 0) {
+                    sessionStorage.setItem('token', data[0])
+                    sessionStorage.setItem('clientId', data[1]);
+                }
 
                 if (response.ok) {
                     // window.location.href = `/properties`;
@@ -65,7 +90,8 @@ export default function InputForm() {
                 setErrorMessage(error.message);
             }
 
-        } else if (justifyActive==="tab2"){
+        } else if (justifyActive==='tab2'){
+            console.log("2-justify active: "+ justifyActive);
             try {
                 if (password !== confirmPassword) {
                     console.error('Passwords do not match');
@@ -88,10 +114,11 @@ export default function InputForm() {
 
                 if (response.ok) {
                     // history.push('/properties');
-                    window.location.href = `/properties`;
+                    // window.location.href = `/properties`;
+                    window.location.href = `/api/clients/register`;
 
                 } else {
-                    throw new Error("Registration failed")
+                    throw new Error('Registration failed')
                     console.error('Registration failed');
                 }
             } catch (error) {
@@ -105,14 +132,6 @@ export default function InputForm() {
 
 
 
-    const [justifyActive, setJustifyActive] = useState('tab1');
-
-    const handleJustifyClick = (value) => {
-        if (value === justifyActive) {
-            return;
-        }
-        setJustifyActive(value);
-    };
 
     return (
         <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
@@ -136,7 +155,7 @@ export default function InputForm() {
 
                     <MDBInput wrapperClass='mb-4' label='Email address' id='form1' type='email'
                               value={emailAddress} onChange={(e) => setEmailAddress(e.target.value)}/>
-                    <MDBInput wrapperClass='mb-4' label='Password' id='form2' type='password'
+                    <MDBInput wrapperClass='mb-4' label='Password' id='form1' type='password'
                               value={password} onChange={(e) => setPassword(e.target.value)}/>
 
                     <div className="d-flex justify-content-between mx-4 mb-4">
@@ -144,7 +163,7 @@ export default function InputForm() {
                         <a href="!#">Forgot password?</a>
                     </div>
 
-                    <MDBBtn className="mb-4 w-100">Sign in</MDBBtn>
+                    <MDBBtn className="mb-4 w-100"  onClick={(e) => handleSubmit(e)}>Sign in</MDBBtn>
                     <p className="text-center">Not a member? <a href="#!">Register</a></p>
 
                 </MDBTabsPane>

@@ -6,7 +6,9 @@ import com.codecool.elproyectegrande.model.Client;
 import com.codecool.elproyectegrande.model.ClientRole;
 import com.codecool.elproyectegrande.registration.LogInRequest;
 import com.codecool.elproyectegrande.registration.SignUpRequest;
+import com.codecool.elproyectegrande.repository.ClientRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,14 +18,16 @@ public class RegistrationService {
     private final ClientService clientService;
     private final EmailValidator emailValidator;
 
-    private final RepositoryBackedUserDetailsService repositoryBackedUserDetailsService;
+    private final ClientRepository clientRepository;
 
-    public String register(SignUpRequest request) {
+//    private final RepositoryBackedUserDetailsService repositoryBackedUserDetailsService;
+
+    public /*String*/ void register(SignUpRequest request) {
         boolean isValidEmail = emailValidator.test(request.emailAddress());
         if (!isValidEmail) {
             throw new IllegalStateException("email not valid");
         }
-        return clientService.signUpClient(new Client(
+        /*return*/ clientService.signUpClient(new Client(
                 request.name()
                 , request.surname()
                 , request.phoneNumber()
@@ -33,7 +37,11 @@ public class RegistrationService {
     }
 
     public String logIn(LogInRequest request) {
-        repositoryBackedUserDetailsService.loadUserByUsername(request.email());
-        return clientService.logInUser(request.email(), request.password());
+
+        System.out.println("req email:"+request.emailAddress()+"  req pass: "+request.password() );
+//        repositoryBackedUserDetailsService.loadUserByUsername(request.emailAddress());
+//        return clientService.logInUser(request.emailAddress(), request.password());
+        Client client = clientRepository.findByEmailAddress(request.emailAddress()).orElse(null);
+        return clientService.logInUser(request.emailAddress(), request.password());
     }
 }
