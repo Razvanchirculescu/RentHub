@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
+
 import {useParams} from 'react-router-dom';
 import './ClientInfo.css';
 
@@ -11,6 +13,12 @@ export default function ClientInfo() {
 
     async function handleButtonClick() {
         window.location.href = `/api/clients`;
+    }
+
+    async function handleButtonClickEdit(id) {
+        console.log(`Client ID: ${id}`);
+        // history.push(`/api/clients/${id}`);
+        window.location.href = `/api/clients/${id}/edit-client-info`;
     }
 
 
@@ -62,7 +70,6 @@ export default function ClientInfo() {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div className="col-md-8">
                         <div>
@@ -116,15 +123,14 @@ export default function ClientInfo() {
                                 </div>
                                 <hr/>
 
-                                {/*do not remove comment below*/}
 
 
-                                {/*<div className="row">*/}
-                                {/*    <div className="col-sm-12">*/}
-                                {/*        <a className="btn btn-info " target="__blank"*/}
-                                {/*           href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
+                                <div className="row">
+                                    <div className="col-sm-12">
+                                        <Link className="btn btn-info" to="/api/clients/${}/edit-client-info"
+                                              onClick={() => handleButtonClickEdit(clientData.id)}>Edit</Link>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>

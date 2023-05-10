@@ -11,13 +11,13 @@ export default function ClientsList() {
     const [clientId, setClientId] = useState('');
 
 
-    const handleButtonClick = async () => {
-        const response = await fetch(
-            `http://localhost:8080/api/clients/id`
-        );
-        const data = await response.json();
-        setClientId(data);
-    };
+    // const handleButtonClick = async () => {
+    //     const response = await fetch(
+    //         `http://localhost:8080/api/clients/id`
+    //     );
+    //     const data = await response.json();
+    //     setClientId(data);
+    // };
 
     async function handleButtonClick2(id) {
         console.log(`Client ID: ${id}`);
