@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-// import {useHistory} from "react-router-dom";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
@@ -12,7 +11,6 @@ export default function RegistrationForm() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    // const history = useHistory();
 
     const handleSubmit = async (event) => {
         event.preventDefault();

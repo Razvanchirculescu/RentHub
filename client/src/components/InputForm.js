@@ -33,41 +33,70 @@ export default function InputForm() {
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = async (event) => {
+
         event.preventDefault();
-        try {
-            if (password !== confirmPassword) {
-                console.error('Passwords do not match');
-                throw new Error("Passwords do not match")
-                return;
-            } else if (name === "" || surname === "" || emailAddress === "" || password === "") {
-                throw new Error("Registration failed , missing data")
+
+        if (justifyActive ==="tab1") {
+            try {
+                if (password === "" || emailAddress ==="") {
+                    console.error('Login failed , missing data');
+                    throw new Error("Login failed , missing data")
+                }
+
+                const response = await fetch('http://localhost:8080/api/accounts/login', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        emailAddress: emailAddress,
+                        password: password
+                    }),
+                }).catch(error => setErrorMessage(error.message))
+
+                if (response.ok) {
+                    // window.location.href = `/properties`;
+                    window.location.href = `/api/clients`;
+
+                } else {
+                    console.error('Login failed');
+                    throw new Error("Login failed")
+
+                }
+            } catch (error) {
+                setErrorMessage(error.message);
             }
 
-            const response = await fetch('http://localhost:8080/api/clients/register', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    name: name,
-                    surname: surname,
-                    emailAddress: emailAddress,
-                    phoneNumber: phoneNumber,
-                    password: password
-                }),
-            }).catch(error => setErrorMessage(error.message))
+        } else if (justifyActive==="tab2"){
+            try {
+                if (password !== confirmPassword) {
+                    console.error('Passwords do not match');
+                    throw new Error("Passwords do not match")
+                } else if (name === "" || surname === "" || emailAddress === "" || password === "") {
+                    throw new Error("Registration failed , missing data")
+                }
 
-            if (response.ok) {
-                // history.push('/properties');
-                window.location.href = `/properties`;
+                const response = await fetch('http://localhost:8080/api/accounts/register', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        name: name,
+                        surname: surname,
+                        phoneNumber: phoneNumber,
+                        emailAddress: emailAddress,
+                        password: password
+                    }),
+                }).catch(error => setErrorMessage(error.message))
 
-            } else {
-                throw new Error("Registration failed")
-                console.error('Registration failed');
-                document.writeln('Registration failed');
-                alert('Registration failed');
+                if (response.ok) {
+                    // history.push('/properties');
+                    window.location.href = `/properties`;
 
+                } else {
+                    throw new Error("Registration failed")
+                    console.error('Registration failed');
+                }
+            } catch (error) {
+                setErrorMessage(error.message);
             }
-        } catch (error) {
-            setErrorMessage(error.message);
         }
     };
 
@@ -76,13 +105,12 @@ export default function InputForm() {
 
 
 
-    const [justifyActive, setJustifyActive] = useState('tab1');;
+    const [justifyActive, setJustifyActive] = useState('tab1');
 
     const handleJustifyClick = (value) => {
         if (value === justifyActive) {
             return;
         }
-
         setJustifyActive(value);
     };
 
@@ -106,8 +134,10 @@ export default function InputForm() {
 
                 <MDBTabsPane show={justifyActive === 'tab1'}>
 
-                    <MDBInput wrapperClass='mb-4' label='Email address' id='form1' type='email'/>
-                    <MDBInput wrapperClass='mb-4' label='Password' id='form2' type='password'/>
+                    <MDBInput wrapperClass='mb-4' label='Email address' id='form1' type='email'
+                              value={emailAddress} onChange={(e) => setEmailAddress(e.target.value)}/>
+                    <MDBInput wrapperClass='mb-4' label='Password' id='form2' type='password'
+                              value={password} onChange={(e) => setPassword(e.target.value)}/>
 
                     <div className="d-flex justify-content-between mx-4 mb-4">
                         <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />
@@ -151,7 +181,7 @@ export default function InputForm() {
                     <MDBInput wrapperClass='mb-4' label='Email' id='form1' type='email'
                           value={emailAddress} onChange={(e) => setEmailAddress(e.target.value)}/>
 
-                    <MDBInput wrapperClass='mb-4' label='Password' id='form1' type='text'
+                    <MDBInput wrapperClass='mb-4' label='Phone Number' id='form1' type='text'
                               value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}/>
 
                     <MDBInput wrapperClass='mb-4' label='Password' id='form1' type='text'
@@ -168,13 +198,15 @@ export default function InputForm() {
                         autoComplete="current-password"
                         value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
 
+                    {/*<input type="hidden" name="justifyActive" value={justifyActive} />*/}
+
                     <div className='d-flex justify-content-center mb-4'>
                         <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I have read and agree to the terms' />
                     </div>
 
                     {errorMessage && <p style={{color: 'red', fontWeight: 'bold'}}>{"**********"+errorMessage+"**********"}</p>}
                     <br/>
-                    <MDBBtn className="mb-4 w-100" type="submit" onClick={(e) => handleSubmit(e)}>Sign up</MDBBtn>
+                    <MDBBtn className="mb-4 w-100" type="submit"  onClick={(e) => handleSubmit(e)}>Sign up</MDBBtn>
 
                 </MDBTabsPane>
 

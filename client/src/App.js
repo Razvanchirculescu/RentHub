@@ -11,6 +11,7 @@ import RegisterPage from "./pages/RegisterPage";
 import InputForm from "./components/InputForm";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import EditClientInfo from"./components/EditClientInfo"
 
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
                     <Route path="/api/clients" element={< ClientsPage/>}/>
                     <Route path="/api/clients/register-form" element={< RegisterPage/>}/>
                     <Route path="/api/clients/register" element={< InputForm/>}/>
+                    <Route path="/api/clients/:id/edit-client-info" element={< EditClientInfo/>}/>
+
+
                     <Route path="*" element={<NoPageFound/>}/>
                 </Routes>
                 <Footer/>
