@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -37,6 +38,12 @@ public class Reservation {
     @JoinColumn(name = "rental_unit_id")
     @JsonIgnore
     private RentalUnit rentalUnit;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "client_id")
+    @JsonIgnore
+    Client client;
+
 
     @ManyToOne
     @JoinColumn(name = "property_id")
