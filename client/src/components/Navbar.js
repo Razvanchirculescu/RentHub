@@ -4,7 +4,6 @@ import logoImage from "../images/logos/logoImage.png"
 import TextField from "@mui/material/TextField";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import './Navbar.css';
-import ReactLanguages from "./ReactLanguages";
 
 export default function Navbar() {
     return (
@@ -47,7 +46,6 @@ export default function Navbar() {
 
                     <a href="#"
                        className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker">
-                        {/*<i className="material-icons"><ReactLanguages/></i>*/}
                     </a>
                 </li>
 
