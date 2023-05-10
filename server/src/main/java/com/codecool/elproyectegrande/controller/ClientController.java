@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/clients")
@@ -65,21 +66,21 @@ public class ClientController {
     }
 
 
-    @PostMapping("/register")
-    public String registerClient(@RequestBody Client client) {
-        try {
-            clientService.registerClient(
-                    client.getName()
-                    , client.getSurname()
-                    , client.getEmailAddress()
-                    , client.getPhoneNumber()
-                    , client.getPassword());
-            return "redirect:/login-form";
-        } catch (ClientException e) {
-            System.out.println("message" + e.getMessage());
-            return "register-form";
-        }
-    }
+//    @PostMapping("/register")
+//    public String registerClient(@RequestBody Client client) {
+//        try {
+//            clientService.registerClient(
+//                    client.getName()
+//                    , client.getSurname()
+//                    , client.getEmailAddress()
+//                    , client.getPhoneNumber()
+//                    , client.getPassword());
+//            return "redirect:/login-form";
+//        } catch (ClientException e) {
+//            System.out.println("message" + e.getMessage());
+//            return "register-form";
+//        }
+//    }
 
 
     @PostMapping("/login")
@@ -89,7 +90,7 @@ public class ClientController {
         }
 
         try {
-            Client authenticatedClient = clientService.login(client.getEmailAddress(), client.getPassword());
+            Optional<Client> authenticatedClient = clientService.login(client.getEmailAddress(), client.getPassword());
             session.setAttribute("client", authenticatedClient);
             return "redirect:/home";
         } catch (ClientException e) {
