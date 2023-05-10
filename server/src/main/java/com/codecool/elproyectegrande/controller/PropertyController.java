@@ -4,6 +4,7 @@ import com.codecool.elproyectegrande.model.Category;
 import com.codecool.elproyectegrande.model.Property;
 import com.codecool.elproyectegrande.model.RentalUnit;
 import com.codecool.elproyectegrande.DTO.ReservationRequest;
+import com.codecool.elproyectegrande.model.Reservation;
 import com.codecool.elproyectegrande.model.Review;
 import com.codecool.elproyectegrande.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,14 +65,9 @@ public class PropertyController {
         propertyService.addCategory(propertyId, category);
     }
 
-    @PatchMapping("/rentalUnit")
-    public void addRentalUnit(@RequestBody RentalUnit rentalUnit) {
-        propertyService.addRentalUnit(rentalUnit);
-    }
-
     @PostMapping("/{propertyId}/reservations")
-    public void addReservation(@PathVariable Long propertyId, @RequestBody ReservationRequest reservationRequest) {
-        propertyService.addReservation(propertyId , reservationRequest);
+    public void addReservation(@PathVariable Long propertyId, @RequestBody Reservation reservation) {
+        propertyService.addReservation(propertyId , reservation);
     }
 
 }

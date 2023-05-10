@@ -1,0 +1,24 @@
+package com.codecool.elproyectegrande.model;
+
+public enum FacilityType {
+
+    PRIVATE_BATHROOM,
+    POOL,
+    TERRACE,
+    BALCONY,
+    AIR_CONDITIONING,
+    FREE_WIFI,
+    TV,
+    COFFEE_MAKER,
+    SAFE_DEPOSIT_BOX,
+    TRANSPORTATION_FROM_AIRPORT,
+    BREAKFAST,
+    PET_FRIENDLY,
+    TOURIST_ASSISTANCE,
+    WASHING_MACHINE,
+    KITCHEN,
+    GARDEN,
+    FREE_PARKING,
+    FACILITIES_FOR_DISABLE_GUESTS
+
+}

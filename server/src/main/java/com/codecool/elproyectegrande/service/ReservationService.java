@@ -17,9 +17,8 @@ public class ReservationService {
 
     public Reservation createReservation(Reservation reservation) throws ReservationConflictException {
         List<Reservation> overlappingReservations = reservationRepository
-                .findByPropertyIdAndRentalUnitIdAndCheckOutAfterAndCheckInBefore(
+                .findByPropertyIdAndCheckOutAfterAndCheckInBefore(
                         reservation.getProperty().getId(),
-                        reservation.getRentalUnit().getId(),
                         reservation.getCheckIn(),
                         reservation.getCheckOut());
 

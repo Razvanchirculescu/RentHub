@@ -29,7 +29,6 @@ public class PropertyService {
     private final PropertyRepository propertyRepository;
     private final ReviewRepository reviewRepository;
     private final CategoryRepository categoryRepository;
-    private final RentalUnitRepository rentalUnitRepository;
     private final ReservationService reservationService;
 
     public void addProperty(Property property) {
@@ -71,21 +70,12 @@ public class PropertyService {
         return propertyRepository.findById(propertyId).orElseThrow(() -> new EntityNotFoundException("Property doesn't exist!"));
     }
 
-    public void addRentalUnit(RentalUnit rentalUnit){
-        Property property = getPropertyById(rentalUnit.getProperty().getId());
-        if (!property.getRentalUnits().contains(rentalUnit)) {
-            property.getRentalUnits().add(rentalUnit);
-        }
-    }
-
-    public void addReservation(Long propertyId, ReservationRequest reservationRequest) {
+    public void addReservation(Long propertyId, Reservation reservation) {
         try {
             Property property = getPropertyById(propertyId);
-            RentalUnit rentalUnit = rentalUnitRepository.findById(reservationRequest.getRentalUnitId()).orElse(null);
             Reservation newReservation = Reservation.builder().property(property)
-                    .rentalUnit(rentalUnit)
-                    .checkIn(reservationRequest.getReservation().getCheckIn())
-                    .checkOut(reservationRequest.getReservation().getCheckOut()).build();
+                    .checkIn(reservation.getCheckIn())
+                    .checkOut(reservation.getCheckOut()).build();
             Reservation savedReservation = reservationService.createReservation(newReservation);
             ResponseEntity.ok(savedReservation);
         } catch (ReservationConflictException e) {
@@ -94,4 +84,5 @@ public class PropertyService {
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
 }
