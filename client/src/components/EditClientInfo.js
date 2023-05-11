@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import './EditClientInfo.css';
 
@@ -11,6 +11,11 @@ export default function EditClientInfo() {
     const [phone, setPhone] = useState('');
     const [mobile, setMobile] = useState('');
     const [address, setAddress] = useState('');
+
+    const firstNameRef = useRef(null);
+    const lastNameRef = useRef(null);
+    const emailRef = useRef(null);
+    const phoneRef = useRef(null);
 
     function getClient() {
         const url = `http://localhost:8080/api/clients/${id}`;
@@ -50,6 +55,13 @@ export default function EditClientInfo() {
         return <div>Loading...</div>;
     }
 
+    async function updateCustomerInfo(e) {
+        e.preventDefault();
+        const data = {
+            firstName: firstNameRef.current.value, lastName: lastNameRef.current.value, email: emailRef.current.value, phone: phoneRef.current.value
+        }
+    }
+
 
     return (
 
@@ -70,15 +82,15 @@ export default function EditClientInfo() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-8">
+                    <form className="col-lg-5" onSubmit={updateCustomerInfo}>
                         <div className="card">
-                            <div className="card-body">
+                            <div className="card-body" >
                                 <div className="row mb-3">
                                     <div className="col-sm-3">
                                         <h6 className="mb-0">First Name</h6>
                                     </div>
                                     <div className="col-lg-9 text-secondary">
-                                        <input type="text" className="form-control" value={clientData.name}/>
+                                        <input type="text" ref={firstNameRef} className="form-control" defaultValue={clientData.name}/>
                                     </div>
                                 </div>
                                 <div className="row mb-3">
@@ -86,7 +98,7 @@ export default function EditClientInfo() {
                                         <h6 className="mb-0">Last Name</h6>
                                     </div>
                                     <div className="col-lg-9 text-secondary">
-                                        <input type="text" className="form-control" value={clientData.surname}/>
+                                        <input type="text" ref={lastNameRef} className="form-control" defaultValue={clientData.surname}/>
                                     </div>
                                 </div>
                                 <div className="row mb-3">
@@ -94,43 +106,28 @@ export default function EditClientInfo() {
                                         <h6 className="mb-0">Email</h6>
                                     </div>
                                     <div className="col-sm-9 text-secondary">
-                                        <input type="text" className="form-control" value={clientData.emailAddress}/>
+                                        <input type="text" ref={emailRef} className="form-control" defaultValue={clientData.emailAddress}/>
                                     </div>
                                 </div>
-                                <div className="row mb-3">
+                                <div className="row mb-5">
                                     <div className="col-sm-3">
                                         <h6 className="mb-0">Phone</h6>
                                     </div>
                                     <div className="col-sm-9 text-secondary">
-                                        <input type="text" className="form-control" value={clientData.phoneNumber}/>
+                                        <input type="text" ref={phoneRef} className="form-control" defaultValue={clientData.phoneNumber}/>
                                     </div>
                                 </div>
-                                <div className="row mb-3">
-                                    <div className="col-sm-3">
-                                        <h6 className="mb-0">Mobile</h6>
-                                    </div>
-                                    <div className="col-sm-9 text-secondary">
-                                        <input type="text" className="form-control" value="(320) 380-4539"/>
-                                    </div>
-                                </div>
-                                <div className="row mb-3">
-                                    <div className="col-sm-3">
-                                        <h6 className="mb-0">Address</h6>
-                                    </div>
-                                    <div className="col-sm-9 text-secondary">
-                                        <input type="text" className="form-control" value="Bay Area, San Francisco, CA"/>
-                                    </div>
-                                </div>
+
                                 <div className="row">
                                     <div className="col-sm-3"></div>
                                     <div className="col-sm-9 text-secondary">
-                                        <input type="button" className="btn btn-primary px-4" value="Save Changes"/>
+                                        <button type="submit" className="btn btn-default waves-effect m-b-5" value="Save Changes"/>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
