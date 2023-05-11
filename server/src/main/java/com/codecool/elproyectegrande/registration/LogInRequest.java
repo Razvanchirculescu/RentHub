@@ -1,4 +1,4 @@
 package com.codecool.elproyectegrande.registration;
 
-public record LogInRequest(String email, String password) {
+public record LogInRequest(String emailAddress, String password) {
 }
