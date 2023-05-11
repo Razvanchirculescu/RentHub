@@ -14,11 +14,11 @@ public class WebConfig implements WebMvcConfigurer {
 //        registry.addMapping("/**").allowedOrigins("http://localhost:3000");
 //    }
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("*")
-                .allowedMethods("POST", "GET")
-                .allowedHeaders("*");
-    }
+//    @Override
+//    public void addCorsMappings(CorsRegistry registry) {
+//        registry.addMapping("/**")
+//                .allowedOrigins("*")
+//                .allowedMethods("POST", "GET")
+//                .allowedHeaders("*");
+//    }
 }

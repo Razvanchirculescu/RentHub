@@ -19,13 +19,19 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.reactive.CorsConfigurationSource;
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
+//import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
 
 @Configuration(enforceUniqueMethods = false)
 @AllArgsConstructor
 @EnableWebSecurity
-public class WebSecurityConfig implements WebSecurityConfigurer {
+public class WebSecurityConfig /*extends WebSecurityConfigurerAdapter*/ implements WebSecurityConfigurer{
 
 
     @Autowired
@@ -38,11 +44,11 @@ public class WebSecurityConfig implements WebSecurityConfigurer {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
+        http.cors().and()
                 .csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers(
-                        /*"/api/clients/**",*/
+//                        "/api/clients/**",
                         "/properties/**"
                         , "api/accounts/login"
                         , "api/accounts/register")
@@ -65,6 +71,19 @@ public class WebSecurityConfig implements WebSecurityConfigurer {
     public void init(SecurityBuilder builder) throws Exception {
 
     }
+
+//    @Bean
+//    public CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration configuration = new CorsConfiguration();
+//        configuration.setAllowedOrigins(List.of("http://localhost:3000")); // Replace with your React client URL
+//        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+//        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
+//
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", configuration);
+//
+//        return source;
+//    }
 
 
 //    @Override

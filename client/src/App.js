@@ -15,6 +15,9 @@ import EditClientInfo from"./components/EditClientInfo"
 
 
 function App() {
+    
+    // const isLoggedIn = useCurrentUser();
+    
     return (
         <div className="Container">
             <BrowserRouter>

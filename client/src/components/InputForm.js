@@ -66,18 +66,24 @@ export default function InputForm() {
                         emailAddress: emailAddress,
                         password: password
                     }),
+                    // credentials: "include"
                 })
                     .then(r => r.json())
                     .then(d => setData(d))
                     .catch(error => setErrorMessage(error.message));
-
+                console.log("data: "+data);
                 // console.log(JSON.stringify({email: username, password: password}))
                 if (data.length > 0) {
                     sessionStorage.setItem('token', data[0])
                     sessionStorage.setItem('clientId', data[1]);
+                    window.location.href = `/api/clients`;
+                } else {
+                    console.error('Login failed');
+                    throw new Error("Login failed")
                 }
 
-                if (response.ok) {
+/*                if (response.ok) {
+                    console.log("data: "+data);
                     // window.location.href = `/properties`;
                     window.location.href = `/api/clients`;
 
@@ -85,7 +91,7 @@ export default function InputForm() {
                     console.error('Login failed');
                     throw new Error("Login failed")
 
-                }
+                }*/
             } catch (error) {
                 setErrorMessage(error.message);
             }
@@ -118,8 +124,8 @@ export default function InputForm() {
                     window.location.href = `/api/clients/register`;
 
                 } else {
-                    throw new Error('Registration failed')
                     console.error('Registration failed');
+                    throw new Error('Registration failed')
                 }
             } catch (error) {
                 setErrorMessage(error.message);

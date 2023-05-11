@@ -42,7 +42,7 @@ public class ClientController {
     }
 
     @GetMapping
-    @Secured({"ROLE_USER"})
+//    @Secured({"ROLE_USER"})
     public List<Client> getAllClients() {
         return clientService.getAllClients();
     }
