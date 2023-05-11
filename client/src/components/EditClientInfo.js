@@ -1,9 +1,12 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import React, {useEffect, useRef, useState} from 'react';
+import {useParams} from 'react-router-dom';
+import axios from 'axios';
+
 import './EditClientInfo.css';
 
 export default function EditClientInfo() {
-    const { id } = useParams();
+    const {id} = useParams();
+    const {clientId} = useParams();
     const [clientData, setClientData] = useState(null);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -46,22 +49,37 @@ export default function EditClientInfo() {
         getClient();
     }, [id]);
 
-    function handleSaveChanges() {
-        //  POST request to update the client data on the server.
-        console.log('Saving changes');
-    }
 
     if (!clientData) {
         return <div>Loading...</div>;
     }
 
+
+
     async function updateCustomerInfo(e) {
         e.preventDefault();
-        const data = {
-            firstName: firstNameRef.current.value, lastName: lastNameRef.current.value, email: emailRef.current.value, phone: phoneRef.current.value
-        }
-    }
 
+        try {
+            const response = await axios.put(`http://localhost:8080/api/clients/${id}`, {
+                id: clientData.id,
+                name: firstNameRef.current.value,
+                surname: lastNameRef.current.value,
+                emailAddress: emailRef.current.value,
+                phoneNumber: phoneRef.current.value,
+                password: clientData.password,
+                clientRole: clientData.clientRole,
+                enabled: clientData.enabled,
+                username: clientData.emailAddress,
+                authorities: clientData.authorities,
+                accountNonExpired: clientData.accountNonExpired,
+                accountNonLocked: clientData.accountNonLocked,
+                credentialsNonExpired: clientData.credentialsNonExpired,
+            });
+            console.log(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     return (
 
@@ -84,13 +102,14 @@ export default function EditClientInfo() {
                     </div>
                     <form className="col-lg-5" onSubmit={updateCustomerInfo}>
                         <div className="card">
-                            <div className="card-body" >
+                            <div className="card-body">
                                 <div className="row mb-3">
                                     <div className="col-sm-3">
                                         <h6 className="mb-0">First Name</h6>
                                     </div>
                                     <div className="col-lg-9 text-secondary">
-                                        <input type="text" ref={firstNameRef} className="form-control" defaultValue={clientData.name}/>
+                                        <input type="text" ref={firstNameRef} className="form-control"
+                                               defaultValue={clientData.name}/>
                                     </div>
                                 </div>
                                 <div className="row mb-3">
@@ -98,7 +117,8 @@ export default function EditClientInfo() {
                                         <h6 className="mb-0">Last Name</h6>
                                     </div>
                                     <div className="col-lg-9 text-secondary">
-                                        <input type="text" ref={lastNameRef} className="form-control" defaultValue={clientData.surname}/>
+                                        <input type="text" ref={lastNameRef} className="form-control"
+                                               defaultValue={clientData.surname}/>
                                     </div>
                                 </div>
                                 <div className="row mb-3">
@@ -106,7 +126,8 @@ export default function EditClientInfo() {
                                         <h6 className="mb-0">Email</h6>
                                     </div>
                                     <div className="col-sm-9 text-secondary">
-                                        <input type="text" ref={emailRef} className="form-control" defaultValue={clientData.emailAddress}/>
+                                        <input type="text" ref={emailRef} className="form-control"
+                                               defaultValue={clientData.emailAddress}/>
                                     </div>
                                 </div>
                                 <div className="row mb-5">
@@ -114,14 +135,17 @@ export default function EditClientInfo() {
                                         <h6 className="mb-0">Phone</h6>
                                     </div>
                                     <div className="col-sm-9 text-secondary">
-                                        <input type="text" ref={phoneRef} className="form-control" defaultValue={clientData.phoneNumber}/>
+                                        <input type="text" ref={phoneRef} className="form-control"
+                                               defaultValue={clientData.phoneNumber}/>
                                     </div>
                                 </div>
 
                                 <div className="row">
                                     <div className="col-sm-3"></div>
                                     <div className="col-sm-9 text-secondary">
-                                        <button type="submit" className="btn btn-default waves-effect m-b-5" value="Save Changes"/>
+                                        <button type="submit" className="btn btn-default waves-effect m-b-5"
+                                                value="Save Changes">Save changes
+                                        </button>
                                     </div>
                                 </div>
                             </div>
