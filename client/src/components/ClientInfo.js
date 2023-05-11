@@ -7,7 +7,10 @@ import './ClientInfo.css';
 export default function ClientInfo() {
 
     const {id} = useParams();
-    console.log(id);
+    console.log("fisrt:"+ id);
+
+    const token =  sessionStorage.getItem('token');
+    const clientId =  sessionStorage.getItem('clientId');
 
     const [clientData, setClientData] = useState(null);
 
@@ -17,16 +20,23 @@ export default function ClientInfo() {
 
     async function handleButtonClickEdit(id) {
         console.log(`Client ID: ${id}`);
-        // history.push(`/api/clients/${id}`);
         window.location.href = `/api/clients/${id}/edit-client-info`;
     }
 
 
     function getClient() {
         const url = `http://localhost:8080/api/clients/${id}`;
-        // const url = `http://localhost:8080/api/clients/1`;
 
-        fetch(url)
+        fetch(url
+            // , {
+            // method:'GET',
+            // headers: {
+            //     'Authorization': 'Bearer ' + token,
+            //     'Content-Type': 'application/json'
+            // },
+            // withCredentials: true // Enable sending cookies
+        // }
+        )
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -43,16 +53,19 @@ export default function ClientInfo() {
     }
 
     useEffect(() => {
-
         getClient();
     }, [id]);
 
     if (!clientData) {
-        return <div>Loading...</div>;
+        return
+            <div>
+                <p style={{color: 'red', fontWeight: 'bold'}}>Login first</p>
+            </div>;
     }
 
-    return (
 
+    if(token!=null && clientId==id){
+    return (
         <div className="container">
             <div className="main-body">
 
@@ -141,4 +154,21 @@ export default function ClientInfo() {
             </div>
         </div>
     );
+    } else {
+        return (
+            <div>
+                <table className="center">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        );
+    }
 }

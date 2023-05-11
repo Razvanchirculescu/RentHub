@@ -30,8 +30,6 @@ import java.util.stream.Stream;
         , RequestMethod.POST, RequestMethod.PATCH})
 public class AccountController {
 
-//    private final RegistrationService registrationService;
-//    private final ClientRepository clientRepository;
     RegistrationService registrationService;
     ClientRepository clientRepository;
 

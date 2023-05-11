@@ -1,7 +1,7 @@
 package com.codecool.elproyectegrande.controller;
 
 import com.codecool.elproyectegrande.model.Client;
-import com.codecool.elproyectegrande.security.ClientSession;
+//import com.codecool.elproyectegrande.security.ClientSession;
 import com.codecool.elproyectegrande.exception.ClientException;
 import com.codecool.elproyectegrande.service.ClientService;
 import jakarta.servlet.http.HttpSession;
@@ -33,12 +33,10 @@ public class ClientController {
 
     ClientService clientService;
 
-    ClientSession clientSession;
 
     @Autowired
-    public ClientController(ClientService clientService, ClientSession clientSession) {
+    public ClientController(ClientService clientService) {
         this.clientService = clientService;
-        this.clientSession = clientSession;
     }
 
     @GetMapping
@@ -86,33 +84,33 @@ public class ClientController {
 //    }
 
 
-    @PostMapping("/login")
-    public String loginClient(@ModelAttribute("client") Client client, BindingResult result, HttpSession session, Model model) {
-        if (result.hasErrors()) {
-            return "login-form";
-        }
-
-        try {
-            Optional<Client> authenticatedClient = clientService.login(client.getEmailAddress(), client.getPassword());
-            session.setAttribute("client", authenticatedClient);
-            return "redirect:/home";
-        } catch (ClientException e) {
-            model.addAttribute("message", e.getMessage());
-            return "login-form";
-        }
-    }
-
-    @GetMapping("/home")
-    public RedirectView showHomePage(HttpSession session, Model model) {
-        Client client = (Client) session.getAttribute("client");
-        if (client == null) {
-            return new RedirectView("/api/clients/login-form");
-        }
-
-        model.addAttribute("client", client);
-//        return "home";
-        return new RedirectView("/properties");
-    }
+//    @PostMapping("/login")
+//    public String loginClient(@ModelAttribute("client") Client client, BindingResult result, HttpSession session, Model model) {
+//        if (result.hasErrors()) {
+//            return "login-form";
+//        }
+//
+//        try {
+//            Optional<Client> authenticatedClient = clientService.login(client.getEmailAddress(), client.getPassword());
+//            session.setAttribute("client", authenticatedClient);
+//            return "redirect:/home";
+//        } catch (ClientException e) {
+//            model.addAttribute("message", e.getMessage());
+//            return "login-form";
+//        }
+//    }
+//
+//    @GetMapping("/home")
+//    public RedirectView showHomePage(HttpSession session, Model model) {
+//        Client client = (Client) session.getAttribute("client");
+//        if (client == null) {
+//            return new RedirectView("/api/clients/login-form");
+//        }
+//
+//        model.addAttribute("client", client);
+////        return "home";
+//        return new RedirectView("/properties");
+//    }
 
 
 }

@@ -25,22 +25,20 @@ import java.util.UUID;
 public class ClientService implements UserDetailsService {
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    private final static String USER_NOT_FOUND_MSG =
-            "user with email %s not found";
+    private final static String USER_NOT_FOUND_MSG = "user with email %s not found";
 
     private final ClientRepository clientRepository;
 
+    private final RepositoryBackedUserDetailsService repositoryBackedUserDetailsService;
 
-//    private final JavaMailSender mailSender;
+
     private final ConfirmationTokenService confirmationTokenService;
 
     @Override
-    public UserDetails loadUserByUsername(String email)
-            throws UsernameNotFoundException {
-        return clientRepository.findByEmailAddress(email)
-                .orElseThrow(() -> new UsernameNotFoundException(
-                        String.format(USER_NOT_FOUND_MSG, email)
-                ));
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return clientRepository
+                .findByEmailAddress(email)
+                .orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email)));
     }
 
     public /*String*/ void signUpClient(Client client){
@@ -60,19 +58,6 @@ public class ClientService implements UserDetailsService {
 
         clientRepository.save(client);
 
-//        String token = UUID.randomUUID().toString();
-//        ConfirmationToken confirmationToken = new ConfirmationToken(
-//                token,
-//                LocalDateTime.now(),
-//                LocalDateTime.now().plusMinutes(15),
-//                client
-//        );
-
-//        confirmationTokenService.saveConfirmationToken(
-//                confirmationToken
-//        );
-
-//        return token;
     }
 
     public String logInUser(String email, String password) {
@@ -94,11 +79,6 @@ public class ClientService implements UserDetailsService {
 
         return token;
     }
-
-
-//       public ClientService(ClientRepository clientRepository) {
-//        this.clientRepository = clientRepository;
-//        }
 
 
         public List<Client> getAllClients(){
@@ -131,42 +111,6 @@ public class ClientService implements UserDetailsService {
                     .orElse(null);
         }
 
-        public void registerClient(String name, String surname, String email, String phone, String password) throws ClientException {
-            // Check if a client with the same email already exists
-            if (clientRepository.findByEmailAddress(email).isPresent()) {
-                throw new ClientException("A client with this email already exists");
-            } else if (
-                    Objects.equals(email, "")
-                            || Objects.equals(name, "")
-                            || Objects.equals(surname, "")
-                            || Objects.equals(password, "")) {
-                throw new ClientException(": missing name, surname, email address or password");
-            } else {
-                List<Client> clientList = new ArrayList<>(getAllClients());
-                if (clientList.size() != 0) {
-                    for (Client client : clientList
-                    ) {
-                        if (client.getEmailAddress().equals(email)
-                                || client.getPhoneNumber().equals(phone)
-                                || client.getPassword().equals(password)) {
-                            throw new ClientException(": email address, phone number or the password  already exists in the database");
-                        } else {
-                            // Create a new client entity
-                            Client newClient = getNewClient(name, surname, email, phone, password);
-
-                            // Save the new client to the database
-                            clientRepository.save(newClient);
-                            return;
-                        }
-                    }
-                } else {
-                    Client newClient = getNewClient(name, surname, email, phone, password);
-
-                    // Save the new client to the database
-                    clientRepository.save(newClient);
-                }
-            }
-        }
 
         private static Client getNewClient(String name, String surname, String email, String phone, String password) {
             // Create a new client entity
@@ -181,19 +125,6 @@ public class ClientService implements UserDetailsService {
         }
 
 
-        public Optional<Client> login(String email, String password) throws ClientException {
-            // Find the client with the specified email
-            Optional<Client> client = clientRepository.findByEmailAddress(email);
-
-            // Check if the client was found and the password is correct
-//        if (client == null || !passwordEncoder.matches(password, client.getPassword())) {
-            if (client.isEmpty() || !client.get().getPassword().equals(password)) {
-                throw new ClientException(": Invalid email or password");
-            }
-
-            // Return the authenticated client
-            return client;
-        }
 
 
 

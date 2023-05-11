@@ -15,8 +15,6 @@ import {
     from 'mdb-react-ui-kit';
 
 
-// import { MDBIcon } from 'mdbreact';
-
 import {useState} from "react";
 
 
@@ -72,26 +70,15 @@ export default function InputForm() {
                     .then(d => setData(d))
                     .catch(error => setErrorMessage(error.message));
                 console.log("data: "+data);
-                // console.log(JSON.stringify({email: username, password: password}))
                 if (data.length > 0) {
                     sessionStorage.setItem('token', data[0])
                     sessionStorage.setItem('clientId', data[1]);
-                    window.location.href = `/api/clients`;
+                    window.location.href = `/api/clients/${data[1]}`;
                 } else {
                     console.error('Login failed');
                     throw new Error("Login failed")
                 }
-
-/*                if (response.ok) {
-                    console.log("data: "+data);
-                    // window.location.href = `/properties`;
-                    window.location.href = `/api/clients`;
-
-                } else {
-                    console.error('Login failed');
-                    throw new Error("Login failed")
-
-                }*/
+                
             } catch (error) {
                 setErrorMessage(error.message);
             }
@@ -119,8 +106,6 @@ export default function InputForm() {
                 }).catch(error => setErrorMessage(error.message))
 
                 if (response.ok) {
-                    // history.push('/properties');
-                    // window.location.href = `/properties`;
                     window.location.href = `/api/clients/register`;
 
                 } else {
