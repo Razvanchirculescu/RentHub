@@ -2,6 +2,15 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './ReservationForm.css';
+import {button} from "mdb-react-ui-kit";
+
+
+function addDays(dateString, days) {
+  const date = new Date(dateString);
+  date.setDate(date.getDate() + days);
+  return date.toISOString().split('T')[0];
+};
+
 
 const ReservationForm = ({ propertyId }) => {
   const { id } = useParams();
@@ -29,12 +38,6 @@ const ReservationForm = ({ propertyId }) => {
     }
   };
 
-  function addDays(dateString, days) {
-    const date = new Date(dateString);
-    date.setDate(date.getDate() + days);
-    return date.toISOString().split('T')[0];
-  }
-
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -60,7 +63,7 @@ const ReservationForm = ({ propertyId }) => {
             />
           </label>
         </div>
-        <button type='submit'>Make reservation</button>
+        <button className='reservation-button'>Book now</button>
         <div className='error-reservation'>
           {errorMessage && <p>{errorMessage}</p>}
         </div>
@@ -68,5 +71,6 @@ const ReservationForm = ({ propertyId }) => {
     </div>
   );
 };
+
 
 export default ReservationForm;

@@ -32,7 +32,7 @@ public class ReservationService {
             if (checkIn.isEqual(overlappingCheckIn)
                     || checkOut.isEqual(overlappingCheckOut)
                     || (checkIn.isBefore(overlappingCheckOut) && checkOut.isAfter(overlappingCheckIn))) {
-                throw new ReservationConflictException("The selected rental unit is already reserved for the selected date range");
+                throw new ReservationConflictException("The selected period is unavailable");
             }
         }
         reservationRepository.save(reservation);
