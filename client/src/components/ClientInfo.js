@@ -17,7 +17,6 @@ export default function ClientInfo() {
 
     async function handleButtonClickEdit(id) {
         console.log(`Client ID: ${id}`);
-        // history.push(`/api/clients/${id}`);
         window.location.href = `/api/clients/${id}/edit-client-info`;
     }
 
@@ -112,23 +111,13 @@ export default function ClientInfo() {
                                     </div>
                                 </div>
                                 <hr/>
-                                <hr/>
-                                <div className="row">
-                                    <div className="col-sm-8">
-                                        <h6 className="mb-0">Address</h6>
-                                    </div>
-                                    <div className="col-sm-9 text-secondary">
-                                        Bay Area, San Francisco, CA
-                                    </div>
-                                </div>
-                                <hr/>
-
+                                <br/>
 
 
                                 <div className="row">
                                     <div className="col-sm-12">
-                                        <Link className="btn btn-info" to="/api/clients/${}/edit-client-info"
-                                              onClick={() => handleButtonClickEdit(clientData.id)}>Edit</Link>
+                                        <Link className="btn btn-info" to={`/api/clients/${clientData.id}/edit-client-info`}
+                                              >Edit</Link>
                                     </div>
                                 </div>
 
