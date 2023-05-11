@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './ReservationForm.css';
-import {button} from "mdb-react-ui-kit";
 
 
 function addDays(dateString, days) {
@@ -10,7 +9,6 @@ function addDays(dateString, days) {
   date.setDate(date.getDate() + days);
   return date.toISOString().split('T')[0];
 };
-
 
 const ReservationForm = ({ propertyId }) => {
   const { id } = useParams();

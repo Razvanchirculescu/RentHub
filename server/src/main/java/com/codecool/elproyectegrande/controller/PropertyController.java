@@ -52,9 +52,9 @@ public class PropertyController {
         propertyService.addProperty(property);
     }
 
-    @PostMapping("/{id}/reviews")
-    public void addPropertyReview(@PathVariable Long id, @RequestBody Review review) {
-        propertyService.addReviewForProperty(id, review);
+    @PostMapping("/{propertyId}/reviews")
+    public void addPropertyReview(@PathVariable Long propertyId, @RequestBody Review review) {
+        propertyService.addReviewForProperty(propertyId, review);
     }
 
     @GetMapping(params = "category")
