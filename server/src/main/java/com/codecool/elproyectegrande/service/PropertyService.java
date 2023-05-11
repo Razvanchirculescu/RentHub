@@ -3,18 +3,13 @@ package com.codecool.elproyectegrande.service;
 import com.codecool.elproyectegrande.exception.ReservationConflictException;
 import com.codecool.elproyectegrande.model.Category;
 import com.codecool.elproyectegrande.model.Property;
-import com.codecool.elproyectegrande.model.RentalUnit;
 import com.codecool.elproyectegrande.model.Reservation;
-import com.codecool.elproyectegrande.DTO.ReservationRequest;
 import com.codecool.elproyectegrande.model.Review;
 import com.codecool.elproyectegrande.repository.CategoryRepository;
 import com.codecool.elproyectegrande.repository.PropertyRepository;
-import com.codecool.elproyectegrande.repository.RentalUnitRepository;
 import com.codecool.elproyectegrande.repository.ReviewRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -70,19 +65,14 @@ public class PropertyService {
         return propertyRepository.findById(propertyId).orElseThrow(() -> new EntityNotFoundException("Property doesn't exist!"));
     }
 
-    public void addReservation(Long propertyId, Reservation reservation) {
-        try {
-            Property property = getPropertyById(propertyId);
-            Reservation newReservation = Reservation.builder().property(property)
-                    .checkIn(reservation.getCheckIn())
-                    .checkOut(reservation.getCheckOut()).build();
-            Reservation savedReservation = reservationService.createReservation(newReservation);
-            ResponseEntity.ok(savedReservation);
-        } catch (ReservationConflictException e) {
-            ResponseEntity.badRequest().body(e.getMessage());
-        } catch (Exception e) {
-            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    public Reservation addReservation(Long propertyId, Reservation reservation) throws ReservationConflictException {
+        Property property = getPropertyById(propertyId);
+        Reservation newReservation = Reservation.builder()
+                .property(property)
+                .checkIn(reservation.getCheckIn())
+                .checkOut(reservation.getCheckOut())
+                .build();
+        return reservationService.createReservation(newReservation);
     }
 
 }

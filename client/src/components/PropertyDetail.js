@@ -107,7 +107,6 @@ export default function PropertyDetail() {
                     </div>
                     <br></br>
                     <br></br>
-                    <p> Check availability</p>
                     <ReservationForm propertyId={id} />
                 </div>
                 <div className="propertyPageReviewSection">

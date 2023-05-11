@@ -28,8 +28,6 @@ function App() {
                     <Route path="/api/clients/register-form" element={< RegisterPage/>}/>
                     <Route path="/api/clients/register" element={< InputForm/>}/>
                     <Route path="/api/clients/:id/edit-client-info" element={< EditClientInfo/>}/>
-
-
                     <Route path="*" element={<NoPageFound/>}/>
                 </Routes>
                 <Footer/>
