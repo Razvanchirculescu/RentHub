@@ -87,8 +87,8 @@ export default function EditClientInfo() {
             <div className="main-body">
                 <div className="row">
 
-                    <div className="col-md-4 mb-3">
-                        <div className="card">
+                    <div className="col-md-6 mb-3">
+                        <div className="card w-100">
                             <div className="card-body">
                                 <div className="d-flex flex-column align-items-center text-center">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
@@ -100,8 +100,8 @@ export default function EditClientInfo() {
                             </div>
                         </div>
                     </div>
-                    <form className="col-lg-5" onSubmit={updateCustomerInfo}>
-                        <div className="card">
+                    <form className="col-md-6" onSubmit={updateCustomerInfo}>
+                        <div className="card w-100">
                             <div className="card-body">
                                 <div className="row mb-3">
                                     <div className="col-sm-3">
@@ -143,8 +143,8 @@ export default function EditClientInfo() {
                                 <div className="row">
                                     <div className="col-sm-3"></div>
                                     <div className="col-sm-9 text-secondary">
-                                        <button type="submit" className="btn btn-default waves-effect m-b-5"
-                                                value="Save Changes">Save changes
+                                        <button type="submit" className="btn btn-default waves-effect m-b-5">
+                                            Save changes
                                         </button>
                                     </div>
                                 </div>

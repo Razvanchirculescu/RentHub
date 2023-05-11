@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Link } from 'react-router-dom';
-
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import './ClientInfo.css';
 
 export default function ClientInfo() {
@@ -57,8 +55,8 @@ export default function ClientInfo() {
 
 
                 <div className="row gutters-sm">
-                    <div className="col-md-4 mb-3">
-                        <div className="card">
+                    <div className="col-md-6 mb-3">
+                        <div className="card w-100">
                             <div className="card-body">
                                 <div className="d-flex flex-column align-items-center text-center">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
@@ -70,12 +68,12 @@ export default function ClientInfo() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-6 mb-3">
                         <div>
-                            <div className="card-body">
+                            <div className="card-body w-100">
 
                                 <div className="row">
-                                    <div className="col-sm-8">
+                                    <div className="col-md-8">
                                         <h6 className="mb-0">First Name</h6>
                                     </div>
                                     <div className="col-sm-9 text-secondary">
@@ -116,8 +114,9 @@ export default function ClientInfo() {
 
                                 <div className="row">
                                     <div className="col-sm-12">
-                                        <Link className="btn btn-info" to={`/api/clients/${clientData.id}/edit-client-info`}
-                                              >Edit</Link>
+                                        <Link className="btn btn-info"
+                                              to={`/api/clients/${clientData.id}/edit-client-info`}
+                                        >Edit</Link>
                                     </div>
                                 </div>
 
