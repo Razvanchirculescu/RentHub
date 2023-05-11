@@ -53,7 +53,7 @@ public class ClientController {
     }
 
     @GetMapping("/{id}")
-    @Secured({"ROLE_USER"})
+//    @Secured({"ROLE_USER"})
     public Client getClientById(@PathVariable int id) {
         return clientService.getClientById(id);
     }

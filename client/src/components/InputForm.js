@@ -231,7 +231,7 @@ export default function InputForm() {
 
                     {errorMessage && <p style={{color: 'red', fontWeight: 'bold'}}>{"**********"+errorMessage+"**********"}</p>}
                     <br/>
-                    <MDBBtn className="mb-4 w-100" type="submit"  onClick={(e) => handleSubmit(e)}>Sign up</MDBBtn>
+                    <MDBBtn className="mb-4 w-100" onClick={(e) => handleSubmit(e)}>Sign up</MDBBtn>
 
                 </MDBTabsPane>
 

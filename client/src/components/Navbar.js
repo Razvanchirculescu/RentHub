@@ -4,7 +4,6 @@ import logoImage from "../images/logos/logoImage.png"
 import TextField from "@mui/material/TextField";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import './Navbar.css';
-import ReactLanguages from "./ReactLanguages";
 
 export default function Navbar() {
     return (

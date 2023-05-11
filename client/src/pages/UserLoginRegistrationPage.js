@@ -1,11 +1,11 @@
 import React from "react";
-import UserLoginRegisterForm from "../components/UserLoginRegisterForm";
+import InputForm from "../components/InputForm";
 
 export default function UserLoginRegistrationPage() {
 
     return (
         <div className="client">
-            < UserLoginRegisterForm/>
+            < InputForm/>
         </div>
     )
 }
