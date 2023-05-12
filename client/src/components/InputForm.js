@@ -210,9 +210,9 @@ export default function InputForm() {
 
                     {/*<input type="hidden" name="justifyActive" value={justifyActive} />*/}
 
-                    <div className='d-flex justify-content-center mb-4'>
-                        <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I have read and agree to the terms' />
-                    </div>
+                    {/*<div className='d-flex justify-content-center mb-4'>*/}
+                    {/*    <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I have read and agree to the terms' />*/}
+                    {/*</div>*/}
 
                     {errorMessage && <p style={{color: 'red', fontWeight: 'bold'}}>{"**********"+errorMessage+"**********"}</p>}
                     <br/>
