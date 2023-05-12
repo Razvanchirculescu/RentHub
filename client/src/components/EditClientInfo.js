@@ -139,6 +139,10 @@ export default function EditClientInfo() {
                                         <button type="submit"  className="btn btn-default waves-effect m-b-5">
                                             Save changes
                                         </button>
+                                        <button type="submit"  className="btn btn-default waves-effect m-b-5">
+                                            Cancel
+                                            <a href={`http://localhost:3000/api/clients/${id}`}/>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
