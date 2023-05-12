@@ -117,14 +117,29 @@ export default function PropertyDetail() {
       </div>
       <div className="property__about">
         <div className="property__about-title">
+            <div className="col-md-6">
+                <ol className="property_facilities">
+                    <b>Facilities:</b>
+                    <br></br>
+                    {propertyData.facilities.map((facility, index) => (
+                        <li key={facility.id}> &nbsp; &nbsp; {facility.name}</li>
+                    ))}
+                </ol>
+            </div>
+            <br/>
+            <br/>
           <h4>About this property</h4>
         </div>
         <p>{propertyData.description}</p>
       </div>
     </div>
     <div className="col-md-4">
+
           <Maps location={location} />
+
       <br />
+
+
           <ReservationForm propertyId={id} />
       <br />
       <MDBListGroup style={{ maxWidth: "25rem" }} light>
