@@ -37,8 +37,8 @@ export default function EditClientInfo() {
                 setLastName(data.surname);
                 setEmail(data.emailAddress);
                 setPhone(data.phoneNumber);
-                setMobile('(320) 380-4539');
-                setAddress('Bay Area, San Francisco, CA');
+                // setMobile('(320) 380-4539');
+                // setAddress('Bay Area, San Francisco, CA');
             })
             .catch(error => {
                 console.error(error);
@@ -61,28 +61,21 @@ export default function EditClientInfo() {
 
         try {
             const response = await axios.put(`http://localhost:8080/api/clients/${id}`, {
-                id: clientData.id,
+                id,
                 name: firstNameRef.current.value,
                 surname: lastNameRef.current.value,
                 emailAddress: emailRef.current.value,
                 phoneNumber: phoneRef.current.value,
-                password: clientData.password,
-                clientRole: clientData.clientRole,
-                enabled: clientData.enabled,
-                username: clientData.emailAddress,
-                authorities: clientData.authorities,
-                accountNonExpired: clientData.accountNonExpired,
-                accountNonLocked: clientData.accountNonLocked,
-                credentialsNonExpired: clientData.credentialsNonExpired,
             });
+            console.log(firstName);
             console.log(response.data);
+            window.location.href = `http://localhost:3000/api/clients/${id}`;
         } catch (error) {
             console.error(error);
         }
     };
 
     return (
-
         <div className="container">
             <div className="main-body">
                 <div className="row">
@@ -143,7 +136,7 @@ export default function EditClientInfo() {
                                 <div className="row">
                                     <div className="col-sm-3"></div>
                                     <div className="col-sm-9 text-secondary">
-                                        <button type="submit" className="btn btn-default waves-effect m-b-5">
+                                        <button type="submit"  className="btn btn-default waves-effect m-b-5">
                                             Save changes
                                         </button>
                                     </div>

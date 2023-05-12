@@ -125,16 +125,14 @@ public class ClientService implements UserDetailsService {
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+    public Client updateClientData(Long id, Client updatedClient) {
+        Client client = clientRepository.findById(id).orElse(null);
+        assert client != null;
+        client.setName(updatedClient.getName());
+        client.setSurname(updatedClient.getSurname());
+        client.setEmailAddress(updatedClient.getEmailAddress());
+        client.setPhoneNumber(updatedClient.getPhoneNumber());
+        clientRepository.save(client);
+        return client;
+    }
 }
