@@ -20,7 +20,7 @@ public class RegistrationService {
 
     private final ClientRepository clientRepository;
 
-//    private final RepositoryBackedUserDetailsService repositoryBackedUserDetailsService;
+    private final RepositoryBackedUserDetailsService repositoryBackedUserDetailsService;
 
     public /*String*/ void register(SignUpRequest request) {
         boolean isValidEmail = emailValidator.test(request.emailAddress());
@@ -39,9 +39,8 @@ public class RegistrationService {
     public String logIn(LogInRequest request) {
 
         System.out.println("req email:"+request.emailAddress()+"  req pass: "+request.password() );
-//        repositoryBackedUserDetailsService.loadUserByUsername(request.emailAddress());
-//        return clientService.logInUser(request.emailAddress(), request.password());
-        Client client = clientRepository.findByEmailAddress(request.emailAddress()).orElse(null);
+        repositoryBackedUserDetailsService.loadUserByUsername(request.emailAddress());
+//        Client client = clientRepository.findByEmailAddress(request.emailAddress()).orElse(null);
         return clientService.logInUser(request.emailAddress(), request.password());
     }
 }

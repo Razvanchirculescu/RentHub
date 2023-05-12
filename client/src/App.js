@@ -11,6 +11,7 @@ import InputForm from "./components/InputForm";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import EditClientInfo from"./components/EditClientInfo"
+import LogoutClient from "./components/LogoutClient"
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
                     <Route path="/api/clients/:id" element={<ClientPage/>}/>
                     <Route path="/api/clients" element={< ClientsPage/>}/>
                     <Route path="/api/clients/:id/edit-client-info" element={< EditClientInfo/>}/>
+                    <Route path="/api/clients/logout" element={<LogoutClient/>}/>
 
 
                     <Route path="*" element={<NoPageFound/>}/>
