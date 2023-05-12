@@ -1,13 +1,15 @@
 package com.codecool.elproyectegrande.controller;
 
+import com.codecool.elproyectegrande.exception.ErrorResponse;
+import com.codecool.elproyectegrande.exception.ReservationConflictException;
 import com.codecool.elproyectegrande.model.Category;
 import com.codecool.elproyectegrande.model.Property;
-import com.codecool.elproyectegrande.model.RentalUnit;
-import com.codecool.elproyectegrande.DTO.ReservationRequest;
 import com.codecool.elproyectegrande.model.Reservation;
 import com.codecool.elproyectegrande.model.Review;
 import com.codecool.elproyectegrande.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -50,9 +52,9 @@ public class PropertyController {
         propertyService.addProperty(property);
     }
 
-    @PostMapping("/{id}/reviews")
-    public void addPropertyReview(@PathVariable Long id, @RequestBody Review review) {
-        propertyService.addReviewForProperty(id, review);
+    @PostMapping("/{propertyId}/reviews")
+    public void addPropertyReview(@PathVariable Long propertyId, @RequestBody Review review) {
+        propertyService.addReviewForProperty(propertyId, review);
     }
 
     @GetMapping(params = "category")
@@ -66,8 +68,15 @@ public class PropertyController {
     }
 
     @PostMapping("/{propertyId}/reservations")
-    public void addReservation(@PathVariable Long propertyId, @RequestBody Reservation reservation) {
-        propertyService.addReservation(propertyId , reservation);
+    public ResponseEntity<?> addReservation(@PathVariable Long propertyId, @RequestBody Reservation reservation) {
+        try {
+            Reservation savedReservation = propertyService.addReservation(propertyId, reservation);
+            return ResponseEntity.ok(savedReservation);
+        } catch (ReservationConflictException e) {
+            return ResponseEntity.badRequest().body(new ErrorResponse(e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
 }

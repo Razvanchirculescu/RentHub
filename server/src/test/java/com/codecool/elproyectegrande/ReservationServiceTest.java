@@ -43,14 +43,13 @@ public class ReservationServiceTest {
         LocalDate checkOut = LocalDate.of(2023, 5, 12);
         Reservation reservation1 = Reservation.builder()
                 .property(property)
-                .rentalUnit(rentalUnit)
                 .checkIn(checkIn)
                 .checkOut(checkOut)
                 .build();
 
         // Configure the mock repository to return an empty list of overlapping reservations
-        when(reservationRepository.findByPropertyIdAndRentalUnitIdAndCheckOutAfterAndCheckInBefore(
-                property.getId(), rentalUnit.getId(), checkIn, checkOut))
+        when(reservationRepository.findByPropertyIdAndCheckOutAfterAndCheckInBefore(
+                property.getId(), checkIn, checkOut))
                 .thenReturn(Collections.emptyList());
 
         // This should not throw an exception because there are no overlapping reservations
@@ -61,14 +60,13 @@ public class ReservationServiceTest {
         // Set up a test reservation that overlaps with an existing
         //                .property(property)g reservation
         Reservation reservation2 = Reservation.builder()
-                .rentalUnit(rentalUnit)
                 .checkIn(checkIn.minusDays(1))
                 .checkOut(checkOut.plusDays(1))
                 .build();
 
         // Configure the mock repository to return a list containing the overlapping reservation
-        when(reservationRepository.findByPropertyIdAndRentalUnitIdAndCheckOutAfterAndCheckInBefore(
-                property.getId(), rentalUnit.getId(), checkIn.minusDays(1), checkOut.plusDays(1)))
+        when(reservationRepository.findByPropertyIdAndCheckOutAfterAndCheckInBefore(
+                property.getId(), checkIn.minusDays(1), checkOut.plusDays(1)))
                 .thenReturn(Arrays.asList(reservation1));
 
         // This should throw a ReservationConflictException because of the overlapping reservation

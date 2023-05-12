@@ -2,9 +2,14 @@ body {
     overflow-x: hidden;
     /*hides horizontal scrolling*/
 }
-.m-2_propertyDetailDescription{
+.m-2_propertyDetailDescription, .property__about{
     padding-top: 5vh;
-    padding-left: 20vh;
+    padding-left: 8vh;
+}
+
+.property__about-title {
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 
@@ -21,7 +26,7 @@ body {
 
 .property__rating{
     padding-top: 2vh;
-    padding-left: 20vh;
+    padding-left: 8vh;
     padding-bottom: 2vh;
 }
 
