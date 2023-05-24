@@ -1,8 +1,9 @@
 package com.codecool.elproyectegrande.service;
 
+import com.codecool.elproyectegrande.exception.ReservationConflictException;
 import com.codecool.elproyectegrande.model.Category;
 import com.codecool.elproyectegrande.model.Property;
-import com.codecool.elproyectegrande.model.RentalUnit;
+import com.codecool.elproyectegrande.model.Reservation;
 import com.codecool.elproyectegrande.model.Review;
 import com.codecool.elproyectegrande.repository.CategoryRepository;
 import com.codecool.elproyectegrande.repository.PropertyRepository;
@@ -23,6 +24,7 @@ public class PropertyService {
     private final PropertyRepository propertyRepository;
     private final ReviewRepository reviewRepository;
     private final CategoryRepository categoryRepository;
+    private final ReservationService reservationService;
 
     public void addProperty(Property property) {
         propertyRepository.save(property);
@@ -39,31 +41,14 @@ public class PropertyService {
     }
 
     public void addReviewForProperty(Long id, Review review) {
-        Property property = getPropertyById(id);
-        if (review.getSatisfaction() < 1 || review.getSatisfaction() > 5) {
-            throw new IllegalArgumentException("Rating must be between 1 and 5");
-        }
+        Property property = propertyRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Property not found with id: " + id));
         review.setProperty(property);
-        property.addReview(review);
-        property.setRating();
         reviewRepository.save(review);
+
+        property.setRating();
         propertyRepository.save(property);
     }
-
-//    public void addReservation(int propertyId, Reservation reservation) {
-//        Property property = getPropertyById(propertyId);
-//        RentalUnit rentalUnit = getRentalUnitById(propertyId, reservation.getRentalUnitID());
-//        for (Reservation reservation1 : property.getReservationList()) {
-//            if (reservation1.equals(reservation)) {
-//                throw new IllegalArgumentException("Reservation already exists: "
-//                        + reservation);
-//            }
-//        }
-//        if(checkInValidationForRentalUnit(propertyId,reservation)){
-//            property.addReservation(reservation);
-//            rentalUnit.getReservations().add(reservation);
-//        }
-//    }
 
     public void addCategory(Long propertyId, Category category) {
         Property property = getPropertyById(propertyId);
@@ -76,65 +61,18 @@ public class PropertyService {
         property.addCategory(category);
     }
 
-//    public boolean checkInValidationForRentalUnit(int propertyId, Reservation reservation){
-//        RentalUnit rentalUnit = getRentalUnitById(propertyId, reservation.getRentalUnitID());
-//
-//        boolean available = true;
-//
-//        LocalDate today = LocalDate.now();
-//        //start from tomorrow and out must be after in!
-//        if (reservation.getCheckIn().isBefore(today)
-//                || reservation.getCheckIn().isEqual(today)
-//                || reservation.getCheckOut().isBefore(reservation.getCheckIn())
-//                || reservation.getCheckOut().isEqual(reservation.getCheckIn())) {
-//            throw new IllegalArgumentException("Check reservation dates! (1)  ");
-//        }
-//
-//        if (rentalUnit!=null) {
-//            List<Reservation> reservationsForRentalUnitID = rentalUnit.getReservations();
-//            for (Reservation reservation1: reservationsForRentalUnitID){
-//                if ((reservation.getCheckIn().isAfter(reservation1.getCheckIn())
-//                        && reservation.getCheckIn().isBefore(reservation1.getCheckOut()))
-//                        || (reservation.getCheckOut().isAfter(reservation1.getCheckIn())
-//                        && reservation.getCheckOut().isBefore(reservation1.getCheckOut()))) {
-//                    available = false;
-//                    break;
-//                    }
-//                if ((reservation1.getCheckIn().isAfter(reservation.getCheckIn())
-//                        && reservation1.getCheckIn().isBefore(reservation.getCheckOut()))
-//                        ||(reservation1.getCheckOut().isAfter(reservation.getCheckIn())
-//                        && reservation1.getCheckOut().isBefore(reservation.getCheckOut()))) {
-//                    available=false;
-//                    break;
-//                }
-//            }
-//            if (!available) {
-//                //data provided are in conflict with previous reservations
-//                throw new IllegalArgumentException("Check reservation dates! (2)");
-//            }
-//        } else {
-//            //the indicated rental unit does not exist
-//            throw new IllegalArgumentException("Check reservation dates! (3)");
-//        }
-//        return available;
-//    }
-
     public Property getPropertyById(Long propertyId) {
         return propertyRepository.findById(propertyId).orElseThrow(() -> new EntityNotFoundException("Property doesn't exist!"));
     }
 
-    public RentalUnit getRentalUnitById(Long propertyId, int rentalUnitId){
+    public Reservation addReservation(Long propertyId, Reservation reservation) throws ReservationConflictException {
         Property property = getPropertyById(propertyId);
-        return property.getRentalUnits().stream()
-                .filter(rentalUnit -> rentalUnitId==rentalUnit.getId())
-                .findAny()
-                .orElse(null);
+        Reservation newReservation = Reservation.builder()
+                .property(property)
+                .checkIn(reservation.getCheckIn())
+                .checkOut(reservation.getCheckOut())
+                .build();
+        return reservationService.createReservation(newReservation);
     }
 
-    public void addRentalUnit(RentalUnit rentalUnit){
-        Property property = getPropertyById((long) rentalUnit.getProperty().getId());
-        if (!property.getRentalUnits().contains(rentalUnit)) {
-            property.getRentalUnits().add(rentalUnit);
-        }
-    }
 }

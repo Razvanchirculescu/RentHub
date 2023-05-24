@@ -1,11 +1,12 @@
 package com.codecool.elproyectegrande.controller;
 
 import com.codecool.elproyectegrande.model.Client;
-import com.codecool.elproyectegrande.security.ClientSession;
+//import com.codecool.elproyectegrande.security.ClientSession;
 import com.codecool.elproyectegrande.exception.ClientException;
 import com.codecool.elproyectegrande.service.ClientService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/clients")
@@ -31,15 +34,14 @@ public class ClientController {
 
     ClientService clientService;
 
-    ClientSession clientSession;
 
     @Autowired
-    public ClientController(ClientService clientService, ClientSession clientSession) {
+    public ClientController(ClientService clientService) {
         this.clientService = clientService;
-        this.clientSession = clientSession;
     }
 
     @GetMapping
+//    @Secured({"ROLE_USER"})
     public List<Client> getAllClients() {
         return clientService.getAllClients();
     }
@@ -50,6 +52,7 @@ public class ClientController {
     }
 
     @GetMapping("/{id}")
+//    @Secured({"ROLE_USER"})
     public Client getClientById(@PathVariable int id) {
         return clientService.getClientById(id);
     }
@@ -64,51 +67,55 @@ public class ClientController {
         return clientService.getClientByPhone(phoneNo);
     }
 
-
-    @PostMapping("/register")
-    public String registerClient(@RequestBody Client client) {
-        try {
-            clientService.registerClient(
-                    client.getName()
-                    , client.getSurname()
-                    , client.getEmailAddress()
-                    , client.getPhoneNumber()
-                    , client.getPassword());
-            return "redirect:/login-form";
-        } catch (ClientException e) {
-            System.out.println("message" + e.getMessage());
-            return "register-form";
-        }
+    @PutMapping("/{id}")
+    public Client updateClientData(@PathVariable Long id, @RequestBody Client client){
+        return clientService.updateClientData(id, client);
     }
 
+//    @PostMapping("/register")
+//    public String registerClient(@RequestBody Client client) {
+//        try {
+//            clientService.registerClient(
+//                    client.getName()
+//                    , client.getSurname()
+//                    , client.getEmailAddress()
+//                    , client.getPhoneNumber()
+//                    , client.getPassword());
+//            return "redirect:/login-form";
+//        } catch (ClientException e) {
+//            System.out.println("message" + e.getMessage());
+//            return "register-form";
+//        }
+//    }
 
-    @PostMapping("/login")
-    public String loginClient(@ModelAttribute("client") Client client, BindingResult result, HttpSession session, Model model) {
-        if (result.hasErrors()) {
-            return "login-form";
-        }
 
-        try {
-            Client authenticatedClient = clientService.login(client.getEmailAddress(), client.getPassword());
-            session.setAttribute("client", authenticatedClient);
-            return "redirect:/home";
-        } catch (ClientException e) {
-            model.addAttribute("message", e.getMessage());
-            return "login-form";
-        }
-    }
-
-    @GetMapping("/home")
-    public RedirectView showHomePage(HttpSession session, Model model) {
-        Client client = (Client) session.getAttribute("client");
-        if (client == null) {
-            return new RedirectView("/api/clients/login-form");
-        }
-
-        model.addAttribute("client", client);
-//        return "home";
-        return new RedirectView("/properties");
-    }
+//    @PostMapping("/login")
+//    public String loginClient(@ModelAttribute("client") Client client, BindingResult result, HttpSession session, Model model) {
+//        if (result.hasErrors()) {
+//            return "login-form";
+//        }
+//
+//        try {
+//            Optional<Client> authenticatedClient = clientService.login(client.getEmailAddress(), client.getPassword());
+//            session.setAttribute("client", authenticatedClient);
+//            return "redirect:/home";
+//        } catch (ClientException e) {
+//            model.addAttribute("message", e.getMessage());
+//            return "login-form";
+//        }
+//    }
+//
+//    @GetMapping("/home")
+//    public RedirectView showHomePage(HttpSession session, Model model) {
+//        Client client = (Client) session.getAttribute("client");
+//        if (client == null) {
+//            return new RedirectView("/api/clients/login-form");
+//        }
+//
+//        model.addAttribute("client", client);
+////        return "home";
+//        return new RedirectView("/properties");
+//    }
 
 
 }
