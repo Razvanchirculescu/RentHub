@@ -1,0 +1,21 @@
+img {
+    height: 50%;
+}
+#grid {
+    margin: auto;
+    padding-block-start: 20px;
+    height: fit-content;
+    width: 85%;
+    writing-mode: horizontal-tb;
+    display: grid;
+    grid-gap: 4vh;
+    grid-template-columns: repeat(15, 10vh);
+}
+
+
+.span{
+    height: fit-content;
+    background-color: white;
+    grid-row-end: span 5;
+    margin-right: 5px;
+}
