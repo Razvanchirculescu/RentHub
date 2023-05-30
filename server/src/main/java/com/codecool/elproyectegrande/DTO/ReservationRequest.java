@@ -1,18 +1,19 @@
 package com.codecool.elproyectegrande.DTO;
 
 import com.codecool.elproyectegrande.model.Reservation;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ReservationRequest {
 
-    private Long rentalUnitId;
+    private Long clientId;
     private Reservation reservation;
 
-    public ReservationRequest(Long rentalUnitId, Reservation reservation) {
-        this.rentalUnitId = rentalUnitId;
+    public ReservationRequest(@JsonProperty("clientId") Long clientId, Reservation reservation) {
+        this.clientId = clientId;
         this.reservation = reservation;
     }
-    public Long getRentalUnitId() {
-        return rentalUnitId;
+    public Long getClientId() {
+        return clientId;
     }
 
     public Reservation getReservation() {

@@ -1,11 +1,10 @@
 package com.codecool.elproyectegrande.service;
 
+import com.codecool.elproyectegrande.DTO.ReservationRequest;
 import com.codecool.elproyectegrande.exception.ReservationConflictException;
-import com.codecool.elproyectegrande.model.Category;
-import com.codecool.elproyectegrande.model.Property;
-import com.codecool.elproyectegrande.model.Reservation;
-import com.codecool.elproyectegrande.model.Review;
+import com.codecool.elproyectegrande.model.*;
 import com.codecool.elproyectegrande.repository.CategoryRepository;
+import com.codecool.elproyectegrande.repository.ClientRepository;
 import com.codecool.elproyectegrande.repository.PropertyRepository;
 import com.codecool.elproyectegrande.repository.ReviewRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -25,6 +24,7 @@ public class PropertyService {
     private final ReviewRepository reviewRepository;
     private final CategoryRepository categoryRepository;
     private final ReservationService reservationService;
+    private final ClientRepository clientRepository;
 
     public void addProperty(Property property) {
         propertyRepository.save(property);
@@ -44,7 +44,8 @@ public class PropertyService {
         Property property = propertyRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Property not found with id: " + id));
         review.setProperty(property);
-        reviewRepository.save(review);
+        //TODO check it ;)
+//        reviewRepository.save(review);
 
         property.setRating();
         propertyRepository.save(property);
@@ -65,12 +66,14 @@ public class PropertyService {
         return propertyRepository.findById(propertyId).orElseThrow(() -> new EntityNotFoundException("Property doesn't exist!"));
     }
 
-    public Reservation addReservation(Long propertyId, Reservation reservation) throws ReservationConflictException {
+    public Reservation addReservation(Long propertyId, ReservationRequest reservationRequest) throws ReservationConflictException {
         Property property = getPropertyById(propertyId);
+        Client client = clientRepository.findById(reservationRequest.getClientId()).orElse(null);
         Reservation newReservation = Reservation.builder()
                 .property(property)
-                .checkIn(reservation.getCheckIn())
-                .checkOut(reservation.getCheckOut())
+                .checkIn(reservationRequest.getReservation().getCheckIn())
+                .checkOut(reservationRequest.getReservation().getCheckOut())
+                .client(client)
                 .build();
         return reservationService.createReservation(newReservation);
     }

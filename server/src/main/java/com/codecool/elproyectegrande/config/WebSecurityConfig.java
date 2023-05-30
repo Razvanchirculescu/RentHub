@@ -1,10 +1,7 @@
 package com.codecool.elproyectegrande.config;
 
-//import io.github.cdimascio.dotenv.Dotenv;
 
-import com.codecool.elproyectegrande.repository.ClientRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -17,11 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @AllArgsConstructor
 @EnableWebSecurity
 @EnableMethodSecurity
-public class WebSecurityConfig /*extends WebSecurityConfigurerAdapter implements WebSecurityConfigurer */{
-
-
-    @Autowired
-    private ClientRepository clientRepository;
+public class WebSecurityConfig {
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -34,8 +27,8 @@ public class WebSecurityConfig /*extends WebSecurityConfigurerAdapter implements
                 .csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers(
-                        "/api/clients/**",
-                        "/properties/**"
+                        "/api/clients/**"
+                        , "/properties/**"
                         , "api/accounts/login"
                         , "api/accounts/register")
                 .permitAll()
@@ -46,32 +39,5 @@ public class WebSecurityConfig /*extends WebSecurityConfigurerAdapter implements
                 .and().exceptionHandling().disable();
         return http.build();
     }
-
-//    @Override
-//    public void configure(SecurityBuilder builder) throws Exception {
-//
-//
-//    }
-//
-//    @Override
-//    public void init(SecurityBuilder builder) throws Exception {
-//
-//    }
-
-//    @Bean
-//    public CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration configuration = new CorsConfiguration();
-//        configuration.setAllowedOrigins(List.of("http://localhost:3000")); // Replace with your React client URL
-//        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
-//        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
-//
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", configuration);
-//
-//        return source;
-//    }
-
-
-
 
 }

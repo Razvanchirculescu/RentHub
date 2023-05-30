@@ -28,14 +28,9 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    //TODO validari hibernate
     private LocalDate checkIn;
     private LocalDate checkOut;
-//
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "rental_unit_id")
-//    @JsonIgnore
-//    private RentalUnit rentalUnit;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")

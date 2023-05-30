@@ -26,11 +26,9 @@ public class ElProyecteGrandeApplication {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/greeting-javaconfig")
 						.allowedOrigins("http://localhost:3000")
-//						.allowCredentials(true)
-//				registry.addMapping("/**")
-//						.allowedOrigins("*")
-						.allowedMethods("POST", "GET")
-						.allowedHeaders("*");
+						.allowedMethods("GET", "POST", "PUT", "DELETE")
+						.allowedHeaders("*")
+						.allowCredentials(true);
 			}
 		};
 	}
