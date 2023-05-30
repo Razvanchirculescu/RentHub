@@ -8,7 +8,7 @@ import ReservationForm from "./ReservationForm";
 import ReviewForm from "./ReviewForm";
 
     
-
+//librarie de state management
 export default function PropertyDetail() {
 
     const [location, setLocation] = useState({ lat: 44.439663, lng: 26.096306 });

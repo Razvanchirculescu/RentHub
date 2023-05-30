@@ -59,9 +59,6 @@ public class Property {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "property", fetch = FetchType.EAGER)
     private List<Review> reviews;
 
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "property", fetch = FetchType.EAGER)
-//    private List<RentalUnit> rentalUnits;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "property", fetch = FetchType.EAGER)
     private List<Image> images;
 

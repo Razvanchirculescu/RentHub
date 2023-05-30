@@ -1,5 +1,6 @@
 package com.codecool.elproyectegrande.controller;
 
+import com.codecool.elproyectegrande.DTO.ReservationRequest;
 import com.codecool.elproyectegrande.exception.ErrorResponse;
 import com.codecool.elproyectegrande.exception.ReservationConflictException;
 import com.codecool.elproyectegrande.model.Category;
@@ -9,6 +10,7 @@ import com.codecool.elproyectegrande.model.Review;
 import com.codecool.elproyectegrande.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,9 +29,8 @@ import java.util.List;
 @RequestMapping("properties")
 @CrossOrigin(origins = "http://localhost:3000"
         , methods = {RequestMethod.PUT, RequestMethod.GET, RequestMethod.DELETE
-        , RequestMethod.POST, RequestMethod.PATCH})
+        , RequestMethod.POST, RequestMethod.PATCH}, allowedHeaders = "*", allowCredentials = "true")
 public class PropertyController {
-
     private final PropertyService propertyService;
 
     @Autowired
@@ -68,9 +69,11 @@ public class PropertyController {
     }
 
     @PostMapping("/{propertyId}/reservations")
-    public ResponseEntity<?> addReservation(@PathVariable Long propertyId, @RequestBody Reservation reservation) {
+    @RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> addReservation(@PathVariable Long propertyId, @RequestBody ReservationRequest reservationRequest) {
+        System.out.println(reservationRequest);
         try {
-            Reservation savedReservation = propertyService.addReservation(propertyId, reservation);
+            Reservation savedReservation = propertyService.addReservation(propertyId, reservationRequest);
             return ResponseEntity.ok(savedReservation);
         } catch (ReservationConflictException e) {
             return ResponseEntity.badRequest().body(new ErrorResponse(e.getMessage()));

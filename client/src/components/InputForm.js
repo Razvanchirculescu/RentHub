@@ -35,7 +35,6 @@ export default function InputForm() {
 
     const [data, setData] = useState([]);
 
-
     const handleJustifyClick = (value) => {
         if (value === justifyActive) {
             return;
@@ -117,11 +116,6 @@ export default function InputForm() {
             }
         }
     };
-
-
-
-
-
 
 
     return (
