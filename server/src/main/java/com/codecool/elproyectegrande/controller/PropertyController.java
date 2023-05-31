@@ -26,10 +26,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("properties")
-@CrossOrigin(origins = "http://localhost:3000"
-        , methods = {RequestMethod.PUT, RequestMethod.GET, RequestMethod.DELETE
-        , RequestMethod.POST, RequestMethod.PATCH}, allowedHeaders = "*", allowCredentials = "true")
+@RequestMapping("/properties")
+//@CrossOrigin(origins = "http://localhost:3000"
+//        , methods = {RequestMethod.PUT, RequestMethod.GET, RequestMethod.DELETE
+//        , RequestMethod.POST, RequestMethod.PATCH}, allowedHeaders = "*", allowCredentials = "true")
 public class PropertyController {
     private final PropertyService propertyService;
 
@@ -68,7 +68,8 @@ public class PropertyController {
         propertyService.addCategory(propertyId, category);
     }
 
-    @PostMapping("/{propertyId}/reservations")
+    @PostMapping(value = "/{propertyId}/reservations")
+//    @CrossOrigin("http://localhost:3000/properties/*/reservations")
     @RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> addReservation(@PathVariable Long propertyId, @RequestBody ReservationRequest reservationRequest) {
         System.out.println(reservationRequest);
