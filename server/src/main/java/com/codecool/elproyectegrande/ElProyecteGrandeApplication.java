@@ -1,11 +1,12 @@
 package com.codecool.elproyectegrande;
 
-import lombok.NonNull;
+import com.codecool.elproyectegrande.service.InitService;
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.lang.NonNullApi;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -18,6 +19,9 @@ public class ElProyecteGrandeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ElProyecteGrandeApplication.class, args);
 	}
+
+	@Autowired
+	InitService initService;
 
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
@@ -32,6 +36,12 @@ public class ElProyecteGrandeApplication {
 			}
 		};
 	}
+
+	@PostConstruct
+	public void seedDatabase() {
+		initService.seedDatabase();
+	}
+
 
 
 
