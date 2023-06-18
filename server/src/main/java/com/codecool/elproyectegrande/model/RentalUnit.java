@@ -35,15 +35,15 @@ public class RentalUnit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "property_id")
-    @JsonIgnore
-    private Property property;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "property_id")
+//    @JsonIgnore
+//    private Property property;
 
     @Enumerated(EnumType.STRING)
     private RentalUnitType rentalUnitType;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "rentalUnit")
-    private List<Reservation> reservations;
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "rentalUnit")
+//    private List<Reservation> reservations;
 
 }

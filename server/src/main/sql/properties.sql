@@ -78,13 +78,64 @@ insert into property_category (property_id, category_id) VALUES (9, 1);
 insert into property_category (property_id, category_id) VALUES (9, 14);
 insert into property_category (property_id, category_id) VALUES (10, 3);
 
+insert into property_facilities(property_id, facilities_id) VALUES (1, 1);
+insert into property_facilities(property_id, facilities_id) VALUES (1, 2);
+insert into property_facilities(property_id, facilities_id) VALUES (1, 3);
+insert into property_facilities(property_id, facilities_id) VALUES (1, 4);
+insert into property_facilities(property_id, facilities_id) VALUES (1, 5);
 
-insert into rental_unit (property_id, rental_unit_type) VALUES (1, 'SINGLE');
-insert into rental_unit (property_id, rental_unit_type) VALUES (1, 'SINGLE');
-insert into rental_unit (property_id, rental_unit_type) VALUES (1, 'SINGLE');
-insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'DOUBLE');
-insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'DOUBLE');
-insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'DOUBLE');
-insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'APARTMENT');
-insert into rental_unit (property_id, rental_unit_type) VALUES (2, 'DOUBLE');
-insert into rental_unit (property_id, rental_unit_type) VALUES (1, 'SINGLE');
+insert into property_facilities(property_id, facilities_id) VALUES (2, 6);
+insert into property_facilities(property_id, facilities_id) VALUES (2, 7);
+insert into property_facilities(property_id, facilities_id) VALUES (2, 8);
+insert into property_facilities(property_id, facilities_id) VALUES (2, 9);
+insert into property_facilities(property_id, facilities_id) VALUES (2, 10);
+
+insert into property_facilities(property_id, facilities_id) VALUES (3, 11);
+insert into property_facilities(property_id, facilities_id) VALUES (3, 12);
+insert into property_facilities(property_id, facilities_id) VALUES (3, 13);
+insert into property_facilities(property_id, facilities_id) VALUES (3, 14);
+insert into property_facilities(property_id, facilities_id) VALUES (3, 15);
+
+insert into property_facilities(property_id, facilities_id) VALUES (4, 16);
+insert into property_facilities(property_id, facilities_id) VALUES (4, 17);
+insert into property_facilities(property_id, facilities_id) VALUES (4, 3);
+insert into property_facilities(property_id, facilities_id) VALUES (4, 1);
+insert into property_facilities(property_id, facilities_id) VALUES (4, 5);
+
+insert into property_facilities(property_id, facilities_id) VALUES (5, 1);
+insert into property_facilities(property_id, facilities_id) VALUES (5, 12);
+insert into property_facilities(property_id, facilities_id) VALUES (5, 8);
+insert into property_facilities(property_id, facilities_id) VALUES (5, 14);
+insert into property_facilities(property_id, facilities_id) VALUES (5, 5);
+
+insert into property_facilities(property_id, facilities_id) VALUES (6, 1);
+insert into property_facilities(property_id, facilities_id) VALUES (6, 11);
+insert into property_facilities(property_id, facilities_id) VALUES (6, 17);
+insert into property_facilities(property_id, facilities_id) VALUES (6, 10);
+insert into property_facilities(property_id, facilities_id) VALUES (6, 12);
+
+insert into property_facilities(property_id, facilities_id) VALUES (7, 1);
+insert into property_facilities(property_id, facilities_id) VALUES (7, 11);
+insert into property_facilities(property_id, facilities_id) VALUES (7, 17);
+insert into property_facilities(property_id, facilities_id) VALUES (7, 10);
+insert into property_facilities(property_id, facilities_id) VALUES (7, 12);
+
+insert into property_facilities(property_id, facilities_id) VALUES (8, 1);
+insert into property_facilities(property_id, facilities_id) VALUES (8, 11);
+insert into property_facilities(property_id, facilities_id) VALUES (8, 17);
+insert into property_facilities(property_id, facilities_id) VALUES (8, 10);
+insert into property_facilities(property_id, facilities_id) VALUES (8, 12);
+
+insert into property_facilities(property_id, facilities_id) VALUES (9, 1);
+insert into property_facilities(property_id, facilities_id) VALUES (9, 11);
+insert into property_facilities(property_id, facilities_id) VALUES (9, 17);
+insert into property_facilities(property_id, facilities_id) VALUES (9, 10);
+insert into property_facilities(property_id, facilities_id) VALUES (9, 12);
+
+insert into property_facilities(property_id, facilities_id) VALUES (10, 1);
+insert into property_facilities(property_id, facilities_id) VALUES (10, 11);
+insert into property_facilities(property_id, facilities_id) VALUES (10, 17);
+insert into property_facilities(property_id, facilities_id) VALUES (10, 10);
+insert into property_facilities(property_id, facilities_id) VALUES (10, 12);
+
+insert into reservation (check_in, check_out, property_id) VALUES (DATE '2022-08-07', DATE '2022-08-09', 1);
