@@ -54,12 +54,12 @@ export default function PropertyDetail() {
                     <button id={"property__rating-button"}> &#9733; {propertyData.rating} </button>
                     &nbsp; &nbsp;
                     {propertyData.reviews && propertyData.reviews.length > 0 && (
-                    <p>{propertyData.reviews.length} Reviews</p>
+                        <p>{propertyData.reviews.length} Reviews</p>
                     )}
                     {propertyData.location.city},&nbsp;{propertyData.location.country}
                 </div>
             </div>
-            <div className="row mb-5">
+            <div className="row">
                 <div className="col-md-8">
                     <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel" style={{height: "fit-content"}}>
                         <ol className="carousel-indicators">
@@ -70,7 +70,7 @@ export default function PropertyDetail() {
                         <div className="carousel-inner" style={{height: "fit-content"}}>
                             {propertyData.images.map((image, index) => (
                                 <div className={`carousel-item ${index === 0 ? "active" : ""}`} key={index}>
-                                <img className="d-block w-100" src={image.path} alt={`Slide ${index}`} />
+                                    <img className="d-block w-100" src={image.path} alt={`Slide ${index}`} />
                                 </div>
                             ))}
                         </div>
@@ -88,7 +88,7 @@ export default function PropertyDetail() {
                 </div>
 
                 <div className="col-md-4" id={"datePickerDiv"}>
-                <p> Check availability</p>
+                    <p> Check availability</p>
 
                     &#128197;  &nbsp;
 
@@ -117,20 +117,20 @@ export default function PropertyDetail() {
                     />
                 </div>
 
-                    <div className="propertyPageReviewSection">
+                <div className="propertyPageReviewSection">
 
                     <MDBListGroup style={{ maxWidth: '25rem' }} light>
-                            {propertyData.reviews.map((review, index) => {
-                                return (
-                                    <MDBListGroupItem key={`review-${index}`}
-                                                      className='d-flex justify-content-between align-items-center'>
-                                        <p>{review.description}</p>
-                                        <MDBBadge pill light>
-                                            <span>{review.satisfaction} &#9733;</span>
-                                        </MDBBadge>
-                                    </MDBListGroupItem>
-                                );
-                            })}
+                        {propertyData.reviews.map((review, index) => {
+                            return (
+                                <MDBListGroupItem key={`review-${index}`}
+                                                  className='d-flex justify-content-between align-items-center' style={{bottom:"1vh"}}>
+                                    <p>{review.description}</p>
+                                    <MDBBadge pill light>
+                                        <span>{review.satisfaction} &#9733;</span>
+                                    </MDBBadge>
+                                </MDBListGroupItem>
+                            );
+                        })}
                     </MDBListGroup>
                 </div>
             </div>
