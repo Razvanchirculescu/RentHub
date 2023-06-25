@@ -153,26 +153,6 @@ export default function InputForm() {
 
                 <MDBTabsPane show={justifyActive === 'tab2'}>
 
-                    <div className="text-center mb-3">
-                        <p>Sign un with:</p>
-
-                        <div className='d-flex justify-content-between mx-auto' style={{width: '20%'}}>
-                            <link rel="stylesheet"
-                                  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
-                                  integrity="sha512-Bgmf7VLeHvOYw7VplLK/DgZGLx/gZiClHOGaUsktOWg9X1aLdkyLzeLGQY7lD+pqocQsffxSMZvGq3qTZM3XQA=="
-                                  crossOrigin="anonymous" referrerpolicy="no-referrer"/>
-
-                            <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-                                <MDBIcon icon='google' size="sm"/>
-                            </MDBBtn>
-
-                            <MDBBtn tag='a' color='none' className='m-1' style={{ color: '#1266f1' }}>
-                                <MDBIcon icon='github' size="sm"/>
-                            </MDBBtn>
-                        </div>
-
-                        <p className="text-center mt-3">or:</p>
-                    </div>
 
                     <MDBInput wrapperClass='mb-4' label='Name' id='form1' type='text'
                           value={name} onChange={(e) => setName(e.target.value)}/>
