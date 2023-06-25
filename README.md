@@ -15,17 +15,13 @@ RentHub is a website that allows people to rent out properties such as apartment
 The current version of RentHub includes the following features:
 
 - Property listing page: Displays a list of available properties with information about their location, availability and pricing.
-- Property detail page: Work in progress.
-- Register and login: Work in progress.
+- Property detail page
+      - shows property location on a map using GoogleMaps API
+      - reservation can be created
+- Register and login
 - User page: Work in progress.
-
-To be added by the end of May `23:
-
-- Property page: a map which shows the location of the property<br>
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               functionality to the date range booking selector
-- User page(while logged in) : User info(personal and contact details, past bookings, current bookings).
+      - currently showing user info which can be edited
+      - displaying bookings
 
 ## Getting Started
 
@@ -49,6 +45,9 @@ If you would like to contribute to the development of RentHub, follow these step
 
 ![1](https://drive.google.com/uc?id=1iF5WHNFftlbwjFnkCGBlzQaZ08CJrpQR)
 ![2](https://drive.google.com/uc?id=1gvYrk-MExF3WxC4NSz1T80P9eiDCoSHi)
-![3](https://drive.google.com/uc?id=1NMgykjRFvUxZWSVvxbzgy0Bjj15_XQ6q)
+![3](https://drive.google.com/uc?id=1Eg--f9g1wa8In-6eMk3R7QwbTIE6EVnG)
+![4](https://drive.google.com/uc?id=1sJYzxMO_J3pkHS9wU1atbqbd3VWUY6Ew)
+![5](https://drive.google.com/uc?id=1QWUAAgqEXHUihNdk44_J_qQZTFgILrvb)
+
 
 
