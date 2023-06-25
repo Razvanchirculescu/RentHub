@@ -9,13 +9,17 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 @Entity
 @Getter
@@ -31,6 +35,8 @@ public class Reservation {
     //TODO validari hibernate
     private LocalDate checkIn;
     private LocalDate checkOut;
+    private BigDecimal price;
+    private String status;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
@@ -40,6 +46,26 @@ public class Reservation {
 
     @ManyToOne
     @JoinColumn(name = "property_id")
-    @JsonIgnore
     private Property property;
+
+    @PrePersist
+    @PreUpdate
+    private void  calculatePrice() {
+        price = calculatePriceBasedOnDates();
+        updateStatus();
+    }
+
+    private BigDecimal calculatePriceBasedOnDates() {
+        long numberOfNights = ChronoUnit.DAYS.between(checkIn, checkOut);
+        return property.getPricePerNight().multiply(BigDecimal.valueOf(numberOfNights));
+    }
+
+    private void updateStatus() {
+        LocalDate currentDate = LocalDate.now();
+        if (checkOut.isBefore(currentDate)) {
+            status = "Completed";
+        } else {
+            status = "Upcoming";
+        }
+    }
 }

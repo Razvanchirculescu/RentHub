@@ -6,21 +6,14 @@ import com.codecool.elproyectegrande.registration.LogInRequest;
 import com.codecool.elproyectegrande.registration.SignUpRequest;
 import com.codecool.elproyectegrande.repository.ClientRepository;
 import com.codecool.elproyectegrande.service.RegistrationService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @RestController
 @AllArgsConstructor

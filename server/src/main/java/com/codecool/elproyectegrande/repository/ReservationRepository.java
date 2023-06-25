@@ -11,4 +11,9 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
     List<Reservation> findByPropertyIdAndCheckOutAfterAndCheckInBefore(
             Long propertyId, LocalDate checkIn, LocalDate checkOut);
 
+    List<Reservation> findByClientId(Long clientId);
+
+
 }
+
+

@@ -1,14 +1,12 @@
 package com.codecool.elproyectegrande.service;
 
 
-import com.codecool.elproyectegrande.email.EmailValidator;
 import com.codecool.elproyectegrande.model.Client;
 import com.codecool.elproyectegrande.model.ClientRole;
 import com.codecool.elproyectegrande.registration.LogInRequest;
 import com.codecool.elproyectegrande.registration.SignUpRequest;
 import com.codecool.elproyectegrande.repository.ClientRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,9 +1,21 @@
 package com.codecool.elproyectegrande.controller;
 
+import com.codecool.elproyectegrande.DTO.ReviewRequest;
 import com.codecool.elproyectegrande.model.Client;
+import com.codecool.elproyectegrande.model.Reservation;
 import com.codecool.elproyectegrande.service.ClientService;
+import com.codecool.elproyectegrande.service.ReservationService;
+import com.codecool.elproyectegrande.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -11,12 +23,16 @@ import java.util.List;
 @RequestMapping("/api/clients")
 public class ClientController {
 
-    ClientService clientService;
+    private ClientService clientService;
+    private ReservationService reservationService;
+    private ReviewService reviewService;
 
 
     @Autowired
-    public ClientController(ClientService clientService) {
+    public ClientController(ClientService clientService, ReservationService reservationService, ReviewService reviewService) {
         this.clientService = clientService;
+        this.reservationService = reservationService;
+        this.reviewService = reviewService;
     }
 
     @GetMapping
@@ -35,7 +51,6 @@ public class ClientController {
     public Client getClientById(@PathVariable int id) {
         return clientService.getClientById(id);
     }
-
     @PatchMapping("/{name}/{surname}")
     public Client getClientByName(@PathVariable String name, @PathVariable String surname) {
         return clientService.getClientByName(name, surname);
@@ -51,50 +66,14 @@ public class ClientController {
         return clientService.updateClientData(id, client);
     }
 
-//    @PostMapping("/register")
-//    public String registerClient(@RequestBody Client client) {
-//        try {
-//            clientService.registerClient(
-//                    client.getName()
-//                    , client.getSurname()
-//                    , client.getEmailAddress()
-//                    , client.getPhoneNumber()
-//                    , client.getPassword());
-//            return "redirect:/login-form";
-//        } catch (ClientException e) {
-//            System.out.println("message" + e.getMessage());
-//            return "register-form";
-//        }
-//    }
+    @GetMapping("/{id}/reservations")
+    public List<Reservation> getReservationForClient(@PathVariable Long id) {
+        return reservationService.getReservationForClient(id);
+    }
 
-
-//    @PostMapping("/login")
-//    public String loginClient(@ModelAttribute("client") Client client, BindingResult result, HttpSession session, Model model) {
-//        if (result.hasErrors()) {
-//            return "login-form";
-//        }
-//
-//        try {
-//            Optional<Client> authenticatedClient = clientService.login(client.getEmailAddress(), client.getPassword());
-//            session.setAttribute("client", authenticatedClient);
-//            return "redirect:/home";
-//        } catch (ClientException e) {
-//            model.addAttribute("message", e.getMessage());
-//            return "login-form";
-//        }
-//    }
-//
-//    @GetMapping("/home")
-//    public RedirectView showHomePage(HttpSession session, Model model) {
-//        Client client = (Client) session.getAttribute("client");
-//        if (client == null) {
-//            return new RedirectView("/api/clients/login-form");
-//        }
-//
-//        model.addAttribute("client", client);
-////        return "home";
-//        return new RedirectView("/properties");
-//    }
-
+    @PostMapping(value = "/{clientId}/reviews", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void addPropertyReview(@PathVariable int clientId, @RequestBody ReviewRequest reviewRequest) {
+        reviewService.addReview(clientId, reviewRequest);
+    }
 
 }
