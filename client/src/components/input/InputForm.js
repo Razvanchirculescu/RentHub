@@ -8,9 +8,7 @@ import {
     MDBTabsLink,
     MDBTabsContent,
     MDBTabsPane,
-    MDBBtn,
-    MDBInput,
-    MDBCheckbox
+    MDBInput
 }
     from 'mdb-react-ui-kit';
 

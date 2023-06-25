@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Link, useParams} from 'react-router-dom';
 import './ClientInfo.css';
-import Reservatios from './Reservations';
+import Reservatios from '../Reservations';
 
 export default function ClientInfo() {
 

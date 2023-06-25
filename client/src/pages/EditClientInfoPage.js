@@ -1,5 +1,5 @@
 import React from "react";
-import EditClientInfo from "../components/EditClientInfo"
+import EditClientInfo from "../components/client/EditClientInfo"
 
 export default function EditClientInfoPage() {
 

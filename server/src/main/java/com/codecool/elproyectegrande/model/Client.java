@@ -35,7 +35,8 @@ public class Client implements UserDetails {
             strategy = GenerationType.SEQUENCE,
             generator = "client_sequence"
     )
-
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String surname;
@@ -58,6 +59,7 @@ public class Client implements UserDetails {
         this.clientRole = clientRole;
     }
 
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(
@@ -65,6 +67,16 @@ public class Client implements UserDetails {
         );
         return Collections.singletonList(authority);
     }
+
+
+//    public Client(String name, String surname, String phoneNumber, String email, String password, ClientRole user) {
+//    }
+
+
+//    @Override
+//    public String getPassword() {
+//        return password;
+//    }
 
     @Override
     public String getUsername() {

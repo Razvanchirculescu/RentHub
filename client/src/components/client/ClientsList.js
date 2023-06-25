@@ -2,7 +2,7 @@
 
 import React, {useEffect, useState} from 'react';
 // import { useHistory } from "use-history";
-import logoText from '../images/logos/logoText.png';
+import logoText from '../../images/logos/logoText.png';
 import './ClientsList.css';
 
 export default function ClientsList() {

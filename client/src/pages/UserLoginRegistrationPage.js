@@ -1,5 +1,5 @@
 import React from "react";
-import InputForm from "../components/InputForm";
+import InputForm from "../components/input/InputForm";
 
 export default function UserLoginRegistrationPage() {
 

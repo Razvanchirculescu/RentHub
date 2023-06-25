@@ -1,5 +1,5 @@
 import React from "react";
-import ClientsList from "../components/ClientsList";
+import ClientsList from "../components/client/ClientsList";
 
 export default function ClientsPage() {
 

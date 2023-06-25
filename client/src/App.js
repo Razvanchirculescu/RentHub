@@ -8,11 +8,11 @@ import LandingPage from "./pages/LandingPage";
 import ClientsPage from "./pages/ClientsPage";
 import ClientPage from "./pages/ClientPage";
 import UserLoginRegistrationPage from "./pages/UserLoginRegistrationPage";
-import LogoutClient from "./components/LogoutClient"
-import InputForm from "./components/InputForm";
+import LogoutClient from "./components/client/LogoutClient"
+import InputForm from "./components/input/InputForm";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import EditClientInfo from"./components/EditClientInfo"
+import EditClientInfo from"./components/client/EditClientInfo"
 
 
 function App() {
