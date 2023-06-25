@@ -11,7 +11,7 @@ function addDays(dateString, days) {
 };
 
 const ReservationForm = ({ propertyId }) => {
-  const { id } = useParams();
+  // const { id } = useParams();
 
   const [checkIn, setStartDate] = useState('');
   const [checkOut, setEndDate] = useState('');

@@ -13,29 +13,11 @@ export default function ClientInfo() {
 
     const [clientData, setClientData] = useState(null);
 
-    async function handleButtonClick() {
-        window.location.href = `/api/clients`;
-    }
-
-    async function handleButtonClickEdit(id) {
-        console.log(`Client ID: ${id}`);
-        window.location.href = `/api/clients/${id}/edit-client-info`;
-    }
-
 
     function getClient() {
         const url = `http://localhost:8080/api/clients/${id}`;
 
-        fetch(url
-            // , {
-            // method:'GET',
-            // headers: {
-            //     'Authorization': 'Bearer ' + token,
-            //     'Content-Type': 'application/json'
-            // },
-            // withCredentials: true // Enable sending cookies
-            // }
-        )
+        fetch(url)
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -53,17 +35,18 @@ export default function ClientInfo() {
 
     useEffect(() => {
         getClient();
-    }, [id]);
+    }, [id, getClient]);
 
     if (!clientData) {
-        return
-        <div>
-            <p style={{color: 'red', fontWeight: 'bold'}}>Login first</p>
-        </div>;
+        return (
+            <div>
+                <p style={{ color: 'red', fontWeight: 'bold' }}>Login first</p>
+            </div>
+        );
     }
 
 
-    if (token != null && clientId == id) {
+    if (token != null && clientId === id) {
         return (
             <div className="container">
                 <div className="main-body">

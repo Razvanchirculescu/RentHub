@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@mui/material/Button';
 
 import {
     MDBContainer,
@@ -8,7 +9,6 @@ import {
     MDBTabsContent,
     MDBTabsPane,
     MDBBtn,
-    MDBIcon,
     MDBInput,
     MDBCheckbox
 }
@@ -141,13 +141,13 @@ export default function InputForm() {
                     <MDBInput wrapperClass='mb-4' label='Password' id='form1' type='password'
                               value={password} onChange={(e) => setPassword(e.target.value)}/>
 
-                    <div className="d-flex justify-content-between mx-4 mb-4">
-                        <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />
-                        <a href="!#">Forgot password?</a>
-                    </div>
+                    {/*<div className="d-flex justify-content-between mx-4 mb-4">*/}
+                    {/*    <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />*/}
+                    {/*    <a href="!#">Forgot password?</a>*/}
+                    {/*</div>*/}
 
-                    <MDBBtn className="mb-4 w-100"  onClick={(e) => handleSubmit(e)}>Sign in</MDBBtn>
-                    <p className="text-center">Not a member? <a href="#!">Register</a></p>
+                    <Button variant="contained" size="medium" className="mb-4 w-100"  onClick={(e) => handleSubmit(e)}>Sign in</Button>
+
 
                 </MDBTabsPane>
 
@@ -180,15 +180,9 @@ export default function InputForm() {
                         autoComplete="current-password"
                         value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
 
-                    {/*<input type="hidden" name="justifyActive" value={justifyActive} />*/}
-
-                    {/*<div className='d-flex justify-content-center mb-4'>*/}
-                    {/*    <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I have read and agree to the terms' />*/}
-                    {/*</div>*/}
-
                     {errorMessage && <p style={{color: 'red', fontWeight: 'bold'}}>{"**********"+errorMessage+"**********"}</p>}
                     <br/>
-                    <MDBBtn className="mb-4 w-100" onClick={(e) => handleSubmit(e)}>Sign up</MDBBtn>
+                    <Button variant="contained" size="medium" className="mb-4 w-100" size="small"  onClick={(e) => handleSubmit(e)}>Sign up</Button>
 
                 </MDBTabsPane>
 

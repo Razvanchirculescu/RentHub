@@ -1,4 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
+import Button from '@mui/material/Button';
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
 
@@ -37,8 +38,7 @@ export default function EditClientInfo() {
                 setLastName(data.surname);
                 setEmail(data.emailAddress);
                 setPhone(data.phoneNumber);
-                // setMobile('(320) 380-4539');
-                // setAddress('Bay Area, San Francisco, CA');
+
             })
             .catch(error => {
                 console.error(error);
@@ -136,13 +136,9 @@ export default function EditClientInfo() {
                                 <div className="row">
                                     <div className="col-sm-3"></div>
                                     <div className="col-sm-9 text-secondary">
-                                        <button type="submit"  className="btn btn-default waves-effect m-b-5">
-                                            Save changes
-                                        </button>
-                                        <button type="submit"  className="btn btn-default waves-effect m-b-5">
-                                            Cancel
-                                            <a href={`http://localhost:3000/api/clients/${id}`}/>
-                                        </button>
+                                        <Button type="submit"  variant="contained" size="small" >Save changes </Button>
+                                        &nbsp;
+                                        <Button type="submit"  variant="contained" size="small" >Cancel <a href={`http://localhost:3000/api/clients/${id}`}/> </Button>
                                     </div>
                                 </div>
                             </div>
