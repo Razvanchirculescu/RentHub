@@ -33,55 +33,55 @@ export default function CategoryGrid() {
         <div id="grid">
             <Link to={"/properties?category=Arctic"}>
                 <button className="span" id={"arctic"} >
-                    <img src={arctic}/>
+                    <img src={arctic} alt={arctic}/>
                 </button>
             </Link>
             <Link to={"/properties?category=Beach"}>
                 <button className="span" id={"beach"}>
-                    <img src={beach}/>
+                    <img src={beach} alt={beach}/>
                 </button>
             </Link>
             <Link to={"/properties?category=Cabana"}>
                 <button className="span" id={"cabins"}>
-                    <img src={cabins}/>
+                    <img src={cabins} alt={cabins}/>
                 </button>
             </Link>
             <Link to={"/properties?category=Castle"}>
                 <button className="span" id={"castles"}>
-                    <img src={castles}/>
+                    <img src={castles} alt={castles}/>
                 </button>
             </Link>
             <Link to={"/properties?category=Trading"}>
                 <button className="span" id={"trending"}>
-                    <img src={trending}/>
+                    <img src={trending} alt={trending}/>
                 </button>
             </Link>
             <Link to={"/properties?category=Villa"}>
                 <button className="span" id={"beachFront"}> 
-                    <img src={beachFront}/>
+                    <img src={beachFront} alt={beachFront}/>
                 </button>
             </Link>
             <button className="span" id={"countrySide"}>
-                <img src={countrySide}/>
+                <img src={countrySide} alt={countrySide}/>
             </button>
             <button className="span" id={"domes"}>
-                <img src={domes}/>
+                <img src={domes} alt={domes}/>
             </button>
             <button className="span" id={"farms"}>
-                <img src={farms}/>
+                <img src={farms} alt={farms}/>
             </button>
             <button className="span" id={"lakes"}>
-                <img src={lakes}/>
+                <img src={lakes}alt={farms}/>
             </button>
             <button className="span" id={"nationalParks"}>
-                <img src={nationalParks}/>
+                <img src={nationalParks} alt={nationalParks}/>
             </button>
             <button className="span" id={"surfing"}>
-                <img src={surfing}/>
+                <img src={surfing} alt={surfing}/>
             </button>
           
             <button className="span" id={"tropical"}>
-                <img src={tropical}/>
+                <img src={tropical} alt={tropical}/>
             </button>
         </div>
     );
