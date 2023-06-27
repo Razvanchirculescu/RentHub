@@ -14,7 +14,7 @@ function formatDate(dateString) {
 
 function formatPrice(price) {
     const formattedPrice = price.toFixed(2);
-    return `${formattedPrice} lei`;
+    return `${formattedPrice} USD`;
 }
 
 

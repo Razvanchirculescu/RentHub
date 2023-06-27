@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {Link, useParams} from 'react-router-dom';
 import './ClientInfo.css';
-import Reservatios from '../Reservations';
+import Reservations from '../Reservations';
 
 export default function ClientInfo() {
 
     const {id} = useParams();
-    console.log("first:" + id);
 
     const token = sessionStorage.getItem('token');
     const clientId = sessionStorage.getItem('clientId');
@@ -127,26 +126,27 @@ export default function ClientInfo() {
                 </div>
 
                 <div>
-                    <Reservatios/>
+                    <Reservations/>
                 </div>
 
             </div>
         );
     } else {
         return (
-            <div>
-                <table className="center">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Surname</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
+            <h1 align="center"> <a href="/api/clients/register" > Please log in to have access to the account page </a> </h1>
+            // <div>
+            //     <table className="center">
+            //         <thead>
+            //         <tr>
+            //             <th>ID</th>
+            //             <th>Name</th>
+            //             <th>Surname</th>
+            //             <th>Email</th>
+            //             <th>Phone</th>
+            //         </tr>
+            //         </thead>
+            //     </table>
+            // </div>
         );
     }
 }

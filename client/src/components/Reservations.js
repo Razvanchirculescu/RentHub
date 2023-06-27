@@ -6,7 +6,6 @@ export default function Reservatios() {
 
     const [props, setProps] = useState(null);
     const {id} = useParams();
-    console.log(id)
 
     useEffect(() => {
         const url = `http://localhost:8080/api/clients/${id}/reservations`;

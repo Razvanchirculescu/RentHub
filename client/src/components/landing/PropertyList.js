@@ -9,7 +9,7 @@ function PropertyList() {
     const [propertyData, setPropertyData] = useState([]);
     const searchParams = new URLSearchParams(useLocation().search);
     const category = searchParams.get("category");
-    console.log(category)
+    // console.log(category)
 
 
     useEffect(() => {

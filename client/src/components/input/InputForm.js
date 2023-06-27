@@ -17,7 +17,7 @@ import {useState} from "react";
 
 
 
-export default function InputForm() {
+export default function InputForm () {
 
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
@@ -29,7 +29,6 @@ export default function InputForm() {
 
     const [justifyActive, setJustifyActive] = useState('tab1');
 
-    console.log("0- justify active: "+ justifyActive);
 
     const [data, setData] = useState([]);
 
@@ -42,12 +41,11 @@ export default function InputForm() {
     };
 
     const handleSubmit = async (event) => {
-    console.log("justify active: "+ justifyActive);
+
 
         event.preventDefault();
 
         if (justifyActive ==='tab1') {
-            console.log("1-justify active: "+ justifyActive);
             try {
                 if (password === '' || emailAddress ==='') {
                     console.error('Login failed , missing data');
@@ -64,11 +62,11 @@ export default function InputForm() {
                     // credentials: "include"
                 })
                 const data  = await response.json();
-                console.log("data: "+data);
                 if (data.length > 0) {
                     sessionStorage.setItem('token', data[0])
                     sessionStorage.setItem('clientId', data[1]);
                     window.location.href = `/api/clients/${data[1]}`;
+
                 } else {
                     console.error('Login failed');
                     throw new Error("Login failed")
@@ -79,7 +77,6 @@ export default function InputForm() {
             }
 
         } else if (justifyActive==='tab2'){
-            console.log("2-justify active: "+ justifyActive);
             try {
                 if (password !== confirmPassword) {
                     console.error('Passwords do not match');
