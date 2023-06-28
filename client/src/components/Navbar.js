@@ -13,21 +13,16 @@ import './Navbar.css';
 
 export default function Navbar({isLoggedIn}) {
 
-
-    const LOGIN_REGISTER_LINK = "http://localhost:3000/api/clients/register";
-    const CLIENTS_LINK = "http://localhost:3000/api/clients";
-    const LOGOUT_LINK = "/api/clients/logout";
-
     const handleLogout = () => {
-        window.location.href = LOGOUT_LINK;
+        window.location.href = "/api/clients/logout";
     };
 
     const handleClients = () => {
-        window.location.href = CLIENTS_LINK;
+        window.location.href = "http://localhost:3000/api/clients";
     };
 
     const handleLoginRegister = () => {
-        window.location.href = LOGIN_REGISTER_LINK;
+        window.location.href = "http://localhost:3000/api/clients/register";
     };
 
     function checkLoggedIn() {
