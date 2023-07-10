@@ -52,29 +52,29 @@
         top: 0;
     }
 
-    .navbarSearch {
-        padding-top: 10px;
-        display: flex;
-        height: 60vh;
-        width: 100%;
-        align-items: center;
-        flex-direction: column;
-        row-gap: 20px;
-    }
+    /*.navbarSearch {*/
+    /*    padding-top: 10px;*/
+    /*    display: flex;*/
+    /*    height: 60vh;*/
+    /*    width: 100%;*/
+    /*    align-items: center;*/
+    /*    flex-direction: column;*/
+    /*    row-gap: 20px;*/
+    /*}*/
 
-    h1 {
-        margin: 10px;
-        font-size: 40px;
-        color: rgb(1, 1, 59);
-    }
+    /*h1 {*/
+    /*    margin: 10px;*/
+    /*    font-size: 40px;*/
+    /*    color: rgb(1, 1, 59);*/
+    /*}*/
 
-    .search {
-        height: 10px;
-        width: 30%;
-    }
+    /*.search {*/
+    /*    height: 10px;*/
+    /*    width: 30%;*/
+    /*}*/
 
-    ul li {
-        font-size: 20px;
-    }
+    /*ul li {*/
+    /*    font-size: 20px;*/
+    /*}*/
 
 }

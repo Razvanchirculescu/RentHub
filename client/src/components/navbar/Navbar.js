@@ -1,17 +1,25 @@
-import React from "react";
+import React,{useState} from "react";
 
-import logoText from "../images/logos/logoText.png"
-import logoImage from "../images/logos/logoImage.png"
+import logoText from "../../images/logos/logoText.png"
+import logoImage from "../../images/logos/logoImage.png"
 
-import {isLoggedIn} from "../components/input/InputForm"
+import {isLoggedIn} from "../input/InputForm"
 
-import TextField from "@mui/material/TextField";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PeopleIcon from '@mui/icons-material/People';
 
 import './Navbar.css';
+import { SearchBar } from "./SearchBar"
+import { SearchResultsList } from "./SearchResultsList"
+
+
 
 export default function Navbar({isLoggedIn}) {
+
+    const [searchResults, setSearchResults] = useState([]);
+
+    const loggedIn = checkLoggedIn();
+
 
     const handleLogout = () => {
         window.location.href = "/api/clients/logout";
@@ -28,9 +36,9 @@ export default function Navbar({isLoggedIn}) {
     function checkLoggedIn() {
         return sessionStorage.length > 0;
     }
-
-    const loggedIn = checkLoggedIn();
-
+    const handleLinkClick = () => {
+        setSearchResults("");
+    };
 
     return (
         <nav className="nav flex flex-wrap items-center justify-between px-4">
@@ -43,17 +51,8 @@ export default function Navbar({isLoggedIn}) {
                     <img height={50} width={150} src={logoText} alt={"logo"}/>
                 </a>
             </div>
+            <SearchBar setSearchResults = {setSearchResults}/>
 
-            <div className="navbarSearch">
-                <div className="search">
-                    <TextField
-                        id="outlined-basic"
-                        variant="outlined"
-                        fullWidth
-                        label="Search"
-                    />
-                </div>
-            </div>
 
             <input className="menu-btn hidden" type="checkbox" id="menu-btn"/>
             <label className="menu-icon block cursor-pointer md:hidden px-2 py-4 relative select-none"
@@ -92,6 +91,7 @@ export default function Navbar({isLoggedIn}) {
                 </li>
 
             </ul>
+            <SearchResultsList searchResults={searchResults}  onLinkClick={handleLinkClick} />
         </nav>
 
     );

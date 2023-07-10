@@ -47,6 +47,11 @@ public class PropertyController {
         return propertyService.getPropertiesByCategory(category);
     }
 
+//    @GetMapping(params = "search")
+//    public List<Property> getPropertiesBySearchResult(@RequestParam("search") String search) {
+//        return propertyService.getPropertyBySearchResults(search);
+//    }
+
     @PatchMapping("/{propertyId}/category")
     public void addCategory(@PathVariable Long propertyId, @RequestBody Category category) {
         propertyService.addCategory(propertyId, category);

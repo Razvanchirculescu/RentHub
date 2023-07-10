@@ -40,6 +40,10 @@ public class PropertyService {
                 property.getCategories().contains(category1)).collect(Collectors.toList());
     }
 
+//    public List<Property> getPropertyBySearchResults(String search) {
+//        return getAllProperties().stream().filter(property -> property.getLocation().getCountry().contains(search)).collect(Collectors.toList());
+//    }
+
     public void updateRating(Property property) {
         property.setRating();
         propertyRepository.save(property);

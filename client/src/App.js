@@ -10,7 +10,7 @@ import ClientPage from "./pages/ClientPage";
 import UserLoginRegistrationPage from "./pages/UserLoginRegistrationPage";
 import LogoutClient from "./components/client/LogoutClient"
 import InputForm from "./components/input/InputForm";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/Footer";
 import EditClientInfo from"./components/client/EditClientInfo"
 
