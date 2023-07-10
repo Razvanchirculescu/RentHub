@@ -33,6 +33,7 @@ function PropertyList() {
                             <div className="card__image">
                                 <img src={property.images[0].path} alt={property.name} />
                             </div>
+
                             <div className="card__details">
                                 <p className="card__location">{property.location.city}, {property.location.country}</p>
                                 <p className="card__subtitle"></p>

@@ -11,7 +11,6 @@ import PropertyTopDetails from "./PropertyTopDetails";
 import PropertyReviews from "./PropertyReviews";
 
 
-//librarie de state management
 export default function PropertyDetail() {
 
     const [location, setLocation] = useState({ lat: 44.439663, lng: 26.096306 });
@@ -32,7 +31,7 @@ export default function PropertyDetail() {
             .then(data => {
                 setprops(data);
                 const { street, streetNr, city, country } = data.location;
-                const apiKey = 'AIzaSyB3I0_AonpTHy5LAvcaBIRkJ6pz3eyabzo';
+                const apiKey = 'AIzaSyBHbK2B61CDcunXnylZS4aZ_xdH43H36-Q';
                 fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${street}+${streetNr}+${city}+${country}&key=${apiKey}`)
                     .then(response => {
                         if (!response.ok) {

@@ -5,7 +5,7 @@ import logoImage from "../images/logos/logoImage.png"
 
 import {isLoggedIn} from "../components/input/InputForm"
 
-// import TextField from "@mui/material/TextField";
+import TextField from "@mui/material/TextField";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PeopleIcon from '@mui/icons-material/People';
 
@@ -44,16 +44,16 @@ export default function Navbar({isLoggedIn}) {
                 </a>
             </div>
 
-            {/*<div className="navbarSearch">*/}
-            {/*    <div className="search">*/}
-            {/*        <TextField*/}
-            {/*            // id="outlined-basic"*/}
-            {/*            // variant="outlined"*/}
-            {/*            fullWidth*/}
-            {/*            label="Search"*/}
-            {/*        />*/}
-            {/*    </div>*/}
-            {/*</div>*/}
+            <div className="navbarSearch">
+                <div className="search">
+                    <TextField
+                        id="outlined-basic"
+                        variant="outlined"
+                        fullWidth
+                        label="Search"
+                    />
+                </div>
+            </div>
 
             <input className="menu-btn hidden" type="checkbox" id="menu-btn"/>
             <label className="menu-icon block cursor-pointer md:hidden px-2 py-4 relative select-none"

@@ -19,3 +19,57 @@ img {
     grid-row-end: span 5;
     margin-right: 5px;
 }
+
+/* For screens smaller than 600px */
+/*@media (max-width: 600px) {*/
+/*    img {*/
+/*        height: 50%;*/
+/*    }*/
+
+/*    #grid {*/
+/*        width: 100%;*/
+/*        grid-template-columns: repeat(5, 1fr);*/
+/*        grid-gap: 2vh;*/
+/*    }*/
+
+/*    .span {*/
+/*        grid-row-end: span 2;*/
+/*        margin-right: 0;*/
+/*    }*/
+/*}*/
+
+/*!* For screens between 601px and 900px *!*/
+/*@media (min-width: 601px) and (max-width: 900px) {*/
+/*    img {*/
+/*        height: 50%;*/
+/*    }*/
+
+/*    #grid {*/
+/*        width: 100%;*/
+/*        grid-template-columns: repeat(10, 1fr);*/
+/*        grid-gap: 3vh;*/
+/*    }*/
+
+/*    .span {*/
+/*        grid-row-end: span 3;*/
+/*        margin-right: 2px;*/
+/*    }*/
+/*}*/
+
+/*!* For screens larger than 900px *!*/
+/*@media (min-width: 901px) {*/
+/*    img {*/
+/*        height: 50%;*/
+/*    }*/
+
+/*    #grid {*/
+/*        width: 85%;*/
+/*        grid-template-columns: repeat(15, 1fr);*/
+/*        grid-gap: 4vh;*/
+/*    }*/
+
+/*    .span {*/
+/*        grid-row-end: span 5;*/
+/*        margin-right: 5px;*/
+/*    }*/
+/*}*/

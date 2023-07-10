@@ -1,8 +1,8 @@
 .card-wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  padding-left: 80px;
+  justify-content: center;
+  padding-left: 100px;
   padding-right: 70px;
   padding-top: 20px;
   gap: 25px;
@@ -11,7 +11,7 @@
 .card {
     width: 320px;
     height: 400px;
-    border-radius: 12px;
+    border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.2s ease-in-out;
