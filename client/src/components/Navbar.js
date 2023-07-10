@@ -68,7 +68,7 @@ export default function Navbar({isLoggedIn}) {
                         your property</a>
                 </li>
                 <li className="border-t md:border-none">
-                    <button id="logout_link" disabled={!loggedIn} onClick={handleLogout}>
+                    <button id="logout_link" hidden={!loggedIn} onClick={handleLogout}>
     <span className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker">
       <i className="material-icons">logout</i>
     </span>
@@ -76,7 +76,7 @@ export default function Navbar({isLoggedIn}) {
                 </li>
 
                 <li className="border-t md:border-none">
-                    <button id="clients_link" disabled={!loggedIn} onClick={handleClients}>
+                    <button id="clients_link" hidden={!loggedIn} onClick={handleClients}>
     <span className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker">
       <i className="material-icons"><PeopleIcon/></i>
     </span>
@@ -84,7 +84,7 @@ export default function Navbar({isLoggedIn}) {
                 </li>
 
                 <li className="border-t md:border-none">
-                    <button id="login_register_link" disabled={loggedIn} onClick={handleLoginRegister}>
+                    <button id="login_register_link" hidden={loggedIn} onClick={handleLoginRegister}>
     <span className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker">
       <i className="material-icons"><AccountCircleIcon/></i>
     </span>
