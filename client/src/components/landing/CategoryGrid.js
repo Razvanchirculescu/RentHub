@@ -1,88 +1,53 @@
-import arctic from "../../images/categoryGrid/arctic.png"
-import beachFront from "../../images/categoryGrid/beachFront.png"
-import beach from "../../images/categoryGrid/beach.png"
-import cabins from "../../images/categoryGrid/cabins.png"
-import castles from "../../images/categoryGrid/castles.png"
-import countrySide from "../../images/categoryGrid/countryside.png"
-import domes from "../../images/categoryGrid/domes.png"
-import farms from "../../images/categoryGrid/farms.png"
-import lakes from "../../images/categoryGrid/lakes.png"
-import nationalParks from "../../images/categoryGrid/nationalParks.png"
-import surfing from "../../images/categoryGrid/surfing.png"
-import trending from "../../images/categoryGrid/trending.png"
-import tropical from "../../images/categoryGrid/tropical.png"
-import { Link } from "react-router-dom"
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+import arctic from '../../images/categoryGrid/arctic.png';
+import beachFront from '../../images/categoryGrid/beachFront.png';
+import beach from '../../images/categoryGrid/beach.png';
+import cabins from '../../images/categoryGrid/cabins.png';
+import castles from '../../images/categoryGrid/castles.png';
+import countrySide from '../../images/categoryGrid/countryside.png';
+import domes from '../../images/categoryGrid/domes.png';
+import farms from '../../images/categoryGrid/farms.png';
+import lakes from '../../images/categoryGrid/lakes.png';
+import nationalParks from '../../images/categoryGrid/nationalParks.png';
+import surfing from '../../images/categoryGrid/surfing.png';
+import trending from '../../images/categoryGrid/trending.png';
+import tropical from '../../images/categoryGrid/tropical.png';
 
 import './CategoryGrid.css';
 
-import React from 'react';
+const images = [
+    { id: 'arctic', src: arctic, alt: 'Arctic', category: 'Arctic' },
+    { id: 'beach', src: beach, alt: 'Beach', category: 'Beach' },
+    { id: 'cabins', src: cabins, alt: 'Cabins', category: 'Cabana' },
+    { id: 'castles', src: castles, alt: 'Castles', category: 'Castle' },
+    { id: 'trending', src: trending, alt: 'Trending', category: 'Trading' },
+    { id: 'beachFront', src: beachFront, alt: 'Beach Front', category: 'Villa' },
+    { id: 'countrySide', src: countrySide, alt: 'Countryside' },
+    { id: 'domes', src: domes, alt: 'Domes' },
+    { id: 'farms', src: farms, alt: 'Farms' },
+    { id: 'lakes', src: lakes, alt: 'Lakes' },
+    { id: 'nationalParks', src: nationalParks, alt: 'National Parks' },
+    { id: 'surfing', src: surfing, alt: 'Surfing' },
+    { id: 'tropical', src: tropical, alt: 'Tropical' },
+];
 
 function handleClick(event) {
     console.log(`Button with id "${event.target.id}" was clicked!`);
 }
 
-const buttons = document.querySelectorAll("#grid button");
-buttons.forEach(button => {
-    button.addEventListener("click", handleClick);
-});
-
-
 export default function CategoryGrid() {
-
     return (
         <div id="grid">
-            <Link to={"/properties?category=Arctic"}>
-                <button className="span" id={"arctic"} >
-                    <img src={arctic} alt={arctic}/>
-                </button>
-            </Link>
-            <Link to={"/properties?category=Beach"}>
-                <button className="span" id={"beach"}>
-                    <img src={beach} alt={beach}/>
-                </button>
-            </Link>
-            <Link to={"/properties?category=Cabana"}>
-                <button className="span" id={"cabins"}>
-                    <img src={cabins} alt={cabins}/>
-                </button>
-            </Link>
-            <Link to={"/properties?category=Castle"}>
-                <button className="span" id={"castles"}>
-                    <img src={castles} alt={castles}/>
-                </button>
-            </Link>
-            <Link to={"/properties?category=Trading"}>
-                <button className="span" id={"trending"}>
-                    <img src={trending} alt={trending}/>
-                </button>
-            </Link>
-            <Link to={"/properties?category=Villa"}>
-                <button className="span" id={"beachFront"}> 
-                    <img src={beachFront} alt={beachFront}/>
-                </button>
-            </Link>
-            <button className="span" id={"countrySide"}>
-                <img src={countrySide} alt={countrySide}/>
-            </button>
-            <button className="span" id={"domes"}>
-                <img src={domes} alt={domes}/>
-            </button>
-            <button className="span" id={"farms"}>
-                <img src={farms} alt={farms}/>
-            </button>
-            <button className="span" id={"lakes"}>
-                <img src={lakes}alt={farms}/>
-            </button>
-            <button className="span" id={"nationalParks"}>
-                <img src={nationalParks} alt={nationalParks}/>
-            </button>
-            <button className="span" id={"surfing"}>
-                <img src={surfing} alt={surfing}/>
-            </button>
-          
-            <button className="span" id={"tropical"}>
-                <img src={tropical} alt={tropical}/>
-            </button>
+            {images.map((image) => (
+                <Link to={`/properties?category=${image.category}`} key={image.id}>
+                    <button className="span" id={image.id} onClick={handleClick}>
+                        <img src={image.src} alt={image.alt} />
+                    </button>
+                </Link>
+            ))}
         </div>
     );
 }
+
