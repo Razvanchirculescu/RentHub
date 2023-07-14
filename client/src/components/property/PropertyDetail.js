@@ -31,7 +31,7 @@ export default function PropertyDetail() {
             .then(data => {
                 setprops(data);
                 const { street, streetNr, city, country } = data.location;
-                const apiKey = 'AIzaSyBHbK2B61CDcunXnylZS4aZ_xdH43H36-Q';
+                const apiKey = process.env.REACT_APP_MAPS_API_KEY;
                 fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${street}+${streetNr}+${city}+${country}&key=${apiKey}`)
                     .then(response => {
                         if (!response.ok) {

@@ -13,9 +13,9 @@ export const SearchBar = ({ setSearchResults }) => {
             .then((json) => {
                 const searchResults = json.filter((property) => {
                     return (
-                        (value && property && property.location.city && property.location.city.toLowerCase().includes(value)) ||
-                        (value && property && property.location.country && property.location.country.toLowerCase().includes(value)) ||
-                        (value && property && property.name && property.name.toLowerCase().includes(value))
+                        (value && property && property.location.city && property.location.city.toLowerCase().includes(value.toLowerCase())) ||
+                        (value && property && property.location.country && property.location.country.toLowerCase().includes(value.toLowerCase())) ||
+                        (value && property && property.name && property.name.toLowerCase().includes(value.toLowerCase()))
                     );
 
                 });
