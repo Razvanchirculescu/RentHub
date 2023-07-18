@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import './PropertyList.css';
-import { Link, useLocation } from "react-router-dom"
+import {Link, useLocation} from "react-router-dom"
 
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { FaLocationDot } from "react-icons/fa6";
 
 
 function PropertyList() {
@@ -28,19 +30,23 @@ function PropertyList() {
         <div className={"card-wrapper"}>
             {propertyData.map((property) => {
                 return (
-                    <Link to={`/properties/${property.id}`}>
+                    <Link key={property.id} to={`/properties/${property.id}`}>
                         <div className="card">
                             <div className="card__image">
-                                <img src={property.images[0].path} alt={property.name} />
+                                <img src={property.images[0].path} alt={property.name}/>
                             </div>
-
                             <div className="card__details">
-                                <p className="card__location">{property.location.city}, {property.location.country}</p>
+                                <p className="card__location" >
+                                   <FaLocationDot/>
+                                    &nbsp;
+                                    {property.location.city}, {property.location.country}
+                                </p>
                                 <p className="card__subtitle"></p>
+
                                 <div className='card__footer'>
-                                <div className="card__rating">
-                                    <i className="fa fa-star" />
-                                    <span>{property.rating}</span>
+                                    <div className="card__rating">
+                                        <i className="fa fa-star"/>
+                                        <span>{property.rating}</span>
                                     </div>
                                     <div className="card__price">${property.pricePerNight} per night</div>
                                 </div>
