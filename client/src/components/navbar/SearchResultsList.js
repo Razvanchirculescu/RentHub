@@ -25,7 +25,6 @@ export const SearchResultsList = ( {searchResults, setSearchResults} ) => {
                     )
                 })
             }
-
         </div>
     );
 };

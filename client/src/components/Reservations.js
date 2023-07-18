@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import ReservationOverview from "./ReservationOverview"
 
-export default function Reservatios() {
+export default function Reservations() {
 
     const [props, setProps] = useState(null);
     const {id} = useParams();
