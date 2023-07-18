@@ -6,35 +6,34 @@ import Reservations from '../Reservations';
 export default function ClientInfo() {
 
     const {id} = useParams();
-
     const token = sessionStorage.getItem('token');
     const clientId = sessionStorage.getItem('clientId');
-
     const [clientData, setClientData] = useState(null);
 
 
-    function getClient() {
-        const url = `http://localhost:8080/api/clients/${id}`;
-
-        fetch(url)
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error(`HTTP error ${response.status}`);
-                }
-            })
-            .then(data => {
-                setClientData(data);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }
 
     useEffect(() => {
+        function getClient() {
+            const url = `http://localhost:8080/api/clients/${id}`;
+
+            fetch(url)
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error(`HTTP error ${response.status}`);
+                    }
+                })
+                .then(data => {
+                    setClientData(data);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+
         getClient();
-    }, [id, getClient]);
+    }, [id]);
 
     if (!clientData) {
         return (

@@ -169,7 +169,7 @@ export default function InputForm () {
                         value={password} onChange={(e) => setPassword(e.target.value)}/>
 
                     <MDBInput wrapperClass='mb-4' label='Confirm password' id='form1' type='text'
-                        id="outlined-password-input"
+                        id="outlined-confirm-password-input"
                         label="Confirm Password"
                         type="password"
                         autoComplete="current-password"
