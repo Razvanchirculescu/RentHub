@@ -39,7 +39,7 @@ export default function CategoryGrid() {
             <div id="grid">
 
                 {images.map((image) => (<Link to={`/properties?category=${image.category}`} key={image.id}>
-                    <button className="span" id={image.id} onClick={handleClick}>
+                    <button className="span" id={image.id} >
                         <img
                             className='w-50px inline-block p-2 cursor-pointer hover:scale-110 ease-in-out duration-300'
                             src={image.src} alt={image.alt}/>
