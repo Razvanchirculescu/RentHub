@@ -1,5 +1,4 @@
 import React from 'react';
-import {MdChevronLeft, MdChevronRight} from 'react-icons/md'
 import {Link} from 'react-router-dom';
 
 import arctic from '../../images/categoryGrid/arctic.png';
@@ -30,9 +29,6 @@ const images = [{id: 'arctic', src: arctic, alt: 'Arctic', category: 'Arctic'}, 
     id: 'nationalParks', src: nationalParks, alt: 'National Parks'
 }, {id: 'surfing', src: surfing, alt: 'Surfing'}, {id: 'tropical', src: tropical, alt: 'Tropical'},];
 
-function handleClick(event) {
-    console.log(`Button with id "${event.target.id}" was clicked!`);
-}
 
 export default function CategoryGrid() {
 
@@ -53,19 +49,6 @@ export default function CategoryGrid() {
             </div>
 
         </div>
-
-
-
-
-        // <div id="grid">
-        //     {images.map((image) => (
-        //         <Link to={`/properties?category=${image.category}`} key={image.id}>
-        //             <button className="span" id={image.id} onClick={handleClick}>
-        //                 <img src={image.src} alt={image.alt} />
-        //             </button>
-        //         </Link>
-        //     ))}
-        // </div>
     );
 
 
