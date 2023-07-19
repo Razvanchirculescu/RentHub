@@ -80,7 +80,7 @@ public class PropertyService {
 
     private boolean isPropertyMatch(Property property, String searchTerm) {
         if (searchTerm == null || searchTerm.isBlank()) {
-            return true; // If the searchTerm is empty, include all properties
+            return false;
         }
 
         String lowerCaseSearchTerm = searchTerm.toLowerCase();
