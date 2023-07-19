@@ -1,25 +1,66 @@
+/*img {*/
+/*    height: 45%;*/
+/*}*/
+/*#grid {*/
+/*    margin: auto;*/
+/*    !*margin-left: 30vh;*!*/
+/*    !*margin-right: 100px;*!*/
+/*    !*padding-block-start: 20px;*!*/
+/*    align-items: center;*/
+/*    height: fit-content;*/
+/*    width: 20vh;*/
+/*    writing-mode: horizontal-tb;*/
+/*    display: contents;*/
+/*    grid-gap: 4vh;*/
+/*    grid-template-columns: repeat(10, 10%);*/
+/*}*/
+
+
+/*!*.span{*!*/
+/*!*    height: fit-content;*!*/
+/*!*    background-color: white;*!*/
+/*!*    grid-row-end: span 5;*!*/
+/*!*    margin-right: 20px;*!*/
+/*!*}*!*/
+
+
+
+
 img {
-    height: 45%;
+    height: 50%;
 }
 #grid {
     margin: auto;
-    /*margin-left: 30vh;*/
-    /*margin-right: 100px;*/
-    /*margin: inherit;*/
-    /*padding-block-start: 20px;*/
-    align-items: center;
+    padding-block-start: 20px;
     height: fit-content;
-    width: 100vh;
-    writing-mode: lr;
-    display: contents;
+    width: 85%;
+    writing-mode: horizontal-tb;
+    display: grid;
     grid-gap: 4vh;
-    grid-template-columns: repeat(10, 10%);
+    grid-template-columns: repeat(15, 10vh);
 }
 
 
-/*.span{*/
-/*    height: fit-content;*/
-/*    background-color: white;*/
-/*    grid-row-end: span 5;*/
-/*    margin-right: 20px;*/
-/*}*/
+.span{
+    height: fit-content;
+    background-color: white;
+    grid-row-end: span 5;
+    margin: 5px;
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 767px) {
+    img {
+        height: 30%; /* Adjust the height as per your requirements */
+    }
+
+    #grid {
+        width: 100%; /* Make the grid occupy the full width of the screen */
+        grid-template-columns: repeat(5, 20%); /* You can adjust the number of columns and their widths */
+        grid-gap: 2vh; /* Adjust the gap between grid elements */
+    }
+
+    .span {
+        margin-right: 2px; /* Adjust the margin for grid elements on mobile */
+    }
+}

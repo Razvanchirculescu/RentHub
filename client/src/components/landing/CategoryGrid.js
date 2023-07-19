@@ -34,7 +34,7 @@ export default function CategoryGrid() {
 
     return (
 
-        <div className='w-70% relative flex items-center'>
+
 
             <div id="grid">
 
@@ -48,7 +48,20 @@ export default function CategoryGrid() {
 
             </div>
 
-        </div>
+
+
+
+
+
+        // <div id="grid">
+        //     {images.map((image) => (
+        //         <Link to={`/properties?category=${image.category}`} key={image.id}>
+        //             <button className="span" id={image.id} onClick={handleClick}>
+        //                 <img src={image.src} alt={image.alt} />
+        //             </button>
+        //         </Link>
+        //     ))}
+        // </div>
     );
 
 
