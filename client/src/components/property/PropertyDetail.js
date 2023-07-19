@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 
 import './PropertyDetail.css'
 import Maps from "./Maps"
-import ReservationForm from "./ReservationForm";
+import ReservationForm from "../reservation/ReservationForm";
 import Carousel from "./PropertyImagesCarousel";
 import Facilities from "./Facilities"
 import PropertyDescription from "./PropertyDescription"

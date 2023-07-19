@@ -138,4 +138,4 @@ insert into property_facilities(property_id, facilities_id) VALUES (10, 17);
 insert into property_facilities(property_id, facilities_id) VALUES (10, 10);
 insert into property_facilities(property_id, facilities_id) VALUES (10, 12);
 
-insert into reservation (check_in, check_out, property_id) VALUES (DATE '2022-08-07', DATE '2022-08-09', 1);
+-- insert into reservation (check_in, check_out, property_id) VALUES (DATE '2022-08-07', DATE '2022-08-09', 1);
