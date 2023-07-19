@@ -40,10 +40,6 @@ public class PropertyService {
                 property.getCategories().contains(category1)).collect(Collectors.toList());
     }
 
-//    public List<Property> getPropertyBySearchResults(String search) {
-//        return getAllProperties().stream().filter(property -> property.getLocation().getCountry().contains(search)).collect(Collectors.toList());
-//    }
-
     public void updateRating(Property property) {
         property.setRating();
         propertyRepository.save(property);
@@ -74,6 +70,26 @@ public class PropertyService {
                 .client(client)
                 .build();
         return reservationService.createReservation(newReservation);
+    }
+
+    public List<Property> getPropertiesBySearchTerm(String searchTerm) {
+        return getAllProperties().stream()
+                .filter(property -> isPropertyMatch(property, searchTerm))
+                .collect(Collectors.toList());
+    }
+
+    private boolean isPropertyMatch(Property property, String searchTerm) {
+        if (searchTerm == null || searchTerm.isBlank()) {
+            return true; // If the searchTerm is empty, include all properties
+        }
+
+        String lowerCaseSearchTerm = searchTerm.toLowerCase();
+        Location location = property.getLocation();
+
+        return (location != null &&
+                (location.getCity().toLowerCase().contains(lowerCaseSearchTerm) ||
+                        location.getCountry().toLowerCase().contains(lowerCaseSearchTerm))) ||
+                (property.getName().toLowerCase().contains(lowerCaseSearchTerm));
     }
 
 }

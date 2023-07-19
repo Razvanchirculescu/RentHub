@@ -47,10 +47,6 @@ public class PropertyController {
         return propertyService.getPropertiesByCategory(category);
     }
 
-//    @GetMapping(params = "search")
-//    public List<Property> getPropertiesBySearchResult(@RequestParam("search") String search) {
-//        return propertyService.getPropertyBySearchResults(search);
-//    }
 
     @PatchMapping("/{propertyId}/category")
     public void addCategory(@PathVariable Long propertyId, @RequestBody Category category) {
@@ -67,6 +63,11 @@ public class PropertyController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); //gestionează orice altă excepție care nu este capturată în blocul anterior
         }
+    }
+
+    @GetMapping(params = "search")
+    public List<Property> getPropertiesBySearchTerm(@RequestParam("search") String searchTerm) {
+        return propertyService.getPropertiesBySearchTerm(searchTerm);
     }
 
 }

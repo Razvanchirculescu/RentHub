@@ -37,6 +37,7 @@ public class Reservation {
     private LocalDate checkOut;
     private BigDecimal price;
     private String status;
+    private String paymentStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
@@ -64,8 +65,12 @@ public class Reservation {
         LocalDate currentDate = LocalDate.now();
         if (checkOut.isBefore(currentDate)) {
             status = "Completed";
-        } else {
+        }
+        else if (checkIn.isEqual(currentDate)){
+            status="Check-In is Today";
+        }else {
             status = "Upcoming";
         }
+
     }
 }
