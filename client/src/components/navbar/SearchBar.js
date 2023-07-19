@@ -1,39 +1,64 @@
-import React, {useState} from "react";
-
-import {FaSearch} from "react-icons/fa"
-
-import './SearchBar.css'
+import React, { useState } from "react";
+import { FaSearch } from "react-icons/fa";
+import './SearchBar.css';
 
 export const SearchBar = ({ setSearchResults }) => {
     const [input, setInput] = useState("");
 
-    const fetchSearchData = (value) => {
-        fetch(`http://localhost:8080/properties`)
+    const fetchSearchData = (searchTerm) => {
+        fetch(`http://localhost:8080/properties?search=${searchTerm}`)
             .then((response) => response.json())
-            .then((json) => {
-                const searchResults = json.filter((property) => {
-                    return (
-                        (value && property && property.location.city && property.location.city.toLowerCase().includes(value.toLowerCase())) ||
-                        (value && property && property.location.country && property.location.country.toLowerCase().includes(value.toLowerCase())) ||
-                        (value && property && property.name && property.name.toLowerCase().includes(value.toLowerCase()))
-                    );
-
-                });
-                console.log(searchResults);
-                setSearchResults(searchResults);
-            });
-    }
+            .then((data) => setSearchResults(data));
+    };
 
     const handleChange = (value) => {
-        setInput(value)
-        fetchSearchData(value)
-    }
+        setInput(value);
+        fetchSearchData(value);
+    };
+
     return (
         <div className="input-wrapper">
             <FaSearch id="search-icon"/>
-                <input placeholder="Type to search..."
-                       value={input}
-                       onChange={(e) => handleChange(e.target.value)}/>
+            <input
+                placeholder="Type to search..."
+                value={input}
+                onChange={(e) => handleChange(e.target.value)}
+            />
         </div>
     );
 };
+
+//
+// export const SearchBar = ({ setSearchResults }) => {
+//     const [input, setInput] = useState("");
+//
+//     const fetchSearchData = (value) => {
+//         fetch(`http://localhost:8080/properties`)
+//             .then((response) => response.json())
+//             .then((json) => {
+//                 const searchResults = json.filter((property) => {
+//                     return (
+//                         (value && property && property.location.city && property.location.city.toLowerCase().includes(value.toLowerCase())) ||
+//                         (value && property && property.location.country && property.location.country.toLowerCase().includes(value.toLowerCase())) ||
+//                         (value && property && property.name && property.name.toLowerCase().includes(value.toLowerCase()))
+//                     );
+//
+//                 });
+//                 console.log(searchResults);
+//                 setSearchResults(searchResults);
+//             });
+//     }
+//
+//     const handleChange = (value) => {
+//         setInput(value)
+//         fetchSearchData(value)
+//     }
+//     return (
+//         <div className="input-wrapper">
+//             <FaSearch id="search-icon"/>
+//                 <input placeholder="Type to search..."
+//                        value={input}
+//                        onChange={(e) => handleChange(e.target.value)}/>
+//         </div>
+//     );
+// };
