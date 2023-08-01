@@ -6,6 +6,9 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { FaLocationDot } from "react-icons/fa6";
 
 
+
+
+
 function PropertyList() {
 
     const [propertyData, setPropertyData] = useState([]);
@@ -27,15 +30,15 @@ function PropertyList() {
 
 
     return (
-        <div className={"card-wrapper"}>
+        <div className="card-wrapper theme-background" id="theme-background">
             {propertyData.map((property) => {
                 return (
-                    <Link key={property.id} to={`/properties/${property.id}`}>
+                    <Link className="link" key={property.id} to={`/properties/${property.id}`}>
                         <div className="card">
                             <div className="card__image">
                                 <img src={property.images[0].path} alt={property.name}/>
                             </div>
-                            <div className="card__details">
+                            <div className="card__details" id="cardDetails">
                                 <p className="card__location" >
                                    <FaLocationDot/>
                                     &nbsp;

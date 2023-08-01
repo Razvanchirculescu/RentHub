@@ -27,38 +27,3 @@ export const SearchBar = ({ setSearchResults }) => {
         </div>
     );
 };
-
-//
-// export const SearchBar = ({ setSearchResults }) => {
-//     const [input, setInput] = useState("");
-//
-//     const fetchSearchData = (value) => {
-//         fetch(`http://localhost:8080/properties`)
-//             .then((response) => response.json())
-//             .then((json) => {
-//                 const searchResults = json.filter((property) => {
-//                     return (
-//                         (value && property && property.location.city && property.location.city.toLowerCase().includes(value.toLowerCase())) ||
-//                         (value && property && property.location.country && property.location.country.toLowerCase().includes(value.toLowerCase())) ||
-//                         (value && property && property.name && property.name.toLowerCase().includes(value.toLowerCase()))
-//                     );
-//
-//                 });
-//                 console.log(searchResults);
-//                 setSearchResults(searchResults);
-//             });
-//     }
-//
-//     const handleChange = (value) => {
-//         setInput(value)
-//         fetchSearchData(value)
-//     }
-//     return (
-//         <div className="input-wrapper">
-//             <FaSearch id="search-icon"/>
-//                 <input placeholder="Type to search..."
-//                        value={input}
-//                        onChange={(e) => handleChange(e.target.value)}/>
-//         </div>
-//     );
-// };

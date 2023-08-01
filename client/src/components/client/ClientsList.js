@@ -1,7 +1,5 @@
-//src/components/GetClients.js
+import React, {useEffect, useState, useContext} from 'react';
 
-import React, {useEffect, useState} from 'react';
-// import { useHistory } from "use-history";
 import logoText from '../../images/logos/logoText.png';
 import './ClientsList.css';
 
@@ -10,18 +8,8 @@ export default function ClientsList() {
     const [clientsData, setClientsData] = useState([]);
     const [clientId, setClientId] = useState('');
 
-
-    // const handleButtonClick = async () => {
-    //     const response = await fetch(
-    //         `http://localhost:8080/api/clients/id`
-    //     );
-    //     const data = await response.json();
-    //     setClientId(data);
-    // };
-
     async function handleButtonClick2(id) {
         console.log(`Client ID: ${id}`);
-        // history.push(`/api/clients/${id}`);
         window.location.href = `/api/clients/${id}`;
     }
 
@@ -58,7 +46,6 @@ export default function ClientsList() {
                             <button className="button_client_id"
                                     onClick={() => handleButtonClick2(client.id)}>{client.id}</button>
                         </td>
-                        {/*<td>{client.id}</td>*/}
                         <td>{client.name}</td>
                         <td>{client.surname}</td>
                         <td>{client.emailAddress}</td>

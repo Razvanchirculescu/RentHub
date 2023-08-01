@@ -37,3 +37,21 @@ label input , .reservation-button {
 .reservation-form {
   padding-top: 5vh;
 }
+
+.reservation-form .reservation-button{
+  color: inherit;
+}
+
+.reservation-form input{
+  background: inherit;
+}
+
+.error-reservation {
+  color: red;
+}
+
+.reservation-button {
+  color: green !important;
+  background-color: black !important;
+}
+

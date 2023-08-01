@@ -14,3 +14,8 @@
 .me-2 {
     margin-right: .5rem!important;
 }
+
+#client-info * {
+    background-color: inherit;
+    color: white;
+}

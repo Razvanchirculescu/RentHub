@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 
-import logoText from "../../images/logos/logoText.png"
-import logoImage from "../../images/logos/logoImage.png"
+// import logoTextDark from "../../images/logos/logoText_dark.png"
+import logoTextTransparent from "../../images/logos/logoTextTransparent.png"
+// import logoImageDark from "../../images/logos/logoImage_dark.png"
+import logoImageTransparent from "../../images/logos/logoImageTransparent.png"
 
 import {isLoggedIn} from "../input/InputForm"
 
@@ -9,11 +11,23 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PeopleIcon from '@mui/icons-material/People';
 
 import './Navbar.css';
+// import DarkModeToggle from '../theme/DarkModeToggle';
+
 import {SearchBar} from "./SearchBar"
 import {SearchResultsList} from "./SearchResultsList"
 
+import { useDarkMode } from "../theme/UseDarkMode";
+import Toggle from "../theme/Toggler";
+import {ThemeProvider} from "styled-components"
+import {GlobalStyles} from "../theme/GlobalStyles"
+import { lightTheme, darkTheme } from "../theme/Themes"
+
+
 
 export default function Navbar({isLoggedIn}) {
+
+    const [theme, themeToggler] = useDarkMode();
+    const themeMode = theme === "light" ? lightTheme : darkTheme;
 
     const [searchResults, setSearchResults] = useState([]);
 
@@ -41,17 +55,22 @@ export default function Navbar({isLoggedIn}) {
     };
 
     return (
+        <ThemeProvider theme={themeMode}>
+            <GlobalStyles />
         <nav className="nav flex flex-wrap items-center justify-between px-20" id="navbar">
             <div className="flex flex-no-shrink items-center mr-6 py-3 text-grey-darkest">
 
                 <a href={"/properties"}>
-                    <img height={40} width={100} src={logoImage} alt={"logo"}/>
+                    <img height={40} width={100} src={logoImageTransparent} alt={"logo"}/>
                 </a>
                 <a href={"/properties"}>
-                    <img height={50} width={150} src={logoText} alt={"logo"}/>
+                    <img height={50} width={150} src={logoTextTransparent} alt={"logo"}/>
                 </a>
+                <Toggle theme={theme} toggleTheme={themeToggler} />
+
             </div>
-            <SearchBar setSearchResults={setSearchResults}/>
+            {/*<DarkModeToggle />*/}
+            <SearchBar setSearchResults={setSearchResults} theme={theme}/>
 
 
             <input className="menu-btn hidden" type="checkbox" id="menu-btn"/>
@@ -103,8 +122,8 @@ export default function Navbar({isLoggedIn}) {
                 </li>
 
             </ul>
-            <SearchResultsList searchResults={searchResults} onLinkClick={handleLinkClick}/>
+            <SearchResultsList  searchResults={searchResults} onLinkClick={handleLinkClick} theme={theme}/>
         </nav>
-
+        </ThemeProvider>
     );
 }

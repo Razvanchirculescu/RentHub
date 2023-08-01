@@ -76,7 +76,7 @@ export default function EditClientInfo() {
     };
 
     return (
-        <div className="container">
+        <div className="container" id="client-info">
             <div className="main-body">
                 <div className="row">
 

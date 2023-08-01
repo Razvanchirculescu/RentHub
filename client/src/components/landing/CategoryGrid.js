@@ -1,6 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
+import { useTheme } from 'styled-components';
+
+
 import arctic from '../../images/categoryGrid/arctic.png';
 import beachFront from '../../images/categoryGrid/beachFront.png';
 import beach from '../../images/categoryGrid/beach.png';
@@ -22,31 +25,36 @@ const images = [{id: 'arctic', src: arctic, alt: 'Arctic', category: 'Arctic'}, 
 }, {id: 'cabins', src: cabins, alt: 'Cabins', category: 'Cabana'}, {
     id: 'castles', src: castles, alt: 'Castles', category: 'Castle'
 }, {id: 'trending', src: trending, alt: 'Trending', category: 'Trading'}, {
-    id: 'beachFront', src: beachFront, alt: 'Beach Front', category: 'Villa'
-}, {id: 'countrySide', src: countrySide, alt: 'Countryside'}, {id: 'domes', src: domes, alt: 'Domes'}, {
-    id: 'farms', src: farms, alt: 'Farms'
-}, {id: 'lakes', src: lakes, alt: 'Lakes'}, {
-    id: 'nationalParks', src: nationalParks, alt: 'National Parks'
-}, {id: 'surfing', src: surfing, alt: 'Surfing'}, {id: 'tropical', src: tropical, alt: 'Tropical'},];
+    id: 'beachFront', src: beachFront, alt: 'Beach Front', category: 'Villa'}]
+// }, {id: 'countrySide', src: countrySide, alt: 'Countryside'}, {id: 'domes', src: domes, alt: 'Domes'}, {
+//     id: 'farms', src: farms, alt: 'Farms'
+// }, {id: 'lakes', src: lakes, alt: 'Lakes'}, {
+//     id: 'nationalParks', src: nationalParks, alt: 'National Parks'
+// }, {id: 'surfing', src: surfing, alt: 'Surfing'}, {id: 'tropical', src: tropical, alt: 'Tropical'},];
 
 
 export default function CategoryGrid() {
 
+    const theme = useTheme();
+
     return (
 
 
-
-            <div id="grid">
-
-                {images.map((image) => (<Link to={`/properties?category=${image.category}`} key={image.id}>
-                    <button className="span" id={image.id} >
+        <div id="grid">
+            {images.map((image) => (
+                <Link to={`/properties?category=${image.category}`} key={image.id}>
+                    <button className="span" id={image.id}>
                         <img
-                            className='w-50px inline-block p-2 cursor-pointer hover:scale-110 ease-in-out duration-300'
-                            src={image.src} alt={image.alt}/>
+                            className={`w-50px inline-block p-2 cursor-pointer hover:scale-110 ease-in-out duration-300 ${
+                                theme === 'dark' ? 'invert-image' : ''
+                            }`}
+                            src={image.src}
+                            alt={image.alt}
+                        />
                     </button>
-                </Link>))}
-
-            </div>
+                </Link>
+            ))}
+        </div>
 
 
 

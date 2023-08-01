@@ -1,5 +1,6 @@
 .input-wrapper{
-    background-color: white;
+    background-color: inherit;
+    color: inherit;
     border-radius: 10px;
     box-shadow: 0 0 8px #ddd;
     display: flex;
@@ -23,3 +24,18 @@ input:focus{
 #search-icon {
     color: royalblue;
 }
+
+
+/*!* Dark mode styles *!*/
+/*.dark .input-wrapper {*/
+/*    background-color: #333333;*/
+/*    color: #ffffff;*/
+/*}*/
+
+/*.dark input {*/
+/*    color: #ffffff;*/
+/*}*/
+
+/*.dark #search-icon {*/
+/*    color: #9b59b6; !* Choose a color for the search icon in dark mode *!*/
+/*}*/

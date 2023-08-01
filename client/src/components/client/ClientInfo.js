@@ -51,7 +51,7 @@ export default function ClientInfo() {
 
 
                     <div className="row gutters-sm">
-                        <div className="col-md-6 mb-3">
+                        <div className="col-md-6 mb-3 " id="client-info">
                             <div className="card w-100">
                                 <div className="card-body">
                                     <div className="d-flex flex-column align-items-center text-center">
@@ -132,20 +132,9 @@ export default function ClientInfo() {
         );
     } else {
         return (
+
             <h1 align="center"> <a href="/api/clients/register" > Please log in to have access to the account page </a> </h1>
-            // <div>
-            //     <table className="center">
-            //         <thead>
-            //         <tr>
-            //             <th>ID</th>
-            //             <th>Name</th>
-            //             <th>Surname</th>
-            //             <th>Email</th>
-            //             <th>Phone</th>
-            //         </tr>
-            //         </thead>
-            //     </table>
-            // </div>
+
         );
     }
 }

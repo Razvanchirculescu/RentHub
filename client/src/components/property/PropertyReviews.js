@@ -7,7 +7,7 @@ export default function PropertyReviews ({ reviews }) {
     const [expandedIndex, setExpandedIndex] = useState(-1);
 
     return (
-        <MDBListGroup style={{ maxWidth: "25rem", paddingTop: "5vh" }} light>
+        <MDBListGroup className="reviews" style={{ maxWidth: "25rem", paddingTop: "5vh" }} light>
             {reviews.map((review, index) => {
                 const isExpanded = index === expandedIndex;
                 const description = isExpanded
@@ -16,7 +16,7 @@ export default function PropertyReviews ({ reviews }) {
                 return (
                     <MDBListGroupItem
                         key={`review-${index}`}
-                        className='d-flex justify-content-between align-items-center'>
+                        className='d-flex justify-content-between align-items-center' id="list_group">
                         <MDBBadge pill light>
                             <span>{review.satisfaction} &#9733;</span>
                         </MDBBadge>

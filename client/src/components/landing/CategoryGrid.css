@@ -1,49 +1,24 @@
-/*img {*/
-/*    height: 45%;*/
-/*}*/
-/*#grid {*/
-/*    margin: auto;*/
-/*    !*margin-left: 30vh;*!*/
-/*    !*margin-right: 100px;*!*/
-/*    !*padding-block-start: 20px;*!*/
-/*    align-items: center;*/
-/*    height: fit-content;*/
-/*    width: 20vh;*/
-/*    writing-mode: horizontal-tb;*/
-/*    display: contents;*/
-/*    grid-gap: 4vh;*/
-/*    grid-template-columns: repeat(10, 10%);*/
-/*}*/
-
-
-/*!*.span{*!*/
-/*!*    height: fit-content;*!*/
-/*!*    background-color: white;*!*/
-/*!*    grid-row-end: span 5;*!*/
-/*!*    margin-right: 20px;*!*/
-/*!*}*!*/
-
-
-
-
 img {
     height: 50%;
 }
 #grid {
-    margin: auto;
-    padding-block-start: 20px;
+    margin: 0 auto;
+    padding-block-start: initial;
     height: fit-content;
     width: 85%;
     writing-mode: horizontal-tb;
-    display: grid;
+    display: inline-grid;
     grid-gap: 4vh;
-    grid-template-columns: repeat(15, 10vh);
+    grid-template-columns: repeat(15, 15vh);
 }
 
 
 .span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: fit-content;
-    background-color: white;
+    background-color: inherit;
     grid-row-end: span 5;
     margin: 5px;
 }

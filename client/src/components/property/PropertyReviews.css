@@ -2,3 +2,11 @@
     padding-left: 45vh;
     padding-top: 10vh;
 }
+
+.reviews {
+    background-color: inherit;
+}
+
+#list_group{
+    background-color: inherit;
+}
