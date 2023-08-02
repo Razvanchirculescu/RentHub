@@ -3,12 +3,13 @@ img {
 }
 #grid {
     margin: 0 auto;
-    padding-block-start: initial;
+    padding-left: 25vw;
+    padding-right: 25vw;
     height: fit-content;
     width: 85%;
     writing-mode: horizontal-tb;
     display: inline-grid;
-    grid-gap: 4vh;
+    grid-gap: 2vh;
     grid-template-columns: repeat(15, 15vh);
 }
 
@@ -31,11 +32,11 @@ img {
 
     #grid {
         width: 100%; /* Make the grid occupy the full width of the screen */
-        grid-template-columns: repeat(5, 20%); /* You can adjust the number of columns and their widths */
+        grid-template-columns: repeat(3, 30%); /* You can adjust the number of columns and their widths */
         grid-gap: 2vh; /* Adjust the gap between grid elements */
     }
 
     .span {
-        margin-right: 2px; /* Adjust the margin for grid elements on mobile */
+        margin-right: initial; /* Adjust the margin for grid elements on mobile */
     }
 }

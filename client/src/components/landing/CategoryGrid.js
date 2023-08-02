@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
+import Stack from '@mui/material/Stack';
+
 import { useTheme } from 'styled-components';
 
 
@@ -26,6 +28,7 @@ const images = [{id: 'arctic', src: arctic, alt: 'Arctic', category: 'Arctic'}, 
     id: 'castles', src: castles, alt: 'Castles', category: 'Castle'
 }, {id: 'trending', src: trending, alt: 'Trending', category: 'Trading'}, {
     id: 'beachFront', src: beachFront, alt: 'Beach Front', category: 'Villa'}]
+
 // }, {id: 'countrySide', src: countrySide, alt: 'Countryside'}, {id: 'domes', src: domes, alt: 'Domes'}, {
 //     id: 'farms', src: farms, alt: 'Farms'
 // }, {id: 'lakes', src: lakes, alt: 'Lakes'}, {
@@ -39,11 +42,10 @@ export default function CategoryGrid() {
 
     return (
 
-
         <div id="grid">
             {images.map((image) => (
                 <Link to={`/properties?category=${image.category}`} key={image.id}>
-                    <button className="span" id={image.id}>
+                    <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2, md: 4 }} id={image.id} >
                         <img
                             className={`w-50px inline-block p-2 cursor-pointer hover:scale-110 ease-in-out duration-300 ${
                                 theme === 'dark' ? 'invert-image' : ''
@@ -51,25 +53,28 @@ export default function CategoryGrid() {
                             src={image.src}
                             alt={image.alt}
                         />
-                    </button>
+                    </Stack>
                 </Link>
             ))}
         </div>
 
 
-
-
-
-
         // <div id="grid">
         //     {images.map((image) => (
         //         <Link to={`/properties?category=${image.category}`} key={image.id}>
-        //             <button className="span" id={image.id} onClick={handleClick}>
-        //                 <img src={image.src} alt={image.alt} />
+        //             <button className="span" id={image.id}>
+        //                 <img
+        //                     className={`w-50px inline-block p-2 cursor-pointer hover:scale-110 ease-in-out duration-300 ${
+        //                         theme === 'dark' ? 'invert-image' : ''
+        //                     }`}
+        //                     src={image.src}
+        //                     alt={image.alt}
+        //                 />
         //             </button>
         //         </Link>
         //     ))}
         // </div>
+
     );
 
 
