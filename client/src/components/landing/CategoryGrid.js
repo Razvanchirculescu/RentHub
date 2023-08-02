@@ -42,20 +42,24 @@ export default function CategoryGrid() {
 
     return (
 
-        <div id="grid">
-            {images.map((image) => (
-                <Link to={`/properties?category=${image.category}`} key={image.id}>
-                    <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2, md: 4 }} id={image.id} >
-                        <img
-                            className={`w-50px inline-block p-2 cursor-pointer hover:scale-110 ease-in-out duration-300 ${
-                                theme === 'dark' ? 'invert-image' : ''
-                            }`}
-                            src={image.src}
-                            alt={image.alt}
-                        />
-                    </Stack>
-                </Link>
-            ))}
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div id="grid">
+
+                {images.map((image) => (
+                    <Link to={`/properties?category=${image.category}`} key={image.id}>
+                        {/* Replace <Stack> with <Stack> */}
+                        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2, md: 4 }} id={image.id}>
+                            <img
+                                className={`w-50px inline-block p-2 cursor-pointer hover:scale-110 ease-in-out duration-300 ${
+                                    theme === 'dark' ? 'invert-image' : ''
+                                }`}
+                                src={image.src}
+                                alt={image.alt}
+                            />
+                        </Stack>
+                    </Link>
+                ))}
+            </div>
         </div>
 
 
