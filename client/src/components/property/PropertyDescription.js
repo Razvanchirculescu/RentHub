@@ -1,5 +1,6 @@
 import React from "react";
 
+// import './PropertyDescription.css'
 
 const PropertyDescription = ({ description }) => {
     return (

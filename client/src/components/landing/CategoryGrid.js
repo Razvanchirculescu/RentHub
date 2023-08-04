@@ -5,6 +5,7 @@ import Stack from '@mui/material/Stack';
 
 import { useTheme } from 'styled-components';
 
+import './CategoryGrid.css';
 
 import arctic from '../../images/categoryGrid/arctic.png';
 import beachFront from '../../images/categoryGrid/beachFront.png';
@@ -20,7 +21,7 @@ import surfing from '../../images/categoryGrid/surfing.png';
 import trending from '../../images/categoryGrid/trending.png';
 import tropical from '../../images/categoryGrid/tropical.png';
 
-import './CategoryGrid.css';
+
 
 const images = [{id: 'arctic', src: arctic, alt: 'Arctic', category: 'Arctic'}, {
     id: 'beach', src: beach, alt: 'Beach', category: 'Beach'
