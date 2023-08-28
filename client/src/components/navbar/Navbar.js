@@ -32,15 +32,21 @@ export default function Navbar({isLoggedIn}) {
     const [searchResults, setSearchResults] = useState([]);
 
     const loggedIn = checkLoggedIn();
-
+    const user_id = sessionStorage.getItem("clientId");
 
     const handleLogout = () => {
         window.location.href = "/api/clients/logout";
     };
 
     const handleClients = () => {
-        window.location.href = "http://localhost:3000/api/clients";
+        if (user_id) {
+            window.location.href = `http://localhost:3000/api/clients/${user_id}`;
+        }
     };
+    //
+    // const handleClients = () => {
+    //     window.location.href = "http://localhost:3000/api/clients";
+    // };
 
     const handleLoginRegister = () => {
         window.location.href = "http://localhost:3000/api/clients/register";

@@ -1,0 +1,9 @@
+.review {
+    background-color: inherit; /* Inherit the background color from the parent element */
+    /*color: inherit; !* Inherit the text color from the parent element *!*/
+}
+
+.review input {
+    /*background-color: inherit; !* Inherit the background color from the parent element *!*/
+    color: black; /* Inherit the text color from the parent element */
+}

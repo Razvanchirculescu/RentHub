@@ -30,7 +30,6 @@ function App() {
                 <BrowserRouter>
                     <GlobalStyles/>
                     <Navbar />
-                    {/*<Toggle theme={theme} toggleTheme={themeToggler} />*/}
                     <Routes>
                         <Route path="/properties" element={<LandingPage/>}/>
                         <Route path="/properties/:id" element={<PropertyPage />}/>
