@@ -76,7 +76,6 @@ export default function PropertyDetail() {
                 <ReservationForm propertyId={id} />
                 <PropertyReviews reviews={props.reviews}/>
             </div>
-
         </div>
     );
 }

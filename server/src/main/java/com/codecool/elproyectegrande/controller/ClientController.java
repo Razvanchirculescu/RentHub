@@ -51,6 +51,7 @@ public class ClientController {
     public Client getClientById(@PathVariable int id) {
         return clientService.getClientById(id);
     }
+
     @PatchMapping("/{name}/{surname}")
     public Client getClientByName(@PathVariable String name, @PathVariable String surname) {
         return clientService.getClientByName(name, surname);

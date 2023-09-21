@@ -8,17 +8,22 @@ import com.codecool.elproyectegrande.model.Property;
 import com.codecool.elproyectegrande.model.Reservation;
 import com.codecool.elproyectegrande.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @RestController
 @RequestMapping("/properties")
 public class PropertyController {
     private final PropertyService propertyService;
+
 
     @Autowired
     public PropertyController(PropertyService propertyService) {
@@ -69,5 +74,22 @@ public class PropertyController {
     public List<Property> getPropertiesBySearchTerm(@RequestParam("search") String searchTerm) {
         return propertyService.getPropertiesBySearchTerm(searchTerm);
     }
+
+    @GetMapping("/{propertyId}/calculate")
+    public ResponseEntity<BigDecimal> calculateReservationPrice(
+            @PathVariable Long propertyId,
+            @RequestParam("checkIn") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkIn,
+            @RequestParam("checkOut") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkOut) {
+        try {
+            Property property = propertyService.getPropertyById(propertyId);
+            long numberOfNights = ChronoUnit.DAYS.between(checkIn, checkOut);
+            BigDecimal totalPrice =  property.getPricePerNight().multiply(BigDecimal.valueOf(numberOfNights));
+            System.out.println(totalPrice);
+            return ResponseEntity.ok(totalPrice);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 
 }

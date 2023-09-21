@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -20,6 +21,12 @@ public class ReservationService {
         saveReservation(reservation);
         return reservation;
     }
+
+    public Reservation findById(Long id) {
+        return reservationRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Reservation not found"));
+    }
+
 
     private void validateReservation(Reservation reservation) throws ReservationConflictException {
         List<Reservation> overlappingReservations = reservationRepository
