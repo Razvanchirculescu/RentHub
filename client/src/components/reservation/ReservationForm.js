@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ReservationForm.css';
-
 
 function addDays(dateString, days) {
   const date = new Date(dateString);
@@ -11,14 +9,32 @@ function addDays(dateString, days) {
 };
 
 const ReservationForm = ({ propertyId }) => {
-  // const { id } = useParams();
-
   const [checkIn, setStartDate] = useState('');
   const [checkOut, setEndDate] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [reservationPrice, setReservationPrice] = useState(null); // Added state for reservation price
 
   const currentDate = new Date().toISOString().split('T')[0];
 
+  useEffect(() => {
+    if (checkIn && checkOut) {
+      axios.get(`http://localhost:8080/properties/${propertyId}/calculate`, {
+        params: {
+          propertyId,
+          checkIn,
+          checkOut,
+        },
+      })
+          .then((response) => {
+            setReservationPrice(response.data);
+            console.log(response.data)
+          })
+          .catch((error) => {
+            setErrorMessage('Error fetching reservation price');
+            console.error(error);
+          });
+    }
+  }, [checkIn, checkOut, propertyId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,16 +43,15 @@ const ReservationForm = ({ propertyId }) => {
             clientId: sessionStorage.getItem('clientId'),
             reservation: {
               checkIn,
-              checkOut
-            }
+              checkOut,
+            },
           },
           {
             headers: {
-              'Content-Type': 'application/json'
-            }
+              'Content-Type': 'application/json',
+            },
           });
       setErrorMessage('');
-
     } catch (error) {
       if (error.response) {
         console.error(error.response.data);
@@ -44,6 +59,7 @@ const ReservationForm = ({ propertyId }) => {
       }
     }
   };
+
 
   return (
       <div className='reservation-form'>
@@ -70,7 +86,12 @@ const ReservationForm = ({ propertyId }) => {
               />
             </label>
           </div>
-          <button className='reservation-button'>Book now</button>
+          {reservationPrice !== null && (
+              <button className='reservation-button'>
+                Book now for ${reservationPrice}
+              </button>
+          )}
+
           <div className='error-reservation'>
             {errorMessage && <p>{errorMessage}</p>}
           </div>
@@ -78,6 +99,5 @@ const ReservationForm = ({ propertyId }) => {
       </div>
   );
 };
-
 
 export default ReservationForm;
