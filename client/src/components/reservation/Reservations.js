@@ -26,11 +26,9 @@ export default function Reservations() {
             });
     }, [id]);
 
-    if (!props) {
+    if (!props || props.length <= 0) {
         return (
-            <section>
-                <p>Loading...</p>
-            </section>
+            <section></section>
         );
     }
 
@@ -39,7 +37,7 @@ export default function Reservations() {
             <p><strong>My reservations</strong></p>
             {props.map((reservation) => {
                 return (
-                    < ReservationOverview reservation={reservation} />
+                    <ReservationOverview key={reservation.id} reservation={reservation}/>
                 )
             })}
         </div>

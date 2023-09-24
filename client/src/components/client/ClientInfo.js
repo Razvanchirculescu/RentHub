@@ -11,7 +11,6 @@ export default function ClientInfo() {
     const [clientData, setClientData] = useState(null);
 
 
-
     useEffect(() => {
         function getClient() {
             const url = `http://localhost:8080/api/clients/${id}`;
@@ -38,7 +37,7 @@ export default function ClientInfo() {
     if (!clientData) {
         return (
             <div>
-                <p style={{ color: 'red', fontWeight: 'bold' }}>Login first</p>
+                <p style={{color: 'red', fontWeight: 'bold'}}>Login first</p>
             </div>
         );
     }
@@ -133,7 +132,8 @@ export default function ClientInfo() {
     } else {
         return (
 
-            <h1 align="center"> <a href="/api/clients/register" > Please log in to have access to the account page </a> </h1>
+            <h1 align="center"><a href="/api/clients/register"> Please log in to have access to the account page </a>
+            </h1>
 
         );
     }

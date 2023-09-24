@@ -13,7 +13,7 @@ import PropertyReviews from "./PropertyReviews";
 
 export default function PropertyDetail() {
 
-    const [location, setLocation] = useState({ lat: 44.439663, lng: 26.096306 });
+    const [location, setLocation] = useState({lat: 44.439663, lng: 26.096306});
     const [props, setprops] = useState(null);
 
     const {id} = useParams();
@@ -30,7 +30,7 @@ export default function PropertyDetail() {
             })
             .then(data => {
                 setprops(data);
-                const { street, streetNr, city, country } = data.location;
+                const {street, streetNr, city, country} = data.location;
                 const apiKey = process.env.REACT_APP_MAPS_API_KEY;
                 fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${street}+${streetNr}+${city}+${country}&key=${apiKey}`)
                     .then(response => {
@@ -65,15 +65,15 @@ export default function PropertyDetail() {
         <div className={"property row"}>
 
             <div className="col-md-8">
-                <PropertyTopDetails props={props} />
-                <Carousel images={props.images} />
+                <PropertyTopDetails props={props}/>
+                <Carousel images={props.images}/>
                 <Facilities facilities={props.facilities}/>
                 <PropertyDescription description={props.description}/>
             </div>
 
             <div className="col-md-4 right-part-page">
-                <Maps location={location} />
-                <ReservationForm propertyId={id} />
+                <Maps location={location}/>
+                <ReservationForm propertyId={id}/>
                 <PropertyReviews reviews={props.reviews}/>
             </div>
         </div>

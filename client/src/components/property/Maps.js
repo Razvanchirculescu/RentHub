@@ -1,9 +1,9 @@
-import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
-import { useMemo } from "react";
+import {GoogleMap, useLoadScript, MarkerF} from "@react-google-maps/api";
+import {useMemo} from "react";
 import "./Maps.css";
 
-export default function Maps({ location }) {
-    const { isLoaded } = useLoadScript({
+export default function Maps({location}) {
+    const {isLoaded} = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
     });
 
@@ -19,7 +19,7 @@ export default function Maps({ location }) {
                 <h1>Loading...</h1>
             ) : (
                 <GoogleMap mapContainerClassName="map-container" center={center} zoom={12}>
-                    <MarkerF onLoad={onLoad} position={center} />
+                    <MarkerF onLoad={onLoad} position={center}/>
                 </GoogleMap>
             )}
         </div>
