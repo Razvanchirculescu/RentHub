@@ -28,7 +28,7 @@ public class ReservationService {
     }
 
 
-    private void validateReservation(Reservation reservation) throws ReservationConflictException {
+    public void validateReservation(Reservation reservation) throws ReservationConflictException {
         List<Reservation> overlappingReservations = reservationRepository
                 .findByPropertyIdAndCheckOutAfterAndCheckInBefore(
                         reservation.getProperty().getId(),

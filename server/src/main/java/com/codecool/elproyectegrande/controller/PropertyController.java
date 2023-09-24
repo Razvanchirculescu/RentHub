@@ -66,7 +66,7 @@ public class PropertyController {
         } catch (ReservationConflictException e) {
             return ResponseEntity.badRequest().body(new ErrorResponse(e.getMessage()));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); //gestionează orice altă excepție care nu este capturată în blocul anterior
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 

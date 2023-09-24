@@ -67,17 +67,6 @@ public class Client implements UserDetails {
         );
         return Collections.singletonList(authority);
     }
-
-
-//    public Client(String name, String surname, String phoneNumber, String email, String password, ClientRole user) {
-//    }
-
-
-//    @Override
-//    public String getPassword() {
-//        return password;
-//    }
-
     @Override
     public String getUsername() {
         return emailAddress;

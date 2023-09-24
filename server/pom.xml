@@ -31,6 +31,17 @@
 			<artifactId>rest-api-sdk</artifactId>
 			<version>1.14.0</version>
 		</dependency>
+		<dependency>
+			<groupId>com.paypal.checkout.sdk</groupId>
+			<artifactId>checkout-sdk</artifactId>
+			<version>1.0.0-RC2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.stripe</groupId>
+			<artifactId>stripe-java</artifactId>
+			<version>23.5.0</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>com.mysql</groupId>

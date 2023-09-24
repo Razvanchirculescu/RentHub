@@ -35,7 +35,9 @@ public class WebSecurityConfig {
                                 "/api/clients/**"
                                 , "/properties/**"
                                 , "api/accounts/login"
-                                , "api/accounts/register")
+                                , "api/accounts/register"
+                                ,"/charge/**"
+                                ,"/reservations/**")
                         .permitAll()
                         .anyRequest()
                         .authenticated());
