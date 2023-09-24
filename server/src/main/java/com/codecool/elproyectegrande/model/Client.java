@@ -35,8 +35,7 @@ public class Client implements UserDetails {
             strategy = GenerationType.SEQUENCE,
             generator = "client_sequence"
     )
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
     private String name;
     private String surname;

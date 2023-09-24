@@ -34,10 +34,8 @@ public class ReservationController {
             @RequestParam("checkIn") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkIn,
             @RequestParam("checkOut") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkOut) {
         try {
-            // Retrieve the Property from your repository or service based on propertyId
             Property property = propertyService.getPropertyById(propertyId);
 
-            // Create a Reservation object for validation
             Reservation reservationToValidate = new Reservation();
             reservationToValidate.setProperty(property);
             reservationToValidate.setCheckIn(checkIn);

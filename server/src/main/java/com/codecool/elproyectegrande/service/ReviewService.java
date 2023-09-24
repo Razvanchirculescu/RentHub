@@ -1,14 +1,11 @@
 package com.codecool.elproyectegrande.service;
 
-import com.codecool.elproyectegrande.DTO.ReservationRequest;
 import com.codecool.elproyectegrande.DTO.ReviewRequest;
 import com.codecool.elproyectegrande.exception.ReservationConflictException;
 import com.codecool.elproyectegrande.model.Client;
 import com.codecool.elproyectegrande.model.Property;
-import com.codecool.elproyectegrande.model.Reservation;
 import com.codecool.elproyectegrande.model.Review;
 import com.codecool.elproyectegrande.repository.ReviewRepository;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,6 +41,4 @@ public class ReviewService {
         reviewRepository.save(newReview);
         propertyService.updateRating(newReview.getProperty());
     }
-
-
 }
