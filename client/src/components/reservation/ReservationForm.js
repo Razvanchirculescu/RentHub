@@ -10,13 +10,12 @@ function addDays(dateString, days) {
 };
 
 const ReservationForm = ({propertyId}) => {
-    const [reservationCreated, setReservationCreated] = useState(false);
     const [checkIn, setStartDate] = useState('');
     const [checkOut, setEndDate] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [reservationPrice, setReservationPrice] = useState(null); // Added state for reservation price
-    const currentDate = new Date().toISOString().split('T')[0];
     const [isDatesValid, setIsDatesValid] = useState(null); // Added state for dates validity
+    const currentDate = new Date().toISOString().split('T')[0];
 
 
     const handleValidation = () => {
@@ -90,7 +89,6 @@ const ReservationForm = ({propertyId}) => {
                     },
                 });
             setErrorMessage('');
-            setReservationCreated(true)
         } catch (error) {
             setReservationPrice(null);
             if (error.response) {

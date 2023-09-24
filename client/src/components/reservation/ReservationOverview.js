@@ -21,13 +21,16 @@ function formatPrice(price) {
 function ReservationOverview({ reservation }) {
 
     const statusClassName = reservation.status === 'Completed' ? 'status-completed' : 'status-pending';
+    const imageUrl = `http://localhost:3000/properties/${reservation.property.id}`;
 
 
     return (
         <div className='reservation-card' key={reservation.id}>
-            <div className='reservation__img'>
-                <img src={reservation.property.images[0].path} alt={reservation.property.name} />
-            </div>
+            <a href={imageUrl}>
+                <div className='reservation__img'>
+                    <img src={reservation.property.images[0].path} alt={reservation.property.name} />
+                </div>
+            </a>
             <div className='reservation__details'>
                 <p><strong>{reservation.property.name}</strong></p>
                 <p>Check-in: { formatDate(reservation.checkIn) }</p>
