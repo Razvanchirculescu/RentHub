@@ -34,7 +34,7 @@ public class ClientService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email)));
     }
 
-    public /*String*/ void signUpClient(Client client) {
+    public void signUpClient(Client client) {
 
         boolean userExists = clientRepository
                 .findByEmailAddress(client.getEmailAddress())

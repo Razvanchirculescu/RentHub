@@ -16,16 +16,14 @@ public class RegistrationService {
     private final ClientService clientService;
     private final EmailValidator emailValidator;
 
-    private final ClientRepository clientRepository;
-
     private final RepositoryBackedUserDetailsService repositoryBackedUserDetailsService;
 
-    public /*String*/ void register(SignUpRequest request) {
+    public  void register(SignUpRequest request) {
         boolean isValidEmail = emailValidator.test(request.emailAddress());
         if (!isValidEmail) {
             throw new IllegalStateException("email not valid");
         }
-        /*return*/ clientService.signUpClient(new Client(
+         clientService.signUpClient(new Client(
                 request.name()
                 , request.surname()
                 , request.phoneNumber()
@@ -35,10 +33,7 @@ public class RegistrationService {
     }
 
     public String logIn(LogInRequest request) {
-
-        System.out.println("req email:"+request.emailAddress()+"  req pass: "+request.password() );
         repositoryBackedUserDetailsService.loadUserByUsername(request.emailAddress());
-//        Client client = clientRepository.findByEmailAddress(request.emailAddress()).orElse(null);
         return clientService.logInUser(request.emailAddress(), request.password());
     }
 }

@@ -49,7 +49,7 @@ const ReservationForm = ({propertyId}) => {
                         setEndDate('');
                         setReservationPrice(null)
                     } else {
-                        axios.get(`http://localhost:8080/properties/${propertyId}/calculate`, {
+                        axios.get(`http://localhost:8080/properties/${propertyId}/calculate-reservation-price`, {
                             params: {
                                 propertyId,
                                 checkIn,

@@ -75,16 +75,13 @@ public class PropertyController {
         return propertyService.getPropertiesBySearchTerm(searchTerm);
     }
 
-    @GetMapping("/{propertyId}/calculate")
+    @GetMapping("/{propertyId}/calculate-reservation-price")
     public ResponseEntity<BigDecimal> calculateReservationPrice(
             @PathVariable Long propertyId,
             @RequestParam("checkIn") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkIn,
             @RequestParam("checkOut") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkOut) {
         try {
-            Property property = propertyService.getPropertyById(propertyId);
-            long numberOfNights = ChronoUnit.DAYS.between(checkIn, checkOut);
-            BigDecimal totalPrice =  property.getPricePerNight().multiply(BigDecimal.valueOf(numberOfNights));
-            System.out.println(totalPrice);
+            BigDecimal totalPrice = propertyService.calculateReservationPriceForProperty(propertyId, checkIn, checkOut);
             return ResponseEntity.ok(totalPrice);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

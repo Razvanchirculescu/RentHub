@@ -3,6 +3,10 @@ package com.codecool.elproyectegrande.DTO;
 import java.math.BigDecimal;
 
 public class PaymentRequest {
+    private BigDecimal amount;
+    private Token token;
+
+
     public BigDecimal getAmount() {
         return amount;
     }
@@ -14,10 +18,6 @@ public class PaymentRequest {
     public Token getToken() {
         return token;
     }
-
-    private BigDecimal amount;
-    private Token token;
-
 
 
     public void setToken(Token token) {

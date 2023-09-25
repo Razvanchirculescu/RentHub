@@ -30,8 +30,6 @@ export default function InputForm () {
     const [justifyActive, setJustifyActive] = useState('tab1');
 
 
-    const [data, setData] = useState([]);
-
     const handleJustifyClick = (value) => {
         if (value === justifyActive) {
             return;
@@ -59,7 +57,6 @@ export default function InputForm () {
                         emailAddress: emailAddress,
                         password: password
                     }),
-                    // credentials: "include"
                 })
                 const data  = await response.json();
                 if (data.length > 0) {

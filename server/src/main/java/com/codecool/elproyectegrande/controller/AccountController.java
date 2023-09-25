@@ -24,12 +24,12 @@ public class AccountController {
     ClientRepository clientRepository;
 
     @PostMapping("/register")
-    public void /*String*/ signUp(@RequestBody SignUpRequest request){
-        /*return*/ registrationService.register(request);
+    public void  signUp(@RequestBody SignUpRequest request){
+         registrationService.register(request);
     }
 
     @PostMapping("/login")
-    public List<Serializable> /*Long*/ logIn(@RequestBody LogInRequest request) {
+    public List<Serializable>  logIn(@RequestBody LogInRequest request) {
         Client client = clientRepository.findByEmailAddress(request.emailAddress()).orElse(null);
         if (client!=null) {
             return List.of(registrationService.logIn(request), client.getId());

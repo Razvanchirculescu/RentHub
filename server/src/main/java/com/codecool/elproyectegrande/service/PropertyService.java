@@ -12,6 +12,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -91,5 +94,20 @@ public class PropertyService {
                         location.getCountry().toLowerCase().contains(lowerCaseSearchTerm))) ||
                 (property.getName().toLowerCase().contains(lowerCaseSearchTerm));
     }
+
+    public BigDecimal calculateReservationPriceForProperty(
+            Long propertyId,
+            LocalDate checkIn,
+            LocalDate checkOut) {
+        try {
+            Property property = getPropertyById(propertyId);
+            long numberOfNights = ChronoUnit.DAYS.between(checkIn, checkOut);
+            BigDecimal totalPrice = property.getPricePerNight().multiply(BigDecimal.valueOf(numberOfNights));
+            return totalPrice;
+        } catch (Exception e) {
+            throw new RuntimeException("Error calculating reservation price", e);
+        }
+    }
+
 
 }
