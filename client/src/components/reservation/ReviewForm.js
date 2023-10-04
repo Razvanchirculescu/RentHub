@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Rating from 'react-rating-stars-component';
-import './ReviewForm.css'
+import './ReviewForm.scss'
 
 
 const ReviewForm = ({ propertyId }) => {

@@ -1,19 +1,21 @@
 import React from "react";
-import './PropertyImagesCarousel.css'
+import './PropertyImagesCarousel.scss'
 
 
-const PropertyImagesCarousel = ({ images }) => {
+const PropertyImagesCarousel = ({images}) => {
     return (
-        <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel" style={{ height: "fit-content" }}>
+        <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel"
+             style={{height: "fit-content"}}>
             <ol className="carousel-indicators">
                 {images.map((image, index) => (
-                    <li data-target="#carouselExampleIndicators" data-slide-to={index} className={index === 0 ? "active" : ""} key={index}></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to={index}
+                        className={index === 0 ? "active" : ""} key={index}></li>
                 ))}
             </ol>
-            <div className="carousel-inner" style={{ height: "fit-content" }}>
+            <div className="carousel-inner" style={{height: "fit-content"}}>
                 {images.map((image, index) => (
                     <div className={`carousel-item ${index === 0 ? "active" : ""}`} key={index}>
-                        <img className="d-block w-100" src={image.path} alt={`Slide ${index}`} />
+                        <img className="d-block w-100" src={image.path} alt={`Slide ${index}`}/>
                     </div>
                 ))}
             </div>

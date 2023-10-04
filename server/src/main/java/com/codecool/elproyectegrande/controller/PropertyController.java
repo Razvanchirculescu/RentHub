@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @RestController
@@ -25,7 +24,6 @@ public class PropertyController {
     private final PropertyService propertyService;
 
 
-    @Autowired
     public PropertyController(PropertyService propertyService) {
         this.propertyService = propertyService;
     }

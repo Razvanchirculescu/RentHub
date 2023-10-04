@@ -1,5 +1,5 @@
 import React from "react";
-import "./Facilities.css"
+import "./Facilities.scss"
 
 
 const Facilities = ({ facilities }) => {

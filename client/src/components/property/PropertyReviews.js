@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {MDBBadge, MDBListGroup, MDBListGroupItem} from "mdb-react-ui-kit";
-import "./PropertyReviews.css"
+import "./PropertyReviews.scss"
 
 export default function PropertyReviews ({ reviews }) {
 

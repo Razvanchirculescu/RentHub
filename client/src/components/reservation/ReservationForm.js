@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import './ReservationForm.css';
+import './ReservationForm.scss';
 import StripeButton from "../checkout/StripeCheckout";
 
 function addDays(dateString, days) {

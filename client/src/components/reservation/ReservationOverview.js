@@ -1,5 +1,5 @@
 import React from 'react';
-import "./ReservationOverview.css"
+import "./ReservationOverview.scss"
 import ReviewForm from "./ReviewForm";
 
 

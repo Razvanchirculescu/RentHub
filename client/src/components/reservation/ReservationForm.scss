@@ -1,0 +1,46 @@
+label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: inherit;
+
+  input, .reservation-button {
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 3px;
+    width: 20vw;
+    color: inherit;
+  }
+}
+
+.error-reservation {
+  color: red;
+}
+
+.reservation-button {
+  color: white !important;
+  background-color: black !important;
+}
+
+.reservation-form {
+  padding-top: 5vh;
+
+  .reservation-button {
+    color: inherit;
+
+    input {
+      background: inherit;
+      color: inherit;
+    }
+  }
+}
+
+.error-reservation {
+  color: red;
+}
+
+.reservation-button {
+  color: green !important;
+  background-color: black !important;
+}

@@ -1,0 +1,9 @@
+$background-color-light: #fbfaf8;
+
+body {
+  background-color: $background-color-light;
+}
+
+body.dark-mode {
+  color: $background-color-light;
+}

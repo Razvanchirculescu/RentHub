@@ -1,19 +1,19 @@
 body {
-    overflow-x: hidden;
-    /*hides horizontal scrolling*/
+    overflow-x: hidden; /* hides horizontal scrolling */
 }
-.m-2_propertyDetailDescription, .property__about{
+
+.m-2_propertyDetailDescription,
+.property__about {
     padding-top: 5vh;
     padding-left: 8vh;
+
+    .property__about-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
 }
 
-.property__about-title {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-
-.checkAvailability{
+.checkAvailability {
     padding-left: 2vh;
 }
 
@@ -24,18 +24,13 @@ body {
     padding-top: 4vh;
 }
 
-.property__rating{
+.property__rating {
     padding-top: 2vh;
     padding-left: 8vh;
     padding-bottom: 2vh;
 }
 
-/*.property__reviews {*/
-/*    padding-left: 4vh;*/
-/*}*/
-
-#carouselExampleIndicators{
-
+#carouselExampleIndicators {
     width: 900px;
     height: 900px;
     max-width: 100%;
@@ -43,37 +38,35 @@ body {
     margin-inline-end: auto;
 }
 
-
 input {
-    padding:10px;
+    padding: 10px;
     font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
     font-style: normal;
     font-weight: normal;
     text-decoration: inherit;
     border-radius: 0 !important;
+
+    &.form-control {
+        border-radius: 0 !important;
+        font-size: 12px;
+    }
 }
 
-.form-control {
-    border-radius: 0 !important;
-    font-size: 12px;
+.clickable {
+    cursor: pointer;
 }
 
-.clickable { cursor: pointer; }
-
-
-.form-group_checkin{
+.form-group_checkin {
     position: relative;
     width: 100px;
 }
 
-.propertyPageReviewSection{
+.propertyPageReviewSection {
     padding-left: 45vh;
     padding-top: 10vh;
-
 }
 
 .property_facilities {
-
     display: inline;
     flex-wrap: nowrap;
     justify-content: space-between;

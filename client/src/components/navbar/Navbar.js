@@ -6,25 +6,21 @@ import logoImageTransparent from "../../images/logos/logoImageTransparent.png"
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PeopleIcon from '@mui/icons-material/People';
 
-import './Navbar.css';
+import './Navbar.scss';
 import {SearchBar} from "./SearchBar"
 import {SearchResultsList} from "./SearchResultsList"
-import {useDarkMode} from "../theme/UseDarkMode";
-import Toggle from "../theme/Toggler";
-import {ThemeProvider} from "styled-components"
-import {GlobalStyles} from "../theme/GlobalStyles"
-import {lightTheme, darkTheme} from "../theme/Themes"
+import DarkModeToggle from "../theme/DarkModeToggle";
 
 
 export default function Navbar({isLoggedIn}) {
 
-    const [theme, themeToggler] = useDarkMode();
-    const themeMode = theme === "light" ? lightTheme : darkTheme;
+
 
     const [searchResults, setSearchResults] = useState([]);
 
     const loggedIn = checkLoggedIn();
     const user_id = sessionStorage.getItem("clientId");
+
 
     const handleLogout = () => {
         window.location.href = "/api/clients/logout";
@@ -35,10 +31,6 @@ export default function Navbar({isLoggedIn}) {
             window.location.href = `http://localhost:3000/api/clients/${user_id}`;
         }
     };
-    //
-    // const handleClients = () => {
-    //     window.location.href = "http://localhost:3000/api/clients";
-    // };
 
     const handleLoginRegister = () => {
         window.location.href = "http://localhost:3000/api/clients/register";
@@ -53,8 +45,7 @@ export default function Navbar({isLoggedIn}) {
     };
 
     return (
-        <ThemeProvider theme={themeMode}>
-            <GlobalStyles/>
+
             <nav className="nav flex flex-wrap items-center justify-between px-20" id="navbar">
                 <div className="flex flex-no-shrink items-center mr-6 py-3 text-grey-darkest">
 
@@ -64,11 +55,10 @@ export default function Navbar({isLoggedIn}) {
                     <a href={"/properties"}>
                         <img height={50} width={150} src={logoTextTransparent} alt={"logo"}/>
                     </a>
-                    <Toggle theme={theme} toggleTheme={themeToggler}/>
-
+                    <DarkModeToggle/>
                 </div>
-                {/*<DarkModeToggle />*/}
-                <SearchBar setSearchResults={setSearchResults} theme={theme}/>
+                {/*<SearchBar setSearchResults={setSearchResults} theme={theme}/>*/}
+                <SearchBar setSearchResults={setSearchResults}/>
 
 
                 <input className="menu-btn hidden" type="checkbox" id="menu-btn"/>
@@ -78,13 +68,13 @@ export default function Navbar({isLoggedIn}) {
                 </label>
 
                 <ul className="menu border-b md:border-none flex justify-between items-right list-reset m-0 w-full md:w-auto">
-                    {/*<li className="border-t md:border-none">*/}
-                    {/*    <a href="#"*/}
-                    {/*       className="block md:inline-block px-4 py-3 no-underline text-grey-darkest*/}
-                    {/*            hover:text-grey-darker font-bold">*/}
-                    {/*        Advertise your property*/}
-                    {/*    </a>*/}
-                    {/*</li>*/}
+                    <li className="border-t md:border-none">
+                        <a href="#"
+                           className="block md:inline-block px-4 py-3 no-underline text-grey-darkest
+                                hover:text-grey-darker font-bold">
+                            Advertise your property
+                        </a>
+                    </li>
                     <li className="border-t md:border-none">
                         <button id="logout_link"
                                 hidden={!loggedIn}
@@ -122,8 +112,7 @@ export default function Navbar({isLoggedIn}) {
                     </li>
 
                 </ul>
-                <SearchResultsList searchResults={searchResults} onLinkClick={handleLinkClick} theme={theme}/>
+                <SearchResultsList searchResults={searchResults} onLinkClick={handleLinkClick} />
             </nav>
-        </ThemeProvider>
     );
 }

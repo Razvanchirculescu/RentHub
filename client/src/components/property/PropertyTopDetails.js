@@ -1,5 +1,5 @@
 import React from "react";
-import "./PropertyTopDetails.css"
+import "./PropertyTopDetails.scss"
 
 
 const PropertyTopDetails = ({ props }) => {

@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
 
-import './EditClientInfo.css';
+import './EditClientInfo.scss';
 
 export default function EditClientInfo() {
     const {id} = useParams();

@@ -1,12 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import './PropertyList.css';
+import './PropertyList.scss';
 import {Link, useLocation} from "react-router-dom"
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { FaLocationDot } from "react-icons/fa6";
-
-
-
+import {FaLocationDot} from "react-icons/fa6";
 
 
 function PropertyList() {
@@ -39,8 +36,8 @@ function PropertyList() {
                                 <img src={property.images[0].path} alt={property.name}/>
                             </div>
                             <div className="card__details" id="cardDetails">
-                                <p className="card__location" >
-                                   <FaLocationDot/>
+                                <p className="card__location">
+                                    <FaLocationDot/>
                                     &nbsp;
                                     {property.location.city}, {property.location.country}
                                 </p>

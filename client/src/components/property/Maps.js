@@ -1,6 +1,6 @@
 import {GoogleMap, useLoadScript, MarkerF} from "@react-google-maps/api";
 import {useMemo} from "react";
-import "./Maps.css";
+import "./Maps.scss";
 
 export default function Maps({location}) {
     const {isLoaded} = useLoadScript({

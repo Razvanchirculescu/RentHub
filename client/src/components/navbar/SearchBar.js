@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import './SearchBar.css';
+import './SearchBar.scss';
 
 export const SearchBar = ({ setSearchResults }) => {
     const [input, setInput] = useState("");

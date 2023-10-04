@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react';
 
 import logoText from '../../images/logos/logoText.png';
-import './ClientsList.css';
+import './ClientsList.scss';
 
 export default function ClientsList() {
 

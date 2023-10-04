@@ -26,6 +26,8 @@ public class WebSecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+
+    //todo
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.cors().and()

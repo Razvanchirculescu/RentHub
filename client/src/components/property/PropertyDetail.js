@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 
-import './PropertyDetail.css'
+import './PropertyDetail.scss'
 import Maps from "./Maps"
 import ReservationForm from "../reservation/ReservationForm";
 import Carousel from "./PropertyImagesCarousel";
