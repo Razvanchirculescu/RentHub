@@ -9,7 +9,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import './Navbar.scss';
 import {SearchBar} from "./SearchBar"
 import {SearchResultsList} from "./SearchResultsList"
-import DarkModeToggle from "../theme/DarkModeToggle";
+import ThemeButton from "../theme/ThemeButton";
 
 
 export default function Navbar({isLoggedIn}) {
@@ -55,7 +55,7 @@ export default function Navbar({isLoggedIn}) {
                     <a href={"/properties"}>
                         <img height={50} width={150} src={logoTextTransparent} alt={"logo"}/>
                     </a>
-                    <DarkModeToggle/>
+                    <ThemeButton/>
                 </div>
                 {/*<SearchBar setSearchResults={setSearchResults} theme={theme}/>*/}
                 <SearchBar setSearchResults={setSearchResults}/>

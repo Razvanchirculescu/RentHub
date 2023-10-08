@@ -14,11 +14,12 @@ import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/Footer";
 import EditClientInfo from "./components/client/EditClientInfo"
 
+import {useTheme} from "./components/theme/useTheme";
+
 function App() {
+    const theme = useTheme();
 
-
-    return (
-        <div className="Container">
+    return (<div className={theme}>
             <BrowserRouter>
                 <Navbar/>
                 <Routes>
@@ -34,8 +35,7 @@ function App() {
                 </Routes>
                 <Footer/>
             </BrowserRouter>
-        </div>
-    );
+        </div>);
 }
 
 export default App;

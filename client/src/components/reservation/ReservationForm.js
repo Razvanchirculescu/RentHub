@@ -13,8 +13,8 @@ const ReservationForm = ({propertyId}) => {
     const [checkIn, setStartDate] = useState('');
     const [checkOut, setEndDate] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const [reservationPrice, setReservationPrice] = useState(null); // Added state for reservation price
-    const [isDatesValid, setIsDatesValid] = useState(null); // Added state for dates validity
+    const [reservationPrice, setReservationPrice] = useState(null);
+    const [isDatesValid, setIsDatesValid] = useState(null);
     const currentDate = new Date().toISOString().split('T')[0];
 
 

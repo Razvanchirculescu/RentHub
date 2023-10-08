@@ -18,7 +18,7 @@ export default function PropertyReviews ({ reviews }) {
                         key={`review-${index}`}
                         className='d-flex justify-content-between align-items-center' id="list_group">
                         <MDBBadge pill light>
-                            <span>{review.satisfaction} &#9733;</span>
+                            <span>{review.satisfaction} &#9733; </span>
                         </MDBBadge>
                         <p>
                             {description}
